@@ -1,0 +1,265 @@
+so the data coming in from max will be structured since that is the API, and it reflects the ordering of data on the screen.
+
+the objectStack is an array of all of the IDs used, and requires flattening the data with recursion.
+
+possibly if the flattening were to happen in Max, then it could be removed from the server, and also from the client, which might mean less computation down the road
+
+or, maybe the data should be in real database and then the websockets will querry the database
+
+ok so:
+-> for large scale production we may want to use a real database since this will take some of the computation work from the node server.
+but for easy max installation it's cool to have a simple version that doesn't require extra installations
+
+see https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
+
+so for time-being, we will *not* search for IDs in the /children nodes, all this means is that we won't be able to union with sub-node elements based on id, however since the incoming commands are in a stack, and organized by time it should be ok.
+
+for database look into https://www.couchbase.com/comparing-couchbase-vs-mongodb
+couchbase might be a good way to go, or just SQL
+most database approaches have a hard time with nested objects
+
+
+
+or we could just keep our current database model which works relatively well.
+howefver we need to take it out of the server process, so to keep the IO communication as smooth as possible.
+
+the input API to the node script should be exactly what it's sending out, no parsing in the server script!
+i.e.:
+
+{
+    /* : [
+        {
+            key: "svg",
+            val: {}
+            timetag: xxx
+        },
+        {
+            key: "svg",
+            val: {}
+            timetag: xxx
+        },
+        {
+            key: "svg",
+            val: {}
+            timetag: xxx
+        }
+    ],
+    /foo : [
+        {
+            key: "svg",
+            val: {}
+            timetag: xxx
+        },
+        {
+            key: "svg",
+            val: {}
+            timetag: xxx
+        },
+        {
+            key: "svg",
+            val: {}
+            timetag: xxx
+        }
+    ]
+
+}
+
+but then there should be only one unique key -- so if the above would be sent, then
+the server should join the SVG keys
+
+so in the server the format would be:
+
+{
+    /prefix : {
+        /uniqueKey1 : [ {} {}, array of values with timetag, unioned by id ],
+        /uniqueKey2 : [ {} {}, array of values with timetag, unioned by id ]
+    }
+
+}
+
+or
+
+{
+    /prefix : [{
+        key : unique key type,
+        val: [ {} {}, array of values with timetag, unioned by id ]
+    } , {
+        key : unique key type,
+        val: [ {} {}, array of values with timetag, unioned by id ]
+    }]
+}
+
+this is better because then we don't have to use the keys, we can just iterate the values with for .. of
+or even more clear like this?:
+
+
+{
+    /drawsocket : [{
+        url: "/1",
+        key : unique key type,
+        val: [ {} {}, array of values with timetag, unioned by id ]
+    } , {
+        url: "/1",
+        key : unique key type,
+        val: [ {} {}, array of values with timetag, unioned by id ]
+    }]
+}
+
+I think not this way because then the target types "svg" "html" etc will be on a lower level
+
+this way is better because here, the key is a selector for a type, and then everything can be in sequence after that
+{
+    /prefix : [{
+        key : unique key type,
+        val: [ {} {}, array of values with timetag, unioned by id ]
+    } , {
+        key : unique key type,
+        val: [ {} {}, array of values with timetag, unioned by id ]
+    }]
+}
+
+we still have the problem of unioning by id with this system. it's not a problem for the client since it doens't do any unioning,
+and also not a problem for the API since users also don't need to think about unioning
+
+so it seems inevitable that there will need to be some reformatting
+
+so then the question is which format is best for the API? 
+the order is important, and in Max/odot we need to use Arrays to keep things in order
+
+maybe in th database the values could be Maps that also contain their id, 
+this way when we send it to the client we just strip off the keys, and only send the values
+
+/prefix : {
+   /svg : [
+       {
+           /id : foo
+       }
+   ] 
+}
+
+in the cache becomes
+
+/prefix : MapOfKeys[
+    /svg : MapOfValuesByIDS[
+        /id : { 
+            val: { 
+                id : id
+                new : line
+            },
+            timetag: time
+        }
+    ]
+]
+
+on recall, the maps get converted to arrays and objects, the type-key "svg" become arrays of the values of the id Map.
+use Map for type-keys since that means they will occur in order
+
+like:
+
+type_maps.get(prefix)
+
+/prefix : [
+    {
+        key: "svg",
+        value: id_map.get(id).values()
+    }
+]
+
+further notes:
+we might need/want to go back to the old version where we maintain a *time* sorted array of elements since that is what determines the behavoir of the system. it is stateful no matter what, with each new element updating the existing display/state. Therefore, all messages in the cache should be organized by time, *except* for ID adjustments... 
+
+or... maybe not?? hmm
+for example, what about the case of when someone makes an object, and then scales it by some relative amount, and then changes the scaling again... things could get out of sync. but this is probably necessary, since otherwise we'd have to log every single event which isn't possible.
+
+
+let array_ = [
+    {
+        type: 'svg',
+        id: 'b',
+        new: "g"
+    },
+    {
+        type: 'svg',
+        id: 'b',
+        new: "g"
+    },
+    {
+        type: 'svg',
+        val: {
+            id: 'bar',
+            new: "obj"
+        }
+    }
+];
+
+if the input at a certin key is an array, we can go a head and join them in the cache, since the key type can be used to determine the order still, but as a group type.
+for each new key type, it creates a new flat array of objects with ids -- I guess then they should be flat coming from max also (as is already impletmented)
+
+does the array sent to the client need to be sorted by key? maybe not
+
+the goal is for the JSON to be fast to update, and fast to send, and in the right order
+the formatting is a little different with the key/value syntax, since the objects can/should? be able to be stored as an array
+
+well, it seems somehow easier right now to just keep the items separated by type(key) -- this means that there could potentially be multiples of the same id
+
+
+could it be worth having two refercnes?
+
+like:
+
+prefix : {
+    svg: [{
+                id: foo
+        },
+        {
+                id: bar
+        }]
+}
+
+map[foo] = prefix.svg[0];
+map[bar] = prefix.svg[1];
+
+
+{
+	"*" : 	{
+		"key" : "svg",
+		"val" : [ 			{
+				"new" : "line",
+				"id" : "foo",
+				"x1" : 10,
+				"x2" : 20,
+				"y1" : 10,
+				"y2" : 10
+			}
+, 			{
+				"new" : "line",
+				"id" : "bar",
+				"x1" : 10,
+				"x2" : 20,
+				"y1" : 10,
+				"y2" : 10
+			}
+, 			{
+				"new" : "g",
+				"id" : "gg"
+			}
+, 			{
+				"new" : "line",
+				"id" : "ff",
+				"parent" : "gg",
+				"x1" : 10,
+				"x2" : 20,
+				"y1" : 10,
+				"y2" : 10
+			}
+ ]
+	}
+
+}
+
+
+
+again the problem is that we either have to iterate the lists to find the id, keeping everything in the right order, 
+or we need to rebuild the sending JSON object from the maps, which could end up being more iteration
+but after testing it appears that the hash-table lookup for the id makes the Map version more efficient as the size grows bigger
+someting like ~4ms for all versions, whereas the for loop can be 10x faster on the small size, but gets much less efficient if the size grows 

@@ -1,0 +1,288 @@
+
+#touchdiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid black;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+/*
+#back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
+
+}
+*/
+
+div {
+  position: absolute;
+}
+
+#main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+
+  /*border: solid red 1px;*/
+}
+
+.pdfcanvas {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 20;
+  pointer-events: none;
+}
+
+#back-drawing {
+  float: left;
+  position: absolute;
+  overflow: visible;
+  z-index: 10;
+}
+*/
+svg {
+  float: left;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  z-index: 10;
+}
+
+#main-svg {
+  float: left;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  z-index: 10;
+}
+
+g {
+  overflow: visible;
+}
+/*
+#overlay-drawing {
+  float: left;
+  position: absolute;
+  overflow: visible;
+  z-index: 20;
+
+}
+*/
+#forms {
+  position: absolute;
+  float: left;
+  z-index: 100;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: lightblue;
+
+  -webkit-animation: fadeout 3s infinite; /* Safari, Chrome and Opera > 12.1 */
+     -moz-animation: fadeout 3s infinite; /* Firefox < 16 */
+      -ms-animation: fadeout 3s infinite; /* Internet Explorer */
+       -o-animation: fadeout 3s infinite; /* Opera < 12.1 */
+          animation: fadeout 3s infinite;
+
+  animation-fill-mode: forwards;
+
+}
+
+#loading p {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-family: courier;
+  font-size: 18px;
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  50% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+
+.log {
+  position: absolute;
+  top: calc(100vh - 50px);
+  left: 10px;
+  /* border: solid blue 1px; */
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: helvetica;
+  font-size: 12px;
+
+  z-index: 100;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html, body {
+  /*background-color: black;*/
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  /* border: solid blue 1px; */
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: courier;
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
+
+}
+
+line {
+  stroke-width: 1;
+  stroke: rgb(0,0,0);
+}
+
+polyline {
+  stroke-width: 1;
+  stroke: rgb(0,0,0);
+  fill: none;
+}
+
+polygon {
+  stroke-width: 1;
+  stroke: rgb(0,0,0);
+  fill: none;
+}
+
+path {
+  stroke-width: 1;
+  stroke: rgb(0,0,0);
+  fill: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+@font-face {
+    font-family: Bravura;
+    src: url('fonts/Bravura.eot'); /* IE9 Compat Modes */
+    src: url('fonts/Bravura.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('fonts/Bravura.woff2') format('woff2'), /* Super Modern Browsers */
+         url('fonts/Bravura.woff') format('woff'), /* Pretty Modern Browsers */
+         url('fonts/Bravura.ttf')  format('truetype'); /* Safari, Android, iOS */
+  /*       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: Boulez;
+  src: url('fonts/Boulez.eot'); /* IE9 Compat Modes */
+  src: url('fonts/Boulez.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/Boulez.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/Boulez.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/Boulez.ttf')  format('truetype'); /* Safari, Android, iOS */
+/*       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'HE-Maestro';
+  src: url('fonts/HEmaestro.eot'); /* IE9 Compat Modes */
+  src: url('fonts/HEmaestro.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/HEmaestro.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/HEmaestro.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/HEmaestro.ttf')  format('truetype'); /* Safari, Android, iOS */
+/*       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+.basestyle {
+  font-size: 10pt;
+  font-family: Arial;
+  font-weight: normal;
+	margin: 0em;
+	padding: 15px 15px;
+}
+
+.bravura_text {
+    font-size: 24pt;
+    font-family: "Bravura";
+}
+
+.title{
+    margin-left: 20px;
+}
+
+.links {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
+
+.err {
+  color: red;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  border:  2px solid black;
+
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 70%;
+  margin: 4px 2px;
+  cursor: pointer;
+}

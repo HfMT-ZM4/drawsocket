@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- our stylesheet -->
+    <link rel="stylesheet" href="lib/draw-client2.css">
+
+    <script>
+    function init()
+    {
+        var a = document.getElementById("link");
+        a.href = `http://${location.host}/svgdraw`;
+        a.innerHTML = `http://${location.host}/svgdraw`;
+    }
+    </script>
+
+    <!-- library dependencies -->
+  </head>
+  <body onload="init()">
+    <div class="basestyle">
+      <p>Welcome to Drawsocket</p>
+      <p>You will need to supply an OSC prefix URL in the browser address to receive messages. For example: <a id="link" style="color:blue;"></a> will open a new websocket that receives messages to the OSC prefix <em>/svgdraw</em>.</p>
+    </div>
+
+
+  </body>
+</html>

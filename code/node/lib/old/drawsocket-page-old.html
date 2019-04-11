@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- our stylesheet -->
+    <link rel="stylesheet" href="lib/draw-client2.css">
+
+    <!-- library dependencies -->
+
+    <script src="scripts/d3/dist/d3.min.js"></script>
+    <script src="scripts/pdfjs-dist/build/pdf.js"></script>
+    <script src="scripts/tone/build/Tone.js"></script>
+    <script src="scripts/startaudiocontext/StartAudioContext.js"></script>
+    <script src="scripts/timesync/dist/timesync.js"></script>
+    <script src="scripts/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="scripts/gsap/src/minified/TimelineMax.min.js"></script>
+
+  </head>
+  <body onload="enableMultitouch();">
+
+    <!--main html setup -->
+    <div class="log" id="log"></div>
+
+    <div id="touchdiv"></div>
+
+    <div id="main" >
+      <svg id="svg" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs id="defs"></defs>
+        <g id="back-drawing"></g>
+        <g id="main-drawing"></g>
+        <g id="overlay-drawing"></g>
+      </svg>
+    </div>
+
+    <div id="forms" ></div>
+
+    <div id="loading">
+      <p>synchronizing...</p>
+    </div>
+
+    <!-- our scripts -->
+
+    <script src="lib/drawsocket-client.js"></script>
+
+
+  </body>
+</html>
