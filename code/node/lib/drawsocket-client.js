@@ -771,7 +771,7 @@ var drawsocket = (function(){
 
     // if node has timetag then use that, otherwise use top-level timetag, need to test this!
     const _timetag = node.hasOwnProperty('timetag') ? node.timetag : timetag;
-    console.log(_timetag);
+//    console.log(_timetag);
     const cmds = ( typeof node.cmd != 'object' ) ? [node.cmd] : node.cmd;
     for( let _cmd of cmds )
     {
@@ -803,7 +803,8 @@ var drawsocket = (function(){
         break;
         case "play":
         {
-          let currentposition = animStack[id].totalTime();
+          
+          let currentposition = node.hasOwnProperty("time") ? node.time : animStack[id].totalTime();
 
           if( !ts ) {
             animStack[id].play( currentposition );
@@ -836,7 +837,13 @@ var drawsocket = (function(){
 
         case "stop":
         case "pause":
-          animStack[id].pause();
+          
+          if( node.hasOwnProperty("time") ){
+            animStack[id].pause( node.time );
+          }
+          else
+            animStack[id].pause();
+
         break;
 
         case "kill":
