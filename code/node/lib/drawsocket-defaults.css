@@ -67,6 +67,7 @@ div {
 }
 */
 svg {
+  pointer-events: all;
   float: left;
   position: absolute;
   width: 100vw;
