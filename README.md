@@ -385,8 +385,11 @@ Additionaly, HTML layers may be created with a new `div` tag, just as discussed 
 * `cmd`: an action command to a new or preexisting `tween`. Understood commands are:
   * `start`: start playing the `tween`, from the beginning, using the message's timestamp to determine an offset start time to be synchronized with the server clock. If the duration is already past, sets the object to its final position.
   * `play`: start playing the `tween` from whatever its current position is, synchronised to the server clock.
+  * `playfrom` : if a `time` parameter is also found in the command object, start playing the `tween` from the time specified by the `time` parameter.
+    * `time` (requried), sets the time to start from in seconds.
   * `stop`: stops the `tween` at the current position.
   * `pause`: stops the `tween` at the current position.
+    * optionally, if the parameter `time` is found, pause, and move the playhead to that time.
   * `reset`: resets the object to its original position.
   * `reverse`: reverses `tween` direction.
   * `kill`: kills the `tween` but doesn't delete it (not sure how useful this is).
