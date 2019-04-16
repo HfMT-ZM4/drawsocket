@@ -721,6 +721,12 @@ var drawsocket = (function(){
       if( _obj[key] == "false" )
         _obj[key] = false;
 
+      if( key == "onUpdate" )
+      {
+        //_obj[key] = new Function( ..._obj[key] );
+        _obj[key] = new Function( "", _obj[key] );
+      }
+
     }    
     return _obj;
   }
