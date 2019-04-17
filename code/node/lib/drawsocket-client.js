@@ -395,11 +395,15 @@ var drawsocket = (function(){
             }
             else
             {
+              if( retries <= 0 )
+                console.log("retry timeout", retries);
+
+              console.log(node.href[0], "bbox y h", bb.y, bb.height);
               TweenMax.set(el.node(), {x: oldx - bb.x, y: oldy - bb.y, width: bb.width, height: bb.height} );
               el.node().classList.remove("invisible");
             }
           };
-
+          
           window.requestAnimationFrame( fix_position );
 
         }

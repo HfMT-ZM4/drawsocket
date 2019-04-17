@@ -403,6 +403,8 @@ Additionaly, HTML layers may be created with a new `div` tag, just as discussed 
   * `vars`: an object containing the variables to animate, and their destination values, and any other TweenMax special properties (see the [TweenMax vars documentation](https://greensock.com/docs/TweenMax/vars) for more information).
 * `cmd`: same as the `tween` commands, but applied to the timeline.
 
+One special `var` parameter has been added to handle the `onUpdate` callback.
+* `var`:`onUpdate` : an inline string function to be called when a new frame is processed by the `tween`.
 
 ## __pdf__
 PDF files may be imported into `drawsocket` by reference, the settable attributes are as follows:
@@ -619,6 +621,6 @@ For example, on a website called `www.foo.com` and a stored JSON file named `sto
 # ping
 The `hfmt.drawsocket` object accepts the ping message to querry the connection status of one or more clients.
 
-
-
+# do_sync
+`do_sync` (in dev), triggers the client clock time sychronization routine.
 
