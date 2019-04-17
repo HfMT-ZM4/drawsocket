@@ -595,6 +595,35 @@ For example, here we tell clients logged into the URL `/foo` to load the message
 
 ```
 
+# __event__
+The `event` keyword provides a mechanism for scheduling future object sent to the `drawsocket.input` function.
+
+* `id`: the id of the event
+* `del`: the delay time in milliseconds
+* `obj`: an object to be sent to `drawsocket.input`, containing `key` and `val` values.
+
+For example, the following example, an event is created and set with a delay (`del`) of 1000ms (1s). After this delay, the object stored at the the `obj` address, is sent to `drawsocket.input` and is executed, resulting in a short diagonal line, with the `id`  "foo1".
+
+```
+/* : {
+	/key : "event",
+	/val : {
+		/id : "event1",
+		/del : 1000,
+		/obj : {
+			/key : "svg",
+			/val : {
+				/new : "line",
+				/id : "foo2",
+				/x1 : 10,
+				/x2 : 20,
+				/y1 : 30,
+				/y2 : 10
+			}
+		}
+	}
+}
+```
 
 # Storing the Sever State
 The `hfmt.drawsocket` object in Max accepts the `writecache` message,to write the current cached messages to a file on disk.

@@ -56,6 +56,9 @@ var drawsocket = (function(){
   // pdf
   let pdfstack = {};
 
+  // events
+  let eventStack = {};
+
   // webaudio context
   let audioCtx;
 
@@ -90,6 +93,22 @@ var drawsocket = (function(){
   async function delayProcess(ms, obj) {
     await wait(ms);
     drawsocket_input(obj);
+  }
+
+  function scheduleEvent(_objarr, timeTag)
+  {
+    for( let node of _objarr)
+    {
+      // do timetag adjustment here to sync events to server clock
+      if( node.hasOwnProperty('id') && node.hasOwnProperty('del') && node.hasOwnProperty('obj') )
+      {
+        eventStack[node.id] = setTimeout( () => {
+          node.timetag = Date.now();
+          drawsocket_input(node.obj);
+          delete eventStack[node.id];
+        }, node.del );
+      }
+    }
   }
 
   /**
@@ -1544,9 +1563,9 @@ var drawsocket = (function(){
       iter_obj_arr = obj;
     
 
-  //console.log(iter_obj_arr);
+//  console.log(iter_obj_arr);
 
-    for( let i = 0; i < iter_obj_arr.length; i++ )
+    for( let i = 0; i < iter_obj_arr.length; i++ )  
     {
       const key = iter_obj_arr[i].key;
       
@@ -1690,6 +1709,10 @@ var drawsocket = (function(){
           }
 
           processJSON_PDF(_objarr);
+        break;
+
+        case "event":
+          scheduleEvent(_objarr, timetag);
         break;
 
         case "file":
