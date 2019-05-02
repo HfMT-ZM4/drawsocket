@@ -1157,6 +1157,18 @@ var drawsocket = (function(){
 
   }
 
+  function clearSound()
+  {
+    /*
+    let keys = Object.keys(audioObj);
+
+    for( let k of keys )    
+      audioObj[k].kill();
+    */
+
+    audioObj = {};
+
+  }
 
   /*
   case "sample/load":
@@ -1668,7 +1680,7 @@ var drawsocket = (function(){
             clearCSS();
             clearAnim();
             clearPDF();
-  // clearSound()            
+            clearSound();
           }
           else
           {
@@ -1750,7 +1762,7 @@ var drawsocket = (function(){
         case "sound":
           if( objValue === "clear" )
           {
-      //        clearCSS();
+            clearSound();
             break;
           }
           processJSON_Sound(_objarr, timetag);
@@ -1784,7 +1796,7 @@ var drawsocket = (function(){
           break;
         */
         case "multitouch":
-          console.log("multitouch", objValue);
+            //console.log("multitouch", objValue);
             ongoingTouches = [];
             if( objValue > 0 )
               enableMultitouch();
