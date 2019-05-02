@@ -774,7 +774,7 @@ var drawsocket = (function(){
 
   function processJSON_Tween(node, timetag)
   {
-    console.log(node);
+    //console.log(node);
     if( node.hasOwnProperty('target') &&
         node.hasOwnProperty('vars') )
     {
