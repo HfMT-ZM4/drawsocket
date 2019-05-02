@@ -55,6 +55,7 @@ var numStaves = 0;
 var numMeasures = 0;
 var mediaFolder = "/media/project/";
 var prop = 0;
+var players = [];
 var oldstaff = -1;
 var stafflines = {};
 var oldstafflines = {};
@@ -135,6 +136,20 @@ function setpath(relPath)
 
 	}
 
+}
+
+function setEnsemble()
+{
+ 	players = [];
+	for (i = 0; i < 144; i++) players[i] = 0;
+	var t = arrayfromargs(arguments);// [1, 6]
+	if (t[0] != 0) {
+	for (var i = 0; i < t.length; i++) for (j = 0; j < 12; j++) {
+		players[(t[i] - 1 ) * 12 + j] = 1;
+		players[(t[i] - 1 ) * 12 + j + 72] = 1;		
+		}
+	}	
+	//post("players",  JSON.stringify(players), "\n");		
 }
 
 function staffgroups()
@@ -504,7 +519,7 @@ function anything() {
         case "StaffLine":
 			//StaffLine measureIndex staffIndex staffLineIndex zoom x1 y1 x2 y2 selected
  			stafflines[msg[0] - scoreLayout[1]][msg[1]][msg[2]] = [msg[4], msg[5], msg[6], msg[7]];
-			//post("staffline", msg[0],msg[1],msg[2], stafflines[msg[0]][msg[1]][msg[2]], "\n");
+			//post("staffline", msg[0], scoreLayout[1], msg[0] - scoreLayout[1] ,msg[1],msg[2], stafflines[msg[0]][msg[1]][msg[2]], "\n");
 			break;
         case "LedgerLine":
 			//LedgerLine measureIndex staffIndex trackIndex noteIndex ledgerLineIndex zoom x1 y1 x2 y2
@@ -1038,7 +1053,8 @@ function anything() {
 				, 	{
 					"parent" : "main-svg",
 					"new" : "g",
-					"id" : "main"
+					"id" : "main",
+					"transform" : "matrix(1.5,0,0,1.5,0,0)"
 				}
 				, 	{
 					"parent" : "main-svg",
@@ -1076,12 +1092,59 @@ function anything() {
 			oldID = id;	 
 			}
 			}
+			//can be only done once
 			val.push(createJSON(j, id));
-			//svgGroups[s + 1]["/back/style/background-color"] = "ivory";
-			joutput[s] = [clear, {"key" : "svg", "val" : val}];
-			//post("joutput", s, JSON.stringify(joutput[s]),"\n");
 			}
-			//end new code
+			var instructions = {
+					"parent" : "main",
+					"new" : "text",
+					"id" : "_instr",
+					"x" : 0,
+					"y" : 0,
+					"child" : "Play only the colored notes (red or blue).",
+					"style" : 					{
+						"fill" : "black",
+						"font-family" : "Arial",
+						"font-size" : 12
+					},
+					"transform" : "matrix(1,0,0,1,50,300)"
+				};
+			val.push(instructions);
+			var instructions2 = {
+					"parent" : "main",
+					"new" : "text",
+					"id" : "_instr2",
+					"x" : 0,
+					"y" : 0,
+					"child" : "Play as many permutations of available notes as possible, in parallel (chords) or sequence (melodies).\nOccasional glissandos and detunings.",
+					"style" : 					{
+						"fill" : "black",
+						"font-family" : "Arial",
+						"font-size" : 12
+					},
+					"transform" : "matrix(1,0,0,1,50,320)"
+				};
+			val.push(instructions2);
+			var instructions3 = {
+					"parent" : "main",
+					"new" : "text",
+					"id" : "_instr3",
+					"x" : 0,
+					"y" : 0,
+					"child" : "Generally mf and slow, with occasional group crescendos/decrescendos.\nOccasional glissandos and detunings.",
+					"style" : 					{
+						"fill" : "black",
+						"font-family" : "Arial",
+						"font-size" : 12
+					},
+					"transform" : "matrix(1,0,0,1,50,340)"
+				};
+			val.push(instructions3);
+			for (p = 1; p <= 144; p++){
+			if (players[p - 1]) joutput[p] = [clear, {"key" : "svg", "val" : val}];
+			else joutput[p] = clear;
+			//post("val", p, JSON.stringify(val),"\n");
+			}
 			output.parse(JSON.stringify(joutput));
 			outlet(0, "dictionary", output.name);
 			//outlet(0, "dictionary", cursors.name);	

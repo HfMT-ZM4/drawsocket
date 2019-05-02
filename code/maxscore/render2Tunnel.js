@@ -14,6 +14,8 @@ var groupcount = 0;
 var staffBoundingInfo = [];
 var staffBoundingFlag = 0;
 var scoreLayout = [];
+var scoreLeftMargin = 0;
+var scoreRightMargin = 0;
 var spacing = [];
 var staffSpacing = {}; 
 var boundingBox = [];
@@ -47,12 +49,16 @@ var dump = [];
 var json = {};
 var tempo = 60;
 var timesig = [4, 4];
+var timeUnit = 100;
+var zoom = 1.5;
 var svg = new Dict();
 svg.name = "svg";
 var imageTable = {};
 var target = "socket";
 var numStaves = 0;
 var numMeasures = 0;
+var	scoreTitle = "";
+var	composer = "";
 var mediaFolder = "/media/project/";
 var prop = 0;
 var oldstaff = -1;
@@ -71,6 +77,146 @@ var clefs = {
 	"2" : ["", 1], 
 	"3" : ["", 1], 
 	"4" : ["", 2]
+};
+var playheadPosition = 200;
+var ui = {
+	"css" : 	{
+		"key" : "css",
+		"val" : [ 			{
+				"selector" : ".ready",
+				"props" : 				{
+					"background-color" : "lightblue",
+					"color" : "black"
+				}
+
+			}
+, 			{
+				"selector" : ".noclick",
+				"props" : 				{
+					"user-select" : "none",
+					"pointer-events" : "none"
+				}
+
+			}
+ ]
+	}
+,
+	"html" : 	{
+		"key" : "html",
+		"val" : [ 			{
+				"parent" : "forms",
+				"id" : "UI",
+				"new" : "div",
+				"style" : 				{
+					"position" : "absolute",
+					"float" : "left",
+					"width" : "100vw"
+				}
+
+			}
+, 			{
+				"parent" : "UI",
+				"id" : "playbutton",
+				"new" : "button",
+				"text" : "play",
+				"class" : "button",
+				"style" : 				{
+					"float" : "left"
+				}
+,
+				"onclick" : "\n     if( !this.classList.contains('ready') )\n     {\n        this.classList.add('ready');\n        drawsocket.input({\n          key: 'tween',\n          val: [ {\n            id: 'score-anim',\n       \t\t   cmd : 'play'\n          }, {\n            id: 'miniscore-anim',\n       \t\t   cmd : 'play'\n          } ],\n          timetag: Date.now()\n        });\n     } else { \n        this.classList.remove('ready');\n\n       let starttime = document.getElementById('userinput');\n\n        drawsocket.input({\n          key: 'tween',\n          val: [{\n            id: 'score-anim',\n       \t\t   cmd: 'pause',\n            time: starttime.value\n          }, {\n            id: 'miniscore-anim',\n       \t\t   cmd : 'pause',\n            time: starttime.value\n          }]\n        });\n     }"
+			}
+, 			{
+				"parent" : "UI",
+				"new" : "label",
+				"for" : "userinput",
+				"id" : "sent",
+				"name" : "sent",
+				"text" : "start at time<br>",
+				"style" : 				{
+					"font-size" : "60%",
+					"color" : "gray",
+					"margin-left" : "20px"
+				}
+
+			}
+, 			{
+				"parent" : "UI",
+				"new" : "input",
+				"type" : "text",
+				"id" : "userinput",
+				"name" : "userinput",
+				"placeholder" : "0",
+				"size" : 5,
+				"onkeydown" : "\n     if( drawsocket.submitOnEnterKey(this) ) { \n       let button = document.getElementById('playbutton');\n       if( button.classList.contains('ready') )\n            button.classList.remove('ready');\n\n       drawsocket.input({\n         key: 'tween',\n         val: [{\n           id: 'score-anim',\n           cmd: 'pause',\n           time: this.value\n         }, {\n          id: 'miniscore-anim',\n       \t\t cmd : 'pause',\n          time: this.value\n          }]\n       });\n     }",
+				"style" : 				{
+					"margin-left" : "35px",
+					"text-align" : "center"
+				}
+
+			}
+ ]
+	}
+,
+	"svg" : 	{
+		"key" : "svg",
+		"val" : [ 			{
+				"new" : "g",
+				"parent" : "defs",
+				"id" : "main"
+			}
+,			{
+				"new" : "g",
+				"id" : "back"
+			}
+, 			{
+				"new" : "g",
+				"id" : "scoreGroup"
+			}
+, 			{
+				"new" : "g",
+				"id" : "overlay",
+			}
+, 			{
+				"parent" : "overlay",
+				"new" : "line",
+				"id" : "playhead",
+				"x1" : playheadPosition,
+				"x2" : playheadPosition,
+				"y1" : 0,
+				"y2" : 400,
+				"style" : 				{
+					"stroke" : "red",
+					"stroke-width" : 3,
+					"stroke-opacity" : 0.5
+				}
+
+			}
+, 			{
+				"parent" : "overlay",
+				"new" : "line",
+				"id" : "miniplayhead",
+				"x1" : 20,
+				"x2" : 20,
+				"y1" : 400,
+				"y2" : 500,
+				"style" : 				{
+					"stroke" : "blue",
+					"stroke-width" : 3,
+					"stroke-opacity" : 0.5
+				}
+
+			}
+, 			{
+				"parent" : "overlay",
+				"new" : "text",
+				"id" : "timecount",
+				"x" : 195,
+				"y" : 35
+			}
+ ]
+	}
+
 };
 
 
@@ -441,14 +587,28 @@ function destination()
 	target = [].concat(arrayfromargs(arguments));
 }
 
-function anything() {
+function getScoreLeftMargin(lm)
+{
+	scoreLeftMargin = lm;
+}
+
+function getScoreLeftMargin(rm)
+{
+	scoreRightMargin = rm;
+}
+
+function anything() 
+{
     var msg = arrayfromargs(arguments);
     switch (messagename) {
         case "scoreLayout":
 			scoreLayout = msg;
+          	post("scoreLayout", scoreLayout, "\n");
 			oldstaff = -1;
             break;
         case "startRenderDump":
+           	outlet(1, "getTitle");
+           	outlet(1, "getComposer");			
 			svgGroups = {};
 			stems = {};
 			stafflines = {};
@@ -460,14 +620,14 @@ function anything() {
 					stafflines[i] = {};
 						for (var j = 0; j < numStaves; j++) {
 							stafflines[i][j] = {};
-							outlet(1, "getStaffInfo", 0, j);
+							//filter redundancy:
+							if (i == 0) outlet(1, "getStaffInfo", 0, j);
            					//post("extendedStaffLines", extendedStaffLines[j], (5 + Number(extendedStaffLines[j][0]) + Number(extendedStaffLines[j][1])), "\n");
 								for (var k = 0; k < (5 + Number(extendedStaffLines[j][0]) + Number(extendedStaffLines[j][1])); k++) {
 									stafflines[i][j][k] = {};
 						}
 					}
 				}
-           //post("stafflines", JSON.stringify(stafflines), "\n");
            break;
         case "frgb":
             frgb = msg;
@@ -964,11 +1124,12 @@ function anything() {
                                break;
                             case "raster":
 								//dims and path need to be written to object and retrieved when svg is written
-								imageTable[command[1].split('/')[command[1].split('/').length - 1]] = [command[1].substring(command[1].indexOf(":") + 1), info.get("a")[0], info.get("b")[1]];
+								imageTable[mediaFolder+command[1].split('/')[command[1].split('/').length - 1]] = [command[1].substring(command[1].indexOf(":") + 1), info.get("a")[0], info.get("b")[1]];
 								svgGroups[s + 1]["/" + c + "/draw/img"] = mediaFolder + command[1].split('/')[command[1].split('/').length - 1];
                                 break;
                             case "svg":
-								imageTable[command[1].split('/')[command[1].split('/').length - 1]] = [command[1].substring(command[1].indexOf(":") + 1), info.get("a")[0], info.get("b")[1]];
+								imageTable[mediaFolder+command[1].split('/')[command[1].split('/').length - 1]] = [command[1].substring(command[1].indexOf(":") + 1), info.get("a")[0], info.get("b")[1]];
+								post("imageTable", JSON.stringify(imageTable), "\n");
 								svgGroups[s + 1]["/" + c + "/draw/img"] = mediaFolder + command[1].split('/')[command[1].split('/').length - 1];
                                 break;
                         	}
@@ -998,6 +1159,7 @@ function anything() {
 			json = xml2json(dump.join(" "));
 			extendedStaffLines[msg[2]] = [json["staff"]["EXTENDEDLINESABOVE"], json["staff"]["EXTENDEDLINESBELOW"]];
 			clefList[msg[2]] = json["staff"]["CLEF"];
+			//post("clefList", JSON.stringify(clefList), "\n");
 			}
 			dumpflag = 0;
 			break;
@@ -1005,6 +1167,12 @@ function anything() {
 			writeStems();
 			writeStaffLines();
 			output.clear();
+			//startscroll(s)
+			outlet(1, "getScoreLeftMargin");
+			outlet(1, "getScoreRightMargin");
+			var scrolldistance = scoreLayout[4] - (scoreLeftMargin + scoreRightMargin);
+			//post("scrolldistance", scrolldistance, "\n");
+			var tweendur = scrolldistance / timeUnit;
 			var clear = {"key" : "remove", "val" : "main"};
 			var joutput = {};
 				if (target[0] == "file") {
@@ -1016,7 +1184,7 @@ function anything() {
         				"new" : "use",
         				"id" : "score",
         				"href" : mediaFolder + svgFile+"#" + s
-   					}
+   					};
 					joutput[s] = [clear, {"key" : "svg", "val" : val}];
 					}
 					output.parse(JSON.stringify(joutput));
@@ -1030,22 +1198,34 @@ function anything() {
 			//insert new code here:
 			for (var s = 1; s <= groupcount; s++) {
 			var virgin = 1;
-			var val = [{
-					"parent" : "main-svg",
-					"new" : "g",
-					"id" : "back"
-				}
-				, 	{
-					"parent" : "main-svg",
-					"new" : "g",
-					"id" : "main"
-				}
-				, 	{
-					"parent" : "main-svg",
-					"new" : "g",
-					"id" : "overlay"
-				}
-			];
+			var val = [];
+			var tween = {
+            "key": "tween",
+            "val": [
+                {
+                    "id": "score-anim",
+                    "target": "#score",
+                    "dur": tweendur,
+                    "vars": {
+                        "x": -scrolldistance * zoom,
+                        "ease": "linear",
+                        "paused": "true",
+                        "onUpdate": " \n  if( this.time() % 1\t< 0.05){\n    let text = document.getElementById('timecount');\n    text.innerHTML = Math.floor( this.time() );\n  }\n"
+                    }
+                },
+                {
+                    "id": "miniscore-anim",
+                    "target": "#miniplayhead",
+                    "dur": tweendur,
+                    "vars": {
+                        "x": "+= 800",
+                        "ease": "linear",
+                        "paused": "true"
+                    }
+                }
+            ]
+        };
+
 			var keys = Object.keys(svgGroups[s]);
 			for (var i = 0; i < keys.length; i++) {
 			//post("keys", keys, svgGroups[s][keys[i]], "\n");
@@ -1077,9 +1257,112 @@ function anything() {
 			}
 			}
 			val.push(createJSON(j, id));
+			
+			var miniwidth = 800.0;
+			var miniscaleX = miniwidth / scrolldistance;
+			var minimarginX = 20;
+			
+			val.push({
+                    "id": "score",
+                    "parent": "scoreGroup",
+                    "new": "use",
+                    "href": "#main",
+                    "y": 100,
+                    "x": playheadPosition,
+					//"transform" : "matrix("+zoom+",0,0,"+zoom+","+(playheadPosition+100)+",0)"
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			
+			val.push({
+                    "id": "mini",
+                    "parent": "scoreGroup",
+                    "new": "use",
+                    "href": "#main",
+                    "y": 720,
+                    "x": minimarginX / miniscaleX,
+                    "transform": "scale("+miniscaleX+", 0.5)",
+                    "class": "noclick"
+			});
+			var onmouse = "    \n    event.preventDefault();\n    let x = event.clientX;\n    if(event.buttons == 1){\n      let r = ((x-"+minimarginX+") / "+miniwidth+") * "+tweendur+";\n\n      drawsocket.input({\n        key: 'tween',\n        val: [{\n          id: 'score-anim',\n          cmd: 'pause',\n          time: r \n        }, {\n          id: 'miniscore-anim',\n          cmd: 'pause',\n          time: r\n        }]\n      });\n      let uiTxt = document.getElementById('userinput');\n      uiTxt.value = r;\n    }";
+			var ontouch = "\n    event.preventDefault();\n    let x = event.pageX;\n\n      let r = ((x-"+minimarginX+") / "+miniwidth+") * "+tweendur+";\n\n      drawsocket.input({\n        key: 'tween',\n        val: [{\n          id: 'score-anim',\n          cmd: 'pause',\n          time: r \n        }, {\n          id: 'miniscore-anim',\n          cmd: 'pause',\n          time: r\n        }]\n       });\n    let uiTxt = document.getElementById('userinput');\n    uiTxt.value = r;\n    ";
+
+			val.push({
+                    "parent": "overlay",
+                    "id": "scrollbar",
+                    "new": "rect",
+                    "x": minimarginX,
+                    "y": 400,
+                    "height": 15,
+                    "width": miniwidth,
+                    "fill": "rgba(0,0,255,0.5)",
+                    "onmousemove": onmouse,
+                    "ontouchmove": ontouch
+                });
+				//post("clef", s - 1, stafflines[0][0][clefs[clefList[s - 1]][1]][1], clefs[clefList[s - 1]][0], "\n");
+			val.push({
+                    "id": "clef",
+                    "parent": "overlay",
+                    "new": "text",
+					"x" : 60,
+					//staffBoundingInfo[3] + clefs[json["staff"]["CLEF"]][1] * 6);
+					//"y" : stafflines[0][i][clefs[clefList[sg[s][i]]][1]][1],
+					"y" : stafflines[0][0][clefs[clefList[s - 1]][1]][1] + 100,
+					"child" : clefs[clefList[s - 1]][0],
+					"style" : 					{
+						"font-family" : "Bravura",
+						"font-size" : 22
+					}
+					,
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			val.push({
+                    "id": "title",
+                    "parent": "overlay",
+                    "new": "text",
+					"x" : 300,
+					"y" : 40,
+					"child" : composer+": "+scoreTitle,
+					"style" : 					{
+						"font-family" : "Times New Roman",
+						"font-size" : 30
+					}
+					,
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			
+			var f = new Folder(pathToScript+mediaFolder);
+			var found = 0;
+			while (!f.end) {
+ 			if (f.filename == scoreTitle + ".instructions.svg") {
+				found = 1;
+				break;
+			}
+   			f.next();
+  			}
+			f.close();
+    		post("found", found, "\n");
+			if (found){
+			val.push(	{
+					"parent" : "overlay",
+					"new" : "image",
+					"id" : "instructions",
+					"x" : 0,
+					"y" : 0,
+					"width" : 980,
+					"height" : 600,
+					"href" : mediaFolder+scoreTitle + ".instructions.svg",
+					"transform" : "matrix(1,0,0,1,48,550)"
+				});
+			}
 			//svgGroups[s + 1]["/back/style/background-color"] = "ivory";
-			joutput[s] = [clear, {"key" : "svg", "val" : val}];
-			//post("joutput", s, JSON.stringify(joutput[s]),"\n");
+			joutput[s] = [
+				clear, ui.css, ui.html,
+				{
+					"key" : "svg", 
+					"val" : ui.svg.val.concat( val )
+				},
+				tween
+			];
 			}
 			//end new code
 			output.parse(JSON.stringify(joutput));
@@ -1146,6 +1429,16 @@ function proportional(p)
  	prop = p;
 }
 
+function getTitle(t)
+{
+	scoreTitle = t;
+}
+
+function getComposer(c)
+{
+	composer = c;
+}
+
 function createJSON(j, id) 
 {
 			var sub = {};
@@ -1195,7 +1488,7 @@ function createJSON(j, id)
 			sub.id = "_" + id;
 				//all images need to reside in public folder and fetched via http
 				//post(attr, imageTable[attr], "\n");
-			//post("attr", attr, "\n");
+			post("attr", attr, JSON.stringify(imageTable), "\n");
 			sub.x = 0;
 			sub.y = 0;
 			sub.width = imageTable[attr][1];
