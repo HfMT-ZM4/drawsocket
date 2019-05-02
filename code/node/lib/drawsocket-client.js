@@ -1552,6 +1552,10 @@ var drawsocket = (function(){
      if( node.hasOwnProperty('fetch') )
      {
 
+      if( !node.fetch.startsWith("/") ){
+        node.fetch = "/"+node.fetch;
+      }
+        
       fetch(node.fetch).then( function(response) {
 
         try {
