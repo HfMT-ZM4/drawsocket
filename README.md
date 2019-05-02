@@ -638,6 +638,21 @@ or, to write only one URL prefix:
 
 `writecache <relative folder path>/<filename>.json /myURLPrefix`
 
+
+# Importing Server Cache from File
+The `hfmt.drawsocket` object in Max accepts the `importcache` message, to read a file from disk and import one or all `prefix` objects in the file.
+
+The folder path is relative to the folder path of the patch in which the `hfmt.drawsocket` object is in.
+
+Message syntax:
+
+`importcache <relative folder path>/<filename>.json`
+
+or, to read only one URL prefix:
+
+`importcache <relative folder path>/<filename>.json /myURLPrefix`
+
+
 ## Using stored JSON files on other servers
 A stored server/client state, saved in JSON format, may also be for online viewing, without the realtime WebSocket system, by serving the `drawsocket-default.html` file (with the associated scripts, and CSS files), and specifying a file name and prefix to load as discussed above via the `file` key.
 
