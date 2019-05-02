@@ -663,8 +663,12 @@ For example, on a website called `www.foo.com` and a stored JSON file named `sto
 (Of course you could also save the HTML file under a differnt name of your choosing for your server)
 
 # ping
-The `hfmt.drawsocket` object accepts the ping message to querry the connection status of one or more clients.
+The `hfmt.drawsocket` object accepts the `ping` Max message to querry the connection status of one or more clients.
 
 # do_sync
 `do_sync` (in dev), triggers the client clock time sychronization routine.
 
+# statereq
+The `hfmt.drawsocket` object accepts the `statereq` Max message to trigger a client update request for one or more clients.
+
+For example, the message `statereq /*` triggers a state request for all clients.

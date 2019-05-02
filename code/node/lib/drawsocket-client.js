@@ -1994,6 +1994,9 @@ var drawsocket = (function(){
           case 'ping':
             pingResponse();
           break;
+          case 'statereq':
+            port.sendObj({ statereq: 1 });
+          break;
           default:
             drawsocket_input(obj);
           break;

@@ -384,7 +384,8 @@ class ClientState
     fs.readFile(filename, (err, data) =>{
       if( err )
       {
-        console.log("read error", err);
+//        console.log("read error", err);
+        return err;
       }
       else
       {
@@ -412,7 +413,8 @@ class ClientState
           }
 
         } catch (e) {
-          console.log("parse error", e);
+//          console.log("parse error", e);
+          return e;
         }
 
 

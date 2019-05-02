@@ -198,7 +198,25 @@ if (cluster.isMaster)
                 }).then( result => clients.sendToClientsURL(_prefix, result) );
             }
         }
-        
+    });
+
+    Max.addHandler("statereq", (...prefix) => {
+        //console.log(prefix, prefix.length, Array.isArray(prefix) );
+        for( const _prefix of prefix )
+        {
+            if( _prefix === "/*" )
+            {
+                stringifyOBJAsync({
+                    statereq: 1
+                }).then( result => clients.sendToALL(result) );
+            }
+            else
+            {
+                stringifyOBJAsync({
+                    statereq: 1
+                }).then( result => clients.sendToClientsURL(_prefix, result) );
+            }
+        }
     });
 
     /**
@@ -417,7 +435,10 @@ else if (cluster.isWorker)
                     let err = state_cache.loadCache(_msg.val, _msg.url);
                     if( err )
                         console.log("err", err);
-
+                    else
+                    {
+                        // trigger update somehow
+                    }
                 } catch (error) {
                     console.log("uncaught error", error);
                 }
