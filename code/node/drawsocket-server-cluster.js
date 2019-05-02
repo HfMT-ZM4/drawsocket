@@ -9,14 +9,14 @@ let infopage = "/lib/drawsocket-info.html";
 
 // load libaries
 const cluster = require('cluster');
-const os = require('os');
+//const os = require('os');
 
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 
 const WebSocket = require('ws');
-const url = require('url');
+//const url = require('url');
 const app = express();
 const Max = require('max-api');
 

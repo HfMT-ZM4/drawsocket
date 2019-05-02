@@ -1,33 +1,26 @@
 {
-  "name": "draw_to_clients",
+  "name": "drawsocket",
   "version": "1.0.0",
   "description": "syncronized score display",
-  "main": "index.js",
+  "main": "drawsocket-server-cluster.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ."
   },
-  "author": "",
-  "license": "ISC",
+  "author": "rama gottfried, hfmt hamburg",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "bson": "^3.0.2",
-    "d3": "^5.5.0",
+    "d3-selection": "^1.4.0",
     "express": "^4.14.1",
     "gsap": "^2.0.2",
     "http": "0.0.0",
-    "jquery": "^3.1.1",
     "mixin-deep": "^2.0.0",
-    "osc": "^2.2.3",
     "pdfjs-dist": "^2.0.480",
     "startaudiocontext": "^1.2.1",
     "timesync": "^1.0.3",
     "timsort": "^0.3.0",
     "tone": "^0.12.80",
-    "webpack": "^4.20.2",
     "ws": "^3.3.3"
-  },
-  "devDependencies": {
-    "eslint": "^5.12.1"
   }
 }

@@ -1784,6 +1784,7 @@ var drawsocket = (function(){
           break;
         */
         case "multitouch":
+          console.log("multitouch", objValue);
             ongoingTouches = [];
             if( objValue > 0 )
               enableMultitouch();
