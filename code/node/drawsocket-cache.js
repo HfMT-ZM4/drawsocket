@@ -298,6 +298,9 @@ class ClientState
     this.update = this.update.bind(this);
 
     this.get = this.get.bind(this);
+
+    this.loadCache = this.loadCache.bind(this);
+
   }
 
   update(prefix_, obj_, timetag_)
@@ -374,25 +377,50 @@ class ClientState
     return null;
   }
 
-  /*
+
   // might be a good idea to do this via node rather than loading via max, but maybe it doesn't matter... not sure
   loadCache(filename, prefix)
   {
-    if( typeof prefix === "undefined" )
-    {
-      fs.readFile(filename, (err, data) =>{
-        if( err )
-        {
-          console.log("read error", err);
-        }
-        else
+    fs.readFile(filename, (err, data) =>{
+      if( err )
+      {
+        console.log("read error", err);
+      }
+      else
+      {
+        try 
         {
           console.log('sucesssfully read data');
+
+          const json_ = JSON.parse(data);
+          const time = Date.now();
+
+          if( typeof prefix === "undefined" || prefix === "*" )
+          {
+
+            for( let k in json_ )
+            {
+              this.update(k, json_[k], time);
+            }
+          }
+          else
+          {
+            if( json_.hasOwnProperty(prefix) )
+            {
+              this.update(prefix, json_[prefix], time);
+            }
+          }
+
+        } catch (e) {
+          console.log("parse error", e);
         }
-      });
-    }
+
+
+        
+      }
+    });
+    
   }
-*/
 }
 
 module.exports = new ClientState();

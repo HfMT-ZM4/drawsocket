@@ -172,6 +172,15 @@ if (cluster.isMaster)
         });
     });
 
+    Max.addHandler("importcache", (filename, prefix) => {
+        Max.post("attempting to import", userpath[0]+filename, prefix);
+        cache_proc.send({
+            key: 'read',
+            url: prefix,
+            val: userpath[0]+filename
+        });
+    });
+
     Max.addHandler("ping", (...prefix) => {
         //console.log(prefix, prefix.length, Array.isArray(prefix) );
         for( const _prefix of prefix )
@@ -401,6 +410,20 @@ else if (cluster.isWorker)
                 }
                 
             }
+            break;
+            case "read":
+            {
+                try {
+                    let err = state_cache.loadCache(_msg.val, _msg.url);
+                    if( err )
+                        console.log("err", err);
+
+                } catch (error) {
+                    console.log("uncaught error", error);
+                }
+                
+            }
+            break;
             default:
             break;    
         }
