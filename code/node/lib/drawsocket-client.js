@@ -416,8 +416,10 @@ var drawsocket = (function(){
             {
               if( retries <= 0 )
                 console.log("retry timeout", retries);
-
+/*
               console.log(node.href[0], "bbox y h", bb.y, bb.height);
+              console.log( "client rect", el.node().getBoundingClientRect() );
+  */            
               TweenMax.set(el.node(), {x: oldx - bb.x, y: oldy - bb.y, width: bb.width, height: bb.height} );
               el.node().classList.remove("invisible");
             }
@@ -732,6 +734,18 @@ var drawsocket = (function(){
 
   }
 
+  function functionize(_obj)
+  {
+    if( _obj.hasOwnProperty('function') )
+    {
+      let _args = _obj.hasOwnProperty("args") ? _obj.args : "";
+      return new Function( _args, _obj.function );
+    }
+
+    return _obj;
+
+  }
+
   // temp version, should check for object type and recurse
   function booleanize(_obj)
   {
@@ -740,16 +754,18 @@ var drawsocket = (function(){
 
       if( _obj[key] == "true" )
         _obj[key] = true;
-
-      if( _obj[key] == "false" )
+      else if( _obj[key] == "false" )
         _obj[key] = false;
-
-      if( key == "onUpdate" )
+      else if( typeof _obj[key] == "object" )
+      {        
+        _obj[key] = functionize( _obj[key] );
+      }
+     /* else if( key == "onUpdate" )
       {
         //_obj[key] = new Function( ..._obj[key] );
         _obj[key] = new Function( "", _obj[key] );
       }
-
+*/
     }    
     return _obj;
   }
@@ -758,7 +774,7 @@ var drawsocket = (function(){
 
   function processJSON_Tween(node, timetag)
   {
-    
+    console.log(node);
     if( node.hasOwnProperty('target') &&
         node.hasOwnProperty('vars') )
     {
@@ -911,7 +927,7 @@ var drawsocket = (function(){
   {
     
       
-    if( node.hasOwnProperty('tweens') )
+    if( node.hasOwnProperty('tweens') || node.hasOwnProperty('callbacks') )
     {
       const id = node.id;
 
@@ -940,16 +956,44 @@ var drawsocket = (function(){
         newTimeline = new TimelineMax( timelineparams );
       }
 
-
-      for( let tween of node.tweens )
+      if( node.hasOwnProperty('tweens') )
       {
-        newTimeline.add( TweenMax.to( tween.target, tween.dur, tween.vars ) );
+        for( let tween of node.tweens )
+        {
+          newTimeline.add( TweenMax.to( tween.target, tween.dur, booleanize(tween.vars) ) );
+        }
+      }
+        
+
+      /**
+       * untested -- was about to add a connection to addLabel, but we want to avoid too specific wrapping here
+       * best would be if we somehow parsed the object and converted all functions to callable js Functions and then
+       * use the processMethods function, since the addCallback and addLabel are both methods.
+       * 
+       * in either case, to add an event with TimelineMax that can be cancelled, we might need to always use labels (but better for the user to decide how to do that)
+       */
+      if( node.hasOwnProperty('callbacks') )
+      {
+        for( let cb of node.callbacks )
+        {
+          if( typeof cb == "object" && cb.hasOwnProperty('function') && cb.hasOwnProperty('time') )
+          {
+            let _args = cb.hasOwnProperty("args") ? cb.args : "";
+            newTimeline.addCallback( new Function( _args, cb.function ), cb.time  );
+          }    
+        }
       }
 
       animStack[id] = newTimeline;
 
     }
     
+    if( animStack.hasOwnProperty(node.id) )
+    {
+      if( node.hasOwnProperty('call') && typeof node.call === 'object' )
+        processMethodCalls( animStack[id], node.call );
+    }
+
     if( node.hasOwnProperty('cmd') )
     {
       tween_cmd_node(node, timetag);
@@ -965,7 +1009,7 @@ var drawsocket = (function(){
     {
       if( node.hasOwnProperty('id') ) // must have id always
       {
-        if( node.hasOwnProperty('tweens') ) // setting tweens, must be timeline
+        if( node.hasOwnProperty('tweens') || node.hasOwnProperty('timeline') ) // setting tweens, must be timeline
         {
           processJSON_Timeline(node, timetag);
         }
@@ -1253,6 +1297,9 @@ var drawsocket = (function(){
         return Tone[member];
       case "Tone.Object":
         return audioObj[member];
+      case 'tween':
+        return animStack[member];
+
       default:
         return null;
 
@@ -1286,14 +1333,23 @@ var drawsocket = (function(){
           
           if( typeof args_ === 'object' )
           {
+
             let argsObjs = Array.isArray(args_) ? args_ : [args_];
 
             let ref_args = argsObjs.map( (a_) => {
               if( typeof a_ === 'object' ) {
                 if( a_.hasOwnProperty('obj') && a_.hasOwnProperty('get') )
+                {
                   return getRef(a_.obj, a_.get );
+                }
                 else if( a_.hasOwnProperty('val') )
                   return a_.val;
+                else if( a_.hasOwnProperty('function') )
+                {
+                  return functionize(a_);
+                }
+                else
+                  return a_;
               } else {
                 return a_;
               }

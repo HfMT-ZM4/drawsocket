@@ -287,7 +287,6 @@ class StateCache
     return null;
   }
 
-
 }
 
 
@@ -375,6 +374,25 @@ class ClientState
     return null;
   }
 
+  /*
+  // might be a good idea to do this via node rather than loading via max, but maybe it doesn't matter... not sure
+  loadCache(filename, prefix)
+  {
+    if( typeof prefix === "undefined" )
+    {
+      fs.readFile(filename, (err, data) =>{
+        if( err )
+        {
+          console.log("read error", err);
+        }
+        else
+        {
+          console.log('sucesssfully read data');
+        }
+      });
+    }
+  }
+*/
 }
 
 module.exports = new ClientState();

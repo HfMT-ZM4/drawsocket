@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 4,
+			"revision" : 6,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -38,6 +38,30 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-31",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 543.499984741210938, 257.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 543.499984741210938, 296.0, 32.0, 22.0 ],
+					"text" : "gate"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-32",
 					"maxclass" : "newobj",
@@ -107,7 +131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 530.0, 297.0, 34.0, 22.0 ],
+					"patching_rect" : [ 587.0, 304.0, 34.0, 22.0 ],
 					"text" : "write"
 				}
 
@@ -119,7 +143,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 424.499984741210938, 327.0, 50.5, 22.0 ],
+					"patching_rect" : [ 543.499984741210938, 336.0, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -127,17 +151,6 @@
 					}
 ,
 					"text" : "dict"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-18",
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 443.0, 253.0, 305.0, 20.0 ],
-					"text" : "<< this is a little slow, maybe make an odot version later"
 				}
 
 			}
@@ -153,7 +166,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -268,7 +281,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -458,7 +471,7 @@
 				"box" : 				{
 					"comment" : "general status output (OSC)",
 					"id" : "obj-9",
-					"index" : 3,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -470,7 +483,7 @@
 				"box" : 				{
 					"comment" : "error output (OSC)",
 					"id" : "obj-7",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -582,13 +595,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-27",
-					"linecount" : 19,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 333.0, 566.1666259765625, 602.0, 279.0 ],
-					"text" : "/terminated/error : {\n\t/stack : \"Error [ERR_IPC_CHANNEL_CLOSED]: Channel closed\n    at ChildProcess.target.send (internal/child_process.js:628:16)\n    at Worker.send (internal/cluster/worker.js:40:28)\n    at EventEmitter.Max.addHandler (/Users/r/Documents/Max 8/Packages/hfmt-drawsocket/code/node/drawsocket-server-cluster.js:168:20)\n    at EventEmitter.emit (events.js:182:13)\n    at APICommunicator.maxAPI.on (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/exposed/max-api.js:283:37)\n    at APICommunicator.emit (events.js:182:13)\n    at APICommunicator._onInlet (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/api/index.js:122:8)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\",\n\t/message : \"Channel closed\",\n\t/code : 2,\n\t/time : 2019-02-21T08:54:40.685218Z\n}"
+					"patching_rect" : [ 333.0, 566.1666259765625, 602.0, 34.0 ]
 				}
 
 			}
@@ -597,13 +608,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-47",
-					"linecount" : 14,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 963.0, 432.83331298828125, 572.0, 211.0 ],
-					"text" : "/start/success : {\n\t/pid : 6171,\n\t/id : \"u18187030\",\n\t/debugPort,\n\t/socketDescription : {\n\t\t/control : \"/tmp/u18187030_ctrl.sock\"\n\t},\n\t/cwd : \"/Volumes/Macintosh HD/Users/r/Documents/Max 8/Packages/hfmt-drawsocket/code/node\",\n\t/filename : \"drawsocket-server-cluster.js\",\n\t/watch : 1,\n\t/debugEnabled : 0,\n\t/time : 2019-02-21T13:07:09.653155Z\n}"
+					"patching_rect" : [ 963.0, 432.83331298828125, 572.0, 34.0 ]
 				}
 
 			}
@@ -619,7 +628,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 4,
+							"revision" : 6,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -904,8 +913,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -917,7 +924,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-36",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -930,7 +937,7 @@
 				"box" : 				{
 					"comment" : "node output (dictionary/OSC)",
 					"id" : "obj-37",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1082,8 +1089,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
+					"destination" : [ "obj-24", 1 ],
 					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-24", 0 ]
 				}
 
 			}
@@ -1119,6 +1133,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-29", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"source" : [ "obj-31", 0 ]
 				}
 
 			}
@@ -1188,16 +1209,60 @@
 
 			}
  ],
+		"dependency_cache" : [ 			{
+				"name" : "drawsocket-server-cluster.js",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code/node",
+				"patcherrelativepath" : "../code/node",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "startscript.js",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
+				"patcherrelativepath" : "../code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "flattenAPI.js",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
+				"patcherrelativepath" : "../code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.timetag.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.dict.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "black on white",
-				"number" : 				{
-					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
-					"fontsize" : [ 12.0 ],
-					"fontname" : [ "Arial" ]
-				}
-,
 				"umenu" : 				{
-					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "color",
 						"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
@@ -1207,7 +1272,14 @@
 						"proportion" : 0.39,
 						"autogradient" : 0
 					}
-
+,
+					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ]
+				}
+,
+				"number" : 				{
+					"fontsize" : [ 12.0 ],
+					"fontname" : [ "Arial" ],
+					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
