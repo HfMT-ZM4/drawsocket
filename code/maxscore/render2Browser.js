@@ -53,6 +53,8 @@ var imageTable = {};
 var target = "socket";
 var numStaves = 0;
 var numMeasures = 0;
+var	scoreTitle = "";
+var	composer = "";
 var mediaFolder = "/media/project/";
 var prop = 0;
 var oldstaff = -1;
@@ -62,9 +64,11 @@ var clefList = [];
 var toffset = 0;
 var duration = 0;
 var eol = 0;
+var zoom = 1.;
 var pathToScript = "default";
 var svgFile = "untitled.svg";
 var extendedStaffLines = {};
+var annotation = new Dict();
 var clefs = {
 	"0" : ["", 3], 
 	"1" : ["", 2], 
@@ -439,6 +443,21 @@ function writeStems()
 function destination()
 {
 	target = [].concat(arrayfromargs(arguments));
+}
+
+function getScoreAnnotation(a)
+{
+	annotation.parse(a);
+}
+
+function getTitle(t)
+{
+	scoreTitle = t;
+}
+
+function getComposer(c)
+{
+	composer = c;
 }
 
 function anything() {
@@ -1002,9 +1021,13 @@ function anything() {
 			dumpflag = 0;
 			break;
        case "endRenderDump":
+          	outlet(1, "getTitle");
+           	outlet(1, "getComposer");			
 			writeStems();
 			writeStaffLines();
 			output.clear();
+			annotation.clear();
+			outlet(1, "getScoreAnnotation");
 			var clear = {"key" : "remove", "val" : "main"};
 			var joutput = {};
 				if (target[0] == "file") {
@@ -1077,6 +1100,84 @@ function anything() {
 			}
 			}
 			val.push(createJSON(j, id));
+						if (annotation.contains("staff-"+sg[s - 1]+"::clef") && annotation.get("staff-"+sg[s - 1]+"::clef") != "default")
+			{
+			var ann = annotation.get("userclefs::"+annotation.get("staff-"+sg[s - 1]+"::clef"));
+			for (var i = 0; i < ann.get("characters").length; i++){
+			//post("y", clefs[clefList[sg[s - 1]]][1], boundingBoxTop[sg[s - 1]], ann.get("offsets")[i * 2 + 1], ann.get("stafflines::above"), "\n");
+ 			//post("y", 22 + ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)), "\n");
+			val.push({
+                    "id": "clef_"+i,
+                    "parent": "overlay",
+                    "new": "text",
+					"x" : 60 + ann.get("offsets")[i * 2 + 0],
+					"y" : 123 + ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)),
+					"child" : ann.get("characters")[i],
+					"style" : 					{
+						"font-family" : ann.get("font")[0],
+						"font-size" : ann.get("font")[1]
+					}
+					,
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			}
+			}
+			else {
+			val.push({
+                    "id": "clef",
+                    "parent": "overlay",
+                    "new": "text",
+					"x" : 60,
+					"y" : stafflines[0][0][clefs[clefList[s - 1]][1]][1] + 100,
+					"child" : clefs[clefList[sg[s - 1]]][0],
+					"style" : 					{
+						"font-family" : "Bravura",
+						"font-size" : 22
+					}
+					,
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			}
+			val.push({
+                    "id": "title",
+                    "parent": "overlay",
+                    "new": "text",
+					"x" : 300,
+					"y" : 40,
+					"child" : composer+": "+scoreTitle,
+					"style" : 					{
+						"font-family" : "Times New Roman",
+						"font-size" : 30
+					}
+					,
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			
+			var f = new Folder(pathToScript+mediaFolder);
+			var found = 0;
+			while (!f.end) {
+ 			if (f.filename == scoreTitle + ".instructions.svg") {
+				found = 1;
+				break;
+			}
+   			f.next();
+  			}
+			f.close();
+    		//post("found", found, "\n");
+			if (found){
+			val.push(	{
+					"parent" : "overlay",
+					"new" : "image",
+					"id" : "instructions",
+					"x" : 0,
+					"y" : 0,
+					"width" : 980,
+					"height" : 600,
+					"href" : mediaFolder+scoreTitle + ".instructions.svg",
+					"transform" : "matrix(1,0,0,1,48,550)"
+				});
+			}
+
 			//svgGroups[s + 1]["/back/style/background-color"] = "ivory";
 			joutput[s] = [clear, {"key" : "svg", "val" : val}];
 			//post("joutput", s, JSON.stringify(joutput[s]),"\n");
@@ -1101,6 +1202,18 @@ function anything() {
 		if (fontMap.contains(msgname)) var glyph = fontMap.get(msgname);
 		else if (fontExtras.contains(msgname)) var glyph = fontExtras.get(msgname); 
 		else return;
+		if ((msgname == "tr" || msgname == "al" || msgname == "te" || msgname == "ba" || msgname == "pe") && annotation.contains("staff-"+msg[5]+"::clef") && annotation.get("staff-"+msg[5]+"::clef") != "default")
+		{
+		var ann = annotation.get("userclefs::"+annotation.get("staff-"+msg[5]+"::clef"));
+		for (var i = 0; i < ann.get("characters").length; i++){
+ 		glyph[i * 5] = ann.get("characters")[i];			
+		glyph[i * 5 + 1] = ann.get("offsets")[i * 2 + 0];
+		glyph[i * 5 + 2] = ann.get("offsets")[i * 2 + 1];
+ 		glyph[i * 5 + 3] = ann.get("font")[0]; 
+		glyph[i * 5 + 4] = ann.get("font")[1];
+		}
+		//post("ann2", glyph, "\n");
+		}
 		if (msgname.indexOf("staffnumber") != -1)
 			{
 	            //post("msg", msg, "\n");

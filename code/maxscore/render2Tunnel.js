@@ -71,6 +71,7 @@ var eol = 0;
 var pathToScript = "default";
 var svgFile = "untitled.svg";
 var extendedStaffLines = {};
+var annotation = new Dict();
 var clefs = {
 	"0" : ["", 3], 
 	"1" : ["", 2], 
@@ -595,6 +596,11 @@ function getScoreLeftMargin(lm)
 function getScoreLeftMargin(rm)
 {
 	scoreRightMargin = rm;
+}
+
+function getScoreAnnotation(a)
+{
+	annotation.parse(a);
 }
 
 function anything() 
@@ -1167,7 +1173,8 @@ function anything()
 			writeStems();
 			writeStaffLines();
 			output.clear();
-			//startscroll(s)
+			annotation.clear();
+			outlet(1, "getScoreAnnotation");
 			outlet(1, "getScoreLeftMargin");
 			outlet(1, "getScoreRightMargin");
 			var scrolldistance = scoreLayout[4] - (scoreLeftMargin + scoreRightMargin);
@@ -1298,16 +1305,37 @@ function anything()
                     "onmousemove": onmouse,
                     "ontouchmove": ontouch
                 });
-				//post("clef", s - 1, stafflines[0][0][clefs[clefList[s - 1]][1]][1], clefs[clefList[s - 1]][0], "\n");
+			//post("clef", annotation.get("staff-"+sg[s - 1]+"::clef").stringify(), "\n");
+			if (annotation.contains("staff-"+sg[s - 1]+"::clef") && annotation.get("staff-"+sg[s - 1]+"::clef") != "default")
+			{
+			var ann = annotation.get("userclefs::"+annotation.get("staff-"+sg[s - 1]+"::clef"));
+			for (var i = 0; i < ann.get("characters").length; i++){
+			//post("y", clefs[clefList[sg[s - 1]]][1], boundingBoxTop[sg[s - 1]], ann.get("offsets")[i * 2 + 1], ann.get("stafflines::above"), "\n");
+ 			//post("y", 22 + ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)), "\n");
+			val.push({
+                    "id": "clef_"+i,
+                    "parent": "overlay",
+                    "new": "text",
+					"x" : 60 + ann.get("offsets")[i * 2 + 0],
+					"y" : 123 + ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)),
+					"child" : ann.get("characters")[i],
+					"style" : 					{
+						"font-family" : ann.get("font")[0],
+						"font-size" : ann.get("font")[1]
+					}
+					,
+					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
+			});
+			}
+			}
+			else {
 			val.push({
                     "id": "clef",
                     "parent": "overlay",
                     "new": "text",
 					"x" : 60,
-					//staffBoundingInfo[3] + clefs[json["staff"]["CLEF"]][1] * 6);
-					//"y" : stafflines[0][i][clefs[clefList[sg[s][i]]][1]][1],
 					"y" : stafflines[0][0][clefs[clefList[s - 1]][1]][1] + 100,
-					"child" : clefs[clefList[s - 1]][0],
+					"child" : clefs[clefList[sg[s - 1]]][0],
 					"style" : 					{
 						"font-family" : "Bravura",
 						"font-size" : 22
@@ -1315,6 +1343,7 @@ function anything()
 					,
 					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
 			});
+			}
 			val.push({
                     "id": "title",
                     "parent": "overlay",
@@ -1340,7 +1369,7 @@ function anything()
    			f.next();
   			}
 			f.close();
-    		post("found", found, "\n");
+    		//post("found", found, "\n");
 			if (found){
 			val.push(	{
 					"parent" : "overlay",
@@ -1384,9 +1413,20 @@ function anything()
 		if (fontMap.contains(msgname)) var glyph = fontMap.get(msgname);
 		else if (fontExtras.contains(msgname)) var glyph = fontExtras.get(msgname); 
 		else return;
+		if ((msgname == "tr" || msgname == "al" || msgname == "te" || msgname == "ba" || msgname == "pe") && annotation.contains("staff-"+msg[5]+"::clef") && annotation.get("staff-"+msg[5]+"::clef") != "default")
+		{
+		var ann = annotation.get("userclefs::"+annotation.get("staff-"+msg[5]+"::clef"));
+		for (var i = 0; i < ann.get("characters").length; i++){
+ 		glyph[i * 5] = ann.get("characters")[i];			
+		glyph[i * 5 + 1] = ann.get("offsets")[i * 2 + 0];
+		glyph[i * 5 + 2] = ann.get("offsets")[i * 2 + 1];
+ 		glyph[i * 5 + 3] = ann.get("font")[0]; 
+		glyph[i * 5 + 4] = ann.get("font")[1];
+		}
+		//post("ann2", glyph, "\n");
+		}
 		if (msgname.indexOf("staffnumber") != -1)
 			{
-	            //post("msg", msg, "\n");
 				if (msg[msg.length - 1] < instrumentNames.length && oldstaff != msg[msg.length - 1]){
 				glyph[0] = instrumentNames[msg[msg.length - 1]];
 				glyph[1] = glyph[1] - text_measure("Arial", 12, instrumentNames[msg[msg.length - 1]])[0];
