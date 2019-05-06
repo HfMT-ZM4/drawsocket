@@ -411,6 +411,7 @@ class ClientState
               this.update(prefix, json_[prefix], time);
             }
           }
+          console.log('finished import');
 
         } catch (e) {
 //          console.log("parse error", e);
