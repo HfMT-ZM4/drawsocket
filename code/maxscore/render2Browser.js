@@ -1128,7 +1128,7 @@ function anything() {
                     "parent": "overlay",
                     "new": "text",
 					"x" : 60,
-					"y" : stafflines[0][0][clefs[clefList[s - 1]][1]][1] + 100,
+					"y" : stafflines[0][0][clefs[clefList[s - 1]][1]][1],
 					"child" : clefs[clefList[sg[s - 1]]][0],
 					"style" : 					{
 						"font-family" : "Bravura",
