@@ -1,5 +1,5 @@
 inlets = 3;
-outlets = 2;
+outlets = 3;
 
 include("xml2json");
 
@@ -468,6 +468,7 @@ function anything() {
 			oldstaff = -1;
             break;
         case "startRenderDump":
+			outlet(2, "startRenderDump");
 			svgGroups = {};
 			stems = {};
 			stafflines = {};
@@ -1021,8 +1022,21 @@ function anything() {
 			dumpflag = 0;
 			break;
        case "endRenderDump":
+			outlet(2, "endRenderDump");
           	outlet(1, "getTitle");
-           	outlet(1, "getComposer");			
+           	outlet(1, "getComposer");	
+			/*		
+			var f = new Folder(pathToScript+mediaFolder);
+			var found = 0;
+			while (!f.end) {
+ 			if (f.filename == scoreTitle + ".instructions.svg") {
+				found = 1;
+				break;
+			}
+   			f.next();
+  			}
+			f.close();
+			*/
 			writeStems();
 			writeStaffLines();
 			output.clear();
@@ -1052,6 +1066,7 @@ function anything() {
 			var oldID = 0;
 			//insert new code here:
 			for (var s = 1; s <= groupcount; s++) {
+			outlet(2, "groupcount", s);
 			var virgin = 1;
 			var val = [{
 					"parent" : "main-svg",
@@ -1103,10 +1118,6 @@ function anything() {
 			if (annotation.contains("staff-"+sg[s - 1]+"::clef") && annotation.get("staff-"+sg[s - 1]+"::clef") != "default")
 			{
 			var ann = annotation.get("userclefs::"+annotation.get("staff-"+sg[s - 1]+"::clef"));
-			
-			//
-			//
-			
 			for (var i = 0; i < ann.get("characters").length; i++){
 			var dest = remap(sg[s - 1], s - 1 , ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)));
 			//post("y", dest, typeof dest, 23 + parseInt(dest), "\n");
@@ -1156,18 +1167,7 @@ function anything() {
 					,
 					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
 			});
-			
-			var f = new Folder(pathToScript+mediaFolder);
-			var found = 0;
-			while (!f.end) {
- 			if (f.filename == scoreTitle + ".instructions.svg") {
-				found = 1;
-				break;
-			}
-   			f.next();
-  			}
-			f.close();
-    		//post("found", found, "\n");
+			/*
 			if (found){
 			val.push(	{
 					"parent" : "overlay",
@@ -1181,17 +1181,17 @@ function anything() {
 					"transform" : "matrix(1,0,0,1,48,550)"
 				});
 			}
-
+			*/
 			//svgGroups[s + 1]["/back/style/background-color"] = "ivory";
 			joutput[s] = [clear, {"key" : "svg", "val" : val}];
-			//post("joutput", s, JSON.stringify(joutput[s]),"\n");
+			outlet(2, "joutput", s);
 			}
 			//end new code
 			output.parse(JSON.stringify(joutput));
 			outlet(0, "dictionary", output.name);
-			//outlet(0, "dictionary", cursors.name);	
+			outlet(2, "dict");	
 			}
-			if (prop) scroll("playhead");
+			//if (prop) scroll("playhead");
             break;
         default:
 		if (dumpflag == 1) {
