@@ -56,7 +56,7 @@ var numMeasures = 0;
 var	scoreTitle = "";
 var	composer = "";
 var mediaFolder = "/media/project/";
-var prop = 0;
+var prop = 1;
 var oldstaff = -1;
 var stafflines = {};
 var oldstafflines = {};
@@ -1100,18 +1100,22 @@ function anything() {
 			}
 			}
 			val.push(createJSON(j, id));
-						if (annotation.contains("staff-"+sg[s - 1]+"::clef") && annotation.get("staff-"+sg[s - 1]+"::clef") != "default")
+			if (annotation.contains("staff-"+sg[s - 1]+"::clef") && annotation.get("staff-"+sg[s - 1]+"::clef") != "default")
 			{
 			var ann = annotation.get("userclefs::"+annotation.get("staff-"+sg[s - 1]+"::clef"));
+			
+			//
+			//
+			
 			for (var i = 0; i < ann.get("characters").length; i++){
-			//post("y", clefs[clefList[sg[s - 1]]][1], boundingBoxTop[sg[s - 1]], ann.get("offsets")[i * 2 + 1], ann.get("stafflines::above"), "\n");
- 			//post("y", 22 + ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)), "\n");
-			val.push({
+			var dest = remap(sg[s - 1], s - 1 , ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)));
+			//post("y", dest, typeof dest, 23 + parseInt(dest), "\n");
+ 			val.push({
                     "id": "clef_"+i,
                     "parent": "overlay",
                     "new": "text",
 					"x" : 60 + ann.get("offsets")[i * 2 + 0],
-					"y" : 123 + ann.get("offsets")[i * 2 + 1] + (boundingBoxTop[sg[s - 1]] + (clefs[clefList[sg[s - 1]]][1] + ann.get("stafflines::above") * 6)),
+					"y" : 23 + parseInt(dest),
 					"child" : ann.get("characters")[i],
 					"style" : 					{
 						"font-family" : ann.get("font")[0],
@@ -2113,8 +2117,8 @@ function toNumber(arr) {
 }
 
 function isEmpty(obj) {
-    for(var prop in obj) {
-        if(obj.hasOwnProperty(prop))
+    for(var property in obj) {
+        if(obj.hasOwnProperty(property))
             return false;
     }
 
