@@ -19,6 +19,10 @@
 // we return a external access function drawsocket
 var drawsocket = (function(){
 
+  TweenMax.ticker.fps(60);
+  TweenMax.ticker.useRAF(true);
+  console.log(TweenMax.ticker.fps() );
+
   let oscprefix = window.location.pathname; // document.getElementById("OSC").getAttribute("OSCprefix");
   console.log(window.location.pathname);
 
