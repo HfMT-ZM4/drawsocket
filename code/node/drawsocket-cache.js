@@ -379,7 +379,7 @@ class ClientState
 
 
   // might be a good idea to do this via node rather than loading via max, but maybe it doesn't matter... not sure
-  loadCache(filename, prefix)
+  loadCache(filename, prefix, _proc)
   {
     fs.readFile(filename, (err, data) =>{
       if( err )
@@ -391,8 +391,12 @@ class ClientState
       {
         try 
         {
-          console.log('sucesssfully read data');
-
+          // console.log('sucesssfully read data');
+          _proc.send({
+            output: {
+              "/server/loadcache/started": ["read", filename, (new Date()).toLocaleTimeString()]
+            }
+          });
           const json_ = JSON.parse(data);
           const time = Date.now();
 
@@ -411,7 +415,13 @@ class ClientState
               this.update(prefix, json_[prefix], time);
             }
           }
-          console.log('finished import');
+          _proc.send({
+            output: {
+              "/server/loadcache/finished": ["imported", filename, (new Date()).toLocaleTimeString()]
+            }
+          });
+
+          //console.log('finished import');
 
         } catch (e) {
 //          console.log("parse error", e);
