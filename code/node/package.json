@@ -22,5 +22,8 @@
     "timsort": "^0.3.0",
     "tone": "^0.12.80",
     "ws": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
   }
 }

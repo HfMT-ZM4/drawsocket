@@ -78,7 +78,7 @@ class ClientManager {
           {
             sock.send( _jsonstring );
           }
-          else if ( socket.readyState > 1 )
+          else if ( sock.readyState > 1 )
           {
             console.log("trying to send to client that doesn't exist and I don't know the url to remove!")
            //   clients.removeClient( id ); // url??

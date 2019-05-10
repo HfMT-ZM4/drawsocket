@@ -33,7 +33,7 @@ var drawsocket = (function(){
 
   const ws_url = `ws://${location.host}${oscprefix}`;
   const svg_ns = 'http://www.w3.org/2000/svg';
-  const html_ns = 'http://www.w3.org/1999/xhtml';
+  // const html_ns = 'http://www.w3.org/1999/xhtml';
 
   let port; // = new WebSocket(`ws://${location.host}${oscprefix}`);
   let ts; // timesync object
@@ -57,7 +57,7 @@ var drawsocket = (function(){
   let eventStack = {};
 
   // webaudio context
-  let audioCtx;
+  //let audioCtx;
 
   let main = d3.select("#main-html");
   let drawing = d3.select("#main-svg"); // svg group drawing layer
@@ -2010,7 +2010,7 @@ var drawsocket = (function(){
     }
     return -1; // not found
   }
-
+/*
   function findPos (obj) {
       let curleft = 0,
           curtop = 0;
@@ -2024,7 +2024,7 @@ var drawsocket = (function(){
           return { x: curleft-document.body.scrollLeft, y: curtop-document.body.scrollTop };
       }
   }
-
+*/
 
   document.body.addEventListener("mousemove", function(event)
   {
@@ -2599,7 +2599,7 @@ var drawsocket = (function(){
     }
 
     return a!==a && b!==b;
-  };
+  }
 
 function sendMsg(_obj)
 {
