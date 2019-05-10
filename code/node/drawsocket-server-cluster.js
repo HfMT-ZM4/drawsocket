@@ -9,7 +9,7 @@ let infopage = "/lib/drawsocket-info.html";
 
 // load libaries
 const cluster = require('cluster');
-//const os = require('os');
+const fs = require('fs');
 
 const express = require('express');
 const http = require('http');
@@ -100,7 +100,8 @@ if (cluster.isMaster)
 
                 const obj = JSON.parse(msg);
 
-                if (Object.keys(obj)[0] === 'timesync') {
+                let key = Object.keys(obj)[0]; // only single elements
+                if (key === 'timesync') {
                     socket.send(JSON.stringify({
                         timesync: {
                             id: (typeof obj.timesync.id == "undefined") ? null : obj.timesync.id,
@@ -109,7 +110,7 @@ if (cluster.isMaster)
                     }));
 
                 }
-                else if (Object.keys(obj)[0] === 'statereq') 
+                else if (key === 'statereq') 
                 {
                     cache_proc.send({
                         key: 'get',
@@ -121,6 +122,17 @@ if (cluster.isMaster)
                         socket.send(bundleState);
                     }
                     */
+                }
+                else if(key === 'svgElement')
+                {
+                    
+                    let _prefix = req.url.slice(1);
+                    console.log(userpath[0] + 'downloaded-'+_prefix+'.svg');
+                    fs.writeFileSync(userpath[0] + '/downloaded-'+_prefix+'.svg', obj[key], (err) => {
+                        if(err) {
+                            return console.log(err);
+                        }
+                    });
                 }
                 else
                     Max.outlet(obj);

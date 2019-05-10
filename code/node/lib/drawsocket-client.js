@@ -28,15 +28,8 @@ var drawsocket = (function(){
 
   let url_args = new URLSearchParams( window.location.search.substr(1)  );
 
-  
 
   console.log( Array.from(url_args.keys()).length );
-  // //Iterate the search parameters.
-  // for (let p of url_args) {
-  //   console.log(p);
-  // }
-  
-
 
   const ws_url = `ws://${location.host}${oscprefix}`;
   const svg_ns = 'http://www.w3.org/2000/svg';
@@ -264,6 +257,88 @@ var drawsocket = (function(){
 
   }
   */
+
+
+  function generateStyleDefs(svgDomElement) {
+    var styleDefs = "";
+    var sheets = document.styleSheets;
+    for (var i = 0; i < sheets.length; i++) {
+      var rules = sheets[i].cssRules;
+      for (var j = 0; j < rules.length; j++) {
+        var rule = rules[j];
+        if (rule.style) {
+          var selectorText = rule.selectorText;
+          var elems = svgDomElement.querySelectorAll(selectorText);
+
+          if (elems.length) {
+            styleDefs += selectorText + " { " + rule.style.cssText + " }\n";
+          }
+        }
+      }
+    }
+
+    var s = document.createElement('style');
+    s.setAttribute('type', 'text/css');
+    s.innerHTML = "<![CDATA[\n" + styleDefs + "\n]]>";
+    //somehow cdata section doesn't always work; you could use this instead:
+    //s.innerHTML = styleDefs;
+
+    console.log(styleDefs);
+    var defs = document.createElement('defs');
+    defs.appendChild(s);
+    svgDomElement.insertBefore(defs, svgDomElement.firstChild);
+  }
+
+  // kind of sort of working, but the image is cut off... 
+  // maybe later try: https://www.npmjs.com/package/save-svg-as-png
+  function rasterizeSVG() 
+  {
+    
+    console.log('calling' );
+
+    // add copy from svg object by id 
+
+    let svg = mainSVG.node();
+
+    generateStyleDefs(svg);
+
+
+    let svgData = new XMLSerializer().serializeToString( svg );
+
+    //let svgData = new Blob([svg], {type:"data:image/svg+xml;charset=utf-8"});
+    //let domURL = self.URL || self.webkitURL || self;
+    //let url = domURL.createObjectURL(svg);
+
+    let canvas = document.createElement( "canvas" );
+    let svgSize = svg.getBBox();
+    console.log(svgSize);
+    
+    canvas.width = svgSize.width;
+    canvas.height = svgSize.height;
+
+    main.append( ()=> {
+      return canvas;
+    });
+
+    mainSVG.remove();
+
+    let ctx = canvas.getContext( "2d" );
+
+    let img = new Image(svgSize.width, svgSize.height);
+
+    img.onload = function() {
+      ctx.drawImage( img, 0, 0 );
+
+       //console.log( canvas.toDataURL( "image/png" ) );
+    };
+
+    let sanitized = btoa(unescape(encodeURIComponent(svgData)));
+    console.log(sanitized.length);
+    img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))); //encodeURIComponent(svgData));//  
+
+
+  }
+
 
 
   function getHTML_element(node)
@@ -1821,6 +1896,16 @@ var drawsocket = (function(){
         break;
         case "log":
           log_enabled = ( objValue > 0 );
+        break;
+        case "canvas":
+          rasterizeSVG();
+        break;
+        case "getSVG":
+          console.log("svgElement" );
+          generateStyleDefs(mainSVG.node());
+          sendMsg({
+            svgElement: mainSVG.node().outerHTML
+          });
         break;
         default:
             console.log("unrouted command key:", key, objValue );
