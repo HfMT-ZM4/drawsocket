@@ -35,6 +35,10 @@ if (cluster.isMaster)
         {
             clients.sendToClientsURL(msg.url, msg.val);
         }
+        else if( msg.output )
+        {
+            Max.outlet(  msg.output );
+        }
         else
             Max.post( msg );
 
@@ -87,7 +91,7 @@ if (cluster.isMaster)
 
         let uniqueid = req.headers['sec-websocket-key'];
 
-        Max.post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
+//        Max.post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
 
         // setup relay back to Max
         socket.on("message", function (msg) {
@@ -137,7 +141,7 @@ if (cluster.isMaster)
             _msg[req.url + '/connected'] = 0;
             Max.outlet(_msg);
 
-            Max.post("closed socket : " + uniqueid + " @ " + req.url);
+//            Max.post("closed socket : " + uniqueid + " @ " + req.url);
 
         });
 
@@ -173,7 +177,7 @@ if (cluster.isMaster)
     });
 
     Max.addHandler("importcache", (filename, prefix) => {
-        Max.post("attempting to import", userpath[0]+filename, prefix);
+//        Max.post("attempting to import", userpath[0]+filename, prefix);
         cache_proc.send({
             key: 'read',
             url: prefix,
@@ -432,7 +436,7 @@ else if (cluster.isWorker)
             case "read":
             {
                 try {
-                    let err = state_cache.loadCache(_msg.val, _msg.url);
+                    let err = state_cache.loadCache(_msg.val, _msg.url, process);
                     if( err )
                         console.log("err", err);
                     else
