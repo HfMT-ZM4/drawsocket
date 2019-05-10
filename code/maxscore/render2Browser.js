@@ -48,7 +48,7 @@ var json = {};
 var tempo = 60;
 var timesig = [4, 4];
 var svg = new Dict();
-svg.name = "svg";
+//svg.name = "svg";
 var imageTable = {};
 var target = "socket";
 var numStaves = 0;
@@ -381,6 +381,7 @@ function writeStaffLines()
 					{
 					for (var d = 0; d < dest.length; d++) {
 						path += "M" + minmax[0] + "," + dest[d] + " L" + minmax[1] + "," + dest[d] + ","					
+					//post("path", path, "\n");
 								}
 							}
 						}
@@ -1066,6 +1067,7 @@ function anything() {
 			var oldID = 0;
 			//insert new code here:
 			for (var s = 1; s <= groupcount; s++) {
+			//for (var s = 1; s <= 120; s++) {
 			outlet(2, "groupcount", s);
 			var virgin = 1;
 			var val = [{
@@ -1086,7 +1088,7 @@ function anything() {
 			];
 			var keys = Object.keys(svgGroups[s]);
 			for (var i = 0; i < keys.length; i++) {
-			//post("keys", keys, svgGroups[s][keys[i]], "\n");
+			outlet(2, "keys", s, svgGroups[s], i, svgGroups[s][keys[i]]);
 			var oscAddress = keys[i].split('/');
 			var id = parseInt(oscAddress[1]);
 			if (!isNaN(id)){
@@ -1185,6 +1187,7 @@ function anything() {
 			//svgGroups[s + 1]["/back/style/background-color"] = "ivory";
 			joutput[s] = [clear, {"key" : "svg", "val" : val}];
 			outlet(2, "joutput", s);
+			gc();
 			}
 			//end new code
 			output.parse(JSON.stringify(joutput));
