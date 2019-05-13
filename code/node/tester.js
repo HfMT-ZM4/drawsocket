@@ -1,9 +1,6 @@
 
 const mixin = require('mixin-deep');
 
-
-console.log(`running in ${process.env.NODE_ENV} mode`);
-
 // note: mixin only works with objects, so we need to iterate still and find matches and then union them
 
 function mergeByProp(a, b, prop, timetag)
