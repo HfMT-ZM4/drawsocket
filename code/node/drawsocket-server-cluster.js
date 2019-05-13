@@ -14,6 +14,7 @@ const fs = require('fs');
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 
 const WebSocket = require('ws');
 //const url = require('url');
@@ -69,9 +70,11 @@ if (cluster.isMaster)
 
     });
 
+    app.use( compression() );
 
     app.use(bodyParser.urlencoded({ extended: true }));
 
+    
     if (userpath.length > 0) {
         app.use(express.static(userpath[0]));
         Max.post("adding user html root path " + userpath[0]);
