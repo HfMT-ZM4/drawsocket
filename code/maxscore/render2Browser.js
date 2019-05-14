@@ -36,6 +36,9 @@ var tempoflag = 0;
 var oldIndex = [];
 var notes = 0;
 var stems = {};
+var prev_noteheadx = [0, 0, 0, 0];
+var renderNoteheadx = [];
+var currentStaff = 0;
 var frgb = [0, 0, 0];
 var cursors = new Dict();
 cursors.name = "cursors";
@@ -461,8 +464,20 @@ function getComposer(c)
 	composer = c;
 }
 
+function linesegment()
+{
+	var noteheadx = arrayfromargs(arguments);
+	if (noteheadx[3] == prev_noteheadx[1] && noteheadx[1] == prev_noteheadx[3] && noteheadx[0] != prev_noteheadx[0]) {
+    //post("linesegment", noteheadx, "\n");
+	anything("noteheadx", noteheadx[0] + 1, noteheadx[1] - 2, 0.5, "Note", 0, currentStaff, 0, 0);
+	}
+	prev_noteheadx = noteheadx;
+}
+
+
 function anything() {
     var msg = arrayfromargs(arguments);
+    //post("msg", messagename, msg, "\n");
     switch (messagename) {
         case "scoreLayout":
 			scoreLayout = msg;
@@ -488,7 +503,6 @@ function anything() {
 						}
 					}
 				}
-           //post("stafflines", JSON.stringify(stafflines), "\n");
            break;
         case "frgb":
             frgb = msg;
@@ -525,6 +539,7 @@ function anything() {
         case "StaffLine":
 			//StaffLine measureIndex staffIndex staffLineIndex zoom x1 y1 x2 y2 selected
  			stafflines[msg[0] - scoreLayout[1]][msg[1]][msg[2]] = [msg[4], msg[5], msg[6], msg[7]];
+			currentStaff = msg[1];
 			//post("staffline", msg[0],msg[1],msg[2], stafflines[msg[0]][msg[1]][msg[2]], "\n");
 			break;
         case "LedgerLine":
@@ -814,7 +829,9 @@ function anything() {
 			{
 			for (var d = 0; d < dest.length; d++) {
 			c++;
-            svgGroups[s + 1]["/" + c + "/draw/path"] = "M" + msg[9] + "," + dest[d] + " L" + msg[11] + "," + msg[12];
+			var dest2 =dest[d] + msg[12] - msg[10];
+ 			post("Gliss", msg[10], msg[12], dest2, "\n");	
+           	svgGroups[s + 1]["/" + c + "/draw/path"] = "M" + msg[9] + "," + dest[d] + " L" + msg[11] + "," + dest2;
             svgGroups[s + 1]["/" + c + "/style/stroke"] = "black";
             svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 0.4;
             svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
@@ -875,12 +892,10 @@ function anything() {
         case "RenderMessage":
  			var e = new Dict();
 			//e.name = msg[msg.length - 1];
-			//post("RenderMessage", msg[msg.length - 1], "\n");	
 			e.parse(msg[msg.length - 1]);
-			var picster = e.get("picster-element");
+ 			var picster = e.get("picster-element");
 			if (picster.contains("expression")) picster.remove("expression");
 			var keys = [].concat(picster.getkeys());
-			//post("picster", picster.contains("expression"), keys, picster.stringify(), "\n");
 			switch (msg[0]){
 				case "note" :
             	var RenderMessageOffset = [msg[5], msg[6]];
@@ -892,27 +907,23 @@ function anything() {
             	var RenderMessageOffset = [msg[2], msg[3]];
 				break;
 			}
-			//if (commands == "fill") ;
 			for (var s = 0; s < groupcount; s++) {
-			var dest = remap(sg[s], msg[2], RenderMessageOffset[1]);
+			if (msg[0] != "measure") var dest = remap(sg[s], msg[2], RenderMessageOffset[1]);
+			else var dest = [].concat(RenderMessageOffset[1]);
 			if (dest != -1)
 			{
 			for (var d = 0; d < dest.length; d++) {
 			for (var k = 0; k < keys.length; k++) {
- //           var element = keys[k].substr(0, keys[k].indexOf('_'));
             var dict = picster.get(keys[k]);
             var commands = dict.get("commands");
-          var info = dict.get("info");
+         	var info = dict.get("info");
             var ckeys = commands.getkeys();
-           var ikeys = info.getkeys();
+           	var ikeys = info.getkeys();
 					var path = "";
 					var mode = "none";
             		c++;
                     for (var i = 0; i < ckeys.length; i++) {
-                        var command = commands.get(ckeys[i]);
-                        //svgGroups[s + 1]["/" + c + "/style/stroke", "black");
-                        //svgGroups[s + 1]["/" + c + "/style/stroke-opacity", 1);
-                        //svgGroups[s + 1]["/" + c + "/style/fill", "none");
+                     var command = commands.get(ckeys[i]);
                      switch (command[0]) {
                             case "color":
                                 svgGroups[s + 1]["/" + c + "/style/stroke"] = "rgb("+ Math.round(command[1] * 255) + "," + Math.round(command[2] * 255) + "," + Math.round(command[3] * 255) + ")";
@@ -959,7 +970,8 @@ function anything() {
 								mode = "Text";
                             	break;
                             case "write":
-            					svgGroups[s + 1]["/" + c + "/draw/text"] = [moveTo[0], moveTo[1], command[1]];
+  							post("text", dest, command[1], "\n");
+          					svgGroups[s + 1]["/" + c + "/draw/text"] = [moveTo[0], moveTo[1], command[1]];
  								mode = "none";
                                	break;
 							//accum data and create message after switch loop
@@ -1206,6 +1218,12 @@ function anything() {
 			if (msgname == "noteheadwhite" || msgname == "noteheadwhole") msgname = "noteheadblack";
 			if (msgname == "dot") return;
 		}
+		if (msgname == "linesegment") 
+		{
+			msgname = "noteheadx";
+			msg = msg.slice(1);
+		}
+		//post("msgname", msgname, msg, "\n");
 		if (fontMap.contains(msgname)) var glyph = fontMap.get(msgname);
 		else if (fontExtras.contains(msgname)) var glyph = fontExtras.get(msgname); 
 		else return;
@@ -1219,7 +1237,6 @@ function anything() {
  		glyph[i * 5 + 3] = ann.get("font")[0]; 
 		glyph[i * 5 + 4] = ann.get("font")[1];
 		}
-		//post("ann2", glyph, "\n");
 		}
 		if (msgname.indexOf("staffnumber") != -1)
 			{
@@ -1242,7 +1259,6 @@ function anything() {
 			c++;
 		    svgGroups[s + 1]["/" + c + "/style/fill"] = "rgb("+ frgb[0] + "," + frgb[1] + "," + frgb[2] + ")";;
             svgGroups[s + 1]["/" + c + "/style/fill-opacity"] = 1.;
-            //svgGroups[s + 1]["/" + c + "/style/stroke"] = "none";
             svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 1.;
             svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
             svgGroups[s + 1]["/" + c + "/style/font-family"] = glyph[i*5+3];
