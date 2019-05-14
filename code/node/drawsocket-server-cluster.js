@@ -9,21 +9,47 @@ let infopage = "/lib/drawsocket-info.html";
 
 // load libaries
 const cluster = require('cluster');
-//const os = require('os');
+const fs = require('fs');
 
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
+const compression = require('compression');
 
 const WebSocket = require('ws');
 //const url = require('url');
 const app = express();
 const Max = require('max-api');
 
+function stringifyOBJAsync(obj_){
+    return Promise.resolve().then( ()=> JSON.stringify(obj_) );
+}
+
+function wrapTimetag(obj_, timetag_)
+{
+    if( Array.isArray(obj_) )
+    {
+        return {
+            timetag: timetag_,
+            obj_arr: obj_
+        };
+    }
+    else
+    {
+        obj_.timetag = timetag_;
+        return obj_;
+    }
+    
+}
+
 if (cluster.isMaster) 
 {
+    
     Max.post("started up ");
     Max.post(`pid: ${process.pid}`);
+
+    Max.post(`running in ${process.env.NODE_ENV} mode`);
+
 
     const clients = require('./drawsocket-clientmanager');
 
@@ -44,9 +70,11 @@ if (cluster.isMaster)
 
     });
 
+    app.use( compression() );
 
     app.use(bodyParser.urlencoded({ extended: true }));
 
+    
     if (userpath.length > 0) {
         app.use(express.static(userpath[0]));
         Max.post("adding user html root path " + userpath[0]);
@@ -76,6 +104,13 @@ if (cluster.isMaster)
         return response.send(request.body);
     });
 
+    
+    // var env = process.env.NODE_ENV || 'development';
+    // if ('development' == env) {
+    //     console.log('dev mode');
+    // }
+
+   
 
     const server = http.createServer(app);
 
@@ -100,7 +135,8 @@ if (cluster.isMaster)
 
                 const obj = JSON.parse(msg);
 
-                if (Object.keys(obj)[0] === 'timesync') {
+                let key = Object.keys(obj)[0]; // only single elements
+                if (key === 'timesync') {
                     socket.send(JSON.stringify({
                         timesync: {
                             id: (typeof obj.timesync.id == "undefined") ? null : obj.timesync.id,
@@ -109,7 +145,7 @@ if (cluster.isMaster)
                     }));
 
                 }
-                else if (Object.keys(obj)[0] === 'statereq') 
+                else if (key === 'statereq') 
                 {
                     cache_proc.send({
                         key: 'get',
@@ -121,6 +157,17 @@ if (cluster.isMaster)
                         socket.send(bundleState);
                     }
                     */
+                }
+                else if(key === 'svgElement')
+                {
+                    
+                    let _prefix = req.url.slice(1);
+                    console.log(userpath[0] + 'downloaded-'+_prefix+'.svg');
+                    fs.writeFileSync(userpath[0] + '/downloaded-'+_prefix+'.svg', obj[key], (err) => {
+                        if(err) {
+                            return console.log(err);
+                        }
+                    });
                 }
                 else
                     Max.outlet(obj);
@@ -245,28 +292,6 @@ if (cluster.isMaster)
     * 
     */
 
-
-    function stringifyOBJAsync(obj_){
-        return Promise.resolve().then( ()=> JSON.stringify(obj_) );
-    }
-
-    function wrapTimetag(obj_, timetag_)
-    {
-        if( Array.isArray(obj_) )
-        {
-            return {
-                timetag: timetag_,
-                obj_arr: obj_
-            };
-        }
-        else
-        {
-            obj_.timetag = timetag_;
-            return obj_;
-        }
-        
-    }
-
     Max.addHandler(Max.MESSAGE_TYPES.DICT, (dict) => {
 
         const timetag_ = Date.now();
@@ -336,14 +361,13 @@ if (cluster.isMaster)
         return ipAddresses;
     };
 
-
     server.on('uncaughtException', function (err) {
         Max.post("xx" + err);
 
         if (err.errno === 'EADDRINUSE')
             Max.post('EADDRINUSE');
         else
-            Max.post("xx" + err);
+            Max.post("uncaught exception! we should not receive this! => " + err);
     });
 
     server.on('error', (e) => {
@@ -356,6 +380,10 @@ if (cluster.isMaster)
             server.listen(PORT, HOST);
             }, 1000);
             */
+        }
+        else
+        {
+            Max.post("server error", e);
         }
     });
 
@@ -399,6 +427,7 @@ else if (cluster.isWorker)
         switch(_msg.key)
         {
             case 'get':
+            {
                 const _state = state_cache.get(_msg.url);
                 if( _state )
                 {
@@ -416,6 +445,7 @@ else if (cluster.isWorker)
                     });
                     */
                 }
+            }
             break;
             case 'set':
                 state_cache.update(_msg.url, _msg.val, _msg.timetag);

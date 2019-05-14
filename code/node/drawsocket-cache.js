@@ -136,7 +136,7 @@ class StateCache
   makeObj()
   {
     this.cache_obj = [];
-    this.cache_map.forEach( (value_, key_, map_) =>{
+    this.cache_map.forEach( (value_, key_) =>{
         this.cache_obj.push({
             key: key_,
             val: Array.from( value_.values() ) // << timetag has to be in there
@@ -168,7 +168,7 @@ class StateCache
 
         const iter_ids = Array.isArray(value) ? value : [value];
       
-        this.cache_map.forEach( (value_, key_, map_) => {
+        this.cache_map.forEach( (value_) => {
           for( let id of iter_ids ) {
             value_.delete(id);
           }
@@ -192,7 +192,7 @@ class StateCache
         return;
         
       let kmap = this.cache_map.get(kname);
-      kmap.forEach( (value, key, map) => {
+      kmap.forEach( (value, key) => {
         this.parent_sets.delete(key);
       });
       this.cache_map.delete(kname);
@@ -205,7 +205,7 @@ class StateCache
           continue;
 
         let kmap = this.cache_map.get(kname);
-        kmap.forEach( (value, key, map) => {
+        kmap.forEach( (value, key) => {
           this.parent_sets.delete(key);
         });
         
@@ -246,13 +246,13 @@ class StateCache
  
     if( !Array.isArray(id_) )
     {
-        this.cache_map.forEach( (value_, key_, map_) => {
+        this.cache_map.forEach( (value_) => {
           this.removeKeymapRefs(value_, id_);
         });    
     }
     else
     {
-        this.cache_map.forEach( (value_, key_, map_)=>{
+        this.cache_map.forEach( (value_)=>{
           for( let i of id_ )
           {
             this.removeKeymapRefs(value_, i);
@@ -318,7 +318,7 @@ class ClientState
     
     if( prefix_ === "/*" )
     {
-      this.state.forEach( (value, key, map)=>{
+      this.state.forEach( (value)=>{
         value.input(obj_, timetag_);
       });
     }
@@ -351,7 +351,7 @@ class ClientState
   
       let cache_str = "{";
       let started = false;
-      this.state.forEach( (value, key, map)=>{
+      this.state.forEach( (value, key)=>{
         if( started )
           cache_str += ",";
 
