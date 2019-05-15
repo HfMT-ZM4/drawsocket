@@ -10,28 +10,6 @@ let infopage = "/lib/drawsocket-info.html";
 // load libaries
 const cluster = require('cluster');
 
-
-function stringifyOBJAsync(obj_){
-    return Promise.resolve().then( ()=> JSON.stringify(obj_) );
-}
-
-function wrapTimetag(obj_, timetag_)
-{
-    if( Array.isArray(obj_) )
-    {
-        return {
-            timetag: timetag_,
-            obj_arr: obj_
-        };
-    }
-    else
-    {
-        obj_.timetag = timetag_;
-        return obj_;
-    }
-    
-}
-
 if (cluster.isMaster) 
 {
     
@@ -54,7 +32,26 @@ if (cluster.isMaster)
 
     Max.post(`running in ${process.env.NODE_ENV} mode`);
 
-
+    const stringifyOBJAsync = (obj_) => {
+        return Promise.resolve().then( ()=> JSON.stringify(obj_) );
+    }
+    
+    const wrapTimetag = (obj_, timetag_) => {
+        if( Array.isArray(obj_) )
+        {
+            return {
+                timetag: timetag_,
+                obj_arr: obj_
+            };
+        }
+        else
+        {
+            obj_.timetag = timetag_;
+            return obj_;
+        }
+        
+    }
+    
     const clients = require('./drawsocket-clientmanager');
 
     const cache_proc = cluster.fork();
