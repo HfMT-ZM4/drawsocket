@@ -9,17 +9,7 @@ let infopage = "/lib/drawsocket-info.html";
 
 // load libaries
 const cluster = require('cluster');
-const fs = require('fs');
 
-const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const compression = require('compression');
-
-const WebSocket = require('ws');
-//const url = require('url');
-const app = express();
-const Max = require('max-api');
 
 function stringifyOBJAsync(obj_){
     return Promise.resolve().then( ()=> JSON.stringify(obj_) );
@@ -46,6 +36,18 @@ if (cluster.isMaster)
 {
     
     process.env.NODE_ENV = "production";
+
+    const fs = require('fs');
+
+    const express = require('express');
+    const http = require('http');
+    const bodyParser = require('body-parser');
+    const compression = require('compression');
+    
+    const WebSocket = require('ws');
+    //const url = require('url');
+    const app = express();
+    const Max = require('max-api');
 
     Max.post("started up ");
     Max.post(`pid: ${process.pid}`);
