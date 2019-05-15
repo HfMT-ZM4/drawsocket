@@ -45,6 +45,8 @@ function wrapTimetag(obj_, timetag_)
 if (cluster.isMaster) 
 {
     
+    process.env.NODE_ENV = "production";
+
     Max.post("started up ");
     Max.post(`pid: ${process.pid}`);
 
