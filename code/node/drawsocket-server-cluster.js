@@ -96,7 +96,7 @@ if (cluster.isMaster)
 
 
     app.get('/', (req, res) => {
-        console.log('express connection ' + req + ' ' + res);
+        Max.post('express connection ' + req + ' ' + res);
     });
 
 
@@ -163,10 +163,10 @@ if (cluster.isMaster)
                 {
                     
                     let _prefix = req.url.slice(1);
-                    console.log(userpath[0] + 'downloaded-'+_prefix+'.svg');
+                    Max.post(userpath[0] + 'downloaded-'+_prefix+'.svg');
                     fs.writeFileSync(userpath[0] + '/downloaded-'+_prefix+'.svg', obj[key], (err) => {
                         if(err) {
-                            return console.log(err);
+                            return Max.post(err);
                         }
                     });
                 }
@@ -180,7 +180,7 @@ if (cluster.isMaster)
 
         });
 
-        socket.on("close", function (event) {
+        socket.on("close", function () { // event
   
             clients.removeClient(req.url, uniqueid);
             socket.terminate();
