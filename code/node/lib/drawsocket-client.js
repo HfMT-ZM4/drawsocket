@@ -57,7 +57,7 @@ var drawsocket = (function(){
   let eventStack = {};
 
   // webaudio context
-  //let audioCtx;
+  let audioCtx;
 
   let main = d3.select("#main-html");
   let drawing = d3.select("#main-svg"); // svg group drawing layer
@@ -1451,7 +1451,7 @@ var drawsocket = (function(){
               }
             });
 
-            console.log(ref_args);
+            // console.log(ref_args);
             
             ret = _obj[call.method]( ...ref_args );
             
@@ -1466,7 +1466,7 @@ var drawsocket = (function(){
 
         if (typeof ret.then === 'function' && ret !== null) {
           ret.catch((e) => { 
-            console.log(`caught error ${e}`);
+            // console.log(`caught error ${e}`);
           })
         }
         else if( ret !== undefined )
@@ -1475,7 +1475,7 @@ var drawsocket = (function(){
           {
             processMethodCalls( ret, call.then );
           }
-          console.log(`return value ${ret}`);
+          // console.log(`return value ${ret}`);
         }
 
       }
@@ -1542,7 +1542,7 @@ var drawsocket = (function(){
       display_log("Started Audio");
     });
 
-    console.log( Tone.context );
+   // console.log( Tone.context );
 
   }
 
