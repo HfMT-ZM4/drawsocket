@@ -66,6 +66,7 @@ var eol = 0;
 var pathToScript = "default";
 var svgFile = "untitled.svg";
 var extendedStaffLines = {};
+var composer = "";
 var clefs = {
 	"0" : ["", 3], 
 	"1" : ["", 2], 
@@ -138,17 +139,28 @@ function setpath(relPath)
 
 }
 
+function setComposer(c)
+{
+	composer = c;
+}
+
 function setEnsemble()
 {
  	players = [];
-	for (i = 0; i < 144; i++) players[i] = 0;
 	var t = arrayfromargs(arguments);// [1, 6]
-	if (t[0] != 0) {
+	if (t[0] > 0) {
+	for (var i = 0; i < 144; i++) players[i] = 0;
 	for (var i = 0; i < t.length; i++) for (j = 0; j < 12; j++) {
 		players[(t[i] - 1 ) * 12 + j] = 1;
 		players[(t[i] - 1 ) * 12 + j + 72] = 1;		
 		}
 	}	
+	else if (t[0] == -1){
+		for (var i = 0; i < 144; i++) players[i] = 1;
+		for (var i = 0; i < 12; i++){
+			players[i  * 12 + 10] = 0;
+		}
+	}
 	//post("players",  JSON.stringify(players), "\n");		
 }
 
@@ -1109,7 +1121,6 @@ function anything() {
 					},
 					"transform" : "matrix(1,0,0,1,50,300)"
 				};
-			val.push(instructions);
 			var instructions2 = {
 					"parent" : "main",
 					"new" : "text",
@@ -1124,7 +1135,6 @@ function anything() {
 					},
 					"transform" : "matrix(1,0,0,1,50,320)"
 				};
-			val.push(instructions2);
 			var instructions3 = {
 					"parent" : "main",
 					"new" : "text",
@@ -1139,10 +1149,17 @@ function anything() {
 					},
 					"transform" : "matrix(1,0,0,1,50,340)"
 				};
+			if (composer == "collins"){
+			val.push(instructions);
+			val.push(instructions2);
 			val.push(instructions3);
+			}
 			for (p = 1; p <= 144; p++){
+			if (composer == "collins") {
 			if (players[p - 1]) joutput[p] = [clear, {"key" : "svg", "val" : val}];
 			else joutput[p] = clear;
+			}
+			else if (players[p - 1]) joutput[p] = [clear, {"key" : "svg", "val" : val}];
 			//post("val", p, JSON.stringify(val),"\n");
 			}
 			output.parse(JSON.stringify(joutput));
