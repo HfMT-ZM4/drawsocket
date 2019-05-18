@@ -77,7 +77,7 @@ var clefs = {
 	"1" : ["", 2], 
 	"2" : ["", 1], 
 	"3" : ["", 1], 
-	"4" : ["", 2]
+	"4" : ["", 3]
 };
 
 
@@ -464,6 +464,7 @@ function getComposer(c)
 	composer = c;
 }
 
+/*
 function linesegment()
 {
 	var noteheadx = arrayfromargs(arguments);
@@ -473,7 +474,7 @@ function linesegment()
 	}
 	prev_noteheadx = noteheadx;
 }
-
+*/
 
 function anything() {
     var msg = arrayfromargs(arguments);
@@ -535,6 +536,28 @@ function anything() {
 			writeAt(s, c, "Arial", 10., msg[0], msg[1], msg[2]);
 			}
 			tempoflag = 0;		
+            break;
+       case "printNoteText":
+			//printNoteText measureIndex staffIndex trackIndex noteIndex zoom x y test
+			for (var s = 0; s < groupcount; s++)
+			{
+			var dest = remap(sg[s], msg[1], msg[6]);
+			if (dest != -1)
+			{
+			for (var d = 0; d < dest.length; d++) {
+			c++;
+           	svgGroups[s + 1]["/" + c + "/style/fill"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/fill-opacity"] = 1.;
+            svgGroups[s + 1]["/" + c + "/style/stroke"] = "none";
+            svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 0.;
+            svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
+            svgGroups[s + 1]["/" + c + "/style/font-family"] = "Arial";
+            svgGroups[s + 1]["/" + c + "/style/font-size"] = 10.;
+            svgGroups[s + 1]["/" + c + "/draw/text"] = [msg[5], dest[d], decodeURI(msg[7])];
+            svgGroups[s + 1]["/" + c + "/transform/matrix"] = [1., 0., 0., 1., 0., 0.];
+			}
+			}
+			}
             break;
         case "StaffLine":
 			//StaffLine measureIndex staffIndex staffLineIndex zoom x1 y1 x2 y2 selected
@@ -830,7 +853,7 @@ function anything() {
 			for (var d = 0; d < dest.length; d++) {
 			c++;
 			var dest2 =dest[d] + msg[12] - msg[10];
- 			post("Gliss", msg[10], msg[12], dest2, "\n");	
+ 			//post("Gliss", msg[10], msg[12], dest2, "\n");	
            	svgGroups[s + 1]["/" + c + "/draw/path"] = "M" + msg[9] + "," + dest[d] + " L" + msg[11] + "," + dest2;
             svgGroups[s + 1]["/" + c + "/style/stroke"] = "black";
             svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 0.4;
@@ -970,7 +993,7 @@ function anything() {
 								mode = "Text";
                             	break;
                             case "write":
-  							post("text", dest, command[1], "\n");
+  							//post("text", dest, command[1], "\n");
           					svgGroups[s + 1]["/" + c + "/draw/text"] = [moveTo[0], moveTo[1], command[1]];
  								mode = "none";
                                	break;
@@ -1218,11 +1241,13 @@ function anything() {
 			if (msgname == "noteheadwhite" || msgname == "noteheadwhole") msgname = "noteheadblack";
 			if (msgname == "dot") return;
 		}
+		/*
 		if (msgname == "linesegment") 
 		{
 			msgname = "noteheadx";
 			msg = msg.slice(1);
 		}
+		*/
 		//post("msgname", msgname, msg, "\n");
 		if (fontMap.contains(msgname)) var glyph = fontMap.get(msgname);
 		else if (fontExtras.contains(msgname)) var glyph = fontExtras.get(msgname); 
