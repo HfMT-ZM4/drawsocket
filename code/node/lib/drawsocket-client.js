@@ -1,18 +1,4 @@
-
-/**
- * 
- * this version is without the objectStack, which we expect will function just fine since the browsers keeps a global hashtable for all node ids
- *  to do:
- * 
- * complete sound support
- * complete form support
- * test user event scripts
- * add video html
- * add canvas commands
- * add bezier line path for tweens
- * 
- * 
- */
+/* global TweenMax:readonly, TimelineMax:readonly, Tone:readonly, StartAudioContext:readonly, d3:readonly, timesync:readonly  */
 
 'use strict';
 
@@ -57,7 +43,7 @@ var drawsocket = (function(){
   let eventStack = {};
 
   // webaudio context
-  //let audioCtx;
+  let audioCtx;
 
   let main = d3.select("#main-html");
   let drawing = d3.select("#main-svg"); // svg group drawing layer
@@ -490,7 +476,7 @@ var drawsocket = (function(){
 
           let retries = 100;
 
-          let fix_position = (timestamp) => {
+          let fix_position = () => { //timestamp
             let bb = el.node().getBBox();
             if( bb.width === 0 && retries-- > 0){
 //              console.log('retrying');
@@ -1075,7 +1061,7 @@ var drawsocket = (function(){
     if( animStack.hasOwnProperty(node.id) )
     {
       if( node.hasOwnProperty('call') && typeof node.call === 'object' )
-        processMethodCalls( animStack[id], node.call );
+        processMethodCalls( animStack[node.id], node.call );
     }
 
     if( node.hasOwnProperty('cmd') )
@@ -1451,7 +1437,7 @@ var drawsocket = (function(){
               }
             });
 
-            console.log(ref_args);
+            // console.log(ref_args);
             
             ret = _obj[call.method]( ...ref_args );
             
@@ -1466,7 +1452,7 @@ var drawsocket = (function(){
 
         if (typeof ret.then === 'function' && ret !== null) {
           ret.catch((e) => { 
-            console.log(`caught error ${e}`);
+            // console.log(`caught error ${e}`);
           })
         }
         else if( ret !== undefined )
@@ -1475,7 +1461,7 @@ var drawsocket = (function(){
           {
             processMethodCalls( ret, call.then );
           }
-          console.log(`return value ${ret}`);
+          // console.log(`return value ${ret}`);
         }
 
       }
@@ -1542,7 +1528,7 @@ var drawsocket = (function(){
       display_log("Started Audio");
     });
 
-    console.log( Tone.context );
+   // console.log( Tone.context );
 
   }
 
@@ -1922,10 +1908,10 @@ var drawsocket = (function(){
 
   function emptybundle(){
     return {
-      timeTag : osc.timeTag(),
+      timeTag : Date.now,
       packets : []
     }
-  };
+  }
 
   function initMultitouch(name) {
     let el = document.getElementById(name);
@@ -2064,7 +2050,7 @@ var drawsocket = (function(){
   function do_sync()
   {
     setTimeout(function () {
-      ts.sync().catch(err => console.loig('timesync err', err));
+      ts.sync().catch(err => console.log('timesync err', err));
     }, 100);
   }
 
@@ -2142,10 +2128,10 @@ var drawsocket = (function(){
     }
 
     this.senderror = function (err) {
-      let erroraddr = oscprefix+"/error";
-      this.sendObj({
-        erroraddr : err
-      });
+      let _obj = {};
+      _obj[oscprefix+"/error"] = err;
+      _obj.timetag = Date.now();
+      this.sendObj(_obj);
     }
 
     this.port.onerror = function(error) {
@@ -2277,8 +2263,8 @@ var drawsocket = (function(){
 
     //let prev_offset = 0;
 
-    ts.on('change', function (offset) {
-      
+    ts.on('change', function () { // (offset) optional arg
+       
     //  prev_offset = prev_offset - ts.offset;
    //   console.log(`dx=${prev_offset} new=${ts.offset}`);
       let msg = {};
@@ -2383,8 +2369,9 @@ var drawsocket = (function(){
 
   }
 
+    function jsonSound_obj(_obj) {  }
+
   */
-  function jsonSound_obj(_obj) {  }
 
   /**
    * PDF handler
@@ -2459,8 +2446,8 @@ var drawsocket = (function(){
 
       // size of pdf
       let viewport = _page.getViewport(this.scale);
-
-      let mainDiv_bbox = main.node().getBoundingClientRect();
+      
+      //let mainDiv_bbox = main.node().getBoundingClientRect();
 
       // scale to fit
 
@@ -2544,7 +2531,7 @@ var drawsocket = (function(){
   /**
    * fastObjEqual
    */
-
+/*
 
   function fastObjEqual(a, b) {
 
@@ -2600,14 +2587,15 @@ var drawsocket = (function(){
 
     return a!==a && b!==b;
   }
+*/
 
-function sendMsg(_obj)
-{
-  if( port )
+  function sendMsg(_obj)
   {
-    port.sendObj(_obj);
+    if( port )
+    {
+      port.sendObj(_obj);
+    }
   }
-}
 
   return {
     input: drawsocket_input,

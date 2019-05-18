@@ -9,48 +9,49 @@ let infopage = "/lib/drawsocket-info.html";
 
 // load libaries
 const cluster = require('cluster');
-const fs = require('fs');
-
-const express = require('express');
-const http = require('http');
-const bodyParser = require('body-parser');
-const compression = require('compression');
-
-const WebSocket = require('ws');
-//const url = require('url');
-const app = express();
-const Max = require('max-api');
-
-function stringifyOBJAsync(obj_){
-    return Promise.resolve().then( ()=> JSON.stringify(obj_) );
-}
-
-function wrapTimetag(obj_, timetag_)
-{
-    if( Array.isArray(obj_) )
-    {
-        return {
-            timetag: timetag_,
-            obj_arr: obj_
-        };
-    }
-    else
-    {
-        obj_.timetag = timetag_;
-        return obj_;
-    }
-    
-}
 
 if (cluster.isMaster) 
 {
     
+    process.env.NODE_ENV = "production";
+
+    const fs = require('fs');
+
+    const express = require('express');
+    const http = require('http');
+    const bodyParser = require('body-parser');
+    const compression = require('compression');
+    
+    const WebSocket = require('ws');
+    //const url = require('url');
+    const app = express();
+    const Max = require('max-api');
+
     Max.post("started up ");
     Max.post(`pid: ${process.pid}`);
 
     Max.post(`running in ${process.env.NODE_ENV} mode`);
 
-
+    const stringifyOBJAsync = (obj_) => {
+        return Promise.resolve().then( ()=> JSON.stringify(obj_) );
+    }
+    
+    const wrapTimetag = (obj_, timetag_) => {
+        if( Array.isArray(obj_) )
+        {
+            return {
+                timetag: timetag_,
+                obj_arr: obj_
+            };
+        }
+        else
+        {
+            obj_.timetag = timetag_;
+            return obj_;
+        }
+        
+    }
+    
     const clients = require('./drawsocket-clientmanager');
 
     const cache_proc = cluster.fork();
@@ -95,7 +96,7 @@ if (cluster.isMaster)
 
 
     app.get('/', (req, res) => {
-        console.log('express connection ' + req + ' ' + res);
+        Max.post('express connection ' + req + ' ' + res);
     });
 
 
@@ -162,10 +163,10 @@ if (cluster.isMaster)
                 {
                     
                     let _prefix = req.url.slice(1);
-                    console.log(userpath[0] + 'downloaded-'+_prefix+'.svg');
+                    Max.post(userpath[0] + 'downloaded-'+_prefix+'.svg');
                     fs.writeFileSync(userpath[0] + '/downloaded-'+_prefix+'.svg', obj[key], (err) => {
                         if(err) {
-                            return console.log(err);
+                            return Max.post(err);
                         }
                     });
                 }
@@ -179,7 +180,7 @@ if (cluster.isMaster)
 
         });
 
-        socket.on("close", function (event) {
+        socket.on("close", function () { // event
   
             clients.removeClient(req.url, uniqueid);
             socket.terminate();
