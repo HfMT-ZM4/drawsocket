@@ -885,6 +885,89 @@ function anything() {
 			}
 			}
             break;
+		//OttavaAltaLine OttavaBassaLine OttavaAltaHook OttavaBassaHook
+        case "OttavaAltaLine":
+			for (var s = 0; s < groupcount; s++)
+			{
+			var dest = remap(sg[s], msg[1], msg[6]);
+			if (dest != -1)
+			{
+			for (var d = 0; d < dest.length; d++) {
+			c++;
+            svgGroups[s + 1]["/" + c + "/style/fill"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/fill-opacity"] = 1.;
+			var path = "";
+			for (var i = 0; i < parseInt((msg[7] - msg[5]) / 12); i++) path = path + "M" + (msg[5] + i * 12)  + "," + dest[d] + " L" + (msg[5] + i * 12 + 6)  + "," + dest[d] + ",";
+			path = path + "M" + (msg[7] - (msg[7] - msg[5]) % 12)  + "," + dest[d] + " L" + msg[7] + "," + dest[d];
+           	svgGroups[s + 1]["/" + c + "/draw/path"] = path;
+            svgGroups[s + 1]["/" + c + "/style/stroke"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 1.4;
+            svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
+            svgGroups[s + 1]["/" + c + "/transform/matrix"] = [1., 0., 0., 1., 0., 0.];
+			}
+			}
+			}
+            break;
+        case "OttavaAltaHook":
+			for (var s = 0; s < groupcount; s++)
+			{
+			var dest = remap(sg[s], msg[1], msg[6]);
+			if (dest != -1)
+			{
+			for (var d = 0; d < dest.length; d++) {
+			c++;
+            svgGroups[s + 1]["/" + c + "/style/fill"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/fill-opacity"] = 1.;
+           	svgGroups[s + 1]["/" + c + "/draw/path"] = "M" + msg[5] + "," + dest[d] + " L" + msg[7] + "," + dest[d] + msg[8] - msg[6];
+            svgGroups[s + 1]["/" + c + "/style/stroke"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 0.4;
+            svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
+            svgGroups[s + 1]["/" + c + "/transform/matrix"] = [1., 0., 0., 1., 0., 0.];
+			}
+			}
+			}
+            break;
+        case "OttavaBassaLine":
+			for (var s = 0; s < groupcount; s++)
+			{
+			var dest = remap(sg[s], msg[1], msg[6]);
+			if (dest != -1)
+			{
+			for (var d = 0; d < dest.length; d++) {
+			c++;
+            svgGroups[s + 1]["/" + c + "/style/fill"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/fill-opacity"] = 1.;
+			var path = "";
+			for (var i = 0; i < parseInt((msg[7] - msg[5]) / 12); i++) path = path + "M" + (msg[5] + i * 12)  + "," + dest[d] + " L" + (msg[5] + i * 12 + 6)  + "," + dest[d] + ",";
+			path = path + "M" + (msg[7] - (msg[7] - msg[5]) % 12)  + "," + dest[d] + " L" + msg[7] + "," + dest[d];
+           	svgGroups[s + 1]["/" + c + "/draw/path"] = path;
+            svgGroups[s + 1]["/" + c + "/style/stroke"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 0.4;
+            svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
+            svgGroups[s + 1]["/" + c + "/transform/matrix"] = [1., 0., 0., 1., 0., 0.];
+			}
+			}
+			}
+            break;
+        case "OttavaBassaHook":
+			for (var s = 0; s < groupcount; s++)
+			{
+			var dest = remap(sg[s], msg[1], msg[6]);
+			if (dest != -1)
+			{
+			for (var d = 0; d < dest.length; d++) {
+			c++;
+            svgGroups[s + 1]["/" + c + "/style/fill"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/fill-opacity"] = 1.;
+           	svgGroups[s + 1]["/" + c + "/draw/path"] = "M" + msg[5] + "," + dest[d] + " L" + msg[7] + "," + dest[d] + msg[8] - msg[6];
+            svgGroups[s + 1]["/" + c + "/style/stroke"] = "black";
+            svgGroups[s + 1]["/" + c + "/style/stroke-width"] = 0.4;
+            svgGroups[s + 1]["/" + c + "/style/stroke-opacity"] = 1.;
+            svgGroups[s + 1]["/" + c + "/transform/matrix"] = [1., 0., 0., 1., 0., 0.];
+			}
+			}
+			}
+            break;
         case "printScoreTitle":
 			//printScoreTitle 0.5 120. 34. JMSLMaxScore-118
 			//post("position", scoreLayout[4], msg[3], text_measure("Times New Roman", 26, msg[3]), "\n");	
