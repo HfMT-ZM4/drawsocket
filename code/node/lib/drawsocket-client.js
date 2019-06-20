@@ -2012,28 +2012,55 @@ var drawsocket = (function(){
   }
 */
 
+  function elementToJSON(elm)
+  {
+    let obj = {};
+    obj.tag = elm.tagName;
+    Array.prototype.forEach.call(elm.attributes, (attr) => {
+      if( attr.specified )
+      {
+        obj[attr.name] = attr.value;
+      }
+    });
+
+    return obj;
+  }
+
+  function sendMouseObj(event, caller)
+  {
+    
+    let obj = {};
+    obj["/mouse"+oscprefix] = {
+      caller: caller,
+      xy: [ event.clientX, event.clientY ],
+      button: event.buttons,
+      mods : {
+        alt: event.altKey,
+        shift: event.shiftKey,
+        ctrl: event.ctrlKey,
+        meta: event.metaKey
+      },
+      target: elementToJSON(event.target)
+    };
+    sendMsg(obj);
+  }
+
   document.body.addEventListener("mousemove", function(event)
   {
-    const obj = {};
-    obj[oscprefix+"/"+event.target.id+"/mouse/xy"] = [ event.clientX, event.clientY ];
-    sendMsg(obj);
-
-      //posterror(event.clientX + " " + event.clientY);
+    //event.preventDefault();
+    sendMouseObj(event, "mousemove");
   });
 
   document.body.addEventListener("mousedown", function(event)
   {
-    const obj = {};
-    obj[oscprefix+"/"+event.target.id+"/mouse/state"] = 1;
-    sendMsg(obj);
+    //event.preventDefault();
+    sendMouseObj(event, "mousedown");
   });
 
   document.body.addEventListener("mouseup", function(event)
   {
-    const obj = {};
-    obj[oscprefix+"/"+event.target.id+"/mouse/state"] = 0;
-    sendMsg(obj);
-      //posterror(event.clientX + " " + event.clientY);
+    //event.preventDefault();
+    sendMouseObj(event, "mouseup");
   });
 
   function pingResponse()
