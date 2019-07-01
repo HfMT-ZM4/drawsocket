@@ -2031,7 +2031,7 @@ var drawsocket = (function(){
     
     let obj = {};
     obj["/mouse"+oscprefix] = {
-      caller: caller,
+      action: caller,
       xy: [ event.clientX, event.clientY ],
       button: event.buttons,
       mods : {
@@ -2067,8 +2067,8 @@ var drawsocket = (function(){
   {
 
     let msg = {};
-    msg[oscprefix+"/connected"] = 1;
-    msg[oscprefix+"/screensize"] = [window.innerWidth, window.innerHeight];
+    msg["/connected"+oscprefix] = 1;
+    msg["/screensize"+oscprefix] = [window.innerWidth, window.innerHeight];
 
     sendMsg(msg);
 

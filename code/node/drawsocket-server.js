@@ -6,6 +6,7 @@ const userpath = process.argv.slice(2);
 const http_port = 3002;
 let htmltemplate = '/lib/drawsocket-page.html';
 let infopage = "/lib/drawsocket-info.html";
+let usr_template = false;
 
 // load libaries
 const cluster = require('cluster');
@@ -81,17 +82,31 @@ if (cluster.isMaster)
         Max.post("adding user html root path " + userpath[0]);
     }
 
+    let usr_root_path = (userpath.length > 0) ? userpath[0] : __dirname;
+
+    // these files are in the package not the user root_path
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
     app.use('/lib', express.static(__dirname + '/lib/')); // client js and css files
     app.use('/fonts', express.static(__dirname + '/lib/fonts/')); // client js and css files
 
     // new system: use the same page for everything, and allow users to just set the OSC prefix by the URL
     app.use('*', (req, res) => {
-        if (req.baseUrl == "")
-            res.sendFile(__dirname + infopage);
-        else
-            res.sendFile(__dirname + htmltemplate);
 
+        if( !usr_template )
+        {
+            if (req.baseUrl == "")
+                res.sendFile(__dirname + infopage);
+            else
+                res.sendFile(__dirname + htmltemplate);
+        }
+        else
+        {
+            if (req.baseUrl == "")
+                res.sendFile(usr_root_path + infopage);
+            else
+                res.sendFile(usr_root_path + htmltemplate);
+        }
+        
     });
 
 
@@ -212,7 +227,8 @@ if (cluster.isMaster)
 */
     Max.addHandler("html_template", (...args) => {
         htmltemplate = args;
-        Max.post("set html template page to " + args);
+        usr_template = true;
+        Max.post("set html template page to " + usr_root_path + args);
     });
 
     Max.addHandler("writecache", (filename, prefix) => {
