@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 253.0, 112.0, 1179.0, 858.0 ],
+		"rect" : [ 100.0, 100.0, 1179.0, 858.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -4824,7 +4824,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 253.0, 138.0, 1179.0, 832.0 ],
+						"rect" : [ 100.0, 126.0, 1179.0, 832.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5488,7 +5488,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 417.0, 569.33331298828125, 220.0, 104.0 ],
+									"patching_rect" : [ 417.0, 542.33331298828125, 220.0, 104.0 ],
 									"text" : "Launch a browser window at the opened port, either by remote IP address or localhost.\n\nThe /URL following the address:port value will be used as the client's OSC receive address."
 								}
 
@@ -5501,7 +5501,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 248.8857421875, 640.83331298828125, 136.0, 35.0 ],
+									"patching_rect" : [ 248.8857421875, 653.5, 136.0, 35.0 ],
 									"text" : ";\rmax launch_browser $1"
 								}
 
