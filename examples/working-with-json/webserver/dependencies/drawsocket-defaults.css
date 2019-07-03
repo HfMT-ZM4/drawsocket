@@ -8,7 +8,7 @@
   height: 100vh;
   z-index: 0;
 }
-
+/*
 #back {
   position: absolute;
   top: 0;
@@ -19,7 +19,11 @@
   width: 100vw;
   z-index: 0;
 
-  /*border: solid red 1px;*/
+}
+*/
+
+div {
+  position: absolute;
 }
 
 #main {
@@ -34,6 +38,15 @@
 
   /*border: solid red 1px;*/
 }
+
+.pdfcanvas {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
 #overlay {
   position: absolute;
   top: 0;
@@ -52,8 +65,8 @@
   overflow: visible;
   z-index: 10;
 }
-
-#drawing {
+*/
+svg {
   float: left;
   position: absolute;
   width: 100vw;
@@ -62,6 +75,19 @@
   z-index: 10;
 }
 
+#main-svg {
+  float: left;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  z-index: 10;
+}
+
+g {
+  overflow: visible;
+}
+/*
 #overlay-drawing {
   float: left;
   position: absolute;
@@ -69,7 +95,7 @@
   z-index: 20;
 
 }
-
+*/
 #forms {
   position: absolute;
   float: left;
@@ -110,7 +136,7 @@
 
 .log {
   position: absolute;
-  top: calc(100vh - 20px);
+  top: calc(100vh - 50px);
   left: 10px;
   /* border: solid blue 1px; */
   display: block;
@@ -168,6 +194,10 @@ path {
   stroke-width: 1;
   stroke: rgb(0,0,0);
   fill: none;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 @font-face {
@@ -238,23 +268,6 @@ a:active {
     text-decoration: underline;
 }
 
-.loc {
-  color: white;
-  font-size: 40%;
-}
-
-.min {
-  color: black;
-}
-
-.ms {
-  color: black;
-}
-
-.pageIndex {
-  color: black;
-  font-size: 40%;
-}
 
 .err {
   color: red;
@@ -269,7 +282,7 @@ a:active {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 40%;
+  font-size: 70%;
   margin: 4px 2px;
   cursor: pointer;
 }

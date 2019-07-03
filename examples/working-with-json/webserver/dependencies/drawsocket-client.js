@@ -1,4 +1,18 @@
-/* global TweenMax:readonly, TimelineMax:readonly, Tone:readonly, StartAudioContext:readonly, d3:readonly, timesync:readonly  */
+
+/**
+ * 
+ * this version is without the objectStack, which we expect will function just fine since the browsers keeps a global hashtable for all node ids
+ *  to do:
+ * 
+ * complete sound support
+ * complete form support
+ * test user event scripts
+ * add video html
+ * add canvas commands
+ * add bezier line path for tweens
+ * 
+ * 
+ */
 
 'use strict';
 
@@ -14,12 +28,19 @@ var drawsocket = (function(){
 
   let url_args = new URLSearchParams( window.location.search.substr(1)  );
 
+  
 
   console.log( Array.from(url_args.keys()).length );
+  // //Iterate the search parameters.
+  // for (let p of url_args) {
+  //   console.log(p);
+  // }
+  
+
 
   const ws_url = `ws://${location.host}${oscprefix}`;
   const svg_ns = 'http://www.w3.org/2000/svg';
-  // const html_ns = 'http://www.w3.org/1999/xhtml';
+  const html_ns = 'http://www.w3.org/1999/xhtml';
 
   let port; // = new WebSocket(`ws://${location.host}${oscprefix}`);
   let ts; // timesync object
@@ -245,88 +266,6 @@ var drawsocket = (function(){
   */
 
 
-  function generateStyleDefs(svgDomElement) {
-    var styleDefs = "";
-    var sheets = document.styleSheets;
-    for (var i = 0; i < sheets.length; i++) {
-      var rules = sheets[i].cssRules;
-      for (var j = 0; j < rules.length; j++) {
-        var rule = rules[j];
-        if (rule.style) {
-          var selectorText = rule.selectorText;
-          var elems = svgDomElement.querySelectorAll(selectorText);
-
-          if (elems.length) {
-            styleDefs += selectorText + " { " + rule.style.cssText + " }\n";
-          }
-        }
-      }
-    }
-
-    var s = document.createElement('style');
-    s.setAttribute('type', 'text/css');
-    s.innerHTML = "<![CDATA[\n" + styleDefs + "\n]]>";
-    //somehow cdata section doesn't always work; you could use this instead:
-    //s.innerHTML = styleDefs;
-
-    console.log(styleDefs);
-    var defs = document.createElement('defs');
-    defs.appendChild(s);
-    svgDomElement.insertBefore(defs, svgDomElement.firstChild);
-  }
-
-  // kind of sort of working, but the image is cut off... 
-  // maybe later try: https://www.npmjs.com/package/save-svg-as-png
-  function rasterizeSVG() 
-  {
-    
-    console.log('calling' );
-
-    // add copy from svg object by id 
-
-    let svg = mainSVG.node();
-
-    generateStyleDefs(svg);
-
-
-    let svgData = new XMLSerializer().serializeToString( svg );
-
-    //let svgData = new Blob([svg], {type:"data:image/svg+xml;charset=utf-8"});
-    //let domURL = self.URL || self.webkitURL || self;
-    //let url = domURL.createObjectURL(svg);
-
-    let canvas = document.createElement( "canvas" );
-    let svgSize = svg.getBBox();
-    console.log(svgSize);
-    
-    canvas.width = svgSize.width;
-    canvas.height = svgSize.height;
-
-    main.append( ()=> {
-      return canvas;
-    });
-
-    mainSVG.remove();
-
-    let ctx = canvas.getContext( "2d" );
-
-    let img = new Image(svgSize.width, svgSize.height);
-
-    img.onload = function() {
-      ctx.drawImage( img, 0, 0 );
-
-       //console.log( canvas.toDataURL( "image/png" ) );
-    };
-
-    let sanitized = btoa(unescape(encodeURIComponent(svgData)));
-    console.log(sanitized.length);
-    img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))); //encodeURIComponent(svgData));//  
-
-
-  }
-
-
-
   function getHTML_element(node)
   {
 
@@ -476,7 +415,7 @@ var drawsocket = (function(){
 
           let retries = 100;
 
-          let fix_position = () => { //timestamp
+          let fix_position = (timestamp) => {
             let bb = el.node().getBBox();
             if( bb.width === 0 && retries-- > 0){
 //              console.log('retrying');
@@ -1061,7 +1000,7 @@ var drawsocket = (function(){
     if( animStack.hasOwnProperty(node.id) )
     {
       if( node.hasOwnProperty('call') && typeof node.call === 'object' )
-        processMethodCalls( animStack[node.id], node.call );
+        processMethodCalls( animStack[id], node.call );
     }
 
     if( node.hasOwnProperty('cmd') )
@@ -1437,7 +1376,7 @@ var drawsocket = (function(){
               }
             });
 
-            // console.log(ref_args);
+            console.log(ref_args);
             
             ret = _obj[call.method]( ...ref_args );
             
@@ -1452,7 +1391,7 @@ var drawsocket = (function(){
 
         if (typeof ret.then === 'function' && ret !== null) {
           ret.catch((e) => { 
-            // console.log(`caught error ${e}`);
+            console.log(`caught error ${e}`);
           })
         }
         else if( ret !== undefined )
@@ -1461,7 +1400,7 @@ var drawsocket = (function(){
           {
             processMethodCalls( ret, call.then );
           }
-          // console.log(`return value ${ret}`);
+          console.log(`return value ${ret}`);
         }
 
       }
@@ -1528,7 +1467,7 @@ var drawsocket = (function(){
       display_log("Started Audio");
     });
 
-   // console.log( Tone.context );
+    console.log( Tone.context );
 
   }
 
@@ -1883,16 +1822,6 @@ var drawsocket = (function(){
         case "log":
           log_enabled = ( objValue > 0 );
         break;
-        case "canvas":
-          rasterizeSVG();
-        break;
-        case "getSVG":
-          console.log("svgElement" );
-          generateStyleDefs(mainSVG.node());
-          sendMsg({
-            svgElement: mainSVG.node().outerHTML
-          });
-        break;
         default:
             console.log("unrouted command key:", key, objValue );
         break;
@@ -1908,10 +1837,10 @@ var drawsocket = (function(){
 
   function emptybundle(){
     return {
-      timeTag : Date.now,
+      timeTag : osc.timeTag(),
       packets : []
     }
-  }
+  };
 
   function initMultitouch(name) {
     let el = document.getElementById(name);
@@ -1996,7 +1925,7 @@ var drawsocket = (function(){
     }
     return -1; // not found
   }
-/*
+
   function findPos (obj) {
       let curleft = 0,
           curtop = 0;
@@ -2010,65 +1939,38 @@ var drawsocket = (function(){
           return { x: curleft-document.body.scrollLeft, y: curtop-document.body.scrollTop };
       }
   }
-*/
 
-  function elementToJSON(elm)
-  {
-    let obj = {};
-    obj.tag = elm.tagName;
-    Array.prototype.forEach.call(elm.attributes, (attr) => {
-      if( attr.specified )
-      {
-        obj[attr.name] = attr.value;
-      }
-    });
-
-    return obj;
-  }
-
-  function sendMouseObj(event, caller)
-  {
-    
-    let obj = {};
-    obj["/mouse"+oscprefix] = {
-      action: caller,
-      xy: [ event.clientX, event.clientY ],
-      button: event.buttons,
-      mods : {
-        alt: event.altKey,
-        shift: event.shiftKey,
-        ctrl: event.ctrlKey,
-        meta: event.metaKey
-      },
-      target: elementToJSON(event.target)
-    };
-    sendMsg(obj);
-  }
 
   document.body.addEventListener("mousemove", function(event)
   {
-    //event.preventDefault();
-    sendMouseObj(event, "mousemove");
+    const obj = {};
+    obj[oscprefix+"/"+event.target.id+"/mouse/xy"] = [ event.clientX, event.clientY ];
+    sendMsg(obj);
+
+      //posterror(event.clientX + " " + event.clientY);
   });
 
   document.body.addEventListener("mousedown", function(event)
   {
-    //event.preventDefault();
-    sendMouseObj(event, "mousedown");
+    const obj = {};
+    obj[oscprefix+"/"+event.target.id+"/mouse/state"] = 1;
+    sendMsg(obj);
   });
 
   document.body.addEventListener("mouseup", function(event)
   {
-    //event.preventDefault();
-    sendMouseObj(event, "mouseup");
+    const obj = {};
+    obj[oscprefix+"/"+event.target.id+"/mouse/state"] = 0;
+    sendMsg(obj);
+      //posterror(event.clientX + " " + event.clientY);
   });
 
   function pingResponse()
   {
 
     let msg = {};
-    msg["/connected"+oscprefix] = 1;
-    msg["/screensize"+oscprefix] = [window.innerWidth, window.innerHeight];
+    msg[oscprefix+"/connected"] = 1;
+    msg[oscprefix+"/screensize"] = [window.innerWidth, window.innerHeight];
 
     sendMsg(msg);
 
@@ -2077,7 +1979,7 @@ var drawsocket = (function(){
   function do_sync()
   {
     setTimeout(function () {
-      ts.sync().catch(err => console.log('timesync err', err));
+      ts.sync().catch(err => console.loig('timesync err', err));
     }, 100);
   }
 
@@ -2155,10 +2057,10 @@ var drawsocket = (function(){
     }
 
     this.senderror = function (err) {
-      let _obj = {};
-      _obj[oscprefix+"/error"] = err;
-      _obj.timetag = Date.now();
-      this.sendObj(_obj);
+      let erroraddr = oscprefix+"/error";
+      this.sendObj({
+        erroraddr : err
+      });
     }
 
     this.port.onerror = function(error) {
@@ -2240,11 +2142,6 @@ var drawsocket = (function(){
         _val.prefix = url_args.get("prefix");
       }
 
-      console.log({
-        key: "file",
-        val: _val
-      });
-      
       drawsocket_input({
         key: "file",
         val: _val
@@ -2295,8 +2192,8 @@ var drawsocket = (function(){
 
     //let prev_offset = 0;
 
-    ts.on('change', function () { // (offset) optional arg
-       
+    ts.on('change', function (offset) {
+      
     //  prev_offset = prev_offset - ts.offset;
    //   console.log(`dx=${prev_offset} new=${ts.offset}`);
       let msg = {};
@@ -2401,9 +2298,8 @@ var drawsocket = (function(){
 
   }
 
-    function jsonSound_obj(_obj) {  }
-
   */
+  function jsonSound_obj(_obj) {  }
 
   /**
    * PDF handler
@@ -2478,8 +2374,8 @@ var drawsocket = (function(){
 
       // size of pdf
       let viewport = _page.getViewport(this.scale);
-      
-      //let mainDiv_bbox = main.node().getBoundingClientRect();
+
+      let mainDiv_bbox = main.node().getBoundingClientRect();
 
       // scale to fit
 
@@ -2563,7 +2459,7 @@ var drawsocket = (function(){
   /**
    * fastObjEqual
    */
-/*
+
 
   function fastObjEqual(a, b) {
 
@@ -2618,16 +2514,15 @@ var drawsocket = (function(){
     }
 
     return a!==a && b!==b;
-  }
-*/
+  };
 
-  function sendMsg(_obj)
+function sendMsg(_obj)
+{
+  if( port )
   {
-    if( port )
-    {
-      port.sendObj(_obj);
-    }
+    port.sendObj(_obj);
   }
+}
 
   return {
     input: drawsocket_input,

@@ -76,14 +76,16 @@ if (cluster.isMaster)
 
     app.use(bodyParser.urlencoded({ extended: true }));
 
+    let usr_root_path =  __dirname;
     
-    if (userpath.length > 0) {
+
+    if (userpath.length > 0 && userpath[0] != "default" ) {
         app.use(express.static(userpath[0]));
+        usr_root_path = userpath[0];
         Max.post("adding user html root path " + userpath[0]);
     }
 
-    let usr_root_path = (userpath.length > 0) ? userpath[0] : __dirname;
-
+    Max.post("usr_path ", usr_root_path, userpath[0]);
     // these files are in the package not the user root_path
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
     app.use('/lib', express.static(__dirname + '/lib/')); // client js and css files
@@ -232,11 +234,11 @@ if (cluster.isMaster)
     });
 
     Max.addHandler("writecache", (filename, prefix) => {
-        Max.post("attempting to save", userpath[0]+filename, prefix);
+        Max.post("attempting to save", filename, prefix); //usr_root_path+
         cache_proc.send({
             key: 'write',
             url: prefix,
-            val: userpath[0]+filename
+            val: filename //usr_root_path+
         });
     });
 
@@ -245,7 +247,7 @@ if (cluster.isMaster)
         cache_proc.send({
             key: 'read',
             url: prefix,
-            val: userpath[0]+filename
+            val: filename //usr_root_path+
         });
     });
 

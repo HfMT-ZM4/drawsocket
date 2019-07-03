@@ -3,7 +3,12 @@ var pathToScript = "default";
 function setpath(relPath)
 {
 
-	var fullpath = this.patcher.parentpatcher ? this.patcher.parentpatcher.filepath : this.patcher.filepath;
+	var toplevel = this.patcher;
+	
+	while( toplevel.parentpatcher)
+		toplevel = toplevel.parentpatcher;
+
+	var fullpath = toplevel.filepath;
 
 	if( fullpath ) // must be saved first
 	{
@@ -26,7 +31,7 @@ function setpath(relPath)
 function bang()
 {
 	if( pathToScript === "default"){
-		setpath('');
+		setpath();
 	}
 	// outlet(0, "script", "start");
 	//else
