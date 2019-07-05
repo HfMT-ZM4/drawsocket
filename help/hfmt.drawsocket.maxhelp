@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 295.0, 79.0, 1122.0, 863.0 ],
+		"rect" : [ 99.0, 79.0, 1122.0, 863.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -1749,7 +1749,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 459.0, 327.446458239907543, 190.0, 22.0 ],
+					"patching_rect" : [ 459.0, 327.446458239907543, 150.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1757,7 +1757,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p \"forms & drawsocket messages\""
+					"text" : "p \"forms & JS API\""
 				}
 
 			}
@@ -3715,7 +3715,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 295.0, 105.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3764,7 +3764,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 846.0, 610.0, 171.0, 47.0 ],
-									"presentation_linecount" : 2,
 									"text" : "here we use inline styling to override the previously set values."
 								}
 
@@ -3780,7 +3779,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 691.0, 475.73956298828125, 150.0, 201.0 ],
-									"presentation_linecount" : 14,
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -12, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -52, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -68, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 20, 47, 99, 108, 97, 115, 115, 0, 0, 44, 115, 0, 0, 111, 112, 101, 110, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 50, 0, 0, 0, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 25, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 52, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 36, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 114, 101, 100, 0 ],
 									"saved_bundle_length" : 276,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/class : \"open\",\n\t\t/id : \"foo2\",\n\t\t/cx : 25,\n\t\t/cy : 100,\n\t\t/r : 10,\n\t\t/style : {\n\t\t\t/fill : \"red\"\n\t\t}\n\t}\n}"
@@ -5332,7 +5330,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 99.0, 105.0, 1122.0, 837.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5361,6 +5359,18 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-68",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 381.0, 677.83331298828125, 153.5, 33.0 ],
+									"text" : "n.b. Drawsocket works best in Safari or Chrome"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-27",
 									"maxclass" : "comment",
@@ -6642,13 +6652,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-45",
-									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 148.0, 765.0, 407.0, 48.0 ],
-									"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://192.168.178.36:3002\""
+									"patching_rect" : [ 148.0, 765.0, 407.0, 34.0 ]
 								}
 
 							}

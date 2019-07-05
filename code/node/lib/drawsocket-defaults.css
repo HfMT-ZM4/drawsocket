@@ -3,9 +3,9 @@
   position: absolute;
   left: 0;
   top: 0;
-  border: 1px solid black;
-  width: 100vw;
-  height: 100vh;
+  /*border: 1px solid black;*/
+  width: 100vw-1px;
+  height: 100vh-1px;
   z-index: 0;
 }
 /*

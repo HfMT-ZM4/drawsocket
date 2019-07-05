@@ -1711,7 +1711,7 @@ var drawsocket = (function(){
     {
       const key = iter_obj_arr[i].key;
       
-      const timetag = iter_obj_arr[i].timetag ? iter_obj_arr[i].timetag : toplevel_timetag;
+      const timetag = iter_obj_arr[i].timetag ? iter_obj_arr[i].timetag : (toplevel_timetag ? toplevel_timetag : Date.now());
 
       const objValue =  iter_obj_arr[i].val;
 
