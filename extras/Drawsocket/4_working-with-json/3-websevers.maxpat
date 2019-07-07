@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 309.0, 79.0, 1183.0, 740.0 ],
+		"rect" : [ 246.0, 79.0, 1129.0, 765.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,12 +39,128 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 690.0, 653.0, 355.0, 22.0 ],
+					"text" : "http://localhost:3002/webview.html?fetch=echoic-1.json&prefix=/1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial Bold",
+					"fontsize" : 14.0,
+					"id" : "obj-23",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 483.0, 497.5, 494.0, 38.0 ],
+					"text" : "Here are some examples of saved JSON files that are on our example remote server (i.e. in the \"webserver\" folder)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 14.0,
+					"id" : "obj-15",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 573.0, 421.0, 466.0, 53.0 ],
+					"presentation_linecount" : 12,
+					"text" : "Opens a file named webview.html from the web address www.foo.com, then we pass the parameters: \nfetch=saved-cache-on-server.json  and    prefix=/1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 14.0,
+					"id" : "obj-11",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 573.0, 369.0, 107.0, 22.0 ],
+					"text" : "So for example:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 14.0,
+					"id" : "obj-5",
+					"linecount" : 6,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 573.0, 264.0, 453.0, 100.0 ],
+					"presentation_linecount" : 5,
+					"text" : "In order to tell Drawsocket to load a certain file without sending the message from the server, we can use URL query string encoding to set the file to fetch and the prefix to load. \n\nFor the query string, the first separator character after the HTML file is a ?, and then second is a &."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 14.0,
+					"id" : "obj-20",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 16.0, 531.0, 134.0, 22.0 ],
+					"text" : "IP host address:port"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial Italic",
+					"fontsize" : 14.0,
+					"id" : "obj-16",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 573.0, 393.0, 461.0, 22.0 ],
+					"text" : "www.foo.com/webview.html?fetch=saved-cache-on-server.json&prefix=/1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial Bold",
+					"fontsize" : 14.0,
+					"id" : "obj-14",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 573.0, 240.0, 89.0, 22.0 ],
+					"text" : "URL format:"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 537.5, 541.5, 385.0, 22.0 ],
+					"text" : "http://localhost:3002/webview.html?fetch=scrolling-score.json&prefix=/*"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontsize" : 14.0,
 					"id" : "obj-22",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 210.0, 568.33331298828125, 208.0, 22.0 ],
+					"patching_rect" : [ 211.0, 619.33331298828125, 208.0, 22.0 ],
 					"text" : "webserver is the root html folder"
 				}
 
@@ -56,33 +172,36 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 510.5, 529.0, 437.0, 22.0 ],
+					"patching_rect" : [ 597.0, 611.0, 432.0, 22.0 ],
 					"text" : "http://localhost:3002/webview.html?fetch=saved-cache-on-server.json&prefix=/2"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"fontsize" : 14.0,
+					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"bubble" : 1,
+					"bubbleusescolors" : 1,
+					"fontsize" : 13.0,
 					"id" : "obj-18",
-					"linecount" : 11,
+					"linecount" : 17,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.0, 229.0, 384.0, 179.0 ],
-					"presentation_linecount" : 11,
-					"text" : "webserver is the root HTML folder for public facing files.\n\nwebview.html is the same as drawsocket-page.html except that the path to the dependency files as been updated to match the folder layout.\n\nsaved-cache-on-server.json is a copy of the circle example used in the previous examples\n\nechoic-1.json is a more complex exmaple, using the system as an online rehearsal tool, with user interactions."
+					"patching_rect" : [ 252.5, 197.5, 306.0, 257.0 ],
+					"text" : "webserver is the root HTML folder for public facing files.\n\nwebview.html is the same as drawsocket-page.html except that the path to the dependency files as been updated to match the folder layout (i.e. /dependencies/...)\n\nsaved-cache-on-server.json is a copy of the circle example used in the previous examples\n\nscrolling-score.json is a exported JSON from the Buttons \"toggle-scrolling-score\" example.\n\nechoic-1.json is a more complex exmaple, using the system as an online rehearsal tool, with user interactions."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontname" : "Arial Bold",
 					"fontsize" : 14.0,
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 20.0, 201.0, 233.0, 22.0 ],
+					"patching_rect" : [ 17.5, 213.0, 253.0, 22.0 ],
 					"text" : "Here is the folder structure:"
 				}
 
@@ -95,8 +214,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 20.0, 229.0, 233.0, 163.0 ],
-					"presentation_linecount" : 10,
+					"patching_rect" : [ 17.5, 241.0, 233.0, 163.0 ],
 					"text" : "webserver\n|-- webview.html\n|-- saved-cache-on-server.json\n|-- echoic-1.json\n|-- dependencies\n     |-- drawsocket-client.js\n     |-- drawsocket-defaults.css\n     |-- d3-selection.min.js\n     |-- TweenMax.min.js\n     |-- (... and a few other js libraries)"
 				}
 
@@ -109,8 +227,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 510.5, 567.0, 129.0, 35.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 537.5, 687.0, 129.0, 35.0 ],
 					"text" : ";\rmax launchbrowser $1"
 				}
 
@@ -123,20 +240,20 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 88.0, 507.0, 330.0, 53.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 88.0, 558.0, 330.0, 53.0 ],
 					"text" : "Note: we are not sending any messages to the server after startup, which means these views are purely run in the browser."
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"fontname" : "Arial Bold",
 					"fontsize" : 14.0,
 					"id" : "obj-7",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 20.0, 17.0, 546.0, 22.0 ],
+					"patching_rect" : [ 20.0, 17.0, 590.0, 22.0 ],
 					"text" : "Using the Drawsocket client-side functionality on a standard webserver outside of Max."
 				}
 
@@ -151,20 +268,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 633.0, 313.0, 48.0 ],
-					"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://192.168.178.177:3002\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 20.0, 607.0, 77.0, 22.0 ],
-					"text" : "o.select /port"
+					"patching_rect" : [ 20.0, 664.0, 313.0, 48.0 ],
+					"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://192.168.178.36:3002\""
 				}
 
 			}
@@ -175,7 +280,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 511.5, 496.0, 437.0, 22.0 ],
+					"patching_rect" : [ 560.5, 576.83331298828125, 432.0, 22.0 ],
 					"text" : "http://localhost:3002/webview.html?fetch=saved-cache-on-server.json&prefix=/1"
 				}
 
@@ -187,7 +292,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 512.83331298828125, 64.0, 22.0 ],
+					"patching_rect" : [ 20.0, 563.83331298828125, 64.0, 22.0 ],
 					"text" : "script start"
 				}
 
@@ -201,7 +306,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "" ],
-					"patching_rect" : [ 20.0, 566.33331298828125, 179.0, 24.0 ],
+					"patching_rect" : [ 20.0, 617.33331298828125, 179.0, 24.0 ],
 					"text" : "hfmt.drawsocket webserver"
 				}
 
@@ -213,7 +318,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 20.0, 538.0, 63.0, 22.0 ],
+					"patching_rect" : [ 20.0, 589.0, 63.0, 22.0 ],
 					"text" : "script stop"
 				}
 
@@ -249,14 +354,21 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"midpoints" : [ 189.5, 601.666656494140625, 29.5, 601.666656494140625 ],
+					"destination" : [ "obj-6", 0 ],
+					"midpoints" : [ 189.5, 650.666656494140625, 29.5, 650.666656494140625 ],
 					"source" : [ "obj-38", 2 ]
 				}
 
@@ -270,8 +382,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-5", 0 ]
+					"destination" : [ "obj-13", 0 ],
+					"source" : [ "obj-9", 0 ]
 				}
 
 			}
@@ -279,21 +391,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "hfmt.drawsocket.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/patchers",
-				"patcherrelativepath" : "../../patchers",
+				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "drawsocket-server.js",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code/node",
-				"patcherrelativepath" : "../../code/node",
+				"patcherrelativepath" : "../../../code/node",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "startscript.js",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
-				"patcherrelativepath" : "../../code",
+				"patcherrelativepath" : "../../../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
@@ -345,8 +457,8 @@
 ,
 				"number" : 				{
 					"fontsize" : [ 12.0 ],
-					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
-					"fontname" : [ "Arial" ]
+					"fontname" : [ "Arial" ],
+					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -355,8 +467,8 @@
 , 			{
 				"name" : "caption text",
 				"default" : 				{
-					"fontface" : [ 2 ],
-					"fontsize" : [ 11.0 ]
+					"fontsize" : [ 11.0 ],
+					"fontface" : [ 2 ]
 				}
 ,
 				"parentstyle" : "",
@@ -365,9 +477,9 @@
 , 			{
 				"name" : "section dividers",
 				"default" : 				{
-					"fontface" : [ 3 ],
 					"fontsize" : [ 15.0 ],
-					"fontname" : [ "Arial" ]
+					"fontname" : [ "Arial" ],
+					"fontface" : [ 3 ]
 				}
 ,
 				"parentstyle" : "",
@@ -386,9 +498,9 @@
 , 			{
 				"name" : "titles",
 				"default" : 				{
-					"fontface" : [ 1 ],
 					"fontsize" : [ 20.0 ],
-					"fontname" : [ "Arial" ]
+					"fontname" : [ "Arial" ],
+					"fontface" : [ 1 ]
 				}
 ,
 				"parentstyle" : "",
