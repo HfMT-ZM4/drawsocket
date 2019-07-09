@@ -157,7 +157,7 @@ For example:
 There are three levels of inheritance with SVG CSS styling: 
 1. *presentation attributes*, set within the element, as demonstrated above in the context of SVG object attributes.
 2. *stylesheet* definitions, set in an attached CSS stylesheet, or within an `<style>` element in the HTML page (settable via the "css" key detailed below).
-3. *inline styling*, a snippet of CSS wrapped in a string and set in an elements's `style` attribute, as shown above.
+3. *inline styling*, a set of CSS rules included as part of an elements's `style` attribute. In `drawsocket` we set these values via the `/style` sub-bundle.
    
 Each is overridden by the next: *stylesheets* override *presentation attributes*, and *inline styles* override all the others.
 
