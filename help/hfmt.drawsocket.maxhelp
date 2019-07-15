@@ -5372,23 +5372,24 @@
 							}
 , 							{
 								"box" : 								{
+									"fontface" : 1,
 									"id" : "obj-27",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 246.0, 303.5, 83.0, 20.0 ],
+									"patching_rect" : [ 246.0, 303.5, 87.0, 20.0 ],
 									"text" : "Wildcard URL"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 0,
+									"fontface" : 1,
 									"id" : "obj-26",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 49.5, 49.5, 179.0, 20.0 ],
+									"patching_rect" : [ 102.5, 55.0, 188.0, 20.0 ],
 									"text" : "Here the URLs are /foo and /bar"
 								}
 
@@ -5555,7 +5556,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 440.0, 61.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 426.0, 61.0, 22.0 ],
 									"text" : "Outlets:"
 								}
 
@@ -5568,7 +5569,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 653.5, 386.0, 100.0 ],
+									"patching_rect" : [ 668.8642578125, 668.5, 386.0, 100.0 ],
 									"text" : "Most modern browsers provide \"Developers Tools\" which allow you to see the page's HTML layout in real time. For example on Mac in Chrome and Safari, you can press the alt-cmd-i keyboard shortcut to open the developer window. You may need to enable the show developer tools option in the browser before this shortcut will work."
 								}
 
@@ -5581,31 +5582,31 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 636.5, 186.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 651.5, 186.0, 22.0 ],
 									"text" : "Browser debugging tools: "
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 0,
+									"fontface" : 1,
 									"id" : "obj-29",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 374.0, 111.5, 34.0, 20.0 ],
+									"patching_rect" : [ 374.0, 111.5, 35.0, 20.0 ],
 									"text" : "/new"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 0,
+									"fontface" : 1,
 									"id" : "obj-28",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 387.0, 167.33331298828125, 21.0, 20.0 ],
+									"patching_rect" : [ 387.0, 167.33331298828125, 22.0, 20.0 ],
 									"text" : "/id"
 								}
 
@@ -6168,7 +6169,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 457.5, 264.0, 50.0 ],
+									"patching_rect" : [ 668.8642578125, 443.5, 264.0, 50.0 ],
 									"text" : "left: update messages from client and server\nmiddle: errors\nright: server status"
 								}
 
@@ -6708,6 +6709,22 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 118.5, 512.5, 63.0, 22.0 ],
 									"text" : "script stop"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
+									"border" : 2,
+									"bordercolor" : [ 0.588235294117647, 0.811764705882353, 0.996078431372549, 1.0 ],
+									"id" : "obj-53",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 662.8642578125, 510.5, 398.0, 121.0 ],
+									"proportion" : 0.5
 								}
 
 							}
