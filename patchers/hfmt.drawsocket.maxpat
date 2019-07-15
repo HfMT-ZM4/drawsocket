@@ -39,7 +39,44 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-23",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 79.5, 125.0, 47.0, 22.0 ],
+					"text" : "zl.nth 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 26.5, 125.0, 47.0, 22.0 ],
+					"text" : "zl.nth 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 178.999996185302734, 181.5, 65.0, 22.0 ],
+					"text" : "setport $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-34",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -90,7 +127,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 191.0, 290.0, 162.0, 22.0 ],
-									"presentation_linecount" : 3,
 									"text" : "npm install --only=production"
 								}
 
@@ -266,7 +302,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 225.0, 231.0, 108.0, 22.0 ],
+					"patching_rect" : [ 287.999992370605469, 214.5, 48.0, 35.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -274,7 +310,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p production mode"
+					"text" : "p prod mode"
 				}
 
 			}
@@ -286,20 +322,18 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 65.0, 225.0, 24.0, 24.0 ]
+					"patching_rect" : [ 92.0, 226.0, 24.0, 24.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-19",
-					"linecount" : 10,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 18.5, 344.6666259765625, 61.0, 143.0 ],
-					"text" : "script start \"/Users/r/Documents/Max 8/Packages/drawsocket/examples/viewer/\""
+					"patching_rect" : [ 26.5, 337.0, 83.0, 22.0 ]
 				}
 
 			}
@@ -310,7 +344,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 115.0, 379.0, 77.0, 22.0 ],
+					"patching_rect" : [ 142.0, 380.0, 77.0, 22.0 ],
 					"text" : "o.select /port"
 				}
 
@@ -323,7 +357,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 543.499984741210938, 257.0, 24.0, 24.0 ]
+					"patching_rect" : [ 570.499984741210938, 258.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -334,7 +368,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 543.499984741210938, 296.0, 32.0, 22.0 ],
+					"patching_rect" : [ 570.499984741210938, 297.0, 32.0, 22.0 ],
 					"text" : "gate"
 				}
 
@@ -345,7 +379,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 680.0, 517.33331298828125, 68.0, 22.0 ],
+					"patching_rect" : [ 707.0, 518.33331298828125, 68.0, 22.0 ],
 					"text" : "print stdout"
 				}
 
@@ -357,7 +391,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 680.0, 478.33331298828125, 85.0, 22.0 ],
+					"patching_rect" : [ 707.0, 479.33331298828125, 85.0, 22.0 ],
 					"text" : "o.route /stdout"
 				}
 
@@ -369,7 +403,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 346.999984741210938, 277.0, 29.5, 22.0 ],
+					"patching_rect" : [ 373.999984741210938, 278.0, 29.5, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -381,7 +415,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 587.0, 304.0, 34.0, 22.0 ],
+					"patching_rect" : [ 614.0, 305.0, 34.0, 22.0 ],
 					"text" : "write"
 				}
 
@@ -393,7 +427,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 543.499984741210938, 336.0, 50.5, 22.0 ],
+					"patching_rect" : [ 570.499984741210938, 337.0, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
@@ -507,7 +541,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 480.0, 438.83331298828125, 61.0, 22.0 ],
+					"patching_rect" : [ 507.0, 439.83331298828125, 61.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -522,6 +556,7 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-20",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -537,7 +572,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 104.0, 1152.0, 720.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -569,13 +604,14 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-11",
-									"linecount" : 4,
+									"linecount" : 8,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 50.0, 100.0, 875.0, 73.0 ],
-									"text" : "if( bound(/terminated/error) && strcmp(/terminated/error./details, \"Cannot find module\", 18 ) == 0,\n  /print = /terminated/error./details + \". You may need to run npm install, see the hfmt.drawsocket help patch for more information\"\n)"
+									"patching_rect" : [ 50.0, 119.0, 1011.0, 127.0 ],
+									"presentation_linecount" : 8,
+									"text" : "if( bound(/terminated/error),\n  if( bound(/terminated/error./details) && strcmp(/terminated/error./details, \"Cannot find module\", 18 ) == 0,\n    /print = /terminated/error./details + \". You may need to run npm install, see the hfmt.drawsocket help patch for more information\",\n    if( bound(/terminated/error./message) && strcmp(/terminated/error./message, \"listen EADDRINUSE\", 17 ) == 0,\n        /print = /terminated/error./message + \". You may have another server running on this port already.\"\n    )\n  )\n)"
 								}
 
 							}
@@ -600,7 +636,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 233.0, 30.0, 30.0 ]
+									"patching_rect" : [ 50.0, 347.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -622,7 +658,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 347.0, 438.83331298828125, 131.0, 22.0 ],
+					"patching_rect" : [ 374.0, 439.83331298828125, 131.0, 35.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -630,7 +666,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p missing module error"
+					"text" : "p missing module and port error"
 				}
 
 			}
@@ -640,7 +676,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 480.0, 515.33331298828125, 123.0, 22.0 ],
+					"patching_rect" : [ 507.0, 516.33331298828125, 123.0, 22.0 ],
 					"text" : "print hfmt.drawsocket"
 				}
 
@@ -652,7 +688,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 480.0, 478.33331298828125, 76.0, 22.0 ],
+					"patching_rect" : [ 507.0, 479.33331298828125, 76.0, 22.0 ],
 					"text" : "o.route /print"
 				}
 
@@ -664,7 +700,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 346.999984741210938, 209.0, 37.0, 22.0 ],
+					"patching_rect" : [ 373.999984741210938, 210.0, 37.0, 22.0 ],
 					"text" : "o.dict"
 				}
 
@@ -676,7 +712,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 346.999984741210938, 160.0, 175.0, 22.0 ],
+					"patching_rect" : [ 373.999984741210938, 161.0, 175.0, 22.0 ],
 					"text" : "routepass FullPacket dictionary"
 				}
 
@@ -684,12 +720,11 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-2",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 127.0, 190.0, 51.0, 35.0 ],
+					"patching_rect" : [ 107.0, 181.5, 65.0, 22.0 ],
 					"text" : "setpath $1"
 				}
 
@@ -697,11 +732,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-13",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 225.333328247070312, 265.5, 85.0, 22.0 ],
+					"patching_rect" : [ 288.333320617675781, 257.0, 58.666679382324219, 35.0 ],
 					"text" : "prepend script"
 				}
 
@@ -713,7 +749,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 192.333328247070312, 186.0, 51.0, 22.0 ],
+					"patching_rect" : [ 255.999992370605469, 176.0, 51.0, 22.0 ],
 					"text" : "sel start"
 				}
 
@@ -722,11 +758,11 @@
 				"box" : 				{
 					"comment" : "general status output (OSC)",
 					"id" : "obj-9",
-					"index" : 0,
+					"index" : 3,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 837.5, 445.33331298828125, 30.0, 30.0 ]
+					"patching_rect" : [ 864.5, 446.33331298828125, 30.0, 30.0 ]
 				}
 
 			}
@@ -734,11 +770,11 @@
 				"box" : 				{
 					"comment" : "error output (OSC)",
 					"id" : "obj-7",
-					"index" : 0,
+					"index" : 2,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 290.0, 438.83331298828125, 30.0, 30.0 ]
+					"patching_rect" : [ 317.0, 439.83331298828125, 30.0, 30.0 ]
 				}
 
 			}
@@ -749,20 +785,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 47.0, 74.0, 72.0, 22.0 ],
+					"patching_rect" : [ 51.0, 45.0, 72.0, 22.0 ],
 					"text" : "patcherargs"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 115.0, 153.0, 31.0, 22.0 ],
-					"text" : "t b s"
 				}
 
 			}
@@ -773,7 +797,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.0, 265.5, 85.0, 22.0 ],
+					"patching_rect" : [ 142.0, 266.5, 85.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "startscript.js",
 						"parameter_enable" : 0
@@ -790,7 +814,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 552.0, 175.0, 264.0, 33.0 ],
+					"patching_rect" : [ 579.0, 176.0, 264.0, 33.0 ],
 					"text" : "optional argument or @html_root:\npath to root server html folder relative to patcher"
 				}
 
@@ -799,11 +823,11 @@
 				"box" : 				{
 					"id" : "obj-26",
 					"maxclass" : "newobj",
-					"numinlets" : 4,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 115.0, 106.0, 250.999984741210938, 22.0 ],
-					"text" : "route html_root script done"
+					"numinlets" : 5,
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
+					"patching_rect" : [ 138.0, 125.0, 254.999984741210938, 22.0 ],
+					"text" : "route html_root port script done"
 				}
 
 			}
@@ -813,7 +837,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 552.0, 130.5, 116.0, 20.0 ],
+					"patching_rect" : [ 579.0, 131.5, 116.0, 20.0 ],
 					"text" : "rama gottfried, 2018"
 				}
 
@@ -824,7 +848,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 552.0, 96.5, 96.0, 20.0 ],
+					"patching_rect" : [ 579.0, 97.5, 96.0, 20.0 ],
 					"text" : "hfmt.drawsocket"
 				}
 
@@ -836,7 +860,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 333.0, 385.0, 166.0, 22.0 ],
+					"patching_rect" : [ 360.0, 386.0, 166.0, 22.0 ],
 					"text" : "o.select /terminated/error"
 				}
 
@@ -846,11 +870,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-27",
+					"linecount" : 19,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 333.0, 566.1666259765625, 602.0, 34.0 ]
+					"patching_rect" : [ 360.0, 567.1666259765625, 602.0, 279.0 ],
+					"text" : "/terminated/error : {\n\t/code : 2,\n\t/message : \"listen EADDRINUSE :::3002\",\n\t/stack : \"Error: listen EADDRINUSE :::3002\n    at Server.setupListenHandle [as _listen2] (net.js:1286:14)\n    at listenInCluster (net.js:1334:12)\n    at Server.listen (net.js:1421:7)\n    at Object.<anonymous> (/Users/r/Documents/Max 8/Packages/drawsocket/code/node/drawsocket-server.js:432:12)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Object.Module._load (internal/modules/cjs/loader.js:529:3)\n    at Function.Module._load (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/nsRunner.js:67:24)\",\n\t/time : 2019-07-15T20:07:59.107411Z\n}"
 				}
 
 			}
@@ -859,11 +885,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-47",
+					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 963.0, 432.83331298828125, 572.0, 34.0 ]
+					"patching_rect" : [ 990.0, 433.83331298828125, 572.0, 116.0 ],
+					"text" : "/restarted/success : {\n\t/restartCount : 5,\n\t/pid : 71443,\n\t/reason : \"error\",\n\t/id : \"u79950010254\",\n\t/time : 2019-07-15T20:07:59.000882Z\n}"
 				}
 
 			}
@@ -1141,7 +1169,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 333.0, 353.0, 35.0, 22.0 ],
+					"patching_rect" : [ 360.0, 354.0, 35.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1160,12 +1188,10 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 115.0, 320.0, 237.0, 22.0 ],
+					"patching_rect" : [ 142.0, 321.0, 237.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -1177,12 +1203,12 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-36",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.0, 25.0, 30.0, 30.0 ]
+					"patching_rect" : [ 138.0, 26.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -1190,11 +1216,11 @@
 				"box" : 				{
 					"comment" : "node output (dictionary/OSC)",
 					"id" : "obj-37",
-					"index" : 0,
+					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 173.0, 498.1666259765625, 30.0, 30.0 ]
+					"patching_rect" : [ 200.0, 499.1666259765625, 30.0, 30.0 ]
 				}
 
 			}
@@ -1314,6 +1340,13 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-2", 0 ]
 				}
 
@@ -1335,7 +1368,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 366.999984741210938, 312.0, 124.5, 312.0 ],
+					"midpoints" : [ 393.999984741210938, 313.0, 151.5, 313.0 ],
 					"source" : [ "obj-22", 1 ]
 				}
 
@@ -1344,6 +1377,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 1 ],
 					"source" : [ "obj-22", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-23", 0 ]
 				}
 
 			}
@@ -1364,13 +1404,20 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-26", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
 					"source" : [ "obj-26", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
+					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-26", 0 ]
 				}
 
@@ -1378,7 +1425,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
-					"source" : [ "obj-26", 3 ]
+					"source" : [ "obj-26", 4 ]
 				}
 
 			}
@@ -1450,13 +1497,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"source" : [ "obj-5", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -1464,7 +1504,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 512.499984741210938, 315.5, 124.5, 315.5 ],
+					"midpoints" : [ 539.499984741210938, 316.5, 151.5, 316.5 ],
 					"source" : [ "obj-6", 2 ]
 				}
 
@@ -1479,8 +1519,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-22", 0 ],
-					"midpoints" : [ 434.499984741210938, 239.0, 356.499984741210938, 239.0 ],
+					"midpoints" : [ 461.499984741210938, 240.0, 383.499984741210938, 240.0 ],
 					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-23", 0 ],
+					"order" : 0,
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
@@ -1494,55 +1542,12 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
+					"order" : 1,
 					"source" : [ "obj-8", 0 ]
 				}
 
 			}
  ],
-		"dependency_cache" : [ 			{
-				"name" : "drawsocket-server.js",
-				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code/node",
-				"patcherrelativepath" : "../code/node",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "startscript.js",
-				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
-				"patcherrelativepath" : "../code",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "o.pack.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.display.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.select.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.dict.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.route.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.expr.codebox.mxo",
-				"type" : "iLaX"
-			}
- ],
-		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "black on white",
 				"number" : 				{

@@ -1,4 +1,5 @@
 var pathToScript = "default";
+var port = 3002;
 
 function setpath(relPath)
 {
@@ -28,6 +29,11 @@ function setpath(relPath)
 
 }
 
+function setport(num)
+{
+	port = num;
+}
+
 function bang()
 {
 	if( pathToScript === "default"){
@@ -35,6 +41,6 @@ function bang()
 	}
 	// outlet(0, "script", "start");
 	//else
-		outlet(0, "script", "start", pathToScript );
+		outlet(0, "script", "start", pathToScript, port );
 
 }

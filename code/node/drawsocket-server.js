@@ -2,8 +2,10 @@
 'use strict';
 
 // settings
+// args from Max "script start path port"
 const userpath = process.argv.slice(2);
-const http_port = 3002;
+const http_port = Number(process.argv.slice(3));
+
 let htmltemplate = '/lib/drawsocket-page.html';
 let infopage = "/lib/drawsocket-info.html";
 let usr_template = false;
@@ -85,7 +87,7 @@ if (cluster.isMaster)
         Max.post("adding user html root path " + userpath[0]);
     }
 
-    Max.post("usr_path ", usr_root_path, userpath[0]);
+   // Max.post("usr_path ", usr_root_path, userpath[0]);
     // these files are in the package not the user root_path
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
     app.use('/lib', express.static(__dirname + '/lib/')); // client js and css files
@@ -428,11 +430,12 @@ if (cluster.isMaster)
 
     // start server
     server.listen(http_port, () => {
-        Max.post('load webpage at', 'http://localhost:' + http_port);
-        Max.post('or', 'http://' + getIPAddresses() + ':' + http_port);
+        let port = server.address().port;
+        Max.post('load webpage at', 'http://localhost:' + port);
+        Max.post('or', 'http://' + getIPAddresses() + ':' + port);
         Max.outlet({
-            "/port/localhost": 'http://localhost:' + http_port,
-            "/port/ip": 'http://' + getIPAddresses() + ':' + http_port
+            "/port/localhost": 'http://localhost:' + port,
+            "/port/ip": 'http://' + getIPAddresses() + ':' + port
         });
     });
 

@@ -625,6 +625,16 @@ For example, the following example, an event is created and set with a delay (`d
 }
 ```
 
+# __do_sync__
+The `do_sync` keyword triggers the client clock time sychronization routine.
+
+```
+/foo : {
+  /key : "do_sync",
+  /val : 1
+}
+```
+
 # Storing the Sever State
 The `hfmt.drawsocket` object in Max accepts the `writecache` message,to write the current cached messages to a file on disk.
 
@@ -664,11 +674,15 @@ For example, on a website called `www.foo.com` and a stored JSON file named `sto
 
 # ping
 The `hfmt.drawsocket` object accepts the `ping` Max message to querry the connection status of one or more clients.
-
-# do_sync
-`do_sync` (in dev), triggers the client clock time sychronization routine.
+For example, the message `ping /*` pings all clients.
 
 # statereq
 The `hfmt.drawsocket` object accepts the `statereq` Max message to trigger a client update request for one or more clients.
 
 For example, the message `statereq /*` triggers a state request for all clients.
+
+# port
+The `hfmt.drawsocket` object accepts the `port` Max message to set the server port number. Takes effect on start up.
+
+# html_root
+The `hfmt.drawsocket` object accepts the `html_root` Max message to add a public asset folder to the server search path. Takes effect on start up.

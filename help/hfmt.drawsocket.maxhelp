@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 99.0, 79.0, 1122.0, 863.0 ],
+		"rect" : [ 146.0, 99.0, 1122.0, 863.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -5330,7 +5330,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 99.0, 105.0, 1122.0, 837.0 ],
+						"rect" : [ 146.0, 125.0, 1122.0, 837.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5530,8 +5530,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 305.0, 139.0, 22.0 ],
-									"text" : "Optional argument:"
+									"patching_rect" : [ 668.8642578125, 288.0, 221.0, 22.0 ],
+									"text" : "Optional arguments / attributes:"
 								}
 
 							}
@@ -5543,7 +5543,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 361.0, 61.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 370.33331298828125, 61.0, 22.0 ],
 									"text" : "Inlet:"
 								}
 
@@ -5556,7 +5556,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 426.0, 61.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 435.33331298828125, 61.0, 22.0 ],
 									"text" : "Outlets:"
 								}
 
@@ -5569,7 +5569,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 668.5, 386.0, 100.0 ],
+									"patching_rect" : [ 668.8642578125, 677.83331298828125, 386.0, 100.0 ],
 									"text" : "Most modern browsers provide \"Developers Tools\" which allow you to see the page's HTML layout in real time. For example on Mac in Chrome and Safari, you can press the alt-cmd-i keyboard shortcut to open the developer window. You may need to enable the show developer tools option in the browser before this shortcut will work."
 								}
 
@@ -5582,7 +5582,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 651.5, 186.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 660.83331298828125, 186.0, 22.0 ],
 									"text" : "Browser debugging tools: "
 								}
 
@@ -5619,7 +5619,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 535.0, 386.0, 85.0 ],
+									"patching_rect" : [ 668.8642578125, 544.33331298828125, 386.0, 85.0 ],
 									"text" : "install: the first time only, run \"script npm install\"\n1. start the script\n2. open a webpage URL as a suffix to the indicated URL:Port\n    e.g. http://localhost:3002/foo\n3. send messages to the URL that you are logged into"
 								}
 
@@ -5632,7 +5632,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 518.0, 60.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 527.33331298828125, 60.0, 22.0 ],
 									"text" : "To run: "
 								}
 
@@ -5731,6 +5731,7 @@
 							}
 , 							{
 								"box" : 								{
+									"hidden" : 1,
 									"id" : "obj-60",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -5831,7 +5832,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 276.0, 142.0, 313.0, 34.0 ],
-													"text" : "/screensize/foo : [1350, 905]"
+													"text" : "/screensize/foo : [1675, 980]"
 												}
 
 											}
@@ -5846,7 +5847,7 @@
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
 													"patching_rect" : [ 50.0, 190.0, 313.0, 292.0 ],
-													"text" : "/mouse/foo : {\n\t/xy : [454, 18],\n\t/mods : {\n\t\t/ctrl : 0,\n\t\t/shift : 0,\n\t\t/meta : 0,\n\t\t/alt : 0\n\t},\n\t/action : \"mousemove\",\n\t/target : {\n\t\t/id : \"svg\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\",\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/tag : \"svg\",\n\t\t/baseProfile : \"full\",\n\t\t/version : \"1.1\"\n\t},\n\t/button : 0\n}"
+													"text" : "/mouse/foo : {\n\t/action : \"mousemove\",\n\t/xy : [249, 1],\n\t/button : 0,\n\t/target : {\n\t\t/baseProfile : \"full\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\",\n\t\t/tag : \"svg\",\n\t\t/version : \"1.1\",\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/id : \"svg\"\n\t},\n\t/mods : {\n\t\t/ctrl : 0,\n\t\t/meta : 0,\n\t\t/alt : 0,\n\t\t/shift : 0\n\t}\n}"
 												}
 
 											}
@@ -6079,8 +6080,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 196.0, 510.5, 405.0, 20.0 ],
-									"text" : "note: only one hfmt-drawsocket server can be running at a given time"
+									"patching_rect" : [ 196.0, 510.5, 457.0, 20.0 ],
+									"text" : "note: only one hfmt-drawsocket server can be running at a given time per port"
 								}
 
 							}
@@ -6156,7 +6157,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 382.0, 350.0, 33.0 ],
+									"patching_rect" : [ 668.8642578125, 391.33331298828125, 350.0, 33.0 ],
 									"text" : "- OSC FullPacket or dictionary is sent to client URLs.\n- Max messages for other actions, see online docs for more info."
 								}
 
@@ -6169,7 +6170,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 443.5, 264.0, 50.0 ],
+									"patching_rect" : [ 668.8642578125, 452.83331298828125, 264.0, 50.0 ],
 									"text" : "left: update messages from client and server\nmiddle: errors\nright: server status"
 								}
 
@@ -6416,13 +6417,13 @@
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-13",
-													"linecount" : 13,
+													"linecount" : 16,
 													"maxclass" : "o.display",
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 50.0, 100.0, 1033.0, 197.0 ],
-													"text" : "/terminated/error : {\n\t/stack : \"TypeError: Cannot create property 'timetag' on string 'svg'\n    at wrapTimetag (/Users/r/Documents/Max 8/Packages/drawsocket/code/node/drawsocket-server.js:49:26)\n    at EventEmitter.Max.addHandler (/Users/r/Documents/Max 8/Packages/drawsocket/code/node/drawsocket-server.js:329:36)\n    at EventEmitter.emit (events.js:182:13)\n    at APICommunicator.maxAPI.on (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/exposed/max-api.js:283:37)\n    at APICommunicator.emit (events.js:182:13)\n    at APICommunicator._onInlet (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/api/index.js:122:8)\n    at process._tickCallback (internal/process/next_tick.js:68:7)\",\n\t/code : 2,\n\t/message : \"Cannot create property 'timetag' on string 'svg'\",\n\t/time : 2019-06-27T08:13:13.110995Z\n}"
+													"patching_rect" : [ 50.0, 100.0, 1033.0, 238.0 ],
+													"text" : "/terminated/error : {\n\t/code : 2,\n\t/message : \"listen EADDRINUSE :::3002\",\n\t/stack : \"Error: listen EADDRINUSE :::3002\n    at Server.setupListenHandle [as _listen2] (net.js:1286:14)\n    at listenInCluster (net.js:1334:12)\n    at Server.listen (net.js:1421:7)\n    at Object.<anonymous> (/Users/r/Documents/Max 8/Packages/drawsocket/code/node/drawsocket-server.js:432:12)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Object.Module._load (internal/modules/cjs/loader.js:529:3)\n    at Function.Module._load (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/nsRunner.js:67:24)\",\n\t/time : 2019-07-15T20:06:09.941126Z\n}"
 												}
 
 											}
@@ -6477,11 +6478,12 @@
 								"box" : 								{
 									"fontsize" : 13.0,
 									"id" : "obj-25",
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 324.0, 354.0, 21.0 ],
-									"text" : "relative path to HTML root folder for web accessable assets"
+									"patching_rect" : [ 668.8642578125, 314.0, 388.0, 36.0 ],
+									"text" : "arg 1 or @html_root : relative path to HTML root folder for assets\narg 2 or @port : port number to use (default 3002)"
 								}
 
 							}
@@ -6653,11 +6655,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-45",
+									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 148.0, 765.0, 407.0, 34.0 ]
+									"patching_rect" : [ 148.0, 765.0, 407.0, 48.0 ],
+									"text" : "/port/ip : \"http://:3002\",\n/port/localhost : \"http://localhost:3002\""
 								}
 
 							}
@@ -6723,7 +6727,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 662.8642578125, 510.5, 398.0, 121.0 ],
+									"patching_rect" : [ 662.8642578125, 519.83331298828125, 398.0, 121.0 ],
 									"proportion" : 0.5
 								}
 
@@ -6846,6 +6850,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-38", 0 ],
+									"hidden" : 1,
 									"source" : [ "obj-60", 0 ]
 								}
 
