@@ -1287,7 +1287,13 @@ var drawsocket = (function(){
 
   Tone.Buffer.on('load', function(){
     let msg = {};
-    msg[oscprefix+'/bufferloaded'] = 1;
+    msg['event'] = {
+      url: oscprefix,
+      key: 'status',
+      val: {
+        bufferloaded: 1
+      }
+    };
     sendMsg(msg);
   })
 
@@ -1887,11 +1893,20 @@ var drawsocket = (function(){
           rasterizeSVG();
         break;
         case "getSVG":
-          console.log("svgElement" );
-          generateStyleDefs(mainSVG.node());
-          sendMsg({
-            svgElement: mainSVG.node().outerHTML
-          });
+          {
+            console.log("svgElement" );
+            generateStyleDefs(mainSVG.node());
+
+            sendMsg({
+              event: {
+                url: oscprefix,
+                key: 'svg',
+                val : {
+                  svgElement: mainSVG.node().outerHTML
+                }
+              }
+            });
+          }
         break;
         default:
             console.log("unrouted command key:", key, objValue );
@@ -2030,17 +2045,21 @@ var drawsocket = (function(){
   {
     
     let obj = {};
-    obj["/mouse"+oscprefix] = {
-      action: caller,
-      xy: [ event.clientX, event.clientY ],
-      button: event.buttons,
-      mods : {
-        alt: event.altKey,
-        shift: event.shiftKey,
-        ctrl: event.ctrlKey,
-        meta: event.metaKey
-      },
-      target: elementToJSON(event.target)
+    obj['event'] = {
+      url: oscprefix,
+      key: 'mouse',
+      val: {
+        action: caller,
+        xy: [ event.clientX, event.clientY ],
+        button: event.buttons,
+        mods : {
+          alt: event.altKey,
+          shift: event.shiftKey,
+          ctrl: event.ctrlKey,
+          meta: event.metaKey
+        },
+        target: elementToJSON(event.target)
+      }
     };
     sendMsg(obj);
   }
@@ -2067,8 +2086,14 @@ var drawsocket = (function(){
   {
 
     let msg = {};
-    msg["/connected"+oscprefix] = 1;
-    msg["/screensize"+oscprefix] = [window.innerWidth, window.innerHeight];
+    msg['event'] = {
+      url: oscprefix,
+      key: 'status',
+      val: {
+        connected: 1,
+        screensize: [window.innerWidth, window.innerHeight]
+      }
+    };
 
     sendMsg(msg);
 
@@ -2300,7 +2325,13 @@ var drawsocket = (function(){
     //  prev_offset = prev_offset - ts.offset;
    //   console.log(`dx=${prev_offset} new=${ts.offset}`);
       let msg = {};
-      msg[oscprefix+"/syncOffset"] = ts.offset;
+      msg['event'] = {
+        url: oscprefix,
+        key: 'sync',
+        val: {
+          syncOffset: ts.offset
+        }
+      };
       sendMsg(msg);
   //    port.sendObj({ syncClient: ts.offset });
     });
@@ -2368,7 +2399,13 @@ var drawsocket = (function(){
 
   window.onresize = function(){
     let msg = {};
-    msg[oscprefix+"/screensize"] = [window.innerWidth, window.innerHeight];
+    msg['event'] = {
+      url: oscprefix,
+      key: 'status',
+      val: {
+        screensize: [window.innerWidth, window.innerHeight]
+      }
+    };
     sendMsg(msg)
   }
 

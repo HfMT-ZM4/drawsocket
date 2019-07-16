@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 146.0, 99.0, 1122.0, 863.0 ],
+		"rect" : [ 323.0, 79.0, 1122.0, 863.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -442,241 +442,6 @@
 					}
 ,
 					"text" : "p \"state cache\""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontsize" : 12.0,
-					"id" : "obj-7",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 8,
-							"minor" : 0,
-							"revision" : 7,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
-						"bglocked" : 0,
-						"openinpresentation" : 0,
-						"default_fontsize" : 12.0,
-						"default_fontface" : 0,
-						"default_fontname" : "Arial",
-						"gridonopen" : 1,
-						"gridsize" : [ 15.0, 15.0 ],
-						"gridsnaponopen" : 1,
-						"objectsnaponopen" : 1,
-						"statusbarvisible" : 2,
-						"toolbarvisible" : 1,
-						"lefttoolbarpinned" : 0,
-						"toptoolbarpinned" : 0,
-						"righttoolbarpinned" : 0,
-						"bottomtoolbarpinned" : 0,
-						"toolbars_unpinned_last_save" : 0,
-						"tallnewobj" : 0,
-						"boxanimatetime" : 200,
-						"enablehscroll" : 1,
-						"enablevscroll" : 1,
-						"devicewidth" : 0.0,
-						"description" : "",
-						"digest" : "",
-						"tags" : "",
-						"style" : "",
-						"subpatcher_template" : "",
-						"showontab" : 1,
-						"boxes" : [ 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontface" : 3,
-									"fontsize" : 12.0,
-									"id" : "obj-8",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 197.89776611328125, 622.0, 843.0, 24.0 ],
-									"text" : "\"forms\" is special HTML div layer, that is located *above* all the other layers, which is used for HTML interaction elements (forms, buttons, etc.)",
-									"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontface" : 3,
-									"fontsize" : 12.0,
-									"id" : "obj-7",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 245.89776611328125, 561.0, 328.0, 24.0 ],
-									"text" : "\"main-svg\" where SVG objects are placed by default.",
-									"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontface" : 3,
-									"fontsize" : 12.0,
-									"id" : "obj-6",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 254.89776611328125, 535.0, 531.0, 24.0 ],
-									"text" : "\"defs\" is a special SVG parent node that contains definitions of objects to be used later.",
-									"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontface" : 3,
-									"fontsize" : 12.0,
-									"id" : "obj-5",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 894.0, 505.0, 169.0, 37.0 ],
-									"text" : "\"svg\" is the top-level SVG parent element.",
-									"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bubble" : 1,
-									"fontface" : 3,
-									"fontsize" : 12.0,
-									"id" : "obj-3",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 236.89776611328125, 483.0, 381.0, 24.0 ],
-									"text" : "\"main-html\" is where the HTML objects are placed by default.",
-									"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial Bold",
-									"fontsize" : 13.0,
-									"id" : "obj-4",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 19.0, 8.0, 526.0, 21.0 ],
-									"text" : "Here is the HTML layout for the default Drawsocket page ( drawsocket-page.html )"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 0.396078431372549, 0.396078431372549, 0.396078431372549, 1.0 ],
-									"fontname" : "Monaco",
-									"fontsize" : 11.0,
-									"id" : "obj-2",
-									"linecount" : 56,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 19.0, 31.0, 1059.0, 776.0 ],
-									"text" : "<html>\n  <head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n    <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black-translucent\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n\n    <!-- our stylesheet -->\n    <link rel=\"stylesheet\" href=\"lib/drawsocket-defaults.css\">\n\n    <!-- library dependencies -->\n\n    <script src=\"scripts/d3-selection/dist/d3-selection.min.js\"></script>\n    <script src=\"scripts/pdfjs-dist/build/pdf.js\"></script>\n    <script src=\"scripts/tone/build/Tone.js\"></script>\n    <script src=\"scripts/startaudiocontext/StartAudioContext.js\"></script>\n    <script src=\"scripts/timesync/dist/timesync.js\"></script>\n    <script src=\"scripts/gsap/src/minified/TweenMax.min.js\"></script>\n    <script src=\"scripts/gsap/src/minified/TimelineMax.min.js\"></script>\n\n  <style type=\"text/css\"></style>\n </head>\n\n <body onload=\"enableMultitouch();\">\n\n    <!--main html setup -->\n    <div class=\"log\" id=\"log\"></div>\n\n    <div id=\"touchdiv\"></div>\n\n    <!--main main main setup -->\n    <div id=\"main-div\">\n\n      <div id=\"main-html\"></div>\n\n      <svg id=\"svg\" version=\"1.1\" baseProfile=\"full\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n          \n            <defs id=\"defs\"></defs>\n            <g id=\"main-svg\"></g>\n            \n      </svg>\n\n  </div>\n    <div id=\"forms\"></div>\n\n    <div id=\"loading\" style=\"visibility: hidden;\">\n      <p>synchronizing...</p>\n    </div>\n\n    <!-- our scripts -->\n\n    <script src=\"lib/drawsocket-client.js\"></script>\n\n\n </body>\n</html>",
-									"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
-								}
-
-							}
- ],
-						"lines" : [  ],
-						"styles" : [ 							{
-								"name" : "black on white",
-								"number" : 								{
-									"fontsize" : [ 12.0 ],
-									"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
-									"fontname" : [ "Arial" ]
-								}
-,
-								"umenu" : 								{
-									"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
-									"bgfillcolor" : 									{
-										"type" : "color",
-										"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
-										"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-										"color" : [ 1.0, 1.0, 1.0, 1.0 ],
-										"angle" : 270.0,
-										"proportion" : 0.39,
-										"autogradient" : 0
-									}
-
-								}
-,
-								"parentstyle" : "",
-								"multi" : 0
-							}
-, 							{
-								"name" : "caption text",
-								"default" : 								{
-									"fontface" : [ 2 ],
-									"fontsize" : [ 11.0 ]
-								}
-,
-								"parentstyle" : "",
-								"multi" : 0
-							}
-, 							{
-								"name" : "section dividers",
-								"default" : 								{
-									"fontface" : [ 3 ],
-									"fontsize" : [ 15.0 ],
-									"fontname" : [ "Arial" ]
-								}
-,
-								"parentstyle" : "",
-								"multi" : 0
-							}
-, 							{
-								"name" : "section info reg",
-								"default" : 								{
-									"fontsize" : [ 12.0 ],
-									"fontname" : [ "Arial" ]
-								}
-,
-								"parentstyle" : "",
-								"multi" : 0
-							}
-, 							{
-								"name" : "titles",
-								"default" : 								{
-									"fontface" : [ 1 ],
-									"fontsize" : [ 20.0 ],
-									"fontname" : [ "Arial" ]
-								}
-,
-								"parentstyle" : "",
-								"multi" : 0
-							}
- ]
-					}
-,
-					"patching_rect" : [ 328.0, 101.854921839965357, 89.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"description" : "",
-						"digest" : "",
-						"globalpatchername" : "",
-						"tags" : ""
-					}
-,
-					"text" : "p \"page layout\""
 				}
 
 			}
@@ -1407,13 +1172,260 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "FullPacket", "FullPacket" ],
+									"patching_rect" : [ 428.0, 447.0, 133.0, 22.0 ],
+									"text" : "o.cond /key == textmsg"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 7,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"classnamespace" : "box",
+										"rect" : [ 34.0, 79.0, 1122.0, 837.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 0,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "",
+										"showontab" : 0,
+										"boxes" : [ 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-8",
+													"linecount" : 3,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 348.89776611328125, 447.0, 374.0, 47.0 ],
+													"text" : "\"forms\" is special HTML div layer, that is located *above* all the other layers, which is used for HTML interaction elements (forms, buttons, etc.)",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-7",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 348.89776611328125, 378.5, 302.0, 23.0 ],
+													"text" : "\"main-svg\" where SVG objects are placed by default.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-6",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 348.89776611328125, 347.5, 490.0, 23.0 ],
+													"text" : "\"defs\" is a special SVG parent node that contains definitions of objects to be used later.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-5",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 348.89776611328125, 316.5, 246.0, 23.0 ],
+													"text" : "\"svg\" is the top-level SVG parent element.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-3",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 348.89776611328125, 292.0, 352.0, 23.0 ],
+													"text" : "\"main-html\" is where the HTML objects are placed by default.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontname" : "Arial Bold",
+													"fontsize" : 13.0,
+													"id" : "obj-4",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 125.0, 143.0, 597.0, 21.0 ],
+													"text" : "Here is the HTML layout for the default Drawsocket page ( as defined in drawsocket-page.html )"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bgcolor" : [ 0.396078431372549, 0.396078431372549, 0.396078431372549, 1.0 ],
+													"fontname" : "Monaco",
+													"fontsize" : 11.0,
+													"id" : "obj-2",
+													"linecount" : 25,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 125.0, 171.0, 313.0, 350.0 ],
+													"text" : "<html>\n <head>\n    <style type=\"text/css\"></style>\n </head>\n\n <body>\n\n    <div id=\"main-div\">\n\n      <div id=\"main-html\"></div>\n\n      <svg id=\"svg\">\n\n          <defs id=\"defs\"></defs>\n\n          <g id=\"main-svg\"></g>\n\n      </svg>\n\n    </div>\n\n    <div id=\"forms\"></div>\n\n </body>\n</html>",
+													"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
+												}
+
+											}
+ ],
+										"lines" : [  ],
+										"styles" : [ 											{
+												"name" : "black on white",
+												"number" : 												{
+													"fontsize" : [ 12.0 ],
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"umenu" : 												{
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"bgfillcolor" : 													{
+														"type" : "color",
+														"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+														"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+														"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+														"angle" : 270.0,
+														"proportion" : 0.39,
+														"autogradient" : 0
+													}
+
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "caption text",
+												"default" : 												{
+													"fontface" : [ 2 ],
+													"fontsize" : [ 11.0 ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section dividers",
+												"default" : 												{
+													"fontface" : [ 3 ],
+													"fontsize" : [ 15.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section info reg",
+												"default" : 												{
+													"fontsize" : [ 12.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "titles",
+												"default" : 												{
+													"fontface" : [ 1 ],
+													"fontsize" : [ 20.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 813.5, 549.8549218399653, 148.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"tags" : ""
+									}
+,
+									"text" : "p more about page layers"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"fontsize" : 13.0,
 									"id" : "obj-21",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 537.0, 407.0, 451.0, 36.0 ],
+									"patching_rect" : [ 574.0, 394.0, 451.0, 36.0 ],
 									"text" : "When you type something into the input field and then hit the Enter button, the value will be sent out of the left hfmt.drawsocket outlet."
 								}
 
@@ -1489,7 +1501,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 518.0, 626.0, 195.0, 33.0 ],
+									"patching_rect" : [ 522.0, 659.0, 195.0, 33.0 ],
 									"text" : "You can still access the text element of the inner HTML node."
 								}
 
@@ -1501,7 +1513,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 85.0, 572.0, 452.0, 33.0 ],
+									"patching_rect" : [ 85.0, 614.0, 452.0, 33.0 ],
 									"text" : "Since both are nested in the parent HTML div, they can be treated as one object. If you change the position for the parent object, the child objects are effected as well."
 								}
 
@@ -1511,11 +1523,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-11",
+									"linecount" : 6,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 426.0, 469.0, 345.0, 34.0 ]
+									"patching_rect" : [ 428.0, 482.0, 219.0, 102.0 ],
+									"text" : "/url : \"/bar\",\n/key : \"textmsg\",\n/val : {\n\t/text : \"testest\",\n\t/id : \"userinput\"\n}"
 								}
 
 							}
@@ -1526,8 +1540,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 426.0, 421.0, 100.0, 22.0 ],
-									"text" : "o.select /input"
+									"patching_rect" : [ 428.0, 416.0, 82.0, 22.0 ],
+									"text" : "o.route /event"
 								}
 
 							}
@@ -1541,7 +1555,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 93.0, 607.0, 186.0, 133.0 ],
+									"patching_rect" : [ 93.0, 653.0, 186.0, 133.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -88, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -100, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 0, 112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 56, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 53, 48, 112, 120, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 188,
 									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/left : \"50px\"\n\t\t}\n\t}\n}"
@@ -1558,7 +1572,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 293.0, 607.0, 186.0, 133.0 ],
+									"patching_rect" : [ 293.0, 653.0, 186.0, 133.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -88, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -100, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 0, 112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 56, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 50, 48, 48, 112, 120, 0, 0, 0 ],
 									"saved_bundle_length" : 188,
 									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/left : \"200px\"\n\t\t}\n\t}\n}"
@@ -1585,7 +1599,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 426.0, 388.0, 100.0, 22.0 ],
+									"patching_rect" : [ 428.0, 383.0, 100.0, 22.0 ],
 									"text" : "r client_message"
 								}
 
@@ -1600,7 +1614,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 522.0, 658.5, 186.0, 106.0 ],
+									"patching_rect" : [ 522.0, 704.5, 186.0, 106.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -124, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 0, 76, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 20, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 103, 114, 101, 97, 116, 0, 0, 0 ],
 									"saved_bundle_length" : 152,
 									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/id : \"prompt\",\n\t\t/text : \"great\"\n\t}\n}"
@@ -1612,15 +1626,15 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-3",
-									"linecount" : 36,
+									"linecount" : 43,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 60.0, 25.0, 345.0, 500.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 36, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 3, 24, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 2, -20, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 46, 46, 0, 0, 0, 0, 0, 0, 0, -60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 102, 111, 114, 109, 115, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 100, 105, 118, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 112, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 112, 111, 115, 105, 116, 105, 111, 110, 0, 0, 0, 44, 115, 0, 0, 97, 98, 115, 111, 108, 117, 116, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 111, 112, 0, 0, 0, 0, 44, 115, 0, 0, 50, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 49, 48, 48, 112, 120, 0, 0, 0, 0, 0, 1, 108, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 24, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 16, 47, 115, 105, 122, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, -56, 47, 111, 110, 107, 101, 121, 100, 111, 119, 110, 0, 0, 44, 115, 0, 0, 32, 105, 102, 40, 32, 101, 118, 101, 110, 116, 46, 107, 101, 121, 32, 61, 61, 32, 39, 69, 110, 116, 101, 114, 39, 32, 41, 123, 10, 32, 32, 32, 32, 32, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 115, 101, 110, 100, 40, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 105, 110, 112, 117, 116, 58, 32, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 116, 101, 120, 116, 58, 32, 116, 104, 105, 115, 46, 118, 97, 108, 117, 101, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 117, 114, 108, 58, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 111, 115, 99, 112, 114, 101, 102, 105, 120, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 105, 100, 58, 32, 32, 116, 104, 105, 115, 46, 105, 100, 10, 32, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 32, 32, 125, 41, 59, 10, 32, 32, 125, 0, 0, 0, 0, -96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 98, 101, 108, 0, 0, 0, 0, 0, 0, 24, 47, 102, 111, 114, 0, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 20, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 20, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 104, 101, 108, 108, 111, 33, 0, 0 ],
-									"saved_bundle_length" : 824,
-									"text" : "/* : {\n\t/key : \"html\",\n\t/val : [{\n\t\t/parent : \"forms\",\n\t\t/new : \"div\",\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/position : \"absolute\",\n\t\t\t/top : \"200px\",\n\t\t\t/left : \"100px\"\n\t\t}\n\t}, {\n\t\t/parent : \"chat\",\n\t\t/new : \"input\",\n\t\t/type : \"text\",\n\t\t/id : \"userinput\",\n\t\t/name : \"userinput\",\n\t\t/size : 10,\n\t\t/onkeydown : \" if( event.key == 'Enter' ){\n      drawsocket.send( {\n        input:  {\n          text: this.value,\n          url: drawsocket.oscprefix,\n          id:  this.id\n        }\n      });\n  }\"\n\t}, {\n\t\t/parent : \"chat\",\n\t\t/new : \"label\",\n\t\t/for : \"userinput\",\n\t\t/id : \"prompt\",\n\t\t/name : \"prompt\",\n\t\t/text : \"hello!\"\n\t}]\n}"
+									"patching_rect" : [ 60.0, 11.8549218399653, 345.0, 595.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -28, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 3, -40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 3, -84, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 46, 46, 0, 0, 0, 0, 0, 0, 0, -60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 102, 111, 114, 109, 115, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 100, 105, 118, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 112, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 112, 111, 115, 105, 116, 105, 111, 110, 0, 0, 0, 44, 115, 0, 0, 97, 98, 115, 111, 108, 117, 116, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 111, 112, 0, 0, 0, 0, 44, 115, 0, 0, 50, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 49, 48, 48, 112, 120, 0, 0, 0, 0, 0, 2, 24, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 24, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 48, 47, 112, 108, 97, 99, 101, 104, 111, 108, 100, 101, 114, 0, 0, 0, 0, 44, 115, 0, 0, 116, 121, 112, 101, 32, 109, 101, 115, 115, 97, 103, 101, 115, 32, 116, 111, 32, 77, 97, 120, 32, 104, 101, 114, 101, 0, 0, 0, 0, 0, 0, 16, 47, 115, 105, 122, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 1, 4, 47, 111, 110, 107, 101, 121, 100, 111, 119, 110, 0, 0, 44, 115, 0, 0, 32, 105, 102, 40, 32, 101, 118, 101, 110, 116, 46, 107, 101, 121, 32, 61, 61, 32, 39, 69, 110, 116, 101, 114, 39, 32, 41, 123, 10, 32, 32, 32, 32, 32, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 115, 101, 110, 100, 40, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 101, 118, 101, 110, 116, 58, 32, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 117, 114, 108, 58, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 111, 115, 99, 112, 114, 101, 102, 105, 120, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 107, 101, 121, 58, 32, 39, 116, 101, 120, 116, 109, 115, 103, 39, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 118, 97, 108, 58, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 116, 101, 120, 116, 58, 32, 116, 104, 105, 115, 46, 118, 97, 108, 117, 101, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 105, 100, 58, 32, 32, 116, 104, 105, 115, 46, 105, 100, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 32, 32, 125, 41, 59, 10, 32, 32, 125, 0, 0, 0, 0, 0, 56, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 119, 105, 100, 116, 104, 0, 0, 44, 115, 0, 0, 51, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, -76, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 98, 101, 108, 0, 0, 0, 0, 0, 0, 24, 47, 102, 111, 114, 0, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 20, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 40, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 116, 104, 105, 115, 32, 105, 115, 32, 97, 32, 109, 101, 115, 115, 97, 103, 101, 32, 102, 114, 111, 109, 32, 77, 97, 120, 33, 0 ],
+									"saved_bundle_length" : 1016,
+									"text" : "/* : {\n\t/key : \"html\",\n\t/val : [{\n\t\t/parent : \"forms\",\n\t\t/new : \"div\",\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/position : \"absolute\",\n\t\t\t/top : \"200px\",\n\t\t\t/left : \"100px\"\n\t\t}\n\t}, {\n\t\t/parent : \"chat\",\n\t\t/new : \"input\",\n\t\t/type : \"text\",\n\t\t/id : \"userinput\",\n\t\t/name : \"userinput\",\n\t\t/placeholder : \"type messages to Max here\",\n\t\t/size : 10,\n\t\t/onkeydown : \" if( event.key == 'Enter' ){\n      drawsocket.send( {\n        event:  {\n          url: drawsocket.oscprefix,\n          key: 'textmsg',\n          val: {\n            text: this.value,\n            id:  this.id\n          }\n        }\n      });\n  }\",\n\t\t/style : {\n\t\t\t/width : \"300px\"\n\t\t}\n\t}, {\n\t\t/parent : \"chat\",\n\t\t/new : \"label\",\n\t\t/for : \"userinput\",\n\t\t/id : \"prompt\",\n\t\t/name : \"prompt\",\n\t\t/text : \"this is a message from Max!\"\n\t}]\n}"
 								}
 
 							}
@@ -1630,7 +1644,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 60.0, 775.0, 100.0, 22.0 ],
+									"patching_rect" : [ 60.0, 804.0, 100.0, 22.0 ],
 									"text" : "s to_drawsocket"
 								}
 
@@ -1638,7 +1652,7 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
+									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -1661,6 +1675,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-4", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-11", 0 ],
+									"source" : [ "obj-5", 0 ]
 								}
 
 							}
@@ -2659,7 +2680,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 650.5, 274.0, 20.0 ],
+									"patching_rect" : [ 541.8642578125, 668.5, 274.0, 20.0 ],
 									"text" : "\"playfrom\" plays from a specfied time in the tween"
 								}
 
@@ -2687,7 +2708,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 524.5, 268.0, 20.0 ],
+									"patching_rect" : [ 541.8642578125, 541.5, 268.0, 20.0 ],
 									"text" : "\"reset\" resets the tween back to its starting point."
 								}
 
@@ -2716,7 +2737,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 415.5, 263.0, 47.0 ],
+									"patching_rect" : [ 541.8642578125, 420.5, 263.0, 47.0 ],
 									"text" : "\"play\" starts the tween from the current posiiton up until the end. if the tween is already at the end it will not play."
 								}
 
@@ -2727,7 +2748,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 255.5, 262.0, 20.0 ],
+									"patching_rect" : [ 541.8642578125, 297.5, 262.0, 20.0 ],
 									"text" : "\"stop\" pauses the tween at the current possition"
 								}
 
@@ -2852,7 +2873,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 174.0, 211.0, 20.0 ],
+									"patching_rect" : [ 541.8642578125, 180.0, 211.0, 20.0 ],
 									"text" : "\"start\" starts the tween from beginning"
 								}
 
@@ -2924,6 +2945,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-17", 0 ],
 									"source" : [ "obj-12", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-17", 0 ],
+									"source" : [ "obj-19", 0 ]
 								}
 
 							}
@@ -3151,6 +3179,241 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-7",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 7,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"classnamespace" : "box",
+										"rect" : [ 260.0, 79.0, 832.0, 535.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 0,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "",
+										"showontab" : 0,
+										"boxes" : [ 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-8",
+													"linecount" : 3,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 320.0, 374.0, 47.0 ],
+													"text" : "\"forms\" is special HTML div layer, that is located *above* all the other layers, which is used for HTML interaction elements (forms, buttons, etc.)",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-7",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 251.5, 302.0, 23.0 ],
+													"text" : "\"main-svg\" where SVG objects are placed by default.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-6",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 220.5, 490.0, 23.0 ],
+													"text" : "\"defs\" is a special SVG parent node that contains definitions of objects to be used later.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-5",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 189.5, 246.0, 23.0 ],
+													"text" : "\"svg\" is the top-level SVG parent element.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-3",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 165.0, 352.0, 23.0 ],
+													"text" : "\"main-html\" is where the HTML objects are placed by default.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontname" : "Arial Bold",
+													"fontsize" : 13.0,
+													"id" : "obj-4",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 27.0, 16.0, 597.0, 21.0 ],
+													"text" : "Here is the HTML layout for the default Drawsocket page ( as defined in drawsocket-page.html )"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bgcolor" : [ 0.396078431372549, 0.396078431372549, 0.396078431372549, 1.0 ],
+													"fontname" : "Monaco",
+													"fontsize" : 11.0,
+													"id" : "obj-2",
+													"linecount" : 25,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 27.0, 44.0, 313.0, 350.0 ],
+													"text" : "<html>\n <head>\n    <style type=\"text/css\"></style>\n </head>\n\n <body>\n\n    <div id=\"main-div\">\n\n      <div id=\"main-html\"></div>\n\n      <svg id=\"svg\">\n\n          <defs id=\"defs\"></defs>\n\n          <g id=\"main-svg\"></g>\n\n      </svg>\n\n    </div>\n\n    <div id=\"forms\"></div>\n\n </body>\n</html>",
+													"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
+												}
+
+											}
+ ],
+										"lines" : [  ],
+										"styles" : [ 											{
+												"name" : "black on white",
+												"number" : 												{
+													"fontsize" : [ 12.0 ],
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"umenu" : 												{
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"bgfillcolor" : 													{
+														"type" : "color",
+														"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+														"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+														"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+														"angle" : 270.0,
+														"proportion" : 0.39,
+														"autogradient" : 0
+													}
+
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "caption text",
+												"default" : 												{
+													"fontface" : [ 2 ],
+													"fontsize" : [ 11.0 ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section dividers",
+												"default" : 												{
+													"fontface" : [ 3 ],
+													"fontsize" : [ 15.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section info reg",
+												"default" : 												{
+													"fontsize" : [ 12.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "titles",
+												"default" : 												{
+													"fontface" : [ 1 ],
+													"fontsize" : [ 20.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 329.0, 89.8549218399653, 148.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"tags" : ""
+									}
+,
+									"text" : "p more about page layers"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-3",
 									"linecount" : 3,
@@ -4272,6 +4535,241 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"fontsize" : 12.0,
+									"id" : "obj-10",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 0,
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 7,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"classnamespace" : "box",
+										"rect" : [ 260.0, 79.0, 832.0, 535.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 0,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "",
+										"showontab" : 0,
+										"boxes" : [ 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-8",
+													"linecount" : 3,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 320.0, 374.0, 47.0 ],
+													"text" : "\"forms\" is special HTML div layer, that is located *above* all the other layers, which is used for HTML interaction elements (forms, buttons, etc.)",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-7",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 251.5, 302.0, 23.0 ],
+													"text" : "\"main-svg\" where SVG objects are placed by default.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-6",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 220.5, 490.0, 23.0 ],
+													"text" : "\"defs\" is a special SVG parent node that contains definitions of objects to be used later.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-5",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 189.5, 246.0, 23.0 ],
+													"text" : "\"svg\" is the top-level SVG parent element.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bubble" : 1,
+													"fontface" : 3,
+													"fontsize" : 11.0,
+													"id" : "obj-3",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 250.89776611328125, 165.0, 352.0, 23.0 ],
+													"text" : "\"main-html\" is where the HTML objects are placed by default.",
+													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontname" : "Arial Bold",
+													"fontsize" : 13.0,
+													"id" : "obj-4",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 27.0, 16.0, 597.0, 21.0 ],
+													"text" : "Here is the HTML layout for the default Drawsocket page ( as defined in drawsocket-page.html )"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"bgcolor" : [ 0.396078431372549, 0.396078431372549, 0.396078431372549, 1.0 ],
+													"fontname" : "Monaco",
+													"fontsize" : 11.0,
+													"id" : "obj-2",
+													"linecount" : 25,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 27.0, 44.0, 313.0, 350.0 ],
+													"text" : "<html>\n <head>\n    <style type=\"text/css\"></style>\n </head>\n\n <body>\n\n    <div id=\"main-div\">\n\n      <div id=\"main-html\"></div>\n\n      <svg id=\"svg\">\n\n          <defs id=\"defs\"></defs>\n\n          <g id=\"main-svg\"></g>\n\n      </svg>\n\n    </div>\n\n    <div id=\"forms\"></div>\n\n </body>\n</html>",
+													"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
+												}
+
+											}
+ ],
+										"lines" : [  ],
+										"styles" : [ 											{
+												"name" : "black on white",
+												"number" : 												{
+													"fontsize" : [ 12.0 ],
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"umenu" : 												{
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"bgfillcolor" : 													{
+														"type" : "color",
+														"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+														"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+														"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+														"angle" : 270.0,
+														"proportion" : 0.39,
+														"autogradient" : 0
+													}
+
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "caption text",
+												"default" : 												{
+													"fontface" : [ 2 ],
+													"fontsize" : [ 11.0 ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section dividers",
+												"default" : 												{
+													"fontface" : [ 3 ],
+													"fontsize" : [ 15.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section info reg",
+												"default" : 												{
+													"fontsize" : [ 12.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "titles",
+												"default" : 												{
+													"fontface" : [ 1 ],
+													"fontsize" : [ 20.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 480.5, 761.8549218399653, 148.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"tags" : ""
+									}
+,
+									"text" : "p more about page layers"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"fontsize" : 14.0,
 									"id" : "obj-9",
 									"linecount" : 4,
@@ -5330,7 +5828,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 146.0, 125.0, 1122.0, 837.0 ],
+						"rect" : [ 323.0, 105.0, 1122.0, 837.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5784,7 +6282,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 898.0, 114.0, 640.0, 480.0 ],
+										"rect" : [ 427.0, 147.0, 1062.0, 727.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -5813,67 +6311,81 @@
 										"subpatcher_template" : "",
 										"boxes" : [ 											{
 												"box" : 												{
+													"fontface" : 0,
+													"fontsize" : 12.0,
+													"id" : "obj-23",
+													"linecount" : 5,
+													"maxclass" : "o.display",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 557.0, 239.0, 234.0, 88.0 ],
+													"text" : "/url : \"/bar\",\n/key : \"sync\",\n/val : {\n\t/syncOffset : 0\n}"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontface" : 0,
+													"fontsize" : 12.0,
+													"id" : "obj-22",
+													"linecount" : 6,
+													"maxclass" : "o.display",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 465.0, 377.0, 284.0, 102.0 ],
+													"text" : "/url : \"/bar\",\n/key : \"status\",\n/val : {\n\t/screensize : [1490, 1032],\n\t/connected : 1\n}"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-9",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 2,
+													"outlettype" : [ "", "FullPacket" ],
+													"patching_rect" : [ 368.0, 152.0, 82.0, 22.0 ],
+													"text" : "o.route /event"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-6",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 3,
+													"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
+													"patching_rect" : [ 368.0, 202.0, 208.0, 22.0 ],
+													"text" : "o.cond /key == mouse\\, /key == status"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontface" : 0,
+													"fontsize" : 12.0,
+													"id" : "obj-5",
+													"linecount" : 21,
+													"maxclass" : "o.display",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 89.0, 287.0, 356.0, 306.0 ],
+													"text" : "/url : \"/bar\",\n/key : \"mouse\",\n/val : {\n\t/action : \"mousemove\",\n\t/xy : [250, 332],\n\t/button : 0,\n\t/target : {\n\t\t/baseProfile : \"full\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\",\n\t\t/tag : \"svg\",\n\t\t/version : \"1.1\",\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/id : \"svg\"\n\t},\n\t/mods : {\n\t\t/ctrl : 0,\n\t\t/meta : 1,\n\t\t/alt : 0,\n\t\t/shift : 0\n\t}\n}"
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"id" : "obj-1",
 													"maxclass" : "newobj",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 303.0, 62.0, 101.0, 22.0 ],
+													"patching_rect" : [ 615.0, 131.0, 101.0, 22.0 ],
 													"text" : "s client_message"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"fontface" : 0,
-													"fontsize" : 12.0,
-													"id" : "obj-30",
-													"maxclass" : "o.display",
-													"numinlets" : 1,
-													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 276.0, 142.0, 313.0, 34.0 ],
-													"text" : "/screensize/foo : [1675, 980]"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"fontface" : 0,
-													"fontsize" : 12.0,
-													"id" : "obj-47",
-													"linecount" : 20,
-													"maxclass" : "o.display",
-													"numinlets" : 1,
-													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 50.0, 190.0, 313.0, 292.0 ],
-													"text" : "/mouse/foo : {\n\t/action : \"mousemove\",\n\t/xy : [249, 1],\n\t/button : 0,\n\t/target : {\n\t\t/baseProfile : \"full\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\",\n\t\t/tag : \"svg\",\n\t\t/version : \"1.1\",\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/id : \"svg\"\n\t},\n\t/mods : {\n\t\t/ctrl : 0,\n\t\t/meta : 0,\n\t\t/alt : 0,\n\t\t/shift : 0\n\t}\n}"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"id" : "obj-44",
-													"maxclass" : "newobj",
-													"numinlets" : 1,
-													"numoutlets" : 4,
-													"outlettype" : [ "", "", "", "FullPacket" ],
-													"patching_rect" : [ 50.0, 100.0, 221.0, 22.0 ],
-													"text" : "o.select /mouse /connected /screensize"
-												}
-
-											}
-, 											{
-												"box" : 												{
-													"fontface" : 0,
-													"fontsize" : 12.0,
-													"id" : "obj-46",
-													"maxclass" : "o.display",
-													"numinlets" : 1,
-													"numoutlets" : 1,
-													"outlettype" : [ "" ],
-													"patching_rect" : [ 74.0, 146.0, 187.0, 34.0 ],
-													"text" : "/connected/foo : 1"
 												}
 
 											}
@@ -5886,33 +6398,12 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "FullPacket" ],
-													"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ]
+													"patching_rect" : [ 368.0, 75.0, 30.0, 30.0 ]
 												}
 
 											}
  ],
 										"lines" : [ 											{
-												"patchline" : 												{
-													"destination" : [ "obj-30", 0 ],
-													"source" : [ "obj-44", 2 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-46", 0 ],
-													"source" : [ "obj-44", 1 ]
-												}
-
-											}
-, 											{
-												"patchline" : 												{
-													"destination" : [ "obj-47", 0 ],
-													"source" : [ "obj-44", 0 ]
-												}
-
-											}
-, 											{
 												"patchline" : 												{
 													"destination" : [ "obj-1", 0 ],
 													"order" : 0,
@@ -5922,9 +6413,37 @@
 											}
 , 											{
 												"patchline" : 												{
-													"destination" : [ "obj-44", 0 ],
+													"destination" : [ "obj-9", 0 ],
 													"order" : 1,
 													"source" : [ "obj-56", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-22", 0 ],
+													"source" : [ "obj-6", 1 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-23", 0 ],
+													"source" : [ "obj-6", 2 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-5", 0 ],
+													"source" : [ "obj-6", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-6", 0 ],
+													"source" : [ "obj-9", 0 ]
 												}
 
 											}
@@ -6110,9 +6629,9 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 221.0, 77.0, 150.0, 160.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 98, 97, 114, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 111, 114, 97, 110, 103, 101, 0, 0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 98, 97, 114, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 105, 110, 107, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 220,
-									"text" : "/bar : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 50,\n\t\t/fill : \"orange\"\n\t}\n}"
+									"text" : "/bar : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 50,\n\t\t/fill : \"pink\"\n\t}\n}"
 								}
 
 							}
@@ -6144,9 +6663,9 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 56.0, 77.0, 150.0, 160.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 102, 111, 111, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 121, 101, 108, 108, 111, 119, 0, 0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 102, 111, 111, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 117, 114, 112, 108, 101, 0, 0 ],
 									"saved_bundle_length" : 220,
-									"text" : "/foo : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 20,\n\t\t/fill : \"yellow\"\n\t}\n}"
+									"text" : "/foo : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 20,\n\t\t/fill : \"purple\"\n\t}\n}"
 								}
 
 							}
@@ -6661,7 +7180,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 148.0, 765.0, 407.0, 48.0 ],
-									"text" : "/port/ip : \"http://:3002\",\n/port/localhost : \"http://localhost:3002\""
+									"text" : "/port/ip : \"http://10.0.0.147:3002\",\n/port/localhost : \"http://localhost:3002\""
 								}
 
 							}
@@ -11955,6 +12474,10 @@
 			}
 , 			{
 				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.cond.mxo",
 				"type" : "iLaX"
 			}
  ],
