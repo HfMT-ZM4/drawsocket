@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 1139.0, 937.0 ],
+		"rect" : [ 507.0, 79.0, 1139.0, 937.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,58 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-40",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 700.0, 337.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontsize" : 12.0,
+					"id" : "obj-38",
+					"maxclass" : "o.compose",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 700.0, 380.0, 215.0, 24.0 ],
+					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 47, 112, 111, 114, 116, 47, 105, 112, 0, 0, 0, 0, 44, 115, 0, 0, 115, 101, 114, 118, 101, 114, 32, 115, 116, 111, 112, 112, 101, 100, 0, 0 ],
+					"saved_bundle_length" : 52,
+					"text" : "/port/ip : \"server stopped\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-35",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 700.0, 305.0, 126.0, 22.0 ],
+					"text" : "o.select /stop/success"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-33",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "FullPacket" ],
+					"patching_rect" : [ 579.0, 483.0, 77.0, 22.0 ],
+					"text" : "o.select /port"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-23",
 					"maxclass" : "newobj",
@@ -379,7 +431,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 707.0, 518.33331298828125, 68.0, 22.0 ],
+					"patching_rect" : [ 758.0, 542.1666259765625, 68.0, 22.0 ],
 					"text" : "print stdout"
 				}
 
@@ -391,7 +443,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 707.0, 479.33331298828125, 85.0, 22.0 ],
+					"patching_rect" : [ 758.0, 503.1666259765625, 85.0, 22.0 ],
 					"text" : "o.route /stdout"
 				}
 
@@ -604,14 +656,13 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-11",
-									"linecount" : 8,
+									"linecount" : 11,
 									"maxclass" : "o.expr.codebox",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 50.0, 119.0, 1011.0, 127.0 ],
-									"presentation_linecount" : 8,
-									"text" : "if( bound(/terminated/error),\n  if( bound(/terminated/error./details) && strcmp(/terminated/error./details, \"Cannot find module\", 18 ) == 0,\n    /print = /terminated/error./details + \". You may need to run npm install, see the hfmt.drawsocket help patch for more information\",\n    if( bound(/terminated/error./message) && strcmp(/terminated/error./message, \"listen EADDRINUSE\", 17 ) == 0,\n        /print = /terminated/error./message + \". You may have another server running on this port already.\"\n    )\n  )\n)"
+									"patching_rect" : [ 50.0, 119.0, 1011.0, 168.0 ],
+									"text" : "if( bound(/terminated/error),\n  if( bound(/terminated/error./details) && strcmp(/terminated/error./details, \"Cannot find module\", 18 ) == 0,\n    /print = /terminated/error./details + \". You may need to run npm install, see the hfmt.drawsocket help patch for more information\",\n    if( bound(/terminated/error./message) && strcmp(/terminated/error./message, \"listen EADDRINUSE\", 17 ) == 0,\n      progn(\n        /print = /terminated/error./message + \". You may have another server running on this port already.\",\n        /port/ip = \"could not open, port in use\"\n      )\n    )\n  )\n)"
 								}
 
 							}
@@ -658,7 +709,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 374.0, 439.83331298828125, 131.0, 35.0 ],
+					"patching_rect" : [ 374.0, 426.83331298828125, 110.0, 35.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -676,7 +727,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 507.0, 516.33331298828125, 123.0, 22.0 ],
+					"patching_rect" : [ 507.0, 558.33331298828125, 123.0, 22.0 ],
 					"text" : "print hfmt.drawsocket"
 				}
 
@@ -688,7 +739,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 507.0, 479.33331298828125, 76.0, 22.0 ],
+					"patching_rect" : [ 507.0, 523.33331298828125, 76.0, 22.0 ],
 					"text" : "o.route /print"
 				}
 
@@ -758,7 +809,7 @@
 				"box" : 				{
 					"comment" : "general status output (OSC)",
 					"id" : "obj-9",
-					"index" : 3,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -770,7 +821,7 @@
 				"box" : 				{
 					"comment" : "error output (OSC)",
 					"id" : "obj-7",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -870,13 +921,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-27",
-					"linecount" : 19,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 360.0, 567.1666259765625, 602.0, 279.0 ],
-					"text" : "/terminated/error : {\n\t/code : 2,\n\t/message : \"listen EADDRINUSE :::3002\",\n\t/stack : \"Error: listen EADDRINUSE :::3002\n    at Server.setupListenHandle [as _listen2] (net.js:1286:14)\n    at listenInCluster (net.js:1334:12)\n    at Server.listen (net.js:1421:7)\n    at Object.<anonymous> (/Users/r/Documents/Max 8/Packages/drawsocket/code/node/drawsocket-server.js:432:12)\n    at Module._compile (internal/modules/cjs/loader.js:688:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:699:10)\n    at Module.load (internal/modules/cjs/loader.js:598:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:537:12)\n    at Object.Module._load (internal/modules/cjs/loader.js:529:3)\n    at Function.Module._load (/Applications/Max.app/Contents/Resources/C74/packages/Node For Max/source/lib/nsRunner.js:67:24)\",\n\t/time : 2019-07-15T20:07:59.107411Z\n}"
+					"patching_rect" : [ 360.0, 609.1666259765625, 602.0, 34.0 ]
 				}
 
 			}
@@ -885,13 +934,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-47",
-					"linecount" : 7,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 990.0, 433.83331298828125, 572.0, 116.0 ],
-					"text" : "/restarted/success : {\n\t/restartCount : 5,\n\t/pid : 71443,\n\t/reason : \"error\",\n\t/id : \"u79950010254\",\n\t/time : 2019-07-15T20:07:59.000882Z\n}"
+					"patching_rect" : [ 990.0, 433.83331298828125, 572.0, 34.0 ]
 				}
 
 			}
@@ -1203,7 +1250,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-36",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -1216,7 +1263,7 @@
 				"box" : 				{
 					"comment" : "node output (dictionary/OSC)",
 					"id" : "obj-37",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -1293,7 +1340,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
-					"order" : 3,
+					"order" : 4,
 					"source" : [ "obj-14", 1 ]
 				}
 
@@ -1303,6 +1350,14 @@
 					"destination" : [ "obj-27", 0 ],
 					"order" : 1,
 					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-35", 0 ],
+					"order" : 3,
+					"source" : [ "obj-14", 1 ]
 				}
 
 			}
@@ -1354,6 +1409,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-16", 0 ],
+					"order" : 1,
+					"source" : [ "obj-20", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"order" : 0,
 					"source" : [ "obj-20", 0 ]
 				}
 
@@ -1461,6 +1525,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-34", 0 ]
 				}
@@ -1468,8 +1539,29 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-40", 0 ],
+					"source" : [ "obj-35", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
 					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-40", 0 ]
 				}
 
 			}
@@ -1548,6 +1640,54 @@
 
 			}
  ],
+		"dependency_cache" : [ 			{
+				"name" : "drawsocket-server.js",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code/node",
+				"patcherrelativepath" : "../code/node",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "startscript.js",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
+				"patcherrelativepath" : "../code",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.pack.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.timetag.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.select.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.dict.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.route.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.expr.codebox.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+ ],
+		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "black on white",
 				"number" : 				{
