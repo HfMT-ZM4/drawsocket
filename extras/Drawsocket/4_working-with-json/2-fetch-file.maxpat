@@ -107,13 +107,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-45",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 820.0, 474.16668701171875, 306.0, 48.0 ],
-					"text" : "/port/ip : \"http://192.168.0.5:3002\",\n/port/localhost : \"http://localhost:3002\""
+					"patching_rect" : [ 820.0, 474.16668701171875, 306.0, 34.0 ]
 				}
 
 			}
@@ -169,7 +167,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 45.0, 57.0, 765.0, 85.0 ],
-					"text" : "If a saved JSON file is in the Drawsocket search path (by default the Folder of the saved patch containing the Drawsocket object), you can use the \"file\" key and the /fetch keyword to retrave the file.\n\nIf a /prefix keyword is given, the client will request that URL, otherwise, by default the client will load the file and then lookup it's prefix in the file."
+					"text" : "If a saved JSON file is in the Drawsocket search path (by default the Folder of the saved patch containing the Drawsocket object), you can use the \"file\" key and the /fetch keyword to retrieve the file.\n\nIf a /prefix keyword is given, the client will request that URL, otherwise, by default the client will load the file and then lookup it's prefix in the file."
 				}
 
 			}

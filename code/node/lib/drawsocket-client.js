@@ -28,6 +28,8 @@ var drawsocket = (function(){
   // touch array
   let ongoingTouches = [];
 
+  let prevMousePos = [0,0];
+
   // audio files
   let audioObj = {};
 
@@ -2061,26 +2063,50 @@ var drawsocket = (function(){
         target: elementToJSON(event.target)
       }
     };
+
+    if( caller == 'wheel' )
+    {
+      obj.event.val.delta = [ event.deltaX, event.deltaY ];
+    }
+
     sendMsg(obj);
+
   }
 
   document.body.addEventListener("mousemove", function(event)
   {
+    if( event.clientX != prevMousePos[0] && event.clientY != prevMousePos[1] )
+    {
     //event.preventDefault();
-    sendMouseObj(event, "mousemove");
+      sendMouseObj(event, "mousemove");
+    }
+
+    prevMousePos = [ event.clientX, event.clientY ];
+
   });
 
   document.body.addEventListener("mousedown", function(event)
   {
     //event.preventDefault();
     sendMouseObj(event, "mousedown");
+    prevMousePos = [ event.clientX, event.clientY ];
+    
   });
 
   document.body.addEventListener("mouseup", function(event)
   {
     //event.preventDefault();
     sendMouseObj(event, "mouseup");
+    prevMousePos = [ event.clientX, event.clientY ];
+
   });
+
+  document.body.addEventListener("wheel", function(event)
+  {
+    event.preventDefault();
+    sendMouseObj(event, "wheel");
+  });
+
 
   function pingResponse()
   {
