@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 323.0, 79.0, 1122.0, 863.0 ],
+		"rect" : [ 187.0, 104.0, 1099.0, 864.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,7 +41,8 @@
 		"showontab" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-9",
+					"fontsize" : 12.0,
+					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
 					"numoutlets" : 0,
@@ -56,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -85,6 +86,216 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
+									"fontface" : 3,
+									"fontlink" : 1,
+									"id" : "obj-64",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 78.0, 241.59375, 329.388671875, 21.40625 ],
+									"text" : "Click here for an overview of browser debugging tools.",
+									"texton" : "Click here for an overview of browser debugging tools.",
+									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
+									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
+									"usetextovercolor" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-4",
+									"linecount" : 3,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 78.0, 288.0, 564.0, 49.0 ],
+									"text" : ";\rmax launchbrowser https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
+									"id" : "obj-31",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 84.8642578125, 138.33331298828125, 663.0, 69.0 ],
+									"text" : "Most modern browsers provide \"Developers Tools\" which allow you to see the page's HTML layout in real time. For example on Mac in Chrome and Safari, you can press the alt-cmd-i keyboard shortcut to open the developer window. You may need to enable the show developer tools option in the browser before this shortcut will work."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-32",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 84.8642578125, 111.33331298828125, 186.0, 22.0 ],
+									"text" : "Browser debugging tools: "
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-64", 0 ]
+								}
+
+							}
+ ],
+						"styles" : [ 							{
+								"name" : "black on white",
+								"number" : 								{
+									"fontsize" : [ 12.0 ],
+									"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+									"fontname" : [ "Arial" ]
+								}
+,
+								"umenu" : 								{
+									"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+									"bgfillcolor" : 									{
+										"type" : "color",
+										"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+										"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+										"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+										"angle" : 270.0,
+										"proportion" : 0.39,
+										"autogradient" : 0
+									}
+
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "caption text",
+								"default" : 								{
+									"fontface" : [ 2 ],
+									"fontsize" : [ 11.0 ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "section dividers",
+								"default" : 								{
+									"fontface" : [ 3 ],
+									"fontsize" : [ 15.0 ],
+									"fontname" : [ "Arial" ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "section info reg",
+								"default" : 								{
+									"fontsize" : [ 12.0 ],
+									"fontname" : [ "Arial" ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+, 							{
+								"name" : "titles",
+								"default" : 								{
+									"fontface" : [ 1 ],
+									"fontsize" : [ 20.0 ],
+									"fontname" : [ "Arial" ]
+								}
+,
+								"parentstyle" : "",
+								"multi" : 0
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 475.0, 366.446458239907543, 150.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p debugging"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 7,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 0,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 1,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "",
+						"showontab" : 1,
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-15",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 237.0, 50.0, 443.0, 22.0 ],
+									"text" : "State cache: a mechanism to remember the state of a client page."
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
@@ -688,7 +899,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -717,6 +928,19 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-49",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 90.0, 58.0, 47.0, 22.0 ],
+									"text" : "HTML"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"hidden" : 1,
 									"id" : "obj-45",
@@ -1142,7 +1366,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 187.0, 130.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1172,19 +1396,346 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-5",
+									"hidden" : 1,
+									"id" : "obj-66",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 428.0, 447.0, 133.0, 22.0 ],
-									"text" : "o.cond /key == textmsg"
+									"numoutlets" : 0,
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 7,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"classnamespace" : "box",
+										"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 0,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "",
+										"boxes" : [ 											{
+												"box" : 												{
+													"hidden" : 1,
+													"id" : "obj-36",
+													"linecount" : 3,
+													"maxclass" : "message",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 50.0, 100.0, 372.0, 49.0 ],
+													"text" : ";\rmax launchbrowser https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-65",
+													"index" : 1,
+													"maxclass" : "inlet",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ]
+												}
+
+											}
+ ],
+										"lines" : [ 											{
+												"patchline" : 												{
+													"destination" : [ "obj-36", 0 ],
+													"source" : [ "obj-65", 0 ]
+												}
+
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 50.0, 174.0, 19.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"tags" : ""
+									}
+,
+									"text" : "p"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
+									"fontface" : 3,
+									"fontlink" : 1,
+									"id" : "obj-64",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 64.0, 137.59375, 281.142578125, 21.40625 ],
+									"text" : "Click here for an overview of the HTML button.",
+									"texton" : "Click here for an overview of the HTML button.",
+									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
+									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
+									"usetextovercolor" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-55",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 191.0, 615.0, 343.0, 20.0 ],
+									"text" : "<< messages from the client browser are being forwarded here"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
+									"fontface" : 3,
+									"fontlink" : 1,
+									"id" : "obj-46",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 191.0, 637.0, 372.73046875, 21.40625 ],
+									"text" : "See the Client Messages subpatch in the first tab for more info",
+									"texton" : "See the Client Messages subpatch in the first tab for more info",
+									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
+									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
+									"usetextovercolor" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-47",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 252.0, 668.203125, 33.0, 22.0 ],
+									"text" : "front"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-45",
+									"linecount" : 2,
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 252.0, 701.203125, 104.0, 35.0 ],
+									"text" : "s client-msg-patch"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-44",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 76.0, 608.0, 100.0, 22.0 ],
+									"text" : "r client_message"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-43",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 615.0, 471.703125, 150.0, 20.0 ],
+									"text" : "click to load page in jweb"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.8,
+									"fontsize" : 13.0,
+									"id" : "obj-33",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 191.0, 362.0, 264.0, 25.0 ],
+									"text" : "Everything inside the quotes is Javascript"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
 									"fontsize" : 12.0,
+									"id" : "obj-35",
+									"linecount" : 5,
+									"maxclass" : "o.display",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 76.0, 668.0, 147.0, 88.0 ],
+									"presentation_linecount" : 5,
+									"text" : "/button : {\n\t/clicked : 1,\n\t/url : \"/1\",\n\t/id : \"button-foo\"\n}"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-26",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 76.0, 765.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-24",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "FullPacket" ],
+									"patching_rect" : [ 76.0, 637.0, 100.0, 22.0 ],
+									"text" : "o.select /button"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
+									"id" : "obj-37",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 70.0, 66.59375, 376.0, 69.0 ],
+									"presentation_linecount" : 4,
+									"text" : "HTML provides many UI building blocks including a button. Here is a simple button example, that sends a messages back to us when the button is clicked using the drawsocket.send() function. "
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-38",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 70.0, 32.59375, 279.0, 22.0 ],
+									"presentation_linecount" : 3,
+									"text" : "Basic HTML Button on the \"forms\" layer."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-39",
+									"linecount" : 4,
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 437.0, 484.5, 136.0, 65.0 ],
+									"presentation_linecount" : 4,
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 99, 108, 101, 97, 114, 0, 0, 0, 0, 0, 0, 16, 47, 118, 97, 108, 0, 0, 0, 0, 44, 115, 0, 0, 42, 0, 0, 0 ],
+									"saved_bundle_length" : 92,
+									"text" : "/* : {\n\t/key : \"clear\",\n\t/val : \"*\"\n}"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-40",
+									"linecount" : 25,
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 76.0, 195.5, 352.0, 350.0 ],
+									"presentation_linecount" : 25,
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 28, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 2, 16, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 1, -28, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, -44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 102, 111, 114, 109, 115, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 98, 117, 116, 116, 111, 110, 45, 102, 111, 111, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 98, 117, 116, 116, 111, 110, 0, 0, 0, 0, 0, 24, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 99, 108, 105, 99, 107, 32, 109, 101, 33, 0, 0, 0, 0, 0, 0, -120, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 112, 111, 115, 105, 116, 105, 111, 110, 0, 0, 0, 44, 115, 0, 0, 97, 98, 115, 111, 108, 117, 116, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 111, 112, 0, 0, 0, 0, 44, 115, 0, 0, 49, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 49, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, 20, 47, 119, 105, 100, 116, 104, 0, 0, 44, 115, 0, 0, 55, 48, 112, 120, 0, 0, 0, 0, 0, 0, 0, -48, 47, 111, 110, 99, 108, 105, 99, 107, 0, 0, 0, 0, 44, 115, 0, 0, 10, 32, 32, 32, 32, 47, 47, 116, 104, 105, 115, 32, 105, 115, 32, 97, 108, 108, 32, 106, 97, 118, 97, 115, 99, 114, 105, 112, 116, 32, 105, 110, 115, 105, 100, 101, 32, 116, 104, 101, 32, 113, 117, 111, 116, 101, 115, 10, 32, 32, 32, 32, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 115, 101, 110, 100, 40, 123, 10, 32, 32, 32, 32, 32, 32, 32, 98, 117, 116, 116, 111, 110, 58, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 117, 114, 108, 58, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 111, 115, 99, 112, 114, 101, 102, 105, 120, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 105, 100, 58, 32, 116, 104, 105, 115, 46, 105, 100, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 99, 108, 105, 99, 107, 101, 100, 58, 32, 116, 114, 117, 101, 10, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 32, 125, 41, 10, 32, 32, 0, 0, 0, 0 ],
+									"saved_bundle_length" : 560,
+									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/parent : \"forms\",\n\t\t/id : \"button-foo\",\n\t\t/new : \"button\",\n\t\t/text : \"click me!\",\n\t\t/style : {\n\t\t\t/position : \"absolute\",\n\t\t\t/top : \"100px\",\n\t\t\t/left : \"100px\",\n\t\t\t/width : \"70px\"\n\t\t},\n\t\t/onclick : \"\n    //this is all javascript inside the quotes\n     drawsocket.send({\n       button: {\n         url: drawsocket.oscprefix,\n         id: this.id,\n         clicked: true\n       }\n     })\n  \"\n\t}\n}"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 615.0, 496.703125, 143.0, 22.0 ],
+									"text" : "url http://localhost:3002/1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+									"id" : "obj-6",
+									"maxclass" : "jweb",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 615.0, 542.703125, 320.0, 240.0 ],
+									"rendermode" : 0,
+									"url" : "http://localhost:3002/1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -1200,7 +1751,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 34.0, 79.0, 1122.0, 837.0 ],
+										"rect" : [ 34.0, 79.0, 845.0, 530.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -1238,7 +1789,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 348.89776611328125, 447.0, 374.0, 47.0 ],
+													"patching_rect" : [ 277.89776611328125, 356.0, 374.0, 47.0 ],
 													"text" : "\"forms\" is special HTML div layer, that is located *above* all the other layers, which is used for HTML interaction elements (forms, buttons, etc.)",
 													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
 												}
@@ -1253,7 +1804,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 348.89776611328125, 378.5, 302.0, 23.0 ],
+													"patching_rect" : [ 277.89776611328125, 287.5, 302.0, 23.0 ],
 													"text" : "\"main-svg\" where SVG objects are placed by default.",
 													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
 												}
@@ -1268,7 +1819,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 348.89776611328125, 347.5, 490.0, 23.0 ],
+													"patching_rect" : [ 277.89776611328125, 256.5, 490.0, 23.0 ],
 													"text" : "\"defs\" is a special SVG parent node that contains definitions of objects to be used later.",
 													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
 												}
@@ -1283,7 +1834,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 348.89776611328125, 316.5, 246.0, 23.0 ],
+													"patching_rect" : [ 277.89776611328125, 225.5, 246.0, 23.0 ],
 													"text" : "\"svg\" is the top-level SVG parent element.",
 													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
 												}
@@ -1298,7 +1849,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 348.89776611328125, 292.0, 352.0, 23.0 ],
+													"patching_rect" : [ 277.89776611328125, 201.0, 352.0, 23.0 ],
 													"text" : "\"main-html\" is where the HTML objects are placed by default.",
 													"textcolor" : [ 0.0, 0.423529411764706, 0.886274509803922, 1.0 ]
 												}
@@ -1312,7 +1863,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 125.0, 143.0, 597.0, 21.0 ],
+													"patching_rect" : [ 54.0, 52.0, 597.0, 21.0 ],
 													"text" : "Here is the HTML layout for the default Drawsocket page ( as defined in drawsocket-page.html )"
 												}
 
@@ -1327,7 +1878,7 @@
 													"maxclass" : "comment",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 125.0, 171.0, 313.0, 350.0 ],
+													"patching_rect" : [ 54.0, 80.0, 313.0, 350.0 ],
 													"text" : "<html>\n <head>\n    <style type=\"text/css\"></style>\n </head>\n\n <body>\n\n    <div id=\"main-div\">\n\n      <div id=\"main-html\"></div>\n\n      <svg id=\"svg\">\n\n          <defs id=\"defs\"></defs>\n\n          <g id=\"main-svg\"></g>\n\n      </svg>\n\n    </div>\n\n    <div id=\"forms\"></div>\n\n </body>\n</html>",
 													"textcolor" : [ 0.996078431372549, 0.996078431372549, 0.996078431372549, 1.0 ]
 												}
@@ -1405,7 +1956,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 813.5, 549.8549218399653, 148.0, 22.0 ],
+									"patching_rect" : [ 458.0, 155.0, 171.0, 24.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -1420,25 +1971,12 @@
 , 							{
 								"box" : 								{
 									"fontsize" : 13.0,
-									"id" : "obj-21",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 574.0, 394.0, 451.0, 36.0 ],
-									"text" : "When you type something into the input field and then hit the Enter button, the value will be sent out of the left hfmt.drawsocket outlet."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 13.0,
 									"id" : "obj-19",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 574.0, 324.5, 451.0, 36.0 ],
+									"patching_rect" : [ 626.0, 357.0, 344.0, 50.0 ],
 									"text" : "processes one or more Drawsocket JSON messages. For example, using this function allows you to create new objects as a result of user interactions."
 								}
 
@@ -1450,8 +1988,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 574.0, 295.5, 442.0, 21.0 ],
-									"text" : "sends a JS object back to the server (which passes the object back to Max)"
+									"patching_rect" : [ 626.0, 328.0, 329.0, 21.0 ],
+									"text" : "sends a JS object back to the server (and to Max)"
 								}
 
 							}
@@ -1462,7 +2000,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 574.0, 266.5, 170.0, 21.0 ],
+									"patching_rect" : [ 626.0, 299.0, 170.0, 21.0 ],
 									"text" : "returns the URL of the client"
 								}
 
@@ -1476,7 +2014,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 421.0, 266.5, 151.0, 79.0 ],
+									"patching_rect" : [ 473.0, 299.0, 151.0, 79.0 ],
 									"text" : "drawsocket.oscprefix\n\ndrawsocket.send( obj )\n\ndrawsocket.input( obj )"
 								}
 
@@ -1485,97 +2023,12 @@
 								"box" : 								{
 									"fontsize" : 13.0,
 									"id" : "obj-15",
-									"linecount" : 5,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 421.0, 176.0, 506.0, 79.0 ],
-									"text" : "In order to receive the input value from the input object, we use the \"onkeydown\" attribute to define a function to be called when the user types letters in the input field. Since we only want the messages when they are completed, we check to see if the key was the 'Enter' key, and if so then we create a new JS object and send it back to the server with one of the special functions exported by Drawsocket."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-14",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 522.0, 659.0, 195.0, 33.0 ],
-									"text" : "You can still access the text element of the inner HTML node."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-13",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 85.0, 614.0, 452.0, 33.0 ],
-									"text" : "Since both are nested in the parent HTML div, they can be treated as one object. If you change the position for the parent object, the child objects are effected as well."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-11",
 									"linecount" : 6,
-									"maxclass" : "o.display",
+									"maxclass" : "comment",
 									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 428.0, 482.0, 219.0, 102.0 ],
-									"text" : "/url : \"/bar\",\n/key : \"textmsg\",\n/val : {\n\t/text : \"testest\",\n\t/id : \"userinput\"\n}"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-10",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 428.0, 416.0, 82.0, 22.0 ],
-									"text" : "o.route /event"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-9",
-									"linecount" : 9,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 93.0, 653.0, 186.0, 133.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -88, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -100, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 0, 112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 56, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 53, 48, 112, 120, 0, 0, 0, 0 ],
-									"saved_bundle_length" : 188,
-									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/left : \"50px\"\n\t\t}\n\t}\n}"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-8",
-									"linecount" : 9,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 293.0, 653.0, 186.0, 133.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -88, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -100, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 0, 112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 56, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 50, 48, 48, 112, 120, 0, 0, 0 ],
-									"saved_bundle_length" : 188,
-									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/left : \"200px\"\n\t\t}\n\t}\n}"
+									"numoutlets" : 0,
+									"patching_rect" : [ 458.0, 195.5, 506.0, 94.0 ],
+									"text" : "In order to receive the input value from the input object, we use the \"onclick\" attribute to define a Javascript function to be called by the browser when the user clicks on the button. \n\nIn the funciton we create a new JS object and send it back to the server with one of the special functions exported by Drawsocket."
 								}
 
 							}
@@ -1583,58 +2036,12 @@
 								"box" : 								{
 									"fontsize" : 13.0,
 									"id" : "obj-7",
-									"linecount" : 6,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 421.0, 64.0, 506.0, 94.0 ],
-									"text" : "In this example, we create a set of new HTML elements in the top-level \"forms\" layer (see the \"page layout\" tab above) for handling user interaction, since for user interaction you want to make sure that the user can click on your object.\n\nFirst we create a new HTML div named \"chat\", and then add two child elements via the /parent keyword: an HTML input field, and then a HTML input field \"label\"."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-30",
-									"maxclass" : "newobj",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 428.0, 383.0, 100.0, 22.0 ],
-									"text" : "r client_message"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-4",
-									"linecount" : 7,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 522.0, 704.5, 186.0, 106.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -124, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 0, 76, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 20, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 103, 114, 101, 97, 116, 0, 0, 0 ],
-									"saved_bundle_length" : 152,
-									"text" : "/* : {\n\t/key : \"html\",\n\t/val : {\n\t\t/id : \"prompt\",\n\t\t/text : \"great\"\n\t}\n}"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-3",
-									"linecount" : 43,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 60.0, 11.8549218399653, 345.0, 595.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -28, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 3, -40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 104, 116, 109, 108, 0, 0, 0, 0, 0, 0, 3, -84, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 46, 46, 0, 0, 0, 0, 0, 0, 0, -60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 102, 111, 114, 109, 115, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 100, 105, 118, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 112, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 96, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28, 47, 112, 111, 115, 105, 116, 105, 111, 110, 0, 0, 0, 44, 115, 0, 0, 97, 98, 115, 111, 108, 117, 116, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 111, 112, 0, 0, 0, 0, 44, 115, 0, 0, 50, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, 20, 47, 108, 101, 102, 116, 0, 0, 0, 44, 115, 0, 0, 49, 48, 48, 112, 120, 0, 0, 0, 0, 0, 2, 24, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 20, 47, 116, 121, 112, 101, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 24, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 48, 47, 112, 108, 97, 99, 101, 104, 111, 108, 100, 101, 114, 0, 0, 0, 0, 44, 115, 0, 0, 116, 121, 112, 101, 32, 109, 101, 115, 115, 97, 103, 101, 115, 32, 116, 111, 32, 77, 97, 120, 32, 104, 101, 114, 101, 0, 0, 0, 0, 0, 0, 16, 47, 115, 105, 122, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 1, 4, 47, 111, 110, 107, 101, 121, 100, 111, 119, 110, 0, 0, 44, 115, 0, 0, 32, 105, 102, 40, 32, 101, 118, 101, 110, 116, 46, 107, 101, 121, 32, 61, 61, 32, 39, 69, 110, 116, 101, 114, 39, 32, 41, 123, 10, 32, 32, 32, 32, 32, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 115, 101, 110, 100, 40, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 101, 118, 101, 110, 116, 58, 32, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 117, 114, 108, 58, 32, 100, 114, 97, 119, 115, 111, 99, 107, 101, 116, 46, 111, 115, 99, 112, 114, 101, 102, 105, 120, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 107, 101, 121, 58, 32, 39, 116, 101, 120, 116, 109, 115, 103, 39, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 118, 97, 108, 58, 32, 123, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 116, 101, 120, 116, 58, 32, 116, 104, 105, 115, 46, 118, 97, 108, 117, 101, 44, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 105, 100, 58, 32, 32, 116, 104, 105, 115, 46, 105, 100, 10, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 32, 32, 32, 32, 125, 10, 32, 32, 32, 32, 32, 32, 125, 41, 59, 10, 32, 32, 125, 0, 0, 0, 0, 0, 56, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 40, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 119, 105, 100, 116, 104, 0, 0, 44, 115, 0, 0, 51, 48, 48, 112, 120, 0, 0, 0, 0, 0, 0, -76, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 99, 104, 97, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 108, 97, 98, 101, 108, 0, 0, 0, 0, 0, 0, 24, 47, 102, 111, 114, 0, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 114, 105, 110, 112, 117, 116, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 20, 47, 110, 97, 109, 101, 0, 0, 0, 44, 115, 0, 0, 112, 114, 111, 109, 112, 116, 0, 0, 0, 0, 0, 40, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 116, 104, 105, 115, 32, 105, 115, 32, 97, 32, 109, 101, 115, 115, 97, 103, 101, 32, 102, 114, 111, 109, 32, 77, 97, 120, 33, 0 ],
-									"saved_bundle_length" : 1016,
-									"text" : "/* : {\n\t/key : \"html\",\n\t/val : [{\n\t\t/parent : \"forms\",\n\t\t/new : \"div\",\n\t\t/id : \"chat\",\n\t\t/style : {\n\t\t\t/position : \"absolute\",\n\t\t\t/top : \"200px\",\n\t\t\t/left : \"100px\"\n\t\t}\n\t}, {\n\t\t/parent : \"chat\",\n\t\t/new : \"input\",\n\t\t/type : \"text\",\n\t\t/id : \"userinput\",\n\t\t/name : \"userinput\",\n\t\t/placeholder : \"type messages to Max here\",\n\t\t/size : 10,\n\t\t/onkeydown : \" if( event.key == 'Enter' ){\n      drawsocket.send( {\n        event:  {\n          url: drawsocket.oscprefix,\n          key: 'textmsg',\n          val: {\n            text: this.value,\n            id:  this.id\n          }\n        }\n      });\n  }\",\n\t\t/style : {\n\t\t\t/width : \"300px\"\n\t\t}\n\t}, {\n\t\t/parent : \"chat\",\n\t\t/new : \"label\",\n\t\t/for : \"userinput\",\n\t\t/id : \"prompt\",\n\t\t/name : \"prompt\",\n\t\t/text : \"this is a message from Max!\"\n\t}]\n}"
+									"patching_rect" : [ 458.0, 66.59375, 506.0, 79.0 ],
+									"text" : "In this example, we create a new HTML element in the top-level \"forms\" layer for handling user interaction. HTML UI objects need to be on the top layer of the page, so that the user clicks are captured by that layer, not the invisible SVG layer.\n\nSee the \"page layers\" subpatch below for more details."
 								}
 
 							}
@@ -1644,57 +2051,90 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 60.0, 804.0, 100.0, 22.0 ],
+									"patching_rect" : [ 76.0, 571.0, 100.0, 22.0 ],
 									"text" : "s to_drawsocket"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"angle" : 270.0,
+									"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
+									"border" : 2,
+									"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+									"id" : "obj-41",
+									"maxclass" : "panel",
+									"mode" : 0,
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 613.0, 537.703125, 325.0, 247.0 ],
+									"proportion" : 0.5
 								}
 
 							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-5", 0 ],
-									"source" : [ "obj-10", 0 ]
+									"destination" : [ "obj-35", 0 ],
+									"source" : [ "obj-24", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-26", 0 ],
+									"source" : [ "obj-35", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-3", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-10", 0 ],
-									"source" : [ "obj-30", 0 ]
+									"source" : [ "obj-39", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-4", 0 ]
+									"source" : [ "obj-40", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
-									"source" : [ "obj-5", 0 ]
+									"destination" : [ "obj-24", 0 ],
+									"source" : [ "obj-44", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-8", 0 ]
+									"destination" : [ "obj-47", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-46", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
+									"destination" : [ "obj-45", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-47", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-66", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-64", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
 									"source" : [ "obj-9", 0 ]
 								}
 
@@ -1800,7 +2240,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1830,99 +2270,21 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-15",
-									"linecount" : 3,
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-49",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 241.5, 149.0, 160.0, 47.0 ],
-									"text" : "2) create a new tween and assign the object target, using CSS style selectors."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-14",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 70.0, 171.0, 154.0, 20.0 ],
-									"text" : "1) create an object to move"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-5",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 509.5, 419.5, 283.0, 20.0 ],
-									"text" : "timelines use the same /cmd commands as tweens:"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 415.8642578125, 324.5, 259.0, 20.0 ],
-									"text" : "timelines are essentially a sequence of tweens."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 411.5, 188.0, 384.0, 33.0 ],
-									"text" : "for simplicty, timelines can be created using the \"tween\" key -- and are recognized by drawsocket, by the /tweens keyword attribute."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-24",
-									"linecount" : 10,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 70.0, 198.5, 157.0, 146.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -76, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -88, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -128, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 97, 114, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 20, 47, 99, 104, 105, 108, 100, 0, 0, 44, 115, 0, 0, 104, 101, 108, 108, 111, 33, 0, 0 ],
-									"saved_bundle_length" : 200,
-									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/id : \"bar\",\n\t\t/new : \"text\",\n\t\t/x : 100,\n\t\t/y : 100,\n\t\t/child : \"hello!\"\n\t}\n}"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 0,
-									"fontsize" : 12.0,
-									"id" : "obj-1",
-									"linecount" : 32,
-									"maxclass" : "o.compose",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 242.5, 198.5, 165.0, 445.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 124, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 2, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 116, 119, 101, 101, 110, 0, 0, 0, 0, 0, 2, 68, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 2, 52, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 95, 108, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 105, 110, 105, 116, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 117, 115, 101, 100, 0, 44, 115, 0, 0, 116, 114, 117, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 121, 111, 121, 111, 0, 0, 0, 44, 115, 0, 0, 116, 114, 117, 101, 0, 0, 0, 0, 0, 0, 0, 16, 47, 114, 101, 112, 101, 97, 116, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 1, -96, 47, 116, 119, 101, 101, 110, 115, 0, 44, 46, 46, 0, 0, 0, 0, -60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 97, 114, 103, 101, 116, 0, 44, 115, 0, 0, 35, 98, 97, 114, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 117, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, -124, 47, 118, 97, 114, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 116, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 99, 97, 108, 101, 88, 0, 44, 115, 0, 0, 53, 48, 37, 0, 0, 0, 0, 20, 47, 111, 112, 97, 99, 105, 116, 121, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20, 47, 101, 97, 115, 101, 0, 0, 0, 44, 115, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0, 0, 0, 0, -56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 97, 114, 103, 101, 116, 0, 44, 115, 0, 0, 35, 98, 97, 114, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 117, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2, 0, 0, 0, -120, 47, 118, 97, 114, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 99, 97, 108, 101, 0, 0, 44, 115, 0, 0, 49, 48, 48, 37, 0, 0, 0, 0, 0, 0, 0, 20, 47, 111, 112, 97, 99, 105, 116, 121, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20, 47, 101, 97, 115, 101, 0, 0, 0, 44, 115, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0 ],
-									"saved_bundle_length" : 656,
-									"text" : "/* : {\n\t/key : \"tween\",\n\t/val : {\n\t\t/id : \"foo_line\",\n\t\t/init : {\n\t\t\t/paused : \"true\",\n\t\t\t/yoyo : \"true\",\n\t\t\t/repeat : 20\n\t\t},\n\t\t/tweens : [{\n\t\t\t/target : \"#bar\",\n\t\t\t/dur : 1,\n\t\t\t/vars : {\n\t\t\t\t/y : 0,\n\t\t\t\t/x : 0,\n\t\t\t\t/scaleX : \"50%\",\n\t\t\t\t/opacity : 1,\n\t\t\t\t/ease : \"linear\"\n\t\t\t}\n\t\t}, {\n\t\t\t/target : \"#bar\",\n\t\t\t/dur : 2,\n\t\t\t/vars : {\n\t\t\t\t/y : 10,\n\t\t\t\t/x : 0,\n\t\t\t\t/scale : \"100%\",\n\t\t\t\t/opacity : 1,\n\t\t\t\t/ease : \"linear\"\n\t\t\t}\n\t\t}]\n\t}\n}"
+									"patching_rect" : [ 57.5, 63.0, 123.0, 22.0 ],
+									"text" : "Tween Timelines"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"hidden" : 1,
-									"id" : "obj-45",
+									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
@@ -2069,7 +2431,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 83.8642578125, 101.5, 19.0, 22.0 ],
+									"patching_rect" : [ 36.5, 115.5, 19.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -2086,18 +2448,121 @@
 									"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
 									"fontface" : 3,
 									"fontlink" : 1,
-									"id" : "obj-46",
+									"id" : "obj-6",
 									"maxclass" : "textbutton",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 78.8642578125, 73.0, 314.271484375, 21.40625 ],
+									"patching_rect" : [ 54.8642578125, 112.0, 314.271484375, 21.40625 ],
 									"text" : "Click here to read the GSAP Documentation online...",
 									"texton" : "Click here to read the GSAP Documentation  online...",
 									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
 									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
 									"usetextovercolor" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
+									"id" : "obj-7",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 57.5, 87.0, 565.0, 22.0 ],
+									"text" : "Drawsocket uses the GSAP TimelineMax animation library for multi segement animations."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 241.5, 149.0, 160.0, 47.0 ],
+									"text" : "2) create a new tween and assign the object target, using CSS style selectors."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-14",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 70.0, 171.0, 154.0, 20.0 ],
+									"text" : "1) create an object to move"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 509.5, 419.5, 283.0, 20.0 ],
+									"text" : "timelines use the same /cmd commands as tweens:"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 415.8642578125, 324.5, 259.0, 20.0 ],
+									"text" : "timelines are essentially a sequence of tweens."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 411.5, 188.0, 384.0, 33.0 ],
+									"text" : "for simplicty, timelines can be created using the \"tween\" key -- and are recognized by drawsocket, by the /tweens keyword attribute."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-24",
+									"linecount" : 10,
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 70.0, 198.5, 157.0, 146.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -76, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -88, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -128, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 97, 114, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 20, 47, 99, 104, 105, 108, 100, 0, 0, 44, 115, 0, 0, 104, 101, 108, 108, 111, 33, 0, 0 ],
+									"saved_bundle_length" : 200,
+									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/id : \"bar\",\n\t\t/new : \"text\",\n\t\t/x : 100,\n\t\t/y : 100,\n\t\t/child : \"hello!\"\n\t}\n}"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-1",
+									"linecount" : 32,
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 242.5, 198.5, 165.0, 445.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 124, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 2, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 116, 119, 101, 101, 110, 0, 0, 0, 0, 0, 2, 68, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 2, 52, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 95, 108, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 105, 110, 105, 116, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 117, 115, 101, 100, 0, 44, 115, 0, 0, 116, 114, 117, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 121, 111, 121, 111, 0, 0, 0, 44, 115, 0, 0, 116, 114, 117, 101, 0, 0, 0, 0, 0, 0, 0, 16, 47, 114, 101, 112, 101, 97, 116, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 1, -96, 47, 116, 119, 101, 101, 110, 115, 0, 44, 46, 46, 0, 0, 0, 0, -60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 97, 114, 103, 101, 116, 0, 44, 115, 0, 0, 35, 98, 97, 114, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 117, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, -124, 47, 118, 97, 114, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 116, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 115, 99, 97, 108, 101, 88, 0, 44, 115, 0, 0, 53, 48, 37, 0, 0, 0, 0, 20, 47, 111, 112, 97, 99, 105, 116, 121, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20, 47, 101, 97, 115, 101, 0, 0, 0, 44, 115, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0, 0, 0, 0, -56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 97, 114, 103, 101, 116, 0, 44, 115, 0, 0, 35, 98, 97, 114, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 117, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2, 0, 0, 0, -120, 47, 118, 97, 114, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 99, 97, 108, 101, 0, 0, 44, 115, 0, 0, 49, 48, 48, 37, 0, 0, 0, 0, 0, 0, 0, 20, 47, 111, 112, 97, 99, 105, 116, 121, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 20, 47, 101, 97, 115, 101, 0, 0, 0, 44, 115, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0 ],
+									"saved_bundle_length" : 656,
+									"text" : "/* : {\n\t/key : \"tween\",\n\t/val : {\n\t\t/id : \"foo_line\",\n\t\t/init : {\n\t\t\t/paused : \"true\",\n\t\t\t/yoyo : \"true\",\n\t\t\t/repeat : 20\n\t\t},\n\t\t/tweens : [{\n\t\t\t/target : \"#bar\",\n\t\t\t/dur : 1,\n\t\t\t/vars : {\n\t\t\t\t/y : 0,\n\t\t\t\t/x : 0,\n\t\t\t\t/scaleX : \"50%\",\n\t\t\t\t/opacity : 1,\n\t\t\t\t/ease : \"linear\"\n\t\t\t}\n\t\t}, {\n\t\t\t/target : \"#bar\",\n\t\t\t/dur : 2,\n\t\t\t/vars : {\n\t\t\t\t/y : 10,\n\t\t\t\t/x : 0,\n\t\t\t\t/scale : \"100%\",\n\t\t\t\t/opacity : 1,\n\t\t\t\t/ease : \"linear\"\n\t\t\t}\n\t\t}]\n\t}\n}"
 								}
 
 							}
@@ -2180,17 +2645,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-9",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 78.8642578125, 46.0, 483.0, 20.0 ],
-									"text" : "drawsocket uses the GSAP TimelineMax animation library for multi segement animations."
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-17",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -2254,9 +2708,9 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-45", 0 ],
+									"destination" : [ "obj-3", 0 ],
 									"hidden" : 1,
-									"source" : [ "obj-46", 0 ]
+									"source" : [ "obj-6", 0 ]
 								}
 
 							}
@@ -2361,7 +2815,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2390,6 +2844,19 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-49",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 35.5, 15.0, 123.0, 22.0 ],
+									"text" : "Tween Animation"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "comment",
@@ -2550,7 +3017,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 14.5, 48.5, 19.0, 22.0 ],
+									"patching_rect" : [ 14.5, 67.5, 19.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -2573,7 +3040,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 32.8642578125, 45.0, 314.271484375, 21.40625 ],
+									"patching_rect" : [ 32.8642578125, 64.0, 314.271484375, 21.40625 ],
 									"text" : "Click here to read the GSAP Documentation online...",
 									"texton" : "Click here to read the GSAP Documentation  online...",
 									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
@@ -2748,7 +3215,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 297.5, 262.0, 20.0 ],
+									"patching_rect" : [ 541.8642578125, 312.5, 262.0, 20.0 ],
 									"text" : "\"stop\" pauses the tween at the current possition"
 								}
 
@@ -2777,7 +3244,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 386.3642578125, 76.0, 168.0, 47.0 ],
+									"patching_rect" : [ 386.3642578125, 91.0, 168.0, 47.0 ],
 									"text" : "3) the tween /cmd keyword can be used to trigger actions."
 								}
 
@@ -2789,7 +3256,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 203.3642578125, 76.0, 160.0, 47.0 ],
+									"patching_rect" : [ 203.3642578125, 91.0, 160.0, 47.0 ],
 									"text" : "2) create a new tween and assign the object target, using CSS style selectors."
 								}
 
@@ -2800,19 +3267,20 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 32.8642578125, 77.0, 154.0, 20.0 ],
+									"patching_rect" : [ 32.8642578125, 92.0, 154.0, 20.0 ],
 									"text" : "1) create an object to move"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"fontsize" : 14.0,
 									"id" : "obj-9",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 35.5, 20.0, 309.0, 20.0 ],
-									"text" : "drawsocket uses the GSAP TweenMax animation library."
+									"patching_rect" : [ 35.5, 39.0, 362.0, 22.0 ],
+									"text" : "Drawsocket uses the GSAP TweenMax animation library."
 								}
 
 							}
@@ -2826,7 +3294,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 203.3642578125, 125.0, 165.0, 187.0 ],
+									"patching_rect" : [ 203.3642578125, 140.0, 165.0, 187.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -4, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 116, 119, 101, 101, 110, 0, 0, 0, 0, 0, 0, -48, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 84, 119, 101, 101, 110, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 97, 114, 103, 101, 116, 0, 44, 115, 0, 0, 35, 98, 97, 114, 0, 0, 0, 0, 0, 0, 0, 16, 47, 100, 117, 114, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, 104, 47, 118, 97, 114, 115, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 88, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 114, 111, 116, 97, 116, 105, 111, 110, 0, 0, 0, 44, 105, 0, 0, 0, 0, 1, 104, 0, 0, 0, 20, 47, 112, 97, 117, 115, 101, 100, 0, 44, 115, 0, 0, 116, 114, 117, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 101, 97, 115, 101, 0, 0, 0, 44, 115, 0, 0, 108, 105, 110, 101, 97, 114, 0, 0 ],
 									"saved_bundle_length" : 284,
 									"text" : "/* : {\n\t/key : \"tween\",\n\t/val : {\n\t\t/id : \"fooTween\",\n\t\t/target : \"#bar\",\n\t\t/dur : 1,\n\t\t/vars : {\n\t\t\t/rotation : 360,\n\t\t\t/paused : \"true\",\n\t\t\t/ease : \"linear\"\n\t\t}\n\t}\n}"
@@ -2860,7 +3328,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 382.8642578125, 243.5, 157.0, 106.0 ],
+									"patching_rect" : [ 382.8642578125, 258.5, 157.0, 106.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -120, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 124, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 116, 119, 101, 101, 110, 0, 0, 0, 0, 0, 0, 80, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 84, 119, 101, 101, 110, 0, 0, 0, 0, 0, 0, 0, 20, 47, 99, 109, 100, 0, 0, 0, 0, 44, 115, 0, 0, 115, 116, 111, 112, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 156,
 									"text" : "/* : {\n\t/key : \"tween\",\n\t/val : {\n\t\t/id : \"fooTween\",\n\t\t/cmd : \"stop\"\n\t}\n}"
@@ -2873,7 +3341,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.8642578125, 180.0, 211.0, 20.0 ],
+									"patching_rect" : [ 541.8642578125, 195.0, 211.0, 20.0 ],
 									"text" : "\"start\" starts the tween from beginning"
 								}
 
@@ -2888,7 +3356,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 382.8642578125, 125.0, 157.0, 106.0 ],
+									"patching_rect" : [ 382.8642578125, 140.0, 157.0, 106.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -120, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 124, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 116, 119, 101, 101, 110, 0, 0, 0, 0, 0, 0, 80, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 84, 119, 101, 101, 110, 0, 0, 0, 0, 0, 0, 0, 20, 47, 99, 109, 100, 0, 0, 0, 0, 44, 115, 0, 0, 115, 116, 97, 114, 116, 0, 0, 0 ],
 									"saved_bundle_length" : 156,
 									"text" : "/* : {\n\t/key : \"tween\",\n\t/val : {\n\t\t/id : \"fooTween\",\n\t\t/cmd : \"start\"\n\t}\n}"
@@ -2905,7 +3373,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 32.8642578125, 104.0, 157.0, 146.0 ],
+									"patching_rect" : [ 32.8642578125, 119.0, 157.0, 146.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -76, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -88, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -128, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 97, 114, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 20, 47, 99, 104, 105, 108, 100, 0, 0, 44, 115, 0, 0, 104, 101, 108, 108, 111, 33, 0, 0 ],
 									"saved_bundle_length" : 200,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/id : \"bar\",\n\t\t/new : \"text\",\n\t\t/x : 100,\n\t\t/y : 100,\n\t\t/child : \"hello!\"\n\t}\n}"
@@ -2935,7 +3403,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 45.3642578125, 776.0, 100.0, 22.0 ],
+									"patching_rect" : [ 32.8642578125, 780.0, 100.0, 22.0 ],
 									"text" : "s to_drawsocket"
 								}
 
@@ -3120,7 +3588,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 401.5, 233.209843679930714, 51.0, 22.0 ],
+					"patching_rect" : [ 401.5, 233.209843679930714, 114.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -3128,7 +3596,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p tween"
+					"text" : "p \"tween animation\""
 				}
 
 			}
@@ -3150,7 +3618,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3180,7 +3648,202 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"fontsize" : 12.0,
+									"hidden" : 1,
+									"id" : "obj-45",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 7,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"classnamespace" : "box",
+										"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 0,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "",
+										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-12",
+													"linecount" : 2,
+													"maxclass" : "message",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 50.0, 100.0, 482.0, 35.0 ],
+													"text" : ";\rmax launch_browser https://developer.mozilla.org/en-US/docs/Web/SVG"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-15",
+													"index" : 1,
+													"maxclass" : "inlet",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ]
+												}
+
+											}
+ ],
+										"lines" : [ 											{
+												"patchline" : 												{
+													"destination" : [ "obj-12", 0 ],
+													"source" : [ "obj-15", 0 ]
+												}
+
+											}
+ ],
+										"styles" : [ 											{
+												"name" : "black on white",
+												"number" : 												{
+													"fontsize" : [ 12.0 ],
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"umenu" : 												{
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"bgfillcolor" : 													{
+														"type" : "color",
+														"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+														"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+														"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+														"angle" : 270.0,
+														"proportion" : 0.39,
+														"autogradient" : 0
+													}
+
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "caption text",
+												"default" : 												{
+													"fontface" : [ 2 ],
+													"fontsize" : [ 11.0 ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section dividers",
+												"default" : 												{
+													"fontface" : [ 3 ],
+													"fontsize" : [ 15.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section info reg",
+												"default" : 												{
+													"fontsize" : [ 12.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "titles",
+												"default" : 												{
+													"fontface" : [ 1 ],
+													"fontsize" : [ 20.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 43.974609375, 80.0, 19.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"tags" : ""
+									}
+,
+									"text" : "p"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
+									"fontface" : 3,
+									"fontlink" : 1,
+									"id" : "obj-46",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 64.974609375, 80.0, 306.05078125, 21.40625 ],
+									"text" : "Click here to read the SVG Documentation online...",
+									"texton" : "Click here to read the SVG Documentation  online...",
+									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
+									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
+									"usetextovercolor" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-49",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 70.5, 21.0, 174.0, 22.0 ],
+									"text" : "Defining SVG prototypes"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
 									"id" : "obj-7",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -3401,7 +4064,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 329.0, 89.8549218399653, 148.0, 22.0 ],
+									"patching_rect" : [ 325.5, 119.8549218399653, 171.0, 24.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -3420,7 +4083,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 113.5, 484.0, 154.0, 47.0 ],
+									"patching_rect" : [ 113.5, 518.0, 154.0, 47.0 ],
 									"text" : "nothing is drawn, because the parent is the SVG \"defs\" element."
 								}
 
@@ -3431,7 +4094,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 304.0, 730.0, 173.0, 20.0 ],
+									"patching_rect" : [ 304.0, 764.0, 173.0, 20.0 ],
 									"text" : "clearing all also clears the defs"
 								}
 
@@ -3446,7 +4109,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 315.66668701171875, 647.0, 136.0, 65.0 ],
+									"patching_rect" : [ 315.66668701171875, 681.0, 136.0, 65.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 99, 108, 101, 97, 114, 0, 0, 0, 0, 0, 0, 16, 47, 118, 97, 108, 0, 0, 0, 0, 44, 115, 0, 0, 42, 0, 0, 0 ],
 									"saved_bundle_length" : 92,
 									"text" : "/* : {\n\t/key : \"clear\",\n\t/val : \"*\"\n}"
@@ -3461,7 +4124,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 743.0, 67.0, 50.0, 22.0 ]
+									"patching_rect" : [ 743.0, 101.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -3474,7 +4137,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 660.0, 166.0, 50.0, 22.0 ]
+									"patching_rect" : [ 660.0, 200.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -3485,7 +4148,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 660.0, 117.0, 73.0, 22.0 ],
+									"patching_rect" : [ 660.0, 151.0, 73.0, 22.0 ],
 									"text" : "random 500"
 								}
 
@@ -3498,7 +4161,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 660.0, 33.0, 24.0, 24.0 ]
+									"patching_rect" : [ 660.0, 67.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -3509,7 +4172,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 743.0, 117.0, 79.0, 22.0 ],
+									"patching_rect" : [ 743.0, 151.0, 79.0, 22.0 ],
 									"text" : "sprintf foo-%i"
 								}
 
@@ -3521,7 +4184,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 585.0, 117.0, 73.0, 22.0 ],
+									"patching_rect" : [ 585.0, 151.0, 73.0, 22.0 ],
 									"text" : "random 500"
 								}
 
@@ -3533,7 +4196,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 3,
 									"outlettype" : [ "bang", "bang", "int" ],
-									"patching_rect" : [ 660.0, 67.0, 54.0, 22.0 ],
+									"patching_rect" : [ 660.0, 101.0, 54.0, 22.0 ],
 									"text" : "uzi 1000"
 								}
 
@@ -3545,7 +4208,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 844.0, 177.0, 150.0, 47.0 ],
+									"patching_rect" : [ 844.0, 211.0, 150.0, 47.0 ],
 									"text" : "note that HTML requires that IDs start with a letter, so this doesn't work"
 								}
 
@@ -3557,7 +4220,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 844.0, 227.0, 50.0, 22.0 ],
+									"patching_rect" : [ 844.0, 261.0, 50.0, 22.0 ],
 									"text" : "1-foo"
 								}
 
@@ -3569,7 +4232,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 585.0, 442.0, 100.0, 22.0 ],
+									"patching_rect" : [ 585.0, 474.0, 100.0, 22.0 ],
 									"text" : "o.pack /*"
 								}
 
@@ -3581,7 +4244,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 585.0, 392.0, 113.0, 22.0 ],
+									"patching_rect" : [ 585.0, 424.0, 113.0, 22.0 ],
 									"text" : "o.pack /val /key svg"
 								}
 
@@ -3593,7 +4256,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 766.0, 174.0, 56.0, 22.0 ],
+									"patching_rect" : [ 766.0, 208.0, 56.0, 22.0 ],
 									"text" : "foo-1000"
 								}
 
@@ -3608,7 +4271,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 585.0, 478.0, 172.0, 146.0 ],
+									"patching_rect" : [ 585.0, 510.0, 172.0, 146.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -60, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 120, 0, 0, 44, 100, 0, 0, 64, 112, 32, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 121, 0, 0, 44, 100, 0, 0, 64, 118, -48, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 45, 49, 48, 48, 48, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 0, 0, 0, 0, 24, 47, 104, 114, 101, 102, 0, 0, 0, 44, 115, 0, 0, 35, 110, 111, 116, 101, 108, 105, 110, 101, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0 ],
 									"saved_bundle_length" : 216,
 									"text" : "/* : {\n\t/val : {\n\t\t/x : 258.,\n\t\t/y : 365.,\n\t\t/id : \"foo-1000\",\n\t\t/new : \"use\",\n\t\t/href : \"#noteline\"\n\t},\n\t/key : \"svg\"\n}"
@@ -3624,7 +4287,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 585.0, 166.0, 50.0, 22.0 ]
+									"patching_rect" : [ 585.0, 200.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -3635,7 +4298,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "FullPacket" ],
-									"patching_rect" : [ 585.0, 259.0, 169.0, 22.0 ],
+									"patching_rect" : [ 585.0, 293.0, 169.0, 22.0 ],
 									"text" : "o.pack /x /y /id foo-1"
 								}
 
@@ -3650,7 +4313,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
-									"patching_rect" : [ 585.0, 304.0, 150.0, 46.0 ],
+									"patching_rect" : [ 585.0, 338.0, 155.0, 46.0 ],
 									"text" : "/new = \"use\",\n/href = \"#noteline\""
 								}
 
@@ -3661,7 +4324,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 315.5, 327.0, 150.0, 20.0 ],
+									"patching_rect" : [ 315.5, 361.0, 150.0, 20.0 ],
 									"text" : "use group def by href id"
 								}
 
@@ -3673,7 +4336,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 45.5, 39.0, 453.0, 33.0 ],
+									"patching_rect" : [ 70.5, 45.0, 453.0, 33.0 ],
 									"text" : "\"defs\" is a special SVG element, which is not drawn to the screen, but provides a mechanism to create definitions of objects which can be re-used by reference."
 								}
 
@@ -3688,7 +4351,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 100.0, 81.0, 186.0, 391.0 ],
+									"patching_rect" : [ 100.0, 115.0, 186.0, 391.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 32, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 2, 20, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 1, -20, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 1, -36, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 100, 101, 102, 115, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 103, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 110, 111, 116, 101, 108, 105, 110, 101, 0, 0, 0, 0, 0, 0, 1, -124, 47, 99, 104, 105, 108, 100, 0, 0, 44, 46, 46, 0, 0, 0, 0, -88, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 108, 105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 49, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 12, 47, 121, 49, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 12, 47, 120, 50, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 121, 50, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 60, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 44, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 115, 116, 114, 111, 107, 101, 45, 119, 105, 100, 116, 104, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1, 0, 0, 0, -56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 108, 47, 115, 116, 121, 108, 101, 0, 0, 44, 46, 0, 0, 0, 0, 0, 92, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 115, 116, 114, 111, 107, 101, 45, 119, 105, 100, 116, 104, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 2, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 110, 111, 110, 101, 0, 0, 0, 0, 0, 0, 0, 20, 47, 115, 116, 114, 111, 107, 101, 0, 44, 115, 0, 0, 98, 108, 97, 99, 107, 0, 0, 0 ],
 									"saved_bundle_length" : 564,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/parent : \"defs\",\n\t\t/new : \"g\",\n\t\t/id : \"noteline\",\n\t\t/child : [{\n\t\t\t/new : \"line\",\n\t\t\t/x1 : 10,\n\t\t\t/y1 : 5,\n\t\t\t/x2 : 100,\n\t\t\t/y2 : 5,\n\t\t\t/style : {\n\t\t\t\t/stroke-width : 1\n\t\t\t}\n\t\t}, {\n\t\t\t/new : \"circle\",\n\t\t\t/cx : 5,\n\t\t\t/cy : 5,\n\t\t\t/r : 5,\n\t\t\t/style : {\n\t\t\t\t/stroke-width : 2,\n\t\t\t\t/fill : \"none\",\n\t\t\t\t/stroke : \"black\"\n\t\t\t}\n\t\t}]\n\t}\n}"
@@ -3705,7 +4368,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 310.5, 352.0, 179.0, 146.0 ],
+									"patching_rect" : [ 310.5, 386.0, 179.0, 146.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -76, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -88, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -128, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 117, 115, 101, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 0, 0, 0, 0, 24, 47, 104, 114, 101, 102, 0, 0, 0, 44, 115, 0, 0, 35, 110, 111, 116, 101, 108, 105, 110, 101, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100 ],
 									"saved_bundle_length" : 200,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"use\",\n\t\t/id : \"foo\",\n\t\t/href : \"#noteline\",\n\t\t/x : 100,\n\t\t/y : 100\n\t}\n}"
@@ -3718,7 +4381,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 100.0, 610.0, 100.0, 22.0 ],
+									"patching_rect" : [ 100.0, 644.0, 100.0, 22.0 ],
 									"text" : "s to_drawsocket"
 								}
 
@@ -3865,6 +4528,14 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-45", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-46", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-19", 0 ],
 									"source" : [ "obj-6", 0 ]
 								}
@@ -3978,7 +4649,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4505,7 +5176,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4535,7 +5206,20 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"fontsize" : 12.0,
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-15",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 27.5, 8.0, 87.0, 22.0 ],
+									"text" : "SVG Layers"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
 									"id" : "obj-10",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
@@ -4756,7 +5440,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 480.5, 761.8549218399653, 148.0, 22.0 ],
+									"patching_rect" : [ 458.5, 643.8549218399653, 171.0, 24.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -4776,7 +5460,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 27.5, 18.0, 649.0, 69.0 ],
+									"patching_rect" : [ 27.5, 32.0, 649.0, 69.0 ],
 									"text" : "SVG group objects can be used to assign objects to separate drawing layers. The /parent attribute tells drawsocket to insert this node as a child of another element. For the assignment to work correctly, the parent object needs to exist already, and should be an object that expects child nodes (e.g. group, symbol, defs, etc.),"
 								}
 
@@ -4788,7 +5472,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 238.0, 552.912622690200806, 285.0, 33.0 ],
+									"patching_rect" : [ 238.0, 564.912622690200806, 285.0, 33.0 ],
 									"text" : "clearing a layer, does not change the drawing order (and also does not remove the group object itself)"
 								}
 
@@ -4859,7 +5543,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 85.980582058429718, 614.291262269020081, 215.0, 65.0 ],
+									"patching_rect" : [ 85.980582058429718, 626.291262269020081, 215.0, 65.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 84, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 99, 108, 101, 97, 114, 0, 0, 0, 0, 0, 0, 28, 47, 118, 97, 108, 0, 0, 0, 0, 44, 115, 115, 0, 111, 118, 101, 114, 108, 97, 121, 0, 98, 97, 99, 107, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 104,
 									"text" : "/* : {\n\t/key : \"clear\",\n\t/val : [\"overlay\", \"back\"]\n}"
@@ -4913,7 +5597,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 295.0, 93.912622690200806, 321.0, 20.0 ],
+									"patching_rect" : [ 295.0, 108.912622690200806, 321.0, 20.0 ],
 									"text" : "2) add elements to a layer via the /parent attribute keyword"
 								}
 
@@ -4928,7 +5612,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 270.0, 118.912622690200806, 179.0, 391.0 ],
+									"patching_rect" : [ 270.0, 133.912622690200806, 179.0, 391.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 28, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 2, 16, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 1, -24, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 46, 46, 0, 0, 0, 0, 0, 0, 0, -104, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 98, 97, 99, 107, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 114, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 16, 47, 119, 105, 100, 116, 104, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 16, 47, 104, 101, 105, 103, 104, 116, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, -104, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 109, 97, 105, 110, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 99, 0, 0, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, -106, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, -106, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 25, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 105, 110, 107, 0, 0, 0, 0, 0, 0, 0, -100, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 111, 118, 101, 114, 108, 97, 121, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 100, 111, 116, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, -106, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, -106, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 24, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 108, 105, 103, 104, 116, 103, 114, 97, 121, 0, 0, 0 ],
 									"saved_bundle_length" : 560,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : [{\n\t\t/parent : \"back\",\n\t\t/new : \"rect\",\n\t\t/id : \"r\",\n\t\t/x : 100,\n\t\t/y : 100,\n\t\t/width : 100,\n\t\t/height : 100\n\t}, {\n\t\t/parent : \"main\",\n\t\t/new : \"circle\",\n\t\t/id : \"c\",\n\t\t/cx : 150,\n\t\t/cy : 150,\n\t\t/r : 25,\n\t\t/fill : \"pink\"\n\t}, {\n\t\t/parent : \"overlay\",\n\t\t/new : \"circle\",\n\t\t/id : \"dot\",\n\t\t/cx : 150,\n\t\t/cy : 150,\n\t\t/r : 5,\n\t\t/fill : \"lightgray\"\n\t}]\n}"
@@ -4941,7 +5625,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 26.5, 102.0, 150.0, 20.0 ],
+									"patching_rect" : [ 26.5, 117.0, 150.0, 20.0 ],
 									"text" : "1) create some layers"
 								}
 
@@ -4956,7 +5640,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 30.5, 131.912622690200806, 222.0, 228.0 ],
+									"patching_rect" : [ 30.5, 146.912622690200806, 222.0, 228.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 76, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 1, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 1, 24, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 46, 46, 0, 0, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 109, 97, 105, 110, 45, 115, 118, 103, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 103, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 98, 97, 99, 107, 0, 0, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 109, 97, 105, 110, 45, 115, 118, 103, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 103, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 109, 97, 105, 110, 0, 0, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 109, 97, 105, 110, 45, 115, 118, 103, 0, 0, 0, 0, 0, 0, 0, 16, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 103, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 111, 118, 101, 114, 108, 97, 121, 0 ],
 									"saved_bundle_length" : 352,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : [{\n\t\t/parent : \"main-svg\",\n\t\t/new : \"g\",\n\t\t/id : \"back\"\n\t}, {\n\t\t/parent : \"main-svg\",\n\t\t/new : \"g\",\n\t\t/id : \"main\"\n\t}, {\n\t\t/parent : \"main-svg\",\n\t\t/new : \"g\",\n\t\t/id : \"overlay\"\n\t}]\n}"
@@ -4973,7 +5657,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 85.980582058429718, 540.912622690200806, 136.0, 65.0 ],
+									"patching_rect" : [ 85.980582058429718, 552.912622690200806, 136.0, 65.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 76, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 99, 108, 101, 97, 114, 0, 0, 0, 0, 0, 0, 20, 47, 118, 97, 108, 0, 0, 0, 0, 44, 115, 0, 0, 109, 97, 105, 110, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 96,
 									"text" : "/* : {\n\t/key : \"clear\",\n\t/val : \"main\"\n}"
@@ -4990,22 +5674,10 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 469.0, 118.912622690200806, 215.0, 405.0 ],
+									"patching_rect" : [ 469.0, 133.912622690200806, 215.0, 405.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 72, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 2, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 2, 20, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 46, 46, 0, 0, 0, 0, 0, 0, 0, -84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 109, 97, 105, 110, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 108, 101, 102, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 20, 47, 116, 101, 120, 116, 0, 0, 0, 44, 115, 0, 0, 38, 35, 120, 69, 48, 53, 48, 0, 0, 0, 0, 28, 47, 99, 108, 97, 115, 115, 0, 0, 44, 115, 0, 0, 98, 114, 97, 118, 117, 114, 97, 95, 116, 101, 120, 116, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 40, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, -80, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 98, 97, 99, 107, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 114, 101, 99, 116, 0, 0, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 16, 47, 119, 105, 100, 116, 104, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 16, 47, 104, 101, 105, 103, 104, 116, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 16, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 114, 101, 100, 0, 0, 0, 0, -100, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 112, 97, 114, 101, 110, 116, 0, 44, 115, 0, 0, 111, 118, 101, 114, 108, 97, 121, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 10, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 98, 108, 117, 101, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 604,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : [{\n\t\t/parent : \"main\",\n\t\t/id : \"clef\",\n\t\t/new : \"text\",\n\t\t/text : \"&#xE050\",\n\t\t/class : \"bravura_text\",\n\t\t/x : 40,\n\t\t/y : 50\n\t}, {\n\t\t/parent : \"back\",\n\t\t/new : \"rect\",\n\t\t/id : \"rect\",\n\t\t/x : 5,\n\t\t/y : 5,\n\t\t/width : 100,\n\t\t/height : 100,\n\t\t/fill : \"red\"\n\t}, {\n\t\t/parent : \"overlay\",\n\t\t/new : \"circle\",\n\t\t/id : \"circle\",\n\t\t/cx : 50,\n\t\t/cy : 50,\n\t\t/r : 10,\n\t\t/fill : \"blue\"\n\t}]\n}"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-41",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 31.5, 521.912622690200806, 19.0, 22.0 ],
-									"text" : "t l"
 								}
 
 							}
@@ -5019,14 +5691,16 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-41", 0 ],
+									"destination" : [ "obj-2", 0 ],
+									"midpoints" : [ 40.0, 586.912622690200806, 40.0, 586.912622690200806 ],
 									"source" : [ "obj-17", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-41", 0 ],
+									"destination" : [ "obj-2", 0 ],
+									"midpoints" : [ 279.5, 544.912622690200806, 40.0, 544.912622690200806 ],
 									"source" : [ "obj-22", 0 ]
 								}
 
@@ -5041,6 +5715,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
+									"midpoints" : [ 717.5, 779.412622690200806, 40.0, 779.412622690200806 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -5055,20 +5730,14 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
-									"source" : [ "obj-41", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-41", 0 ],
+									"destination" : [ "obj-2", 0 ],
+									"midpoints" : [ 478.5, 549.912622690200806, 40.0, 549.912622690200806 ],
 									"source" : [ "obj-6", 0 ]
 								}
 
@@ -5173,7 +5842,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5203,12 +5872,207 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"hidden" : 1,
+									"id" : "obj-45",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patcher" : 									{
+										"fileversion" : 1,
+										"appversion" : 										{
+											"major" : 8,
+											"minor" : 0,
+											"revision" : 7,
+											"architecture" : "x64",
+											"modernui" : 1
+										}
+,
+										"classnamespace" : "box",
+										"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
+										"bglocked" : 0,
+										"openinpresentation" : 0,
+										"default_fontsize" : 12.0,
+										"default_fontface" : 0,
+										"default_fontname" : "Arial",
+										"gridonopen" : 1,
+										"gridsize" : [ 15.0, 15.0 ],
+										"gridsnaponopen" : 1,
+										"objectsnaponopen" : 1,
+										"statusbarvisible" : 2,
+										"toolbarvisible" : 1,
+										"lefttoolbarpinned" : 0,
+										"toptoolbarpinned" : 0,
+										"righttoolbarpinned" : 0,
+										"bottomtoolbarpinned" : 0,
+										"toolbars_unpinned_last_save" : 0,
+										"tallnewobj" : 0,
+										"boxanimatetime" : 200,
+										"enablehscroll" : 1,
+										"enablevscroll" : 1,
+										"devicewidth" : 0.0,
+										"description" : "",
+										"digest" : "",
+										"tags" : "",
+										"style" : "",
+										"subpatcher_template" : "",
+										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-12",
+													"linecount" : 2,
+													"maxclass" : "message",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 50.0, 100.0, 482.0, 35.0 ],
+													"text" : ";\rmax launch_browser https://developer.mozilla.org/en-US/docs/Web/SVG"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"comment" : "",
+													"id" : "obj-15",
+													"index" : 1,
+													"maxclass" : "inlet",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 50.0, 40.0, 30.0, 30.0 ]
+												}
+
+											}
+ ],
+										"lines" : [ 											{
+												"patchline" : 												{
+													"destination" : [ "obj-12", 0 ],
+													"source" : [ "obj-15", 0 ]
+												}
+
+											}
+ ],
+										"styles" : [ 											{
+												"name" : "black on white",
+												"number" : 												{
+													"fontsize" : [ 12.0 ],
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"umenu" : 												{
+													"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+													"bgfillcolor" : 													{
+														"type" : "color",
+														"color1" : [ 0.862745, 0.870588, 0.878431, 1.0 ],
+														"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
+														"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+														"angle" : 270.0,
+														"proportion" : 0.39,
+														"autogradient" : 0
+													}
+
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "caption text",
+												"default" : 												{
+													"fontface" : [ 2 ],
+													"fontsize" : [ 11.0 ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section dividers",
+												"default" : 												{
+													"fontface" : [ 3 ],
+													"fontsize" : [ 15.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "section info reg",
+												"default" : 												{
+													"fontsize" : [ 12.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+, 											{
+												"name" : "titles",
+												"default" : 												{
+													"fontface" : [ 1 ],
+													"fontsize" : [ 20.0 ],
+													"fontname" : [ "Arial" ]
+												}
+,
+												"parentstyle" : "",
+												"multi" : 0
+											}
+ ]
+									}
+,
+									"patching_rect" : [ 844.46484375, 294.5, 19.0, 22.0 ],
+									"saved_object_attributes" : 									{
+										"description" : "",
+										"digest" : "",
+										"globalpatchername" : "",
+										"tags" : ""
+									}
+,
+									"text" : "p"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bgcolor" : [ 0.290196, 0.309804, 0.301961, 0.0 ],
+									"fontface" : 3,
+									"fontlink" : 1,
+									"id" : "obj-46",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 439.8642578125, 290.0, 306.05078125, 21.40625 ],
+									"text" : "Click here to read the SVG Documentation online...",
+									"texton" : "Click here to read the SVG Documentation  online...",
+									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
+									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
+									"usetextovercolor" : 1
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontsize" : 14.0,
+									"id" : "obj-49",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 101.064453125, 22.0, 201.0, 22.0 ],
+									"text" : "Drawsocket Message Syntax"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-32",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 83.064453125, 553.5, 177.0, 20.0 ],
+									"patching_rect" : [ 83.064453125, 583.5, 177.0, 20.0 ],
 									"text" : "creates a new circle SVG node:"
 								}
 
@@ -5222,7 +6086,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 83.064453125, 577.5, 366.0, 22.0 ],
+									"patching_rect" : [ 83.064453125, 607.5, 366.0, 22.0 ],
 									"text" : "<circle id=\"foo\" cx=\"100\" cy=\"100\" r=\"5\" fill=\"yellow>"
 								}
 
@@ -5235,7 +6099,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 513.06707763671875, 386.5, 220.0, 50.0 ],
+									"patching_rect" : [ 513.06707763671875, 416.5, 220.0, 50.0 ],
 									"text" : "Note that here we are using the \"svg\" key as an example, but other keys are formatted in a similar way."
 								}
 
@@ -5247,7 +6111,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 220.89776611328125, 446.0, 34.0, 20.0 ],
+									"patching_rect" : [ 220.89776611328125, 476.0, 34.0, 20.0 ],
 									"text" : "/new"
 								}
 
@@ -5259,7 +6123,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 233.89776611328125, 501.83331298828125, 21.0, 20.0 ],
+									"patching_rect" : [ 233.89776611328125, 531.83331298828125, 21.0, 20.0 ],
 									"text" : "/id"
 								}
 
@@ -5271,7 +6135,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 256.89776611328125, 446.0, 237.0, 47.0 ],
+									"patching_rect" : [ 256.89776611328125, 476.0, 237.0, 47.0 ],
 									"text" : "the /new attribute, tells drawsocket what kind of element to create in the context of the SVG */key* type."
 								}
 
@@ -5284,21 +6148,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 256.89776611328125, 501.83331298828125, 236.0, 33.0 ],
+									"patching_rect" : [ 256.89776611328125, 531.83331298828125, 236.0, 33.0 ],
 									"text" : "Each object should be assigned a unique ID that can be used to manipulate it later."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 13.0,
-									"id" : "obj-29",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 155.064453125, 120.0, 568.0, 36.0 ],
-									"text" : "the values contained in the /val object are either object attributes or special keywords (e.g. /new, /parent, etc.), see the online documentaiton for more details."
 								}
 
 							}
@@ -5308,7 +6159,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 122.564453125, 144.0, 24.0, 9.0 ]
+									"patching_rect" : [ 128.564453125, 201.0, 24.0, 9.0 ]
 								}
 
 							}
@@ -5318,7 +6169,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 122.564453125, 135.0, 24.0, 9.0 ]
+									"patching_rect" : [ 128.564453125, 192.0, 24.0, 9.0 ]
 								}
 
 							}
@@ -5328,7 +6179,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 122.564453125, 130.0, 24.0, 9.0 ]
+									"patching_rect" : [ 128.564453125, 187.0, 24.0, 9.0 ]
 								}
 
 							}
@@ -5338,7 +6189,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 122.564453125, 125.0, 24.0, 9.0 ]
+									"patching_rect" : [ 128.564453125, 182.0, 24.0, 9.0 ]
 								}
 
 							}
@@ -5348,7 +6199,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 70.66668701171875, 94.5, 24.0, 9.0 ]
+									"patching_rect" : [ 76.66668701171875, 151.5, 24.0, 9.0 ]
 								}
 
 							}
@@ -5358,7 +6209,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 115.564453125, 120.0, 5.0, 29.0 ]
+									"patching_rect" : [ 121.564453125, 177.0, 5.0, 29.0 ]
 								}
 
 							}
@@ -5368,7 +6219,7 @@
 									"maxclass" : "live.line",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 64.064453125, 66.0, 5.0, 73.0 ]
+									"patching_rect" : [ 70.064453125, 99.0, 5.0, 97.0 ]
 								}
 
 							}
@@ -5381,7 +6232,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 100.064453125, 80.0, 36.0, 38.0 ],
+									"patching_rect" : [ 106.064453125, 137.0, 36.0, 38.0 ],
 									"text" : "/key\n/val"
 								}
 
@@ -5401,12 +6252,12 @@
 								"box" : 								{
 									"fontsize" : 14.0,
 									"id" : "obj-14",
-									"linecount" : 3,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 95.064453125, 20.0, 739.0, 53.0 ],
-									"text" : "drawsocket messages are routed to the URL specified in the client browser. For example, messages with the URL /foo will only be recieved by clients logged into the address \"ipaddress:port/foo\".  /* is a wildcard that matches all URL addresses. The value of the URL address can be one or more objects containing /key and /val addresses."
+									"patching_rect" : [ 101.064453125, 48.0, 719.0, 85.0 ],
+									"text" : "Drawsocket messages are routed to the URL specified in the client browser. For example, messages with the URL /foo will only be recieved by clients logged into the address \"ipaddress:port/foo\".  \n\n/* is a wildcard that matches all URL addresses. The value of the URL address can be one or more objects containing /key and /val addresses."
 								}
 
 							}
@@ -5418,7 +6269,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 44.064453125, 39.0, 45.0, 22.0 ],
+									"patching_rect" : [ 50.064453125, 79.5, 45.0, 22.0 ],
 									"text" : "/URL "
 								}
 
@@ -5431,20 +6282,20 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 138.064453125, 80.0, 633.0, 38.0 ],
+									"patching_rect" : [ 134.064453125, 137.0, 633.0, 38.0 ],
 									"text" : ": the main type switch (e.g. svg, tween, tone, pdf, see the online documentation for more details)\n: the values linked to the /key, can be one or more objects."
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"fontsize" : 13.0,
+									"fontsize" : 14.0,
 									"id" : "obj-7",
 									"linecount" : 8,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 44.064453125, 165.0, 826.0, 123.0 ],
+									"patching_rect" : [ 106.064453125, 224.0, 721.0, 132.0 ],
 									"text" : "Each */key* type has a set of */val* attributes that can be used to configure the element.\n\nIn most cases the available attributes are the same as the standard associated with the key type. For example, the SVG object \"circle\" has required presentation attributes \"cx\", \"cy\" and \"r\", and many optional other attributes. For more information see the SVG official documentation.\n\nThere are some additional \"keywords\" used by drawsocket to add useful functionality. For example, /new creates a new object, replacing any other objects with that /id."
 								}
 
@@ -5469,10 +6320,11 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-15",
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 729.064453125, 546.5, 338.0, 20.0 ],
+									"patching_rect" : [ 729.064453125, 546.5, 185.0, 33.0 ],
 									"text" : "note that the order of messages sets the drawing layer order"
 								}
 
@@ -5570,7 +6422,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 804.46484375, 719.5, 19.0, 22.0 ],
+									"patching_rect" : [ 844.46484375, 192.0, 19.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -5593,9 +6445,9 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 804.46484375, 696.0, 209.599609375, 21.40625 ],
-									"text" : "Click here to read the API online...",
-									"texton" : "Click here to read the API online...",
+									"patching_rect" : [ 433.46484375, 192.0, 280.298828125, 21.40625 ],
+									"text" : "Click here to read the Drawsocket API online...",
+									"texton" : "Click here to read the Drawsocket API online...",
 									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
 									"textovercolor" : [ 0.317647, 0.654902, 0.976471, 1.0 ],
 									"usetextovercolor" : 1
@@ -5650,7 +6502,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 196.89776611328125, 411.0, 301.0, 24.0 ],
+									"patching_rect" : [ 196.89776611328125, 441.0, 301.0, 24.0 ],
 									"text" : "/val : one or more objects to interpret on the client."
 								}
 
@@ -5662,7 +6514,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 192.89776611328125, 386.5, 301.0, 24.0 ],
+									"patching_rect" : [ 192.89776611328125, 416.5, 301.0, 24.0 ],
 									"text" : "/key: tells drawsocket what kind of objects are given"
 								}
 
@@ -5676,7 +6528,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 56.5, 345.5, 274.0, 39.0 ],
+									"patching_rect" : [ 56.5, 375.5, 274.0, 39.0 ],
 									"text" : "Top level address is the URL to send to (e.g. /foo)"
 								}
 
@@ -5691,10 +6543,23 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 64.064453125, 384.5, 150.0, 160.0 ],
+									"patching_rect" : [ 64.064453125, 414.5, 150.0, 160.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 102, 111, 111, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 121, 101, 108, 108, 111, 119, 0, 0 ],
 									"saved_bundle_length" : 220,
 									"text" : "/foo : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"foo\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 5,\n\t\t/fill : \"yellow\"\n\t}\n}"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 13.0,
+									"id" : "obj-29",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 161.064453125, 177.0, 655.0, 36.0 ],
+									"text" : "The values contained in the /val object are either object attributes or special keywords (e.g. /new, /parent, etc.), see the online documentaiton for more details."
 								}
 
 							}
@@ -5711,6 +6576,14 @@
 									"destination" : [ "obj-16", 0 ],
 									"hidden" : 1,
 									"source" : [ "obj-37", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-45", 0 ],
+									"hidden" : 1,
+									"source" : [ "obj-46", 0 ]
 								}
 
 							}
@@ -5828,7 +6701,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 323.0, 105.0, 1122.0, 837.0 ],
+						"rect" : [ 0.0, 26.0, 1099.0, 838.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5863,7 +6736,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 381.0, 677.83331298828125, 153.5, 33.0 ],
+									"patching_rect" : [ 387.0, 681.1666259765625, 153.5, 33.0 ],
 									"text" : "n.b. Drawsocket works best in Safari or Chrome"
 								}
 
@@ -5887,8 +6760,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 102.5, 55.0, 188.0, 20.0 ],
-									"text" : "Here the URLs are /foo and /bar"
+									"patching_rect" : [ 102.5, 55.0, 268.0, 20.0 ],
+									"text" : "Here the URLs are /violin and /anotherURL"
 								}
 
 							}
@@ -5974,7 +6847,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 956.3447265625, 270.0, 19.0, 22.0 ],
+									"patching_rect" : [ 950.3447265625, 185.0, 19.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -5997,7 +6870,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 662.8447265625, 255.5, 309.8125, 21.40625 ],
+									"patching_rect" : [ 656.8447265625, 170.5, 309.8125, 21.40625 ],
 									"text" : "The CNMAT Odot libaray can be downloaded here...",
 									"texton" : "The CNMAT Odot libaray can be downloaded here...",
 									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
@@ -6015,7 +6888,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 662.8447265625, 203.5, 419.0, 50.0 ],
+									"patching_rect" : [ 662.8642578125, 118.5, 419.0, 50.0 ],
 									"text" : "hfmt.drawsocket is an abstraction that uses the CNMAT odot library and a set of JS scripts, loaded by the node.script object (see inside the hfmt.drawsocket abstraction for more info."
 								}
 
@@ -6028,7 +6901,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 288.0, 221.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 478.0, 221.0, 22.0 ],
 									"text" : "Optional arguments / attributes:"
 								}
 
@@ -6041,7 +6914,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 370.33331298828125, 61.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 560.33331298828125, 61.0, 22.0 ],
 									"text" : "Inlet:"
 								}
 
@@ -6054,34 +6927,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 435.33331298828125, 61.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 625.33331298828125, 61.0, 22.0 ],
 									"text" : "Outlets:"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 14.0,
-									"id" : "obj-31",
-									"linecount" : 6,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 677.83331298828125, 386.0, 100.0 ],
-									"text" : "Most modern browsers provide \"Developers Tools\" which allow you to see the page's HTML layout in real time. For example on Mac in Chrome and Safari, you can press the alt-cmd-i keyboard shortcut to open the developer window. You may need to enable the show developer tools option in the browser before this shortcut will work."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontface" : 1,
-									"fontsize" : 14.0,
-									"id" : "obj-32",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 660.83331298828125, 186.0, 22.0 ],
-									"text" : "Browser debugging tools: "
 								}
 
 							}
@@ -6117,7 +6964,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 544.33331298828125, 386.0, 85.0 ],
+									"patching_rect" : [ 668.8642578125, 341.33331298828125, 386.0, 85.0 ],
 									"text" : "install: the first time only, run \"script npm install\"\n1. start the script\n2. open a webpage URL as a suffix to the indicated URL:Port\n    e.g. http://localhost:3002/foo\n3. send messages to the URL that you are logged into"
 								}
 
@@ -6130,7 +6977,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 527.33331298828125, 60.0, 22.0 ],
+									"patching_rect" : [ 668.8642578125, 324.33331298828125, 60.0, 22.0 ],
 									"text" : "To run: "
 								}
 
@@ -6140,12 +6987,12 @@
 									"fontface" : 2,
 									"fontsize" : 13.0,
 									"id" : "obj-9",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 127.33331298828125, 420.0, 36.0 ],
-									"text" : "Note: the help patch shows only some of the features of drawsocket, please see the online documentation for more complete details."
+									"patching_rect" : [ 662.8642578125, 208.0, 420.0, 50.0 ],
+									"text" : "The help patch shows only some of the features of Drawsocket, please see the Max Extras menu for more examples, and see the pacakge readme for more complete documentation. "
 								}
 
 							}
@@ -6168,7 +7015,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 409.0, 98.0, 237.0, 47.0 ],
+									"patching_rect" : [ 409.0, 98.0, 200.0, 47.0 ],
 									"text" : "The /new attribute, tells drawsocket what kind of element to create in the context of the SVG */key* type."
 								}
 
@@ -6177,11 +7024,11 @@
 								"box" : 								{
 									"fontface" : 0,
 									"id" : "obj-3",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 409.0, 160.83331298828125, 236.0, 33.0 ],
+									"patching_rect" : [ 410.0, 157.703125, 198.0, 47.0 ],
 									"text" : "Each object should be assigned a unique ID that can be used to manipulate it later."
 								}
 
@@ -6193,8 +7040,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 94.5, 256.0, 237.0, 33.0 ],
-									"text" : "if /new is not in the value object, the object will not be created, but can be updated"
+									"patching_rect" : [ 90.0, 257.5, 238.0, 33.0 ],
+									"text" : "If /new is not in the value object, the object will not be created, but can be updated"
 								}
 
 							}
@@ -6208,22 +7055,10 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 94.5, 291.0, 121.0, 106.0 ],
+									"patching_rect" : [ 90.0, 293.0, 121.0, 106.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 116, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 104, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, 64, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 48, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 1, 44 ],
 									"saved_bundle_length" : 136,
 									"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/id : \"bob\",\n\t\t/cx : 300\n\t}\n}"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-62",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 56.0, 427.0, 19.0, 22.0 ],
-									"text" : "t l"
 								}
 
 							}
@@ -6259,8 +7094,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 267.3857421875, 629.83331298828125, 137.0, 22.0 ],
-									"text" : "http://localhost:3002/bar"
+									"patching_rect" : [ 273.3857421875, 642.83331298828125, 184.0, 22.0 ],
+									"text" : "http://localhost:3002/anotherURL"
 								}
 
 							}
@@ -6282,7 +7117,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 427.0, 147.0, 1062.0, 727.0 ],
+										"rect" : [ 225.0, 79.0, 1157.0, 898.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -6311,6 +7146,140 @@
 										"subpatcher_template" : "",
 										"boxes" : [ 											{
 												"box" : 												{
+													"hidden" : 1,
+													"id" : "obj-19",
+													"maxclass" : "newobj",
+													"numinlets" : 0,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 956.0, 798.0, 104.0, 22.0 ],
+													"text" : "r client-msg-patch"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"hidden" : 1,
+													"id" : "obj-18",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 2,
+													"outlettype" : [ "", "" ],
+													"patching_rect" : [ 956.0, 835.0, 67.0, 22.0 ],
+													"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+													"text" : "thispatcher"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontname" : "Arial Bold",
+													"fontsize" : 14.0,
+													"id" : "obj-17",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 31.0, 29.0, 118.0, 22.0 ],
+													"text" : "Client Messages"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-16",
+													"linecount" : 2,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 355.5, 777.0, 211.0, 33.0 ],
+													"presentation_linecount" : 4,
+													"text" : "<< move your mouse around in here! \nalso two finger scrooling is pretty cool."
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-43",
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 26.0, 569.0, 150.0, 20.0 ],
+													"text" : "click to load page in jweb"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-14",
+													"maxclass" : "message",
+													"numinlets" : 2,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 26.0, 594.0, 143.0, 22.0 ],
+													"text" : "url http://localhost:3002/1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"color" : [ 1.0, 1.0, 1.0, 1.0 ],
+													"id" : "obj-15",
+													"maxclass" : "jweb",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 26.0, 640.0, 320.0, 240.0 ],
+													"rendermode" : 0,
+													"url" : "http://localhost:3002/1"
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"angle" : 270.0,
+													"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
+													"border" : 2,
+													"bordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+													"id" : "obj-41",
+													"maxclass" : "panel",
+													"mode" : 0,
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 24.0, 635.0, 325.0, 247.0 ],
+													"proportion" : 0.5
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"id" : "obj-8",
+													"linecount" : 4,
+													"maxclass" : "comment",
+													"numinlets" : 1,
+													"numoutlets" : 0,
+													"patching_rect" : [ 31.0, 53.0, 252.0, 60.0 ],
+													"text" : "Standard drawsocket messages coming from the browser use the /event OSC address. you can also define your own messages, see the JS API tab for more information."
+												}
+
+											}
+, 											{
+												"box" : 												{
+													"fontface" : 0,
+													"fontsize" : 12.0,
+													"id" : "obj-2",
+													"linecount" : 7,
+													"maxclass" : "o.display",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 26.0, 160.0, 356.0, 116.0 ],
+													"presentation_linecount" : 7,
+													"text" : "/event : {\n\t/url : \"/1\",\n\t/key : \"sync\",\n\t/val : {\n\t\t/syncOffset : -0.2\n\t}\n}"
+												}
+
+											}
+, 											{
+												"box" : 												{
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-23",
@@ -6319,8 +7288,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 557.0, 239.0, 234.0, 88.0 ],
-													"text" : "/url : \"/bar\",\n/key : \"sync\",\n/val : {\n\t/syncOffset : 0\n}"
+													"patching_rect" : [ 632.0, 170.0, 234.0, 88.0 ],
+													"text" : "/url : \"/1\",\n/key : \"sync\",\n/val : {\n\t/syncOffset : -0.2\n}"
 												}
 
 											}
@@ -6334,8 +7303,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 465.0, 377.0, 284.0, 102.0 ],
-													"text" : "/url : \"/bar\",\n/key : \"status\",\n/val : {\n\t/screensize : [1490, 1032],\n\t/connected : 1\n}"
+													"patching_rect" : [ 538.5, 264.0, 284.0, 102.0 ],
+													"text" : "/url : \"/1\",\n/key : \"status\",\n/val : {\n\t/screensize : [1567, 969],\n\t/connected : 1\n}"
 												}
 
 											}
@@ -6346,7 +7315,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 2,
 													"outlettype" : [ "", "FullPacket" ],
-													"patching_rect" : [ 368.0, 152.0, 82.0, 22.0 ],
+													"patching_rect" : [ 443.0, 91.0, 82.0, 22.0 ],
 													"text" : "o.route /event"
 												}
 
@@ -6358,7 +7327,7 @@
 													"numinlets" : 1,
 													"numoutlets" : 3,
 													"outlettype" : [ "FullPacket", "FullPacket", "FullPacket" ],
-													"patching_rect" : [ 368.0, 202.0, 208.0, 22.0 ],
+													"patching_rect" : [ 443.0, 133.0, 208.0, 22.0 ],
 													"text" : "o.cond /key == mouse\\, /key == status"
 												}
 
@@ -6373,8 +7342,8 @@
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 89.0, 287.0, 356.0, 306.0 ],
-													"text" : "/url : \"/bar\",\n/key : \"mouse\",\n/val : {\n\t/action : \"mousemove\",\n\t/xy : [250, 332],\n\t/button : 0,\n\t/target : {\n\t\t/baseProfile : \"full\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\",\n\t\t/tag : \"svg\",\n\t\t/version : \"1.1\",\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/id : \"svg\"\n\t},\n\t/mods : {\n\t\t/ctrl : 0,\n\t\t/meta : 1,\n\t\t/alt : 0,\n\t\t/shift : 0\n\t}\n}"
+													"patching_rect" : [ 444.0, 368.0, 356.0, 306.0 ],
+													"text" : "/url : \"/1\",\n/key : \"mouse\",\n/val : {\n\t/action : \"mousemove\",\n\t/xy : [298, 105],\n\t/button : 0,\n\t/target : {\n\t\t/baseProfile : \"full\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\",\n\t\t/tag : \"svg\",\n\t\t/version : \"1.1\",\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/id : \"svg\"\n\t},\n\t/mods : {\n\t\t/ctrl : 0,\n\t\t/meta : 0,\n\t\t/alt : 0,\n\t\t/shift : 0\n\t}\n}"
 												}
 
 											}
@@ -6384,7 +7353,7 @@
 													"maxclass" : "newobj",
 													"numinlets" : 1,
 													"numoutlets" : 0,
-													"patching_rect" : [ 615.0, 131.0, 101.0, 22.0 ],
+													"patching_rect" : [ 601.0, 91.0, 101.0, 22.0 ],
 													"text" : "s client_message"
 												}
 
@@ -6398,15 +7367,38 @@
 													"numinlets" : 0,
 													"numoutlets" : 1,
 													"outlettype" : [ "FullPacket" ],
-													"patching_rect" : [ 368.0, 75.0, 30.0, 30.0 ]
+													"patching_rect" : [ 443.0, 38.0, 30.0, 30.0 ]
 												}
 
 											}
  ],
 										"lines" : [ 											{
 												"patchline" : 												{
+													"destination" : [ "obj-15", 0 ],
+													"source" : [ "obj-14", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-18", 0 ],
+													"hidden" : 1,
+													"source" : [ "obj-19", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
 													"destination" : [ "obj-1", 0 ],
 													"order" : 0,
+													"source" : [ "obj-56", 0 ]
+												}
+
+											}
+, 											{
+												"patchline" : 												{
+													"destination" : [ "obj-2", 0 ],
+													"order" : 2,
 													"source" : [ "obj-56", 0 ]
 												}
 
@@ -6537,20 +7529,21 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 241.8857421875, 599.83331298828125, 136.0, 22.0 ],
-									"text" : "http://localhost:3002/foo"
+									"patching_rect" : [ 247.8857421875, 612.83331298828125, 147.0, 22.0 ],
+									"text" : "http://localhost:3002/violin"
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"bubble" : 1,
+									"bubblepoint" : 0.8,
 									"id" : "obj-49",
 									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 410.0, 563.33331298828125, 220.0, 104.0 ],
+									"patching_rect" : [ 409.0, 534.83331298828125, 220.0, 104.0 ],
 									"text" : "Launch a browser window at the opened port, either by remote IP address or localhost.\n\nThe /URL following the address:port value will be used as the client's OSC receive address."
 								}
 
@@ -6563,20 +7556,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 241.8857421875, 674.5, 136.0, 35.0 ],
+									"patching_rect" : [ 247.8857421875, 677.83331298828125, 136.0, 35.0 ],
 									"text" : ";\rmax launch_browser $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-43",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 56.0, 261.5, 19.0, 22.0 ],
-									"text" : "t l"
 								}
 
 							}
@@ -6599,8 +7580,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 196.0, 510.5, 457.0, 20.0 ],
-									"text" : "note: only one hfmt-drawsocket server can be running at a given time per port"
+									"patching_rect" : [ 160.5, 506.83331298828125, 457.0, 20.0 ],
+									"text" : "Note: only one hfmt-drawsocket server can be running at a given time per port"
 								}
 
 							}
@@ -6612,8 +7593,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 181.0, 484.5, 264.0, 24.0 ],
-									"text" : "send the start message to start the server",
+									"patching_rect" : [ 145.5, 480.83331298828125, 265.0, 24.0 ],
+									"text" : "Send the start message to start the server",
 									"textcolor" : [ 0.0, 0.556862745098039, 0.847058823529412, 1.0 ]
 								}
 
@@ -6629,9 +7610,9 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 221.0, 77.0, 150.0, 160.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 98, 97, 114, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 105, 110, 107, 0, 0, 0, 0 ],
-									"saved_bundle_length" : 220,
-									"text" : "/bar : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 50,\n\t\t/fill : \"pink\"\n\t}\n}"
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -52, 47, 97, 110, 111, 116, 104, 101, 114, 85, 82, 76, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 105, 110, 107, 0, 0, 0, 0 ],
+									"saved_bundle_length" : 224,
+									"text" : "/anotherURL : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 50,\n\t\t/fill : \"pink\"\n\t}\n}"
 								}
 
 							}
@@ -6663,9 +7644,9 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 56.0, 77.0, 150.0, 160.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 102, 111, 111, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 117, 114, 112, 108, 101, 0, 0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -56, 47, 118, 105, 111, 108, 105, 110, 0, 44, 46, 0, 0, 0, 0, 0, -72, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 117, 114, 112, 108, 101, 0, 0 ],
 									"saved_bundle_length" : 220,
-									"text" : "/foo : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 20,\n\t\t/fill : \"purple\"\n\t}\n}"
+									"text" : "/violin : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"circle\",\n\t\t/id : \"bob\",\n\t\t/cx : 100,\n\t\t/cy : 100,\n\t\t/r : 20,\n\t\t/fill : \"purple\"\n\t}\n}"
 								}
 
 							}
@@ -6676,7 +7657,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 391.33331298828125, 350.0, 33.0 ],
+									"patching_rect" : [ 668.8642578125, 581.33331298828125, 350.0, 33.0 ],
 									"text" : "- OSC FullPacket or dictionary is sent to client URLs.\n- Max messages for other actions, see online docs for more info."
 								}
 
@@ -6689,7 +7670,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 452.83331298828125, 264.0, 50.0 ],
+									"patching_rect" : [ 668.8642578125, 642.83331298828125, 264.0, 50.0 ],
 									"text" : "left: update messages from client and server\nmiddle: errors\nright: server status"
 								}
 
@@ -6766,13 +7747,13 @@
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-13",
-													"linecount" : 36,
+													"linecount" : 23,
 													"maxclass" : "o.display",
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 48.0, 95.0, 392.0, 510.0 ],
-													"text" : "/start/success : {\n\t/watch : 1,\n\t/debugEnabled : 0,\n\t/filename : \"drawsocket-server.js\",\n\t/debugPort,\n\t/cwd : \"/Volumes/Macintosh HD/Users/r/Documents/Max 8/Packages/drawsocket/code/node\",\n\t/id : \"u45250950027\",\n\t/socketDescription : {\n\t\t/control : \"/tmp/u45250950027_ctrl.sock\"\n\t},\n\t/pid : 34754,\n\t/time : 2019-06-27T07:28:00.179608Z\n},\n/stop/success : {\n\t/id : \"u45257560024\",\n\t/time : 2019-06-27T07:28:00.107745Z\n},\n/terminated/success : {\n\t/willRestart : 0,\n\t/id : \"u45257560024\",\n\t/time : 2019-06-27T07:28:00.107647Z\n},\n/restarted/success : {\n\t/restartCount : 5,\n\t/id : \"u45259710004\",\n\t/reason : \"error\",\n\t/pid : 34625,\n\t/time : 2019-06-27T06:45:28.973936Z\n},\n/restarting/success : {\n\t/restartCount : 5,\n\t/id : \"u45259710004\",\n\t/reason : \"error\",\n\t/time : 2019-06-27T06:45:28.903298Z\n}"
+													"patching_rect" : [ 48.0, 95.0, 392.0, 333.0 ],
+													"text" : "/stop/success : {\n\t/id : \"u79950460339\",\n\t/time : 2019-07-16T19:02:36.015954Z\n},\n/terminated/success : {\n\t/willRestart : 0,\n\t/id : \"u79950460339\",\n\t/time : 2019-07-16T19:02:36.015878Z\n},\n/start/success : {\n\t/debugPort,\n\t/cwd : \"/Volumes/Macintosh HD/Users/r/Documents/Max 8/Packages/drawsocket/code/node\",\n\t/filename : \"drawsocket-server.js\",\n\t/pid : 73300,\n\t/watch : 1,\n\t/debugEnabled : 0,\n\t/socketDescription : {\n\t\t/control : \"/tmp/u79950460339_ctrl.sock\"\n\t},\n\t/id : \"u79950460339\",\n\t/time : 2019-07-16T19:02:34.117101Z\n}"
 												}
 
 											}
@@ -7001,7 +7982,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 668.8642578125, 314.0, 388.0, 36.0 ],
+									"patching_rect" : [ 668.8642578125, 504.0, 388.0, 36.0 ],
 									"text" : "arg 1 or @html_root : relative path to HTML root folder for assets\narg 2 or @port : port number to use (default 3002)"
 								}
 
@@ -7125,7 +8106,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 956.3447265625, 172.83331298828125, 19.0, 22.0 ],
+									"patching_rect" : [ 950.3447265625, 263.5, 19.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -7148,7 +8129,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 664.8447265625, 163.83331298828125, 276.0390625, 21.40625 ],
+									"patching_rect" : [ 658.8447265625, 254.5, 276.0390625, 21.40625 ],
 									"text" : "Click here to read the online documentation...",
 									"texton" : "Click here to read the online documentation...",
 									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
@@ -7164,7 +8145,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 118.5, 484.5, 64.0, 22.0 ],
+									"patching_rect" : [ 83.0, 480.83331298828125, 64.0, 22.0 ],
 									"text" : "script start"
 								}
 
@@ -7206,8 +8187,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 210.5, 431.5, 424.0, 37.0 ],
-									"text" : "when running the first time you will need to be connected ot the internet and run \"script npm install\" to download the node package dependencies."
+									"patching_rect" : [ 175.0, 427.83331298828125, 375.0, 37.0 ],
+									"text" : "When running the first time you will need to be online. \nRun \"script npm install\" to download the required node packages."
 								}
 
 							}
@@ -7218,7 +8199,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 110.5, 439.0, 98.0, 22.0 ],
+									"patching_rect" : [ 75.0, 435.33331298828125, 98.0, 22.0 ],
 									"text" : "script npm install"
 								}
 
@@ -7230,7 +8211,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 118.5, 512.5, 63.0, 22.0 ],
+									"patching_rect" : [ 83.0, 508.83331298828125, 63.0, 22.0 ],
 									"text" : "script stop"
 								}
 
@@ -7246,7 +8227,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 662.8642578125, 519.83331298828125, 398.0, 121.0 ],
+									"patching_rect" : [ 662.8642578125, 316.83331298828125, 398.0, 121.0 ],
 									"proportion" : 0.5
 								}
 
@@ -7261,14 +8242,16 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-62", 0 ],
+									"destination" : [ "obj-38", 0 ],
+									"midpoints" : [ 255.5, 415.416656494140625, 66.5, 415.416656494140625 ],
 									"source" : [ "obj-11", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-43", 0 ],
+									"destination" : [ "obj-38", 0 ],
+									"midpoints" : [ 230.5, 247.666656494140625, 66.5, 247.666656494140625 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -7326,14 +8309,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-62", 0 ],
-									"source" : [ "obj-43", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-43", 0 ],
+									"destination" : [ "obj-38", 0 ],
+									"midpoints" : [ 65.5, 419.666656494140625, 66.5, 419.666656494140625 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -7376,15 +8353,9 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-62", 0 ],
-									"source" : [ "obj-61", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-38", 0 ],
-									"source" : [ "obj-62", 0 ]
+									"midpoints" : [ 99.5, 416.666656494140625, 66.5, 416.666656494140625 ],
+									"source" : [ "obj-61", 0 ]
 								}
 
 							}

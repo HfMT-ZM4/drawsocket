@@ -2694,9 +2694,10 @@ var drawsocket = (function(){
 
   return {
     input: drawsocket_input,
-    submitOnEnterKey: submitOnEnterKey,
+//    submitOnEnterKey: submitOnEnterKey,
     send: sendMsg,
-    oscprefix: oscprefix,
+    oscprefix: oscprefix, // legacy name from previous API
+    url: oscprefix,
     startAudio: startAudio
   }
 
