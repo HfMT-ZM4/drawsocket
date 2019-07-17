@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 1107.0, 869.0 ],
+		"rect" : [ 34.0, 79.0, 1161.0, 891.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -226,12 +226,13 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"showontab" : 0,
+						"showontab" : 1,
+						"visible" : 1,
 						"boxes" : [  ],
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 525.0, 452.0, 100.0, 22.0 ],
+					"patching_rect" : [ 525.0, 452.0, 25.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -261,7 +262,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -458,7 +459,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1103,7 +1104,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1570,7 +1571,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2437,7 +2438,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3815,7 +3816,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4846,7 +4847,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5373,7 +5374,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6039,7 +6040,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1107.0, 843.0 ],
+						"rect" : [ 0.0, 26.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6898,7 +6899,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 105.0, 1107.0, 843.0 ],
+						"rect" : [ 34.0, 105.0, 1161.0, 865.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -7086,7 +7087,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 662.8642578125, 118.5, 419.0, 50.0 ],
-									"text" : "hfmt.drawsocket is an abstraction that uses the CNMAT odot library and a set of JS scripts, loaded by the node.script object (see inside the hfmt.drawsocket abstraction for more info."
+									"text" : "hfmt.drawsocket is an abstraction that uses the CNMAT odot library and a set of JS scripts, loaded by the node.script object (see inside the hfmt.drawsocket abstraction for more info)."
 								}
 
 							}
@@ -7188,7 +7189,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 662.8642578125, 208.0, 420.0, 50.0 ],
+									"patching_rect" : [ 662.8642578125, 208.0, 422.0, 50.0 ],
 									"text" : "This help patch shows only some of the features of Drawsocket, please see the Max Extras menu for more examples, and see the pacakge readme for more complete documentation. "
 								}
 

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="hfmt.drawsocket" module="drawsocket">
+
+	<digest>
+		A Max/node.js based server/client system for drawing to web-browsers.
+	</digest>
+
+	<description>
+		<o>hfmt.drawsocket</o> is an abstraction that uses the CNMAT Odot library and a set of JS scripts, loaded by the <o>node.script</o> object (see inside the abstraction for more info).
+	</description>
+
+<!--DISCUSSION-->
+	<discussion>
+		<h1>Setup</h1>
+		<p>When running the first time you will need to be online. Run <m>script npm install</m> to download the required node packages.</p>
+		
+		<h1>Basic Usage</h1>
+		<ol>
+			<li>Start the server by sending the <m>script start</m> message.</li>
+			<li>On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the right-most outlet of the abstraction.</li>
+			<li>Open a browser and type in the IP address and port specified in the Max patch, followed by a URL of your choosing. This address will be how you address the client browser from the Max server patch.
+				<ul>
+					<li>
+						For example, if the IP:Port is <m>192.168.1.1:3002</m>, and you wanted to use the address <m>/foo</m> for your OSC style messaging to the browser, you could type the following address into your browser: <m>192.168.1.1:3002/foo</m>. Note that if you are testing on the same computer, you can also use <m>localhost</m> instead of the IP address.
+					</li>
+				</ul>
+			</li>
+			<li>Once connected, you can then send OSC or Dictionary messages into the <o>hfmt.drawsocket</o> inlet, which will be routed using the URL address the client.</li>
+		</ol>
+
+		<h1>About Assets</h1>
+		<p>If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the <o>hfmt.drawsocket</o> abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).</p>
+
+		<p>By default, the public folder is set to be the same folder that contains the Max patch.</p>
+			<codeexample>
+			someFolder<br/>
+			|-- yourPatch.maxpatch<br/>
+			|-- image.png<br/>
+			|-- score.pdf<br/>
+			</codeexample>
+		<br/>
+		
+		<p>Alternatively, to keep the folders a little neater, the <m>hfmt.drawsocket</m> abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize <m>hfmt.drawsocket</m> with the relative path <m>public</m>, it will expect the folder <m>public</m> to be at the same folder level:</p>
+
+			<codeexample>
+			someFolder<br/>
+			|-- yourPatch.maxpatch<br/>
+			|-- public<br/>
+			<tab></tab>|-- image.png<br/>
+			<tab></tab>|-- score.pdf<br/>
+			</codeexample>
+		<br/>
+		<br/>
+
+		<h1>Default HTML and CSS files</h1>
+
+		<p>By default the <m>drawsocket</m> server responds to all URL requests with the template HTML page, <m>drawsocket-page.html</m> which loads the required Javascript files, sets up the basic HTML objects, layers, and imports the <m>drawsocket-default.css</m> which sets up some default display properties.</p>
+
+		<p>If desired, a different template HTML page may be used by sending the <m>hfmt.drawsocket</m> object the <m>html_template</m> message followed by a relative path to the template HTML file to use.</p>
+
+		<h1>Message Format</h1>
+
+		<p>All messages in the <m>drawsocket</m> API are formatted as an object, enclosed by curly braces <m>{ }</m>. Messages can be encoded as Odot nested sub-bundles, or nested JSON objects. In the examples below we will be using OSC (odot) formatting, however you may also use a Max Dictionary, which will be exactly the same, except that address names will not have the leading <m>/</m> character.</p>
+
+		<p>Odot:</p>
+		<codeexample>
+		/bundle : {<br/>
+		<tab></tab>/subbundle : {<br/>
+		<tab></tab><tab></tab>/foo : 1<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		<br/>
+
+		<p>Max Dictionary (JSON):</p>
+		<codeexample>
+		"bundle" : {<br/>
+		<tab></tab>"subbundle" : {<br/>
+		<tab></tab><tab></tab>"foo" : 1<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		<h1>Addressing the Client Browser</h1>
+
+		<p>The URL used by the client to log into the server IP address and port is used by the Max patch as an OSC address to route messages to all clients logged into a given URL. For example, any users logged into the example above, <m>192.168.1.1:3002/foo</m>, will receive OSC messages with the address <m>/foo</m>.</p>
+
+		<h1>key and val</h1>
+
+		<p>Messages to the client are formatted as objects with <m>key</m> and <m>val</m> addresses.</p>
+		<ul>
+			<li>The <m>key</m> value is a switch key which tells the client how it should interpret the messages in the <m>val</m> field. For example, valid <m>key</m> values include <m>svg</m>, <m>html</m>, <m>tween</m>, and so on. See below for more details on these options.</li>
+			<li>The <m>val</m> value, stores one or more objects to be handled by the client.</li>
+		</ul>
+		
+		<p>For example, with a <m>svg</m> key, the <m>val</m> object might create a new SVG object. In this example, we ask all clients logged into <m>/foo</m> to create a new SVG <m>rect</m>, using the drawsocket-SVG <m>new</m> keyword:</p>
+
+		<codeexample>
+		/foo : {<br/>
+		<tab></tab>	/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "rect",<br/>
+		<tab></tab><tab></tab>/id : "rectangular",<br/>
+		<tab></tab><tab></tab>/x : 100,<br/>
+		<tab></tab><tab></tab>/y : 100,<br/>
+		<tab></tab><tab></tab>/width : 25,<br/>
+		<tab></tab><tab></tab>/height : 25<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		<p>The wildcard <m>*</m> will match all URL clients, so for example if you replace <m>/foo</m> above with the address <m>/*</m> the above example would be sent to all clients.</p>
+
+		<h1>Unique ID Reference</h1>
+		<p>Each drawn object needs to have a unique name to identify the object. The name can be any combination of numbers and letters, but needs to be unique. This id can be used to identify the object in situations where you want to change the color, position or other attributes.</p>
+
+		<p>For example, in the above example, we we set the <m>id</m> to be the name "rectangular". If we have already created the object (in this case using the drawsocket-SVG <m>new</m> keyword), we can alter attributes of the rectangle, by referring to the <m>id</m>. Here we change the width of the rectangle:</p>
+
+		<codeexample>
+		/foo : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/id : "rectangular",<br/>
+		<tab></tab><tab></tab>/width : 50<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+	</discussion>
+
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Rama Gottfried, Hochschule für Musik und Theater Hamburg</metadata>
+		<metadata name="tag">drawsocket</metadata>
+	</metadatalist>
+
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="FullPacket">
+			<digest>
+				OSC FullPacket or Max Dictionary.
+			</digest>
+			<description>
+				An odot bundle to perform an expression on.
+			</description>
+		</inlet>
+	</inletlist>
+
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" type="Dictionary">
+			<digest>
+				Messages from client in Max Dicitonary form (also readable by Odot objects).
+			</digest>
+			<description>
+				Messages from client in Max Dicitonary form (also readable by Odot objects).
+			</description>
+		</outlet>
+		<outlet id="1" type="Dictionary">
+			<digest>
+				Error messages from the node.js server.
+			</digest>
+			<description>
+				Error messages from the node.js server.
+			</description>
+		</outlet>
+		<outlet id="2" type="Dictionary">
+			<digest>
+				Status messages from the node.js server.
+			</digest>
+			<description>
+				Status messages from the node.js server.
+			</description>
+		</outlet>
+	</outletlist>
+
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="FullPacket [variable]">
+			<arglist />
+			<digest>
+				Messages to send to clients. See API details for more information.
+			</digest>
+			<description>
+				Messages to send to clients. See API details for more information.
+			</description>
+		</method>
+		
+		<method name="dictionary [variable]">
+			<arglist />
+			<digest>
+				Messages to send to clients. See API details for more information.
+			</digest>
+			<description>
+				Messages to send to clients. See API details for more information.
+			</description>
+		</method>
+		
+		<method name="importcache [variable]">
+			<arglist />
+			<digest>
+				read a file from disk and import one or all <m>prefix</m> objects in the file.
+			</digest>
+			<description>
+				read a file from disk and import one or all <m>prefix</m> objects in the file.
+			</description>
+		</method>
+	</methodlist>
+
+
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="dict" />
+		<seealso name="o.compose" />
+		<seealso name="o.expr.codebox" />
+		<seealso name="node.script" />
+		<seealso name="js" />
+	</seealsolist>
+
+</c74object>

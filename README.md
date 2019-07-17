@@ -17,7 +17,7 @@ To install:
 See the `hfmt.drawsocket.maxhelp` file for examples.
 
 1. Start the server by sending the `script start` message.
-2. On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the left-most outlet of the abstraction.
+2. On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the right-most outlet of the abstraction.
 3. Open a browser and type in the IP address and port specified in the Max patch, followed by a URL of your choosing. This address will be how you address the client browser from the Max server patch. 
     * For example, if the IP:Port is `192.168.1.1:3002`, and you wanted to use the address `/foo` for your OSC style messaging to the browser, you could type the following address into your browser: `192.168.1.1:3002/foo`. Note that if you are testing on the same computer, you can also use `localhost` instead of the IP address.
 
