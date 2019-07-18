@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="hfmt.drawsocket" module="drawsocket">
+
+	<digest>
+		A Max/node.js based server/client system for drawing to web-browsers.
+	</digest>
+
+	<description>
+		<o>hfmt.drawsocket</o> is an abstraction that uses the CNMAT Odot library and a set of JS scripts, loaded by the <o>node.script</o> object (see inside the abstraction for more info).
+	</description>
+
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Rama Gottfried, Hochschule für Musik und Theater Hamburg</metadata>
+		<metadata name="tag">drawsocket</metadata>
+	</metadatalist>
+
+<!--DISCUSSION-->
+	<discussion>
+something
+	</discussion>
+
+
+ <!--ARGUMENTS-->
+    <objarglist>
+        <objarg name="html_root" optional="1" type="symbol">
+            <digest>Sets a root assets folder. Only takes effect on start up.</digest>
+        </objarg>
+		<objarg name="port" optional="1" type="int">
+            <digest>Sets the server port number. Only takes effect on start up.</digest>
+        </objarg>
+    </objarglist>
+
+	<attributelist>
+		<attribute name="html_root" type="symbol" size="1">
+		<digest>Sets a root assets folder</digest>
+		<description>Sets a root assets folder. Only takes effect on start up.</description>
+		</attribute>
+		<attribute name="port" type="int" size="1">
+		<digest>server port number</digest>
+		<description>Sets the server port number. Only takes effect on start up.</description>
+		</attribute>
+	</attributelist>
+
+
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="FullPacket">
+			<digest>
+				OSC FullPacket or Max Dictionary.
+			</digest>
+			<description>
+				An odot bundle to perform an expression on.
+			</description>
+		</inlet>
+	</inletlist>
+
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" type="Dictionary">
+			<digest>
+				Messages from client in Max Dicitonary form (also readable by Odot objects).
+			</digest>
+			<description>
+				Messages from client in Max Dicitonary form (also readable by Odot objects).
+			</description>
+		</outlet>
+		<outlet id="1" type="Dictionary">
+			<digest>
+				Error messages from the node.js server.
+			</digest>
+			<description>
+				Error messages from the node.js server.
+			</description>
+		</outlet>
+		<outlet id="2" type="Dictionary">
+			<digest>
+				Status messages from the node.js server.
+			</digest>
+			<description>
+				Status messages from the node.js server.
+			</description>
+		</outlet>
+	</outletlist>
+
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="FullPacket (OSC)">
+			<digest>
+				Messages to send to clients. See API details for more information.
+			</digest>
+			<description>
+				Messages to send to clients. See API details below for more information.
+			</description>
+		</method>
+		
+		<method name="dictionary">
+			<digest>
+				Messages to send to clients. See API details for more information.
+			</digest>
+			<description>
+				Messages to send to clients. See API details below for more information.
+			</description>
+		</method>
+		
+		<method name="ping [variable]">
+			<arglist>
+				<arg name="URL prefix" optional="0" type="list" />
+			</arglist>
+			<digest>
+				query the connection status of one or more clients.
+			</digest>
+			<description>
+				<p>Query the connection status of one or more clients. The argument for the <m>ping</m> can be one or a list of URLs to ping. The clients will respond by sending their conneciton status, and screensize.</p>
+
+				<p>The message <m>ping /*</m> pings all clients.</p>
+
+			</description>
+		</method>
+
+		<method name="writecache [variable] [variable]">
+			<arglist>
+				<arg name="path/file-name" optional="0" type="symbol" />
+				<arg name="(optional) URL prefix" optional="1" type="symbol" />
+			</arglist>
+			<digest>
+				write the current cached client states to a JSON file on disk.
+			</digest>
+			<description>
+				<p>Writes the current cached messages to a JSON file on disk.</p>
+
+				<p>The folder path is relative to the folder path of the patch in which the <m>hfmt.drawsocket</m> object is in.</p>
+
+				<p>Message syntax:<br/>
+				<tab></tab><m>writecache relative-folder-path/filename.json</m><br/>
+				<br/>
+				or, to write only one URL prefix:<br/>
+				<tab></tab><m>writecache relative-folder-path/filename.json /myURLPrefix</m>
+				</p>
+			</description>
+		</method>
+
+		<method name="importcache [variable] [variable]">
+			<arglist>
+				<arg name="file-name" optional="0" type="symbol" />
+				<arg name="(optional) URL prefix" optional="1" type="symbol" />
+			</arglist>
+			<digest>
+				read a JSON file from disk and import one or all <m>prefix</m> objects in the file.
+			</digest>
+			<description>
+				<p>Reads a JSON file from disk and import one or all <m>prefix</m> objects in the file.</p>
+
+				<p>The folder path is relative to the folder path of the patch in which the <m>hfmt.drawsocket</m> object is in.</p>
+
+				<p>Message syntax:<br/>
+				<tab></tab><m>importcache relative-folder-path/filename.json</m><br/>
+				<br/>
+				or, to read only one URL prefix:<br/>
+				<tab></tab><m>importcache relative-folder-path/filename.json /myURLPrefix</m>
+				</p>
+
+				<p>Note that importing the cache updates the server, but does not update the client automatically. You may need to send a <m>statereq</m> messages to update the clients if they are already logged in.</p>
+			</description>
+		</method>
+
+		<method name="statereq [variable]">
+			<arglist>
+				<arg name="URL prefix" optional="0" type="list" />
+			</arglist>
+			<digest>
+				trigger a client update request for one or more clients.
+			</digest>
+			<description>
+				<p>Triggers a client update request for one or more clients (equivalent to a client refresh). The argument for the <m>statereq</m> can be one or a list of URLs to send the message to.</p>
+
+				<p>The message <m>statereq /*</m> sends the message to all clients.</p>
+
+			</description>
+		</method>
+
+
+	</methodlist>
+
+	<misc name ="Documentation">
+
+		<entry name ="1. Installation"><description>
+		When running the first time you will need to be online. Run <m>script npm install</m> to download the required node packages.
+		</description>
+		</entry>
+
+		<entry name ="2. Basic Usage"><description>
+
+		<ol>
+			<li>Start the server by sending the <m>script start</m> message.</li>
+			<li>On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the right-most outlet of the abstraction.</li>
+			<li>Open a browser and type in the IP address and port specified in the Max patch, followed by a URL of your choosing. This address will be how you address the client browser from the Max server patch.
+				<ul>
+					<li>
+						For example, if the IP:Port is <m>192.168.1.1:3002</m>, and you wanted to use the address <m>/foo</m> for your OSC style messaging to the browser, you could type the following address into your browser: <m>192.168.1.1:3002/foo</m>. Note that if you are testing on the same computer, you can also use <m>localhost</m> instead of the IP address.
+					</li>
+				</ul>
+			</li>
+			<li>Once connected, you can then send OSC or Dictionary messages into the <o>hfmt.drawsocket</o> inlet, which will be routed using the URL address the client.</li>
+		</ol>
+
+		</description>
+		</entry>
+
+		<entry name ="3. About Assets"><description>
+		<p>If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the <o>hfmt.drawsocket</o> abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).</p>
+
+		<p>By default, the public folder is set to be the same folder that contains the Max patch.</p>
+			<codeexample>
+			someFolder<br/>
+			|-- yourPatch.maxpatch<br/>
+			|-- image.png<br/>
+			|-- score.pdf<br/>
+			</codeexample>
+		<br/>
+		
+		<p>Alternatively, to keep the folders a little neater, the <m>hfmt.drawsocket</m> abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize <m>hfmt.drawsocket</m> with the relative path <m>public</m>, it will expect the folder <m>public</m> to be at the same folder level:</p>
+
+			<codeexample>
+			someFolder<br/>
+			|-- yourPatch.maxpatch<br/>
+			|-- public<br/>
+			<tab></tab>|-- image.png<br/>
+			<tab></tab>|-- score.pdf<br/>
+			</codeexample>
+		</description>
+		</entry>
+
+		<entry name ="4. Default HTML and CSS files"><description>
+		<p>By default the <m>drawsocket</m> server responds to all URL requests with the template HTML page, <m>drawsocket-page.html</m> which loads the required Javascript files, sets up the basic HTML objects, layers, and imports the <m>drawsocket-default.css</m> which sets up some default display properties.</p>
+
+		<p>If desired, a different template HTML page may be used by sending the <m>hfmt.drawsocket</m> object the <m>html_template</m> message followed by a relative path to the template HTML file to use.</p>
+		</description>
+		</entry>
+
+		<entry name ="5. Message Format"><description>
+		<p>All messages in the <m>drawsocket</m> API are formatted as an object, enclosed by curly braces <m>{ }</m>. Messages can be encoded as Odot nested sub-bundles, or nested JSON objects. In the examples below we will be using OSC (odot) formatting, however you may also use a Max Dictionary, which will be exactly the same, except that address names will not have the leading <m>/</m> character.</p>
+
+		<p>Odot:</p>
+		<codeexample>
+		/bundle : {<br/>
+		<tab></tab>/subbundle : {<br/>
+		<tab></tab><tab></tab>/foo : 1<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		<br/>
+
+		<p>Max Dictionary (JSON):</p>
+		<codeexample>
+		"bundle" : {<br/>
+		<tab></tab>"subbundle" : {<br/>
+		<tab></tab><tab></tab>"foo" : 1<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		</description>
+		</entry>
+
+		<entry name ="6. Addressing the Client Browser"><description>
+		<p>The URL used by the client to log into the server IP address and port is used by the Max patch as an OSC address to route messages to all clients logged into a given URL. For example, any users logged into the example above, <m>192.168.1.1:3002/foo</m>, will receive OSC messages with the address <m>/foo</m>.</p>
+		</description>
+		</entry>
+
+		<entry name ="7. key and val"><description>
+		<p>Messages to the client are formatted as objects with <m>key</m> and <m>val</m> addresses.</p>
+		<ul>
+			<li>The <m>key</m> value is a switch key which tells the client how it should interpret the messages in the <m>val</m> field. For example, valid <m>key</m> values include <m>svg</m>, <m>html</m>, <m>tween</m>, and so on. See below for more details on these options.</li>
+			<li>The <m>val</m> value, stores one or more objects to be handled by the client.</li>
+		</ul>
+		
+		<p>For example, with a <m>svg</m> key, the <m>val</m> object might create a new SVG object. In this example, we ask all clients logged into <m>/foo</m> to create a new SVG <m>rect</m>, using the drawsocket-SVG <m>new</m> keyword:</p>
+
+		<codeexample>
+		/foo : {<br/>
+		<tab></tab>	/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "rect",<br/>
+		<tab></tab><tab></tab>/id : "rectangular",<br/>
+		<tab></tab><tab></tab>/x : 100,<br/>
+		<tab></tab><tab></tab>/y : 100,<br/>
+		<tab></tab><tab></tab>/width : 25,<br/>
+		<tab></tab><tab></tab>/height : 25<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		<p>The wildcard <m>*</m> will match all URL clients, so for example if you replace <m>/foo</m> above with the address <m>/*</m> the above example would be sent to all clients.</p>
+		</description>
+		</entry>
+
+		<entry name ="8. Unique ID Reference"><description>
+		<p>Each drawn object needs to have a unique name to identify the object. The name can be any combination of numbers and letters, but needs to be unique. This id can be used to identify the object in situations where you want to change the color, position or other attributes.</p>
+
+		<p>For example, in the above example, we we set the <m>id</m> to be the name "rectangular". If we have already created the object (in this case using the drawsocket-SVG <m>new</m> keyword), we can alter attributes of the rectangle, by referring to the <m>id</m>. Here we change the width of the rectangle:</p>
+
+		<codeexample>
+		/foo : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/id : "rectangular",<br/>
+		<tab></tab><tab></tab>/width : 50<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		</description>
+		</entry>
+
+	</misc>
+
+	<misc name ="Drawsocket API">
+
+		<entry name="0. keys"><description>
+		<p>Each <m>key</m> type has a slightly different API based on the needs of the objects created in the browser.</p>
+		</description>
+		</entry>
+
+		<entry name="1. svg"><description>
+		<p>The <m>svg</m> key specifies that the <m>val</m> objects will be used to create or modify SVG elements, which will be placed by default in the webpage's main SVG element.</p>
+
+		<p>The object(s) set to the client via the <m>val</m> field predominantly consist of <i>attributes</i> that configure the created object, as specified by the SVG specification, available online in many places. See the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes">Mozilla SVG documentation</a> for information about the basic SVG object types.</p>
+
+		<p>Object attributes may be set as members of the <m>val</m> object, as demonstrated above.</p>
+
+		<p>In addition there are several keywords used by <m>drawsocket</m> to handle special cases.</p>
+		<ul>
+			<li><m>new</m>: tells the SVG creation routine to create a new object of a given SVG type. See the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes">SVG documentation</a> for information on object types and their associated attribute options.</li>
+			<li><m>parent</m>: SVG nodes may be inserted as child objects of another element, (most often an SVG group <m>g</m> element).</li>
+			<li><m>child</m>: SVG nodes may also be created as dependents of a newly created group node. Mainly this is useful for cases where you <i>don't want</i> to have an <m>id</m> for a child node, for example when setting objects in the special SVG <m>defs</m> group (described below).</li>
+			<li><m>text</m>: sets the inner text of a <m>text</m> node.</li>
+			<li><m>href</m>: sets the address for linked assets, used by the <m>image</m> and <m>use</m> SVG elements.</li>
+		</ul>
+		
+		<h4><i><b>style</b></i></h4>
+		<p>A sub-bundle labeled <m>style</m> may optionally be included which will set inline CSS style properties for the created node, which will be applied by the browser, depending on the SVG specification, and the browser's implementation.</p>
+
+		<p>For example:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "path",<br/>
+		<tab></tab><tab></tab>/id : "bar",<br/>
+		<tab></tab><tab></tab>/d : "M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80",<br/>
+		<tab></tab><tab></tab>/style : {<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke : "red",<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke-width : 2<br/>
+		<tab></tab><tab></tab>}<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		<h3> A note on CSS styles and inheritance</h3>
+
+		<p>There are three levels of inheritance with SVG CSS styling:</p>
+		<ol>
+		<li><i>presentation attributes</i>, set within the element, as demonstrated above in the context of SVG object attributes.</li>
+		<li><i>stylesheet</i> definitions, set in an attached CSS stylesheet, or within an <m>&lt;style&gt;</m> element in the HTML page (settable via the "css" key detailed below).</li>
+		<li><i>inline styling</i>, a set of CSS rules included as part of an elements's <m>style</m> attribute. In <m>drawsocket</m> we set these values via the <m>/style</m> sub-bundle.</li>
+		</ol>
+
+		<p>Each is overridden by the next: <i>stylesheets</i> override <i>presentation attributes</i>, and <i>inline styles</i> override all the others.</p>
+
+		<p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">online CSS documentation</a> for more informaiton.</p>
+
+		<h3>SVG Layers</h3>
+		<p>SVG elements are drawn in the order they are created via the <m>new</m> keyword (and remain in layer order if updated after creation).</p>
+
+		<p>Sometimes it is useful to separate groups of objects in specific drawing layer order to maintain background, mid, and foreground layers. The can be achived using the SVG group element. </p>
+
+		<p>For example, we can first create three layers that we will name "back", "main", and "overlay", using an array of objects.</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : [{<br/>
+		<tab></tab><tab></tab>/new : "g",<br/>
+		<tab></tab><tab></tab>/id : "back"<br/>
+		<tab></tab>}, {<br/>
+		<tab></tab><tab></tab>/new : "g",<br/>
+		<tab></tab><tab></tab>/id : "main"<br/>
+		<tab></tab>}, {<br/>
+		<tab></tab><tab></tab>/new : "g",<br/>
+		<tab></tab><tab></tab>/id : "overlay"<br/>
+		<tab></tab>}]<br/>
+		}<br/>
+		</codeexample>
+
+		<p>Note that the array specifies the order of the objects in the message, so "back" will be drawn first, then "main", then "overlay".</p>
+
+		<p>When objects are added to any of these groups, they will be appended to the end of the stack of child nodes within the group, however, all objects in the "back" group will appear *behind* the "main" and "overlay" layers; while objects added to the "overlay" layer will always be *above* the other layers, and so on.</p>
+
+		<h3>Referencing SVG Elements</h3>
+
+		<p>Preexisting object maybe reused with the <m>use</m> SVG element, which uses the <m>id</m> of another SVG object by reference, set by the <m>href</m> attribute. </p>
+
+		<p>There are two approaches recommended for reusing SVG elements:</p>
+		<ul>
+		<li>defs
+		<br/>
+		<p>The SVG specification provides a special storage element within the SVG object called <m>defs</m> <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs">see the online documentation for more details</a>. Objects stored in the <m>defs</m> are not drawn to the screen, but are stored as prototypes of objects that can be drawn with the <m>use</m> tag. The <m>defs</m> can be used in this way for storing a library of objects. To add an object to the <m>defs</m> group, you can use the <m>parent</m> keyword to tell the client to add a new object (or group of objects) to the <m>defs</m>, for example:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/parent : "defs",<br/>
+		<tab></tab><tab></tab>/new : "rect",<br/>
+		<tab></tab><tab></tab>/id : "squarePrototype",<br/>
+		<tab></tab><tab></tab>/x : 50,<br/>
+		<tab></tab><tab></tab>/y : 50,<br/>
+		<tab></tab><tab></tab>/width : 20,<br/>
+		<tab></tab><tab></tab>/height : 20<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		</li>
+
+		<li>use
+		<br/>
+
+		<p>To use our new <m>defs</m> object, we refer to it by <m>id</m> in the <m>use</m> element's <m>href</m> attribute, prefixed by the id selector <m>#</m>:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "use",<br/>
+		<tab></tab><tab></tab>/id : "sq",<br/>
+		<tab></tab><tab></tab>/href : "#squarePrototype",<br/>
+		<tab></tab><tab></tab>/x : 0,<br/>
+		<tab></tab><tab></tab>/y : 0<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		<p>Note that the <m>x</m> <m>y</m> coordinates of the <m>use</m> object set the top left corner of the original object. That means that in this case, the top left corder of the drawn rectangle will be at <m>{50,50}</m> not <m>{0,0}</m>. So, for best results, set <m>defs</m> object positions relative to <m>{0,0}</m>.</p>
+
+		<p>The <m>use</m> element's <m>href</m> attribute can also be used to import an object by reference to an <m>id</m> present in an SVG file asset. For example, if there is a file called "demo.svg" stored in the public folder, you could reference an element with the id <m>foo</m> by using the <m>#</m> id selector:</p>
+		
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "use",<br/>
+		<tab></tab><tab></tab>/id : "importedObject",<br/>
+		<tab></tab><tab></tab>/href : "demo.svg#foo",<br/>
+		<tab></tab><tab></tab>/x : 0,<br/>
+		<tab></tab><tab></tab>/y : 0<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		</li>
+		</ul>
+
+		<p>An additional utility provided by <m>drawsocket</m> provides an offset to the imported object, offsetting its origin (top-left corner) to be <m>{0,0}</m>, helpful for placing objects intuitively in a new context. To enable this offsetting, send an extra <m>1</m> value for the <m>href</m> attribute. For example:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "use",<br/>
+		<tab></tab><tab></tab>/id : "importedObject",<br/>
+		<tab></tab><tab></tab>/href : ["demo.svg#foo", 1],<br/>
+		<tab></tab><tab></tab>/x : 0,<br/>
+		<tab></tab><tab></tab>/y : 0<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		<br/>
+
+		</description>
+		</entry>
+
+		<entry name="3. clear &amp; remove"><description>
+
+		<p>The <m>clear</m> and <m>remove</m> keys have similar, but slightly different behaviours.</p>
+		<ul>
+		<li><m>remove</m>: removes the objects matching each of the <m>ids</m> set in the <m>val</m> field.</li>
+		<li><m>clear</m>: removes the *children* of the object, or key type, specified in the <m>val</m> field.</li>
+		</ul>
+
+		<p>For example, to clear all SVG elements, you can send the messages:</p>
+		
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "clear",<br/>
+		<tab></tab>/val : "svg"<br/>
+		}<br/>
+		</codeexample>
+
+		<p>To clear the elements of <m>g</m> layer, use the <m>clear</m> message. For example, using the layers we created above, we might want to clear the "main" and "overlay" layers while leaving the "back" layer:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "clear",<br/>
+		<tab></tab>/val : ["main", "overlay"]<br/>
+		}<br/>
+		</codeexample>
+
+		<p>To remove a specific object, use the <m>remove</m> message. For example:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "remove",<br/>
+		<tab></tab>/val : "main"<br/>
+		}<br/>
+		</codeexample>
+
+		<p>Note that removing a <m>g</m> object, will remove all of its children *and* the <m>g</m> object. This means that you will not be able to add objects to the <m>g</m> group "main" until you recreate it with the <m>new</m> keyword.</p>
+
+
+		<h1>css</h1>
+		<p>The <m>css</m> key allows the user to to add new CSS rules to the webpage's <m>&lt;style&gt;</m> tag. See the [online documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) for more information.</p>
+
+		<p>There are two keywords used by the <m>drawsocket</m> API: <m>selector</m>, and <m>props</m>.</p>
+
+		<h3>selector</h3>
+		<p>The <m>selector</m> sets the CSS rule's selector, which could be one of three types:</p>
+		<ul>
+		<li> *type* selector, which applies to all objects of a given type (e.g. <m>line</m>)</li>
+		<li>*class* selector, prefixed by the <m>.</m> character (e.g. <m>.example</m>), which applies the rule to all objects with the matching <m>class</m> attribute.</li>
+		<li>*id* selector, prefixed by the <m>#</m> character (e.g. <m>#example</m>), which is a *unique id*, and only applies the rule to one object.</li>
+		</ul>
+
+		<h3>props</h3>
+		<p>The <m>props</m> nested object, contains the properties for the CSS rule.</p>
+
+		<p>For example, here we create two rules, one for <m>line</m> objects, and one specifically for objects with the <m>id</m> "bar":</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "css",<br/>
+		<tab></tab>/val : [{<br/>
+		<tab></tab><tab></tab>/selector : "line",<br/>
+		<tab></tab><tab></tab>/props : {<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke : "red",<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke-width : 5<br/>
+		<tab></tab><tab></tab>}<br/>
+		<tab></tab>}, {<br/>
+		<tab></tab><tab></tab>/selector : "#bar",<br/>
+		<tab></tab><tab></tab>/props : {<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke : "black",<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke-width : 10<br/>
+		<tab></tab><tab></tab>}<br/>
+		<tab></tab>}]<br/>
+		}<br/>
+		</codeexample>
+		<br/>
+
+		<h1>html</h1>
+		<p>The <m>html</m> key uses the same keywords as the <m>svg</m> key type:</p>
+		<ul>
+		<li><m>new</m>: tells the HTML creation routine to create a new object of a given HTML type. See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML documentation</a> for information on object types and their associated attribute options.</li>
+		<li><m>parent</m>: HTML nodes may be inserted as child objects of another element (most often an HTML <m>div</m> element).</li>
+		<li><m>child</m>: HTML nodes may also be created as dependents of a newly created group node.</li>
+		<li><m>text</m>: sets the inner text of an HTML node (e.g. <m>div</m> or <m>p</m>).</li>
+		<li><m>href</m>: sets the address for linked assets.</li>
+		</ul>
+		
+		<h3>call</h3>
+		<p>Some HTML objects also can be manipulated with JS object methods, via the <m>call</m> keyword:</p>
+		
+		<ul>
+		<li><m>call</m>: an object or array of objects contains calls to HTML object <m>method</m> with optional <m>args</m>, for example HTMLMediaElement methods, <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">see online documentation</a> for more information.
+		<ul>
+		<li><m>method</m>: element method to call.</li>
+		<li><m>args</m>: optional arguments to method call (see note below for methods requiring separated arguments).</li>
+		<li><m>then</m>: optional next method to call on the returned value from the previous call.</li>
+		</ul></li>
+		</ul>
+
+		
+		<p>Note: if a method requires separated arguments, rather than a single object, you can use an array of objects for <m>args</m>, each containing the key <m>val</m> to set the value of that argument.</p>
+
+
+		<p>This is still in beta, but hypothetically the example below should work for a video player, you may need to click on the browser window first before the browser will let you call this though due to privacy restrictions.</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "html",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/id : "foovideo",<br/>
+		<tab></tab><tab></tab>/call : {<br/>
+		<tab></tab><tab></tab><tab></tab>/method : "play"<br/>
+		<tab></tab><tab></tab>}<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		<br/>
+
+		<h3>HTML layers</h3>
+		<p>By default HTML objects will be added to an HTML <m>div</m> object, one layer below the SVG content (see the <m>drawsocket-page.html</m> file for details). However, HTML content requiring user interaction, for example <m>input</m> forms, or media players, will not be clickable if located behind the SVG layer. Therefore a special-purpose, top-layer <m>div</m> is set in the HTML file, called <m>forms</m> which will should always be reachable by user interaction. Set objects in the <m>forms</m> layer just as you would for other parent objects, using the <m>parent</m> keyword.</p>
+
+		<p>Additionaly, HTML layers may be created with a new <m>div</m> tag, just as discussed above via the <m>g</m> SVG tag.</p>
+
+
+		<h3><b>tween</b></h3>
+		<m>drawsocket</m> provides access to the GreenSock Animation Platform <a href="https://greensock.com/docs/TweenMax">TweenMax</a> and <a href="https://greensock.com/docs/TimelineMax">TimelineMax</a> libraries via the <m>tween</m> key. The object types are identified by the keywords used.
+
+		<a href="https://greensock.com/docs/TweenMax">TweenMax</a> objects use the keywords:
+		<ul>
+			<li><m>id</m>: a unique identifier for the TweenMax object.</li>
+			<li><m>target</m>: a CSS selector to choose which objects are animated (e.g. <m>#foo</m>).</li>
+			<li><m>dur</m>: the duration of the animation in seconds.</li>
+			<li><m>vars</m>: an object containing the variables to animate, and their destination values, and any other TweenMax special properties (see the <a href="https://greensock.com/docs/TweenMax/vars">TweenMax vars documentation</a> for more information).</li>
+			<li><m>cmd</m>: an action command to a new or preexisting <m>tween</m>. Understood commands are:
+				<ul>
+					<li><m>start</m>: start playing the <m>tween</m>, from the beginning, using the message's timestamp to determine an offset start time to be synchronized with the server clock. If the duration is already past, sets the object to its final position.</li>
+					<li><m>play</m>: start playing the <m>tween</m> from whatever its current position is, synchronised to the server clock.</li>
+					<li><m>playfrom</m> : if a <m>time</m> parameter is also found in the command object, start playing the <m>tween</m> from the time specified by the <m>time</m> parameter.</li>
+						<li><m>time</m> (requried), sets the time to start from in seconds.</li>
+					<li><m>stop</m>: stops the <m>tween</m> at the current position.</li>
+					<li><m>pause</m>: stops the <m>tween</m> at the current position.
+						<ul>
+							<li>optionally, if the parameter <m>time</m> is found, pause, and move the playhead to that time.</li>
+						</ul>
+						</li>
+					<li><m>reset</m>: resets the object to its original position.</li>
+					<li><m>reverse</m>: reverses <m>tween</m> direction.</li>
+					<li><m>kill</m>: kills the <m>tween</m> but doesn't delete it (not sure how useful this is).</li>
+				</ul></li>
+		</ul>
+		
+		<a href="https://greensock.com/docs/TimelineMax">TimelineMax</a> objects use the keywords:
+		<ul>
+			<li><m>id</m>: a unique identifier for the TimelineMax object.</li>
+			<li><m>init</m>: an object of <a href="https://greensock.com/docs/TimelineMax/TimelineMax()">TimelineMax initialization variables</a>.</li>
+			<li><m>tweens</m>: an <m>tween</m> object, or *sequential* array of <m>tween</m> objects containing the keywords:
+			<ul>
+				<li><m>target</m>: a CSS selector to choose which objects are animated (e.g. <m>#foo</m>).</li>
+				<li><m>dur</m>: the duration of the tween animation in seconds, note that within the timeline, the tweens are sequential, so each <m>dur</m> is the duration for that section within the timeline.</li>
+				<li><m>vars</m>: an object containing the variables to animate, and their destination values, and any other TweenMax special properties (see the <a href="https://greensock.com/docs/TweenMax/vars">TweenMax vars documentation</a> for more information).</li>
+			</ul></li>
+			<li><m>cmd</m>: same as the <m>tween</m> commands, but applied to the timeline.</li>
+		</ul>
+
+		<p>One special <m>var</m> parameter has been added to handle the <m>onUpdate</m> callback.</p>
+		<ul>
+		<li><m>var</m>:<m>onUpdate</m> : an inline string function to be called when a new frame is processed by the <m>tween</m>.</li>
+		</ul>
+
+		<h1>pdf</h1>
+		<p>PDF files may be imported into <m>drawsocket</m> by reference, the settable attributes are as follows:</p>
+
+		* <m>href</m>: the path location of the .pdf file, relative to the Max patch.
+		* <m>page</m>: the page to open in the .pdf file.
+		* size and position attributes: <m>x</m>, <m>y</m>, <m>width</m>, and <m>height</m>
+
+
+		<codeexample>
+		/* : {
+			/key : "pdf",
+			/val : {
+			/id : "newpdf",
+			/href : "/media/flint_piccolo_excerpt.pdf",
+			/width : 600,
+			/x : 100,
+			/page : 2
+			}
+		}
+		</codeexample>
+
+		<h1>sound</h1>
+		<p><m>drawsocket</m> includes the [tone.js](https://tonejs.github.io) library, note: <b>currently in beta</b>.</p>
+
+		<p>Keywords:</p>
+		* <m>new</m>: creates a new instace of a Tone type (e.g Tone.Oscillator, would be <m>/new : "Oscillator"</m>).
+		* <m>id</m>: unique identifier to use for this sound object.
+		* <m>vars</m>: an object of variables used on initialization of a Tone.js object, refer to the Tone.js API for for informaiton.
+		* <m>call</m>: an object or array of objects contains calls to HTML object <m>method</m> with optional <m>args</m>, see the Tone.js API for more informaiton on object methods.
+		* <m>method</m>: element method to call.
+		* <m>args</m>: optional arguments to method call (see note below for methods requiring separated arguments).
+		* <m>then</m>: optional next method to call on the returned value from the previous call.
+
+		<p>Note: if a method requires separated arguments, rather than a single object, you can use an array of objects for <m>args</m>, each containing the key <m>val</m> to set the value of that argument.</p>
+
+
+		Some examples:
+
+		<codeexample>
+		/* : {
+		/key : "sound",
+		/val : {
+			/new : "Player",
+			/id : "kick",
+			/vars : {
+			/url : "/media/808_mp3/kick1.mp3",
+			/autostart : "false",
+			/loop : "false"
+			},
+			/call : {
+				/method : "toMaster"
+			}
+		}
+		}
+		</codeexample>
+
+		<p>Replay a sound via the <m>restart</m> object method:</p>
+		<codeexample>
+		/* : {
+		/key : "sound",
+		/val : {
+			/id : "kick",
+			/call : {
+				/method : "restart"
+			}
+		}
+		}
+		</codeexample>
+
+		<p>Play a chord on a PolySynth via the <m>triggerAttackRelease</m> function:</p>
+
+		<codeexample>
+		/* : {
+		/key : "sound",
+		/val : {
+			/id : "psynth",
+			/call : {
+				/method : "triggerAttackRelease",
+				/args : [{
+					/val : ["Eb3", "G4", "C4"]
+				}, {
+					/val : 0.1
+				}]
+			}
+		}
+		}
+		</codeexample>
+
+		<h3>set</h3>
+		<p>To set the value of a Tone.js Signal object, for example the frequency of an Oscillator, we need to use a the <m>set</m> operator, which functions a bit like the <m>call</m> operator, but sets a member value rather than calling a function.</p>
+
+		<p>The <m>set</m> keyword should contain an object or array of objects, with member keywords:</p>
+		* <m>member</m>: the name of the property to set.
+		* <m>value</m>: the value to assign to the property.
+		
+		For example:
+
+		<codeexample>
+		/* : {
+		/key : "sound",
+		/val : {
+			/id : "sine",
+			/set : {
+				/member : "frequency.value",
+				/value : 1000
+			}
+		}
+		}
+		</codeexample>
+
+		<h3>obj:get</h3>
+		<p>In some cases we need to refer to an object from a library or one that we have created, which needs to be passed to a function that makes connections between things.</p>
+
+		<p>For this (currently only in the Tone.js interface) you can use the <m>obj</m> and <m>get</m> message to get an element from an object.</p>
+
+		<p>For example, the Tone.js PolySynth needs a member of the Tone libarary to set as the <m>voice</m> type. To do this we can use an object argument with the <m>obj</m> and <m>get</m> keywords, here to to ge the Synth member of the Tone library.</p>
+
+		<codeexample>
+		/* : {
+			/key : "sound",
+			/val : {
+				/new : "PolySynth",
+				/id : "psynth",
+				/vars : {
+					/polyphony : 4,
+					/volume : 0,
+					/detune : 0,
+					/voice : {
+						/obj : "Tone",
+						/get : "Synth"
+					}
+				},
+				/call : {
+					/method : "toMaster"
+				}
+			}
+		}
+		</codeexample>
+
+
+		<h1><m>drawsocket</m> JS Methods</h1>
+		<p>The drawsocket object itself maybe referred to in JS scripts, for example in an object event watcher. The <m>drawsocket</m> object, exposes the following methods for general usage:</p>
+		* <m>drawsocket.input</m>: the main entry point to the client script
+		* <m>drawsocket.send</m>: the WebSocket interface to send a JS object back to the server.
+		* <m>drawsocket.oscprefix</m>: the URL/OSC-prefix of the client, useful for self identifying when sending messages back to the server.
+
+		<p>For example, the following message creates a new HTML input field, where users can type. When the user hits the Enter key, the script will send the value of the HTML form to the server prefixed by the client's OSC-prefix, and the <m>id</m> of this object:</p>
+
+		<codeexample>
+		/* : {
+		/key : "html",
+		/val : {
+			/parent : "forms",
+			/new : "input",
+			/type : "text",
+			/id : "userinput",
+			/name : "userinput",
+			/size : 10,
+			/onkeydown : "if( event.key == 'Enter' ){
+			let obj = {};
+			obj[ drawsocket.oscprefix+'/'+this.id+'/input' ] = this.value;
+			drawsocket.send( obj );
+			}"
+		}
+		}
+
+		</codeexample>
+
+
+		<h1>file</h1>
+		<p>Clients can load JSON of stored messages, formatted in the <m>drawsocket</m> API detailed here.</p>
+
+		<p>Keywords:</p>
+		* <m>fetch</m>: (required) URL of file to fetch relative to the <m>hfmt.drawsocket</m> root html folder (by default this is the same as the folder that the patch containg the <m>hfmt.drawsocket</m> is saved in.,
+		* <m>prefix</m>: (optional) the URL prefix to load into the page. If no prefix is specified <m>fetch</m> will load only the prefix matching the client URL.
+		
+		<p>For example, here we tell clients logged into the URL <m>/foo</m> to load the messages for URL <m>/bar</m> from the file "savedState.json".</p>
+
+		<codeexample>
+		/foo : {
+			/key : "file",
+			/val : {
+				/fetch : "savedState.json",
+				/prefix : "/bar"
+			}
+		}
+
+		</codeexample>
+
+		<h1>event</h1>
+		<p>The <m>event</m> keyword provides a mechanism for scheduling future object sent to the <m>drawsocket.input</m> function.</p>
+
+		* <m>id</m>: the id of the event
+		* <m>del</m>: the delay time in milliseconds
+		* <m>obj</m>: an object to be sent to <m>drawsocket.input</m>, containing <m>key</m> and <m>val</m> values.
+
+		<p>For example, the following example, an event is created and set with a delay (<m>del</m>) of 1000ms (1s). After this delay, the object stored at the the <m>obj</m> address, is sent to <m>drawsocket.input</m> and is executed, resulting in a short diagonal line, with the <m>id</m>  "foo1".</p>
+
+		<codeexample>
+		/* : {
+			/key : "event",
+			/val : {
+				/id : "event1",
+				/del : 1000,
+				/obj : {
+					/key : "svg",
+					/val : {
+						/new : "line",
+						/id : "foo2",
+						/x1 : 10,
+						/x2 : 20,
+						/y1 : 30,
+						/y2 : 10
+					}
+				}
+			}
+		}
+		</codeexample>
+
+		<h1>do_sync</h1>
+		<p>The <m>do_sync</m> keyword triggers the client clock time sychronization routine.</p>
+
+		<codeexample>
+		/foo : {
+		/key : "do_sync",
+		/val : 1
+		}
+		</codeexample>
+
+
+		</description>
+		</entry>
+
+	</misc>
+	
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="Drawsocket_API" module="drawsocket" type="vignette" />
+		<seealso name="dict" />
+		<seealso name="o.compose" />
+		<seealso name="o.expr.codebox" />
+		<seealso name="node.script" />
+		<seealso name="js" />
+
+	</seealsolist>
+
+</c74object>

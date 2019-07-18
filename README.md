@@ -673,7 +673,7 @@ For example, on a website called `www.foo.com` and a stored JSON file named `sto
 (Of course you could also save the HTML file under a differnt name of your choosing for your server)
 
 # ping
-The `hfmt.drawsocket` object accepts the `ping` Max message to querry the connection status of one or more clients.
+The `hfmt.drawsocket` object accepts the `ping` Max message to query the connection status of one or more clients.
 For example, the message `ping /*` pings all clients.
 
 # statereq
