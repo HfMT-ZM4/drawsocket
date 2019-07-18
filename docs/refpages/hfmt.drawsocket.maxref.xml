@@ -11,130 +11,24 @@
 		<o>hfmt.drawsocket</o> is an abstraction that uses the CNMAT Odot library and a set of JS scripts, loaded by the <o>node.script</o> object (see inside the abstraction for more info).
 	</description>
 
-<!--DISCUSSION-->
-	<discussion>
-		<h1>Setup</h1>
-		<p>When running the first time you will need to be online. Run <m>script npm install</m> to download the required node packages.</p>
-		
-		<h1>Basic Usage</h1>
-		<ol>
-			<li>Start the server by sending the <m>script start</m> message.</li>
-			<li>On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the right-most outlet of the abstraction.</li>
-			<li>Open a browser and type in the IP address and port specified in the Max patch, followed by a URL of your choosing. This address will be how you address the client browser from the Max server patch.
-				<ul>
-					<li>
-						For example, if the IP:Port is <m>192.168.1.1:3002</m>, and you wanted to use the address <m>/foo</m> for your OSC style messaging to the browser, you could type the following address into your browser: <m>192.168.1.1:3002/foo</m>. Note that if you are testing on the same computer, you can also use <m>localhost</m> instead of the IP address.
-					</li>
-				</ul>
-			</li>
-			<li>Once connected, you can then send OSC or Dictionary messages into the <o>hfmt.drawsocket</o> inlet, which will be routed using the URL address the client.</li>
-		</ol>
-
-		<h1>About Assets</h1>
-		<p>If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the <o>hfmt.drawsocket</o> abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).</p>
-
-		<p>By default, the public folder is set to be the same folder that contains the Max patch.</p>
-			<codeexample>
-			someFolder<br/>
-			|-- yourPatch.maxpatch<br/>
-			|-- image.png<br/>
-			|-- score.pdf<br/>
-			</codeexample>
-		<br/>
-		
-		<p>Alternatively, to keep the folders a little neater, the <m>hfmt.drawsocket</m> abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize <m>hfmt.drawsocket</m> with the relative path <m>public</m>, it will expect the folder <m>public</m> to be at the same folder level:</p>
-
-			<codeexample>
-			someFolder<br/>
-			|-- yourPatch.maxpatch<br/>
-			|-- public<br/>
-			<tab></tab>|-- image.png<br/>
-			<tab></tab>|-- score.pdf<br/>
-			</codeexample>
-		<br/>
-		<br/>
-
-		<h1>Default HTML and CSS files</h1>
-
-		<p>By default the <m>drawsocket</m> server responds to all URL requests with the template HTML page, <m>drawsocket-page.html</m> which loads the required Javascript files, sets up the basic HTML objects, layers, and imports the <m>drawsocket-default.css</m> which sets up some default display properties.</p>
-
-		<p>If desired, a different template HTML page may be used by sending the <m>hfmt.drawsocket</m> object the <m>html_template</m> message followed by a relative path to the template HTML file to use.</p>
-
-		<h1>Message Format</h1>
-
-		<p>All messages in the <m>drawsocket</m> API are formatted as an object, enclosed by curly braces <m>{ }</m>. Messages can be encoded as Odot nested sub-bundles, or nested JSON objects. In the examples below we will be using OSC (odot) formatting, however you may also use a Max Dictionary, which will be exactly the same, except that address names will not have the leading <m>/</m> character.</p>
-
-		<p>Odot:</p>
-		<codeexample>
-		/bundle : {<br/>
-		<tab></tab>/subbundle : {<br/>
-		<tab></tab><tab></tab>/foo : 1<br/>
-		<tab></tab>}<br/>
-		}<br/>
-		</codeexample>
-		<br/>
-
-		<p>Max Dictionary (JSON):</p>
-		<codeexample>
-		"bundle" : {<br/>
-		<tab></tab>"subbundle" : {<br/>
-		<tab></tab><tab></tab>"foo" : 1<br/>
-		<tab></tab>}<br/>
-		}<br/>
-		</codeexample>
-
-		<h1>Addressing the Client Browser</h1>
-
-		<p>The URL used by the client to log into the server IP address and port is used by the Max patch as an OSC address to route messages to all clients logged into a given URL. For example, any users logged into the example above, <m>192.168.1.1:3002/foo</m>, will receive OSC messages with the address <m>/foo</m>.</p>
-
-		<h1>key and val</h1>
-
-		<p>Messages to the client are formatted as objects with <m>key</m> and <m>val</m> addresses.</p>
-		<ul>
-			<li>The <m>key</m> value is a switch key which tells the client how it should interpret the messages in the <m>val</m> field. For example, valid <m>key</m> values include <m>svg</m>, <m>html</m>, <m>tween</m>, and so on. See below for more details on these options.</li>
-			<li>The <m>val</m> value, stores one or more objects to be handled by the client.</li>
-		</ul>
-		
-		<p>For example, with a <m>svg</m> key, the <m>val</m> object might create a new SVG object. In this example, we ask all clients logged into <m>/foo</m> to create a new SVG <m>rect</m>, using the drawsocket-SVG <m>new</m> keyword:</p>
-
-		<codeexample>
-		/foo : {<br/>
-		<tab></tab>	/key : "svg",<br/>
-		<tab></tab>/val : {<br/>
-		<tab></tab><tab></tab>/new : "rect",<br/>
-		<tab></tab><tab></tab>/id : "rectangular",<br/>
-		<tab></tab><tab></tab>/x : 100,<br/>
-		<tab></tab><tab></tab>/y : 100,<br/>
-		<tab></tab><tab></tab>/width : 25,<br/>
-		<tab></tab><tab></tab>/height : 25<br/>
-		<tab></tab>}<br/>
-		}<br/>
-		</codeexample>
-
-		<p>The wildcard <m>*</m> will match all URL clients, so for example if you replace <m>/foo</m> above with the address <m>/*</m> the above example would be sent to all clients.</p>
-
-		<h1>Unique ID Reference</h1>
-		<p>Each drawn object needs to have a unique name to identify the object. The name can be any combination of numbers and letters, but needs to be unique. This id can be used to identify the object in situations where you want to change the color, position or other attributes.</p>
-
-		<p>For example, in the above example, we we set the <m>id</m> to be the name "rectangular". If we have already created the object (in this case using the drawsocket-SVG <m>new</m> keyword), we can alter attributes of the rectangle, by referring to the <m>id</m>. Here we change the width of the rectangle:</p>
-
-		<codeexample>
-		/foo : {<br/>
-		<tab></tab>/key : "svg",<br/>
-		<tab></tab>/val : {<br/>
-		<tab></tab><tab></tab>/id : "rectangular",<br/>
-		<tab></tab><tab></tab>/width : 50<br/>
-		<tab></tab>}<br/>
-		}<br/>
-		</codeexample>
-
-	</discussion>
-
 	<!--METADATA-->
 	<metadatalist>
 		<metadata name="author">Rama Gottfried, Hochschule für Musik und Theater Hamburg</metadata>
 		<metadata name="tag">drawsocket</metadata>
 	</metadatalist>
+
+<!--DISCUSSION-->
+	<discussion>
+something
+	</discussion>
+
+
+ <!--ARGUMENTS-->
+    <objarglist>
+        <objarg name="pan-position" optional="1" type="float">
+            <digest>Initial panning position, default is 0.</digest>
+        </objarg>
+    </objarglist>
 
 	<!--INLETS-->
 	<inletlist>
@@ -178,8 +72,7 @@
 
 	<!--MESSAGES-->
 	<methodlist>
-		<method name="FullPacket [variable]">
-			<arglist />
+		<method name="FullPacket (OSC)">
 			<digest>
 				Messages to send to clients. See API details for more information.
 			</digest>
@@ -188,8 +81,7 @@
 			</description>
 		</method>
 		
-		<method name="dictionary [variable]">
-			<arglist />
+		<method name="dictionary">
 			<digest>
 				Messages to send to clients. See API details for more information.
 			</digest>
@@ -199,7 +91,9 @@
 		</method>
 		
 		<method name="importcache [variable]">
-			<arglist />
+			<arglist>
+				<arg name="file-name" optional="0" type="symbol" />
+			</arglist>
 			<digest>
 				read a file from disk and import one or all <m>prefix</m> objects in the file.
 			</digest>
@@ -209,7 +103,309 @@
 		</method>
 	</methodlist>
 
+	<misc name ="Documentation">
 
+		<entry name ="1. Installation"><description>
+		When running the first time you will need to be online. Run <m>script npm install</m> to download the required node packages.
+		</description>
+		</entry>
+
+		<entry name ="2. Basic Usage"><description>
+
+		<ol>
+			<li>Start the server by sending the <m>script start</m> message.</li>
+			<li>On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the right-most outlet of the abstraction.</li>
+			<li>Open a browser and type in the IP address and port specified in the Max patch, followed by a URL of your choosing. This address will be how you address the client browser from the Max server patch.
+				<ul>
+					<li>
+						For example, if the IP:Port is <m>192.168.1.1:3002</m>, and you wanted to use the address <m>/foo</m> for your OSC style messaging to the browser, you could type the following address into your browser: <m>192.168.1.1:3002/foo</m>. Note that if you are testing on the same computer, you can also use <m>localhost</m> instead of the IP address.
+					</li>
+				</ul>
+			</li>
+			<li>Once connected, you can then send OSC or Dictionary messages into the <o>hfmt.drawsocket</o> inlet, which will be routed using the URL address the client.</li>
+		</ol>
+
+		</description>
+		</entry>
+
+		<entry name ="3. About Assets"><description>
+		<p>If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the <o>hfmt.drawsocket</o> abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).</p>
+
+		<p>By default, the public folder is set to be the same folder that contains the Max patch.</p>
+			<codeexample>
+			someFolder<br/>
+			|-- yourPatch.maxpatch<br/>
+			|-- image.png<br/>
+			|-- score.pdf<br/>
+			</codeexample>
+		<br/>
+		
+		<p>Alternatively, to keep the folders a little neater, the <m>hfmt.drawsocket</m> abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize <m>hfmt.drawsocket</m> with the relative path <m>public</m>, it will expect the folder <m>public</m> to be at the same folder level:</p>
+
+			<codeexample>
+			someFolder<br/>
+			|-- yourPatch.maxpatch<br/>
+			|-- public<br/>
+			<tab></tab>|-- image.png<br/>
+			<tab></tab>|-- score.pdf<br/>
+			</codeexample>
+		</description>
+		</entry>
+
+		<entry name ="4. Default HTML and CSS files"><description>
+		<p>By default the <m>drawsocket</m> server responds to all URL requests with the template HTML page, <m>drawsocket-page.html</m> which loads the required Javascript files, sets up the basic HTML objects, layers, and imports the <m>drawsocket-default.css</m> which sets up some default display properties.</p>
+
+		<p>If desired, a different template HTML page may be used by sending the <m>hfmt.drawsocket</m> object the <m>html_template</m> message followed by a relative path to the template HTML file to use.</p>
+		</description>
+		</entry>
+
+		<entry name ="5. Message Format"><description>
+		<p>All messages in the <m>drawsocket</m> API are formatted as an object, enclosed by curly braces <m>{ }</m>. Messages can be encoded as Odot nested sub-bundles, or nested JSON objects. In the examples below we will be using OSC (odot) formatting, however you may also use a Max Dictionary, which will be exactly the same, except that address names will not have the leading <m>/</m> character.</p>
+
+		<p>Odot:</p>
+		<codeexample>
+		/bundle : {<br/>
+		<tab></tab>/subbundle : {<br/>
+		<tab></tab><tab></tab>/foo : 1<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		<br/>
+
+		<p>Max Dictionary (JSON):</p>
+		<codeexample>
+		"bundle" : {<br/>
+		<tab></tab>"subbundle" : {<br/>
+		<tab></tab><tab></tab>"foo" : 1<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		</description>
+		</entry>
+
+		<entry name ="6. Addressing the Client Browser"><description>
+		<p>The URL used by the client to log into the server IP address and port is used by the Max patch as an OSC address to route messages to all clients logged into a given URL. For example, any users logged into the example above, <m>192.168.1.1:3002/foo</m>, will receive OSC messages with the address <m>/foo</m>.</p>
+		</description>
+		</entry>
+
+		<entry name ="7. key and val"><description>
+		<p>Messages to the client are formatted as objects with <m>key</m> and <m>val</m> addresses.</p>
+		<ul>
+			<li>The <m>key</m> value is a switch key which tells the client how it should interpret the messages in the <m>val</m> field. For example, valid <m>key</m> values include <m>svg</m>, <m>html</m>, <m>tween</m>, and so on. See below for more details on these options.</li>
+			<li>The <m>val</m> value, stores one or more objects to be handled by the client.</li>
+		</ul>
+		
+		<p>For example, with a <m>svg</m> key, the <m>val</m> object might create a new SVG object. In this example, we ask all clients logged into <m>/foo</m> to create a new SVG <m>rect</m>, using the drawsocket-SVG <m>new</m> keyword:</p>
+
+		<codeexample>
+		/foo : {<br/>
+		<tab></tab>	/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "rect",<br/>
+		<tab></tab><tab></tab>/id : "rectangular",<br/>
+		<tab></tab><tab></tab>/x : 100,<br/>
+		<tab></tab><tab></tab>/y : 100,<br/>
+		<tab></tab><tab></tab>/width : 25,<br/>
+		<tab></tab><tab></tab>/height : 25<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+		<p>The wildcard <m>*</m> will match all URL clients, so for example if you replace <m>/foo</m> above with the address <m>/*</m> the above example would be sent to all clients.</p>
+		</description>
+		</entry>
+
+		<entry name ="8. Unique ID Reference"><description>
+		<p>Each drawn object needs to have a unique name to identify the object. The name can be any combination of numbers and letters, but needs to be unique. This id can be used to identify the object in situations where you want to change the color, position or other attributes.</p>
+
+		<p>For example, in the above example, we we set the <m>id</m> to be the name "rectangular". If we have already created the object (in this case using the drawsocket-SVG <m>new</m> keyword), we can alter attributes of the rectangle, by referring to the <m>id</m>. Here we change the width of the rectangle:</p>
+
+		<codeexample>
+		/foo : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/id : "rectangular",<br/>
+		<tab></tab><tab></tab>/width : 50<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+		</description>
+		</entry>
+
+	</misc>
+
+	<misc name ="Drawsocket API">
+
+		<entry name="keys"><description>
+		<p>Each <m>key</m> type has a slightly different API based on the needs of the objects created in the browser. See the Drawsocket API documentation below for more information.</p>
+		
+
+		<h1>svg</h1>
+		<p>The <m>svg</m> key specifies that the <m>val</m> objects will be used to create or modify SVG elements, which will be placed by default in the webpage's main SVG element.</p>
+
+		<p>The object(s) set to the client via the <m>val</m> field predominantly consist of <i>attributes</i> that configure the created object, as specified by the SVG specification, available online in many places. See the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes">Mozilla SVG documentation</a> for information about the basic SVG object types.</p>
+
+		<p>Object attributes may be set as members of the <m>val</m> object, as demonstrated above.</p>
+
+		<p>In addition there are several keywords used by <m>drawsocket</m> to handle special cases.</p>
+		<ul>
+			<li><m>new</m>: tells the SVG creation routine to create a new object of a given SVG type. See the <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes">SVG documentation</a> for information on object types and their associated attribute options.</li>
+			<li><m>parent</m>: SVG nodes may be inserted as child objects of another element, (most often an SVG group <m>g</m> element).</li>
+			<li><m>child</m>: SVG nodes may also be created as dependents of a newly created group node. Mainly this is useful for cases where you <i>don't want</i> to have an <m>id</m> for a child node, for example when setting objects in the special SVG <m>defs</m> group (described below).</li>
+			<li><m>text</m>: sets the inner text of a <m>text</m> node.</li>
+			<li><m>href</m>: sets the address for linked assets, used by the <m>image</m> and <m>use</m> SVG elements.</li>
+		</ul>
+		
+		<h3>style</h3>
+		<p>A sub-bundle labeled <m>style</m> may optionally be included which will set inline CSS style properties for the created node, which will be applied by the browser, depending on the SVG specification, and the browser's implementation.</p>
+
+		<p>For example:</p>
+
+		<codeexample>
+		/* : {<br/>
+		<tab></tab>/key : "svg",<br/>
+		<tab></tab>/val : {<br/>
+		<tab></tab><tab></tab>/new : "path",<br/>
+		<tab></tab><tab></tab>/id : "bar",<br/>
+		<tab></tab><tab></tab>/d : "M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80",<br/>
+		<tab></tab><tab></tab>/style : {<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke : "red",<br/>
+		<tab></tab><tab></tab><tab></tab>/stroke-width : 2<br/>
+		<tab></tab><tab></tab>}<br/>
+		<tab></tab>}<br/>
+		}<br/>
+		</codeexample>
+
+<h3> A note on CSS styles and inheritance</h3>
+
+<p>There are three levels of inheritance with SVG CSS styling:</p>
+<ol>
+<li><i>presentation attributes</i>, set within the element, as demonstrated above in the context of SVG object attributes.</li>
+<li><i>stylesheet</i> definitions, set in an attached CSS stylesheet, or within an <m>&lt;style&gt;</m> element in the HTML page (settable via the "css" key detailed below).</li>
+<li><i>inline styling</i>, a set of CSS rules included as part of an elements's <m>style</m> attribute. In <m>drawsocket</m> we set these values via the <m>/style</m> sub-bundle.</li>
+</ol>
+
+<p>Each is overridden by the next: <i>stylesheets</i> override <i>presentation attributes</i>, and <i>inline styles</i> override all the others.</p>
+
+<p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">online CSS documentation</a> for more informaiton.</p>
+
+<h3>SVG Layers</h3>
+<p>SVG elements are drawn in the order they are created via the <m>new</m> keyword (and remain in layer order if updated after creation).</p>
+
+<p>Sometimes it is useful to separate groups of objects in specific drawing layer order to maintain background, mid, and foreground layers. The can be achived using the SVG group element. </p>
+
+<p>For example, we can first create three layers that we will name "back", "main", and "overlay", using an array of objects.</p>
+
+<codeexample>
+/* : {<br/>
+<tab></tab>/key : "svg",<br/>
+<tab></tab>/val : [{<br/>
+<tab></tab><tab></tab>/new : "g",<br/>
+<tab></tab><tab></tab>/id : "back"<br/>
+<tab></tab>}, {<br/>
+<tab></tab><tab></tab>/new : "g",<br/>
+<tab></tab><tab></tab>/id : "main"<br/>
+<tab></tab>}, {<br/>
+<tab></tab><tab></tab>/new : "g",<br/>
+<tab></tab><tab></tab>/id : "overlay"<br/>
+<tab></tab>}]<br/>
+}<br/>
+</codeexample>
+
+<p>Note that the array specifies the order of the objects in the message, so "back" will be drawn first, then "main", then "overlay".</p>
+
+<p>When objects are added to any of these groups, they will be appended to the end of the stack of child nodes within the group, however, all objects in the "back" group will appear *behind* the "main" and "overlay" layers; while objects added to the "overlay" layer will always be *above* the other layers, and so on.</p>
+
+<h3>Referencing SVG Elements</h3>
+
+<p>Preexisting object maybe reused with the <m>use</m> SVG element, which uses the <m>id</m> of another SVG object by reference, set by the <m>href</m> attribute. </p>
+
+<p>There are two approaches recommended for reusing SVG elements:</p>
+<ul>
+<li>defs
+<br/>
+<p>The SVG specification provides a special storage element within the SVG object called <m>defs</m> <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs">see the online documentation for more details</a>. Objects stored in the <m>defs</m> are not drawn to the screen, but are stored as prototypes of objects that can be drawn with the <m>use</m> tag. The <m>defs</m> can be used in this way for storing a library of objects. To add an object to the <m>defs</m> group, you can use the <m>parent</m> keyword to tell the client to add a new object (or group of objects) to the <m>defs</m>, for example:</p>
+
+<codeexample>
+/* : {<br/>
+<tab></tab>/key : "svg",<br/>
+<tab></tab>/val : {<br/>
+<tab></tab><tab></tab>/parent : "defs",<br/>
+<tab></tab><tab></tab>/new : "rect",<br/>
+<tab></tab><tab></tab>/id : "squarePrototype",<br/>
+<tab></tab><tab></tab>/x : 50,<br/>
+<tab></tab><tab></tab>/y : 50,<br/>
+<tab></tab><tab></tab>/width : 20,<br/>
+<tab></tab><tab></tab>/height : 20<br/>
+<tab></tab>}<br/>
+}<br/>
+</codeexample>
+</li>
+
+<li>use
+<br/>
+
+<p>To use our new <m>defs</m> object, we refer to it by <m>id</m> in the <m>use</m> element's <m>href</m> attribute, prefixed by the id selector <m>#</m>:</p>
+
+<codeexample>
+/* : {<br/>
+<tab></tab>/key : "svg",<br/>
+<tab></tab>/val : {<br/>
+<tab></tab><tab></tab>/new : "use",<br/>
+<tab></tab><tab></tab>/id : "sq",<br/>
+<tab></tab><tab></tab>/href : "#squarePrototype",<br/>
+<tab></tab><tab></tab>/x : 0,<br/>
+<tab></tab><tab></tab>/y : 0<br/>
+<tab></tab>}<br/>
+}<br/>
+</codeexample>
+
+<p>Note that the <m>x</m> <m>y</m> coordinates of the <m>use</m> object set the top left corner of the original object. That means that in this case, the top left corder of the drawn rectangle will be at <m>{50,50}</m> not <m>{0,0}</m>. So, for best results, set <m>defs</m> object positions relative to <m>{0,0}</m>.</p>
+
+<p>The <m>use</m> element's <m>href</m> attribute can also be used to import an object by reference to an <m>id</m> present in an SVG file asset. For example, if there is a file called "demo.svg" stored in the public folder, you could reference an element with the id <m>foo</m> by using the <m>#</m> id selector:</p>
+  
+<codeexample>
+/* : {<br/>
+<tab></tab>/key : "svg",<br/>
+<tab></tab>/val : {<br/>
+<tab></tab><tab></tab>/new : "use",<br/>
+<tab></tab><tab></tab>/id : "importedObject",<br/>
+<tab></tab><tab></tab>/href : "demo.svg#foo",<br/>
+<tab></tab><tab></tab>/x : 0,<br/>
+<tab></tab><tab></tab>/y : 0<br/>
+<tab></tab>}<br/>
+}<br/>
+</codeexample>
+</li>
+</ul>
+
+<p>An additional utility provided by <m>drawsocket</m> provides an offset to the imported object, offsetting its origin (top-left corner) to be <m>{0,0}</m>, helpful for placing objects intuitively in a new context. To enable this offsetting, send an extra <m>1</m> value for the <m>href</m> attribute. For example:</p>
+
+<codeexample>
+/* : {<br/>
+<tab></tab>/key : "svg",<br/>
+<tab></tab>/val : {<br/>
+<tab></tab><tab></tab>/new : "use",<br/>
+<tab></tab><tab></tab>/id : "importedObject",<br/>
+<tab></tab><tab></tab>/href : ["demo.svg#foo", 1],<br/>
+<tab></tab><tab></tab>/x : 0,<br/>
+<tab></tab><tab></tab>/y : 0<br/>
+<tab></tab>}<br/>
+}<br/>
+</codeexample>
+
+
+
+
+
+
+
+
+		</description>
+		</entry>
+
+	</misc>
+	
 
 	<!--SEEALSO-->
 	<seealsolist>
