@@ -601,8 +601,8 @@
 	<h2>Drawsocket JS Methods</h2>
 		<p>The drawsocket object itself maybe referred to in JS scripts, for example in an object event watcher. The <m>drawsocket</m> object, exposes the following methods for general usage:</p>
 		<ul>
-		<li><m>drawsocket.input</m>: the main entry point to the client script</li>
-		<li><m>drawsocket.send</m>: the WebSocket interface to send a JS object back to the server.</li>
+		<li><m>drawsocket.input( obj )</m>: the main entry point to the client script.</li>
+		<li><m>drawsocket.send( obj )</m>: the WebSocket interface to send a JS object back to the server.</li>
 		<li><m>drawsocket.oscprefix</m>: the URL/OSC-prefix of the client, useful for self identifying when sending messages back to the server.</li>
 		</ul>
 		<p>For example, the following message creates a new HTML input field, where users can type. When the user hits the Enter key, the script will send the value of the HTML form to the server prefixed by the client's OSC-prefix, and the <m>id</m> of this object:</p>
@@ -618,9 +618,16 @@
 				/name : "userinput",
 				/size : 10,
 				/onkeydown : "if( event.key == 'Enter' ){
-					let obj = {};
-					obj[ drawsocket.oscprefix+'/'+this.id+'/input' ] = this.value;
-					drawsocket.send( obj );
+					drawsocket.send({
+						event: {
+							url: drawsocket.oscprefix,
+							key: 'txtmsg',
+							val: {
+								msg: this.value,
+								id: this.id
+							}
+						}
+					});
 				}"
 			}
 		}
@@ -646,8 +653,22 @@
 				/prefix : "/bar"
 			}
 		}
-
 		</code>
+
+	<h2>Using stored JSON files on other servers</h2>
+
+		<p>A stored server/client state, saved in JSON format, may also be for online viewing, without the realtime WebSocket system, by serving the <m>drawsocket-default.html</m> file (with the associated scripts, and CSS files), and specifying a file name and prefix to load as discussed above via the <m>file</m> key.</p>
+
+		<p>For example, on a website called <m>www.foo.com</m> and a stored JSON file named <m>stored-cache.json</m>, we could load the <m>/1</m> OSC-URL prefix by using the following URL arguments (using the standard <m>?</m>, <m>&amp;</m>, <m>=</m> special characters):</p>
+
+		<p>
+		<codeexample>
+		http://www.foo.com/drawsocket-default.html?fetch=stored-cache.json&amp;prefix=/1
+		</codeexample>
+		</p>
+
+		<p>(Of course you could also save the HTML file under a differnt name of your choosing for your server)</p>
+
 
 	<h2><b>event</b></h2>
 		<p>The <m>event</m> keyword provides a mechanism for scheduling future object sent to the <m>drawsocket.input</m> function.</p>
@@ -657,7 +678,7 @@
 		<li><m>del</m>: the delay time in milliseconds</li>
 		<li><m>obj</m>: an object to be sent to <m>drawsocket.input</m>, containing <m>key</m> and <m>val</m> values.</li>
 		</ul>
-		
+
 		<p>For example, the following example, an event is created and set with a delay (<m>del</m>) of 1000ms (1s). After this delay, the object stored at the the <m>obj</m> address, is sent to <m>drawsocket.input</m> and is executed, resulting in a short diagonal line, with the <m>id</m>  "foo1".</p>
 
 		<code language="json">
