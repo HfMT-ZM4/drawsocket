@@ -453,11 +453,11 @@
 
 		<h1>pdf</h1>
 		<p>PDF files may be imported into <m>drawsocket</m> by reference, the settable attributes are as follows:</p>
-
-		* <m>href</m>: the path location of the .pdf file, relative to the Max patch.
-		* <m>page</m>: the page to open in the .pdf file.
-		* size and position attributes: <m>x</m>, <m>y</m>, <m>width</m>, and <m>height</m>
-
+		<ul>
+		<li><m>href</m>: the path location of the .pdf file, relative to the Max patch.</li>
+		<li><m>page</m>: the page to open in the .pdf file.</li>
+		<li>size and position attributes: <m>x</m>, <m>y</m>, <m>width</m>, and <m>height</m></li>
+		</ul>
 
 		<code language="json">
 		/* : {
@@ -473,17 +473,21 @@
 		</code>
 
 	<h2><b>sound</b></h2>
-		<p><m>drawsocket</m> includes the [tone.js](https://tonejs.github.io) library, note: <b>currently in beta</b>.</p>
+		<p><m>drawsocket</m> includes the <a href="https://tonejs.github.io">Tone.js</a> library. Note, use in <m>drawsocket</m> is <b>currently in beta</b>.</p>
 
 		<p>Keywords:</p>
-		* <m>new</m>: creates a new instace of a Tone type (e.g Tone.Oscillator, would be <m>/new : "Oscillator"</m>).
-		* <m>id</m>: unique identifier to use for this sound object.
-		* <m>vars</m>: an object of variables used on initialization of a Tone.js object, refer to the Tone.js API for for informaiton.
-		* <m>call</m>: an object or array of objects contains calls to HTML object <m>method</m> with optional <m>args</m>, see the Tone.js API for more informaiton on object methods.
-		* <m>method</m>: element method to call.
-		* <m>args</m>: optional arguments to method call (see note below for methods requiring separated arguments).
-		* <m>then</m>: optional next method to call on the returned value from the previous call.
-
+		<ul>
+		<li><m>new</m>: creates a new instace of a Tone type (e.g <a href="https://tonejs.github.io/docs/r13/Oscillator">Tone.Oscillator</a>, would be <m>/new : "Oscillator"</m>).</li>
+		<li><m>id</m>: unique identifier to use for this sound object.</li>
+		<li><m>vars</m>: an object of variables used on initialization of a Tone.js object, refer to the <a href="https://tonejs.github.io/docs/">Tone.js API</a> for for informaiton.</li>
+		<li><m>call</m>: an object or array of objects contains calls to HTML object <m>method</m> with optional <m>args</m>, see the <a href="https://tonejs.github.io/docs/">Tone.js API</a> for more informaiton on object methods.
+			<ul>
+			<li><m>method</m>: element method to call.</li>
+			<li><m>args</m>: optional arguments to method call (see note below for methods requiring separated arguments).</li>
+			<li><m>then</m>: optional next method to call on the returned value from the previous call.</li>
+			</ul>
+		</li>
+		</ul>
 		<p>Note: if a method requires separated arguments, rather than a single object, you can use an array of objects for <m>args</m>, each containing the key <m>val</m> to set the value of that argument.</p>
 
 
@@ -496,7 +500,7 @@
 			/new : "Player",
 			/id : "kick",
 			/vars : {
-				/url : "/media/808_mp3/kick1.mp3",
+				/url : "/media/kick1.mp3",
 				/autostart : "false",
 				/loop : "false"
 			},
@@ -543,8 +547,10 @@
 		<p>To set the value of a Tone.js Signal object, for example the frequency of an Oscillator, we need to use a the <m>set</m> operator, which functions a bit like the <m>call</m> operator, but sets a member value rather than calling a function.</p>
 
 		<p>The <m>set</m> keyword should contain an object or array of objects, with member keywords:</p>
-		* <m>member</m>: the name of the property to set.
-		* <m>value</m>: the value to assign to the property.
+		<ul>
+		<li><m>member</m>: the name of the property to set.</li>
+		<li><m>value</m>: the value to assign to the property.</li>
+		</ul>
 		
 		For example:
 
@@ -561,12 +567,13 @@
 		}
 		</code>
 
-		<h3>obj:get</h3>
+		<h3>obj &amp; get</h3>
+		<b>* In Beta *</b> 
 		<p>In some cases we need to refer to an object from a library or one that we have created, which needs to be passed to a function that makes connections between things.</p>
 
-		<p>For this (currently only in the Tone.js interface) you can use the <m>obj</m> and <m>get</m> message to get an element from an object.</p>
+		<p>For this (currently only in the Tone.js interface) you can use the <m>obj</m> and <m>get</m> message to get an element from an object. Internally, the client will parse the <m>vars</m> and if any value is an object containing <m>obj</m> and <m>get</m> the parsing function will replace that JSON-OSC object, with a JS reference to the object. The <m>obj</m> refers to the type of object, and the <m>get</m> value refers to the name of the member.</p>
 
-		<p>For example, the Tone.js PolySynth needs a member of the Tone libarary to set as the <m>voice</m> type. To do this we can use an object argument with the <m>obj</m> and <m>get</m> keywords, here to to ge the Synth member of the Tone library.</p>
+		<p>For example, the Tone.js PolySynth needs a member of the Tone libarary to set as the <m>voice</m> type. To do this we can use an object argument with the <m>obj</m> and <m>get</m> keywords, here to to ge the Synth member of the Tone library. After processing, the <m>voice</m> variable will be a reference to the Tone.Synth object.</p>
 
 		<code language="json">
 		/* : {
@@ -593,10 +600,11 @@
 
 	<h2>Drawsocket JS Methods</h2>
 		<p>The drawsocket object itself maybe referred to in JS scripts, for example in an object event watcher. The <m>drawsocket</m> object, exposes the following methods for general usage:</p>
-		* <m>drawsocket.input</m>: the main entry point to the client script
-		* <m>drawsocket.send</m>: the WebSocket interface to send a JS object back to the server.
-		* <m>drawsocket.oscprefix</m>: the URL/OSC-prefix of the client, useful for self identifying when sending messages back to the server.
-
+		<ul>
+		<li><m>drawsocket.input</m>: the main entry point to the client script</li>
+		<li><m>drawsocket.send</m>: the WebSocket interface to send a JS object back to the server.</li>
+		<li><m>drawsocket.oscprefix</m>: the URL/OSC-prefix of the client, useful for self identifying when sending messages back to the server.</li>
+		</ul>
 		<p>For example, the following message creates a new HTML input field, where users can type. When the user hits the Enter key, the script will send the value of the HTML form to the server prefixed by the client's OSC-prefix, and the <m>id</m> of this object:</p>
 
 		<code language="json">
@@ -623,9 +631,11 @@
 		<p>Clients can load JSON of stored messages, formatted in the <m>drawsocket</m> API detailed here.</p>
 
 		<p>Keywords:</p>
-		* <m>fetch</m>: (required) URL of file to fetch relative to the <m>hfmt.drawsocket</m> root html folder (by default this is the same as the folder that the patch containg the <m>hfmt.drawsocket</m> is saved in.,
-		* <m>prefix</m>: (optional) the URL prefix to load into the page. If no prefix is specified <m>fetch</m> will load only the prefix matching the client URL.
-		
+		<ul>
+		<li><m>fetch</m>: (required) URL of file to fetch relative to the <m>hfmt.drawsocket</m> root html folder (by default this is the same as the folder that the patch containg the <m>hfmt.drawsocket</m> is saved in.,</li>
+		<li><m>prefix</m>: (optional) the URL prefix to load into the page. If no prefix is specified <m>fetch</m> will load only the prefix matching the client URL.</li>
+		</ul>
+
 		<p>For example, here we tell clients logged into the URL <m>/foo</m> to load the messages for URL <m>/bar</m> from the file "savedState.json".</p>
 
 		<code language="json">
@@ -642,10 +652,12 @@
 	<h2><b>event</b></h2>
 		<p>The <m>event</m> keyword provides a mechanism for scheduling future object sent to the <m>drawsocket.input</m> function.</p>
 
-		* <m>id</m>: the id of the event
-		* <m>del</m>: the delay time in milliseconds
-		* <m>obj</m>: an object to be sent to <m>drawsocket.input</m>, containing <m>key</m> and <m>val</m> values.
-
+		<ul>
+		<li><m>id</m>: the id of the event</li>
+		<li><m>del</m>: the delay time in milliseconds</li>
+		<li><m>obj</m>: an object to be sent to <m>drawsocket.input</m>, containing <m>key</m> and <m>val</m> values.</li>
+		</ul>
+		
 		<p>For example, the following example, an event is created and set with a delay (<m>del</m>) of 1000ms (1s). After this delay, the object stored at the the <m>obj</m> address, is sent to <m>drawsocket.input</m> and is executed, resulting in a short diagonal line, with the <m>id</m>  "foo1".</p>
 
 		<code language="json">
