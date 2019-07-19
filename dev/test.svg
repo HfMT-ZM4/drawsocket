@@ -1,0 +1,18 @@
+<svg id="svg" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"><![CDATA[
+#main-svg { float: left; position: absolute; width: 100vw; height: 100vh; overflow: visible; z-index: 10; }
+g { overflow: visible; }
+
+]]></style></defs><defs><style type="text/css"><![CDATA[
+#main-svg { float: left; position: absolute; width: 100vw; height: 100vh; overflow: visible; z-index: 10; }
+g { overflow: visible; }
+
+]]></style></defs><defs><style type="text/css"><![CDATA[
+#main-svg { float: left; position: absolute; width: 100vw; height: 100vh; overflow: visible; z-index: 10; }
+g { overflow: visible; }
+
+]]></style></defs>
+          
+            <defs id="defs"></defs>
+            <g id="main-svg"><circle id="bob" cx="100" cy="100" r="20" fill="purple"></circle></g>
+            
+      </svg> 

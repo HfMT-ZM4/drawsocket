@@ -150,12 +150,12 @@ if (cluster.isMaster)
 
         // setup relay back to Max
         socket.on("message", function (msg) {
-
             try {
 
                 const obj = JSON.parse(msg);
 
-                let key = Object.keys(obj)[0]; // only single elements
+                let key = obj.hasOwnProperty('key') ? obj.key : Object.keys(obj)[0]; // use first key if not using standard format
+
                 if (key === 'timesync') {
                     socket.send(JSON.stringify({
                         timesync: {
@@ -171,23 +171,36 @@ if (cluster.isMaster)
                         key: 'get',
                         url: req.url
                     });
-                    /*
-                    const bundleState = state_cache.get(req.url);
-                    if (bundleState) {
-                        socket.send(bundleState);
-                    }
-                    */
-                }
-                else if(key === 'svgElement')
-                {
                     
+                }
+                else if(key === 'svgElement' && obj.hasOwnProperty("val"))
+                {
+   
                     let _prefix = req.url.slice(1);
-                    Max.post(userpath[0] + 'downloaded-'+_prefix+'.svg');
-                    fs.writeFileSync(userpath[0] + '/downloaded-'+_prefix+'.svg', obj[key], (err) => {
-                        if(err) {
-                            return Max.post(err);
-                        }
-                    });
+                    const filename = usr_root_path + 'downloaded-'+_prefix+'.svg';
+                    stringifyOBJAsync(obj.val)
+                        .then( (jsonStr) => {
+                            Max.post('writing file: '+ filename);
+
+                            fs.writeFile( filename, 
+                                jsonStr.slice(1,-1)
+                                    .replace(/\\"/g, '"')
+                                    .replace(/\\n/g, '')
+        //                            .replace('xlink=', 'xmlns:xlink=')
+                                    .replace(/NS\d+:href/gi, 'xlink:href'), 
+                                (err) => {
+                                    if(err) {
+                                        return Max.post(err);
+                                    }
+                                }
+                            );
+
+                            Max.outlet({
+                                'outfile': filename 
+                            });
+                        });
+
+                    
                 }
                 else
                     Max.outlet(obj);

@@ -1894,20 +1894,16 @@ var drawsocket = (function(){
         case "canvas":
           rasterizeSVG();
         break;
-        case "getSVG":
+        case "writeSVG":
           {
-            console.log("svgElement" );
+            //console.log("svgElement", mainSVG.node().outerHTML );
             generateStyleDefs(mainSVG.node());
 
             sendMsg({
-              event: {
                 url: oscprefix,
-                key: 'svg',
-                val : {
-                  svgElement: mainSVG.node().outerHTML
-                }
-              }
-            });
+                key: 'svgElement',
+                val :  mainSVG.node().outerHTML
+              });
           }
         break;
         default:

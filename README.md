@@ -635,6 +635,19 @@ The `do_sync` keyword triggers the client clock time sychronization routine.
 }
 ```
 
+# __writeSVG__
+The `writeSVG` keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the `hfmt.drawsocket` object.
+
+For example:
+```
+/URLtoWrite : {
+	/key : "writeSVG",
+	/val : 1
+}
+```
+will output the file: `path/to/patch/downloaded-URLtoWrite.svg`.
+
+
 # Storing the Sever State
 The `hfmt.drawsocket` object in Max accepts the `writecache` message,to write the current cached messages to a file on disk.
 
@@ -686,3 +699,9 @@ The `hfmt.drawsocket` object accepts the `port` Max message to set the server po
 
 # html_root
 The `hfmt.drawsocket` object accepts the `html_root` Max message to add a public asset folder to the server search path. Takes effect on start up.
+
+# undocumented, in dev keys:
+
+* `function`: create and call user defined funcitons from JSON format.
+  * `body`, `args`
+* `getSVG`: returns complete SVG element 

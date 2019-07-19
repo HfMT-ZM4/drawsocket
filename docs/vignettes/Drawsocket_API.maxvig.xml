@@ -713,5 +713,19 @@
 		</code>
 
 
+	<h2><b>writeSVG</b></h2>
+		<p>The <m>writeSVG</m> keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the <m>hfmt.drawsocket</m> object.</p>
+
+		For example:
+
+		<code language="json">
+		/URLtoWrite : {
+			/key : "writeSVG",
+			/val : 1
+		}
+		</code>
+
+		will output the file: <m>path/to/patch/downloaded-URLtoWrite.svg</m>.
+
 
 </vignette>
