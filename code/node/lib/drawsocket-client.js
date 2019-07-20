@@ -846,7 +846,7 @@ var drawsocket = (function(){
 
   function processJSON_Tween(node, timetag)
   {
-    //console.log(node);
+    console.log(node);
     if( node.hasOwnProperty('target') &&
         node.hasOwnProperty('vars') )
     {
@@ -905,10 +905,10 @@ var drawsocket = (function(){
           {
             let latestart = (ts.now() - _timetag) * 0.001;
 
-            if( latestart > 0 ){
+            if( latestart > 0 ){              
               animStack[id].play(latestart);
             } else {
-              TweenMax.delayedCall(latestart, ()=>{
+              TweenMax.delayedCall(Math.abs(latestart), ()=>{
                 animStack[id].restart();
               }, this );
             }
@@ -916,7 +916,8 @@ var drawsocket = (function(){
           }
           else
           {
-            TweenMax.set( animStack[id].target, animStack[id].vars );
+            animStack[id].pause(animStack[id].totalDuration());
+            //TweenMax.set( animStack[id].target, animStack[id].vars );
           }
         }
         break;
