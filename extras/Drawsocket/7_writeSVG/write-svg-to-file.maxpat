@@ -39,12 +39,46 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-16",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 250.0, 656.0, 340.0, 20.0 ],
+					"presentation_linecount" : 3,
+					"text" : "when the file is written, you should see the path to the file here"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 246.5, 192.0, 150.0, 20.0 ],
+					"text" : "2. write the file."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 51.0, 192.0, 150.0, 20.0 ],
+					"text" : "1. make some graphics"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-6",
 					"linecount" : 5,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 51.0, 60.0, 453.0, 74.0 ],
+					"patching_rect" : [ 51.0, 60.0, 455.0, 74.0 ],
 					"text" : "The \"writeSVG\" keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the hfmt.drawsocket object.\n\nNote that the client browser must be open for it to respond with the SVG element."
 				}
 
@@ -66,11 +100,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-2",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 680.0, 810.0, 34.0 ]
+					"patching_rect" : [ 51.0, 680.0, 810.0, 48.0 ],
+					"text" : "/outfile : \"/Users/r/Documents/Max 8/Packages/drawsocket/extras/Drawsocket/7_writeSVG/downloaded-URLtoWrite.svg\""
 				}
 
 			}
@@ -82,7 +118,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 56.0, 181.0, 24.0, 24.0 ]
+					"patching_rect" : [ 55.0, 224.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -559,7 +595,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 56.0, 217.0, 143.0, 22.0 ],
+					"patching_rect" : [ 55.0, 260.0, 143.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -581,7 +617,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 255.0, 217.0, 157.0, 65.0 ],
+					"patching_rect" : [ 246.5, 224.0, 157.0, 65.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 84, 47, 85, 82, 76, 116, 111, 87, 114, 105, 116, 101, 0, 44, 46, 0, 0, 0, 0, 0, 64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 119, 114, 105, 116, 101, 83, 86, 71, 0, 0, 0, 0, 0, 0, 0, 16, 47, 118, 97, 108, 0, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 1 ],
 					"saved_bundle_length" : 104,
 					"text" : "/URLtoWrite : {\n\t/key : \"writeSVG\",\n\t/val : 1\n}"
