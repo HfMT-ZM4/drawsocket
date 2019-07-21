@@ -63,7 +63,7 @@ var prop = 1;
 var oldstaff = -1;
 var stafflines = {};
 var oldstafflines = {};
-var clefList = [];
+var clefList = {};
 var toffset = 0;
 var duration = 0;
 var eol = 0;
@@ -72,6 +72,8 @@ var pathToScript = "default";
 var svgFile = "untitled.svg";
 var extendedStaffLines = {};
 var annotation = new Dict();
+var shownClefs = 1;
+var shownTitle = 0;
 var clefs = {
 	"0" : ["", 3], 
 	"1" : ["", 2], 
@@ -107,6 +109,8 @@ if (jsarguments.length >= 1)
 		}
 		else if (attribute[0] == "@setMediaFolder") mediaFolder = attribute.slice(1, attribute.length);
 		else if (attribute[0] == "@root") setpath(attribute.slice(1, attribute.length));
+		else if (attribute[0] == "@showClefs") shownClefs = attribute.slice(1, attribute.length);
+		else if (attribute[0] == "@showTitle") shownTitle = attribute.slice(1, attribute.length);
 		post("pathToScript", pathToScript, "\n");	
 		}
 }
@@ -142,6 +146,16 @@ function setpath(relPath)
 
 	}
 
+}
+
+function showClefs(show)
+{
+	shownClefs = show;
+}
+
+function showTitle(show)
+{
+	shownTitle = show;
 }
 
 function staffgroups()
@@ -1235,6 +1249,7 @@ function anything() {
 			}
 			}
 			val.push(createJSON(j, id));
+			if (prop && shownClefs) {
 			if (annotation.contains("staff-"+sg[s - 1]+"::clef") && annotation.get("staff-"+sg[s - 1]+"::clef") != "default")
 			{
 			var ann = annotation.get("userclefs::"+annotation.get("staff-"+sg[s - 1]+"::clef"));
@@ -1273,13 +1288,16 @@ function anything() {
 					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
 			});
 			}
+			}
+
+			if (shownTitle != 0) {
 			val.push({
                     "id": "title",
                     "parent": "overlay",
                     "new": "text",
 					"x" : 300,
 					"y" : 40,
-					"child" : composer+": "+scoreTitle,
+					"child" : composer+":blah "+scoreTitle,
 					"style" : 					{
 						"font-family" : "Times New Roman",
 						"font-size" : 30
@@ -1287,22 +1305,7 @@ function anything() {
 					,
 					"transform" : "matrix("+zoom+",0,0,"+zoom+",0,0)"
 			});
-			/*
-			if (found){
-			val.push(	{
-					"parent" : "overlay",
-					"new" : "image",
-					"id" : "instructions",
-					"x" : 0,
-					"y" : 0,
-					"width" : 980,
-					"height" : 600,
-					"href" : mediaFolder+scoreTitle + ".instructions.svg",
-					"transform" : "matrix(1,0,0,1,48,550)"
-				});
 			}
-			*/
-			//svgGroups[s + 1]["/back/style/background-color"] = "ivory";
 			joutput[s] = [clear, {"key" : "svg", "val" : val}];
 			outlet(2, "joutput", s);
 			gc();
@@ -1312,7 +1315,7 @@ function anything() {
 			outlet(0, "dictionary", output.name);
 			outlet(2, "dict");	
 			}
-			//if (prop) scroll("playhead");
+			if (prop) scroll("playhead");
             break;
         default:
 		if (dumpflag == 1) {
@@ -2035,7 +2038,7 @@ function scroll()
 			outlet(1, "getStaffBoundingInfo", 0, 0);
 			staffBoundingFlag = 0;
 			var from = staffBoundingInfo[4];
-			var color = [1, 0, 0, 1];
+			var color = [0.2, 1, 0.2, 1];
 			for (var s = 0; s < groupcount; s++)
 			{
 			jcursors[s + 1] = {};
@@ -2046,9 +2049,9 @@ function scroll()
 					"new" : "rect",
 					"id" : "playhead",
 					"x" : from,
-					"y" : extent[0],
+					"y" : extent[0] - 50,
 					"width" : 3.,
-					"height" : extent[1] - extent[0],
+					"height" : extent[1] - extent[0] + 100,
 					"style" : {
 						"stroke-width" : 0.6,
 						"stroke" : "none",
@@ -2059,6 +2062,7 @@ function scroll()
 					"transform" : "translate(0, 0)"
 					}];
 				//post("g", sg[s], clefs[clefList[sg[s][i]]], "\n");
+				if (prop  && shownClefs) {
 				for (var i = 0; i < sg[s].length; i++){
 				val.push({
 					"parent" : "overlay",
@@ -2093,6 +2097,7 @@ function scroll()
 					});
 					}
 					}
+				}
 				jcursors[s + 1] = {"key" : "svg", "val" : val};
 			}	
 		}			
@@ -2152,7 +2157,7 @@ function scroll()
 		outlet(0, "dictionary", cursors.name);	
 		break;
 	case "play":
-		//post("dur", duration, toffset, duration + toffset,"\n");
+		post("dur", duration, toffset, duration + toffset,"\n");
 		if (target == "socket") var trgt = "#main";
 		else var trgt = "#score";
 		for (var s = 0; s < groupcount; s++)

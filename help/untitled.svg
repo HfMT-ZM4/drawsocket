@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1320px" height="200px" viewBox="0 0 1320 200" style="background: ivory" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<g id="1">
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,1.3046875,65)" >MaxScoreIns-0</text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,100,66)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,102,63)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,102,63)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,200,63)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,202,60)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,202,60)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,200,48)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,202,45)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,202,45)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,300,63)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,302,60)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,302,60)" />
+<path d="M298.6000061035156,45 L308.3999938964844,45" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,300,45)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,302,42)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,302,42)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,400,63)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,402,60)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,402,60)" />
+<path d="M398.6000061035156,45 L408.3999938964844,45" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,400,42)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,402,39)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,402,39)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,500,66)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,502,63)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,502,63)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,600,78)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,602,75)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,602,75)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,600,57)" ></text>
+<path d="M5,3 L83,3" stroke-width="2" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,602,54)" />
+<path d="M83,1 L83,5" stroke-width="1" stroke="rgb(0,0,255)" stroke-opacity="1" fill="none" transform="matrix(1,0,0,1,602,54)" />
+<path d="M100,51 L1300,51,M100,57 L1300,57,M100,63 L1300,63,M100,69 L1300,69,M100,75 L1300,75," fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+</g>
+<g id="2">
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,1.3046875,65)" >MaxScoreIns-1</text>
+<path d="M100,51 L1300,51,M100,57 L1300,57,M100,63 L1300,63,M100,69 L1300,69,M100,75 L1300,75," fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+</g>
+</svg>
