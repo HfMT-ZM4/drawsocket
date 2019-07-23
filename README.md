@@ -704,4 +704,3 @@ The `hfmt.drawsocket` object accepts the `html_root` Max message to add a public
 
 * `function`: create and call user defined funcitons from JSON format.
   * `body`, `args`
-* `getSVG`: returns complete SVG element 
