@@ -263,13 +263,11 @@ if (cluster.isMaster)
         clients.saveClient(socket, uniqueid, req.url);
 
     });
-/*
-    Max.addHandler("addprefix", (...args) => {
-        for (let p of args) {
-            clients.addPrefix(p);
-        }
-    });
-*/
+
+    /**
+     *  Max message handlers
+     */
+
     Max.addHandler("html_template", (...args) => {
         htmltemplate = args;
         usr_template = true;
