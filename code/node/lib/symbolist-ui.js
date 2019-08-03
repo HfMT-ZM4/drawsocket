@@ -1,17 +1,6 @@
 
 /* global drawsocket:readonly  */
 
-drawsocket.input({
-    key : "css",
-	val : {
-		selector : ".symbolist_mouseover",
-		props : {
-			fill : "blue"
-		}
-	}
-});
-
-
 let clickedObj = null;
 let prevEventTarget = null;
 
@@ -196,7 +185,8 @@ function mouseHandler(event, caller)
     prevEventTarget = event.target;
 }
 
-
+console.log(document.body.onmousemove);
+ 
 document.body.addEventListener("mousemove", function(event)
 {
   //event.preventDefault();
@@ -209,16 +199,42 @@ document.body.addEventListener("mousedown", function(event)
   mouseHandler(event, "mousedown");
 });
 
+
 document.body.addEventListener("mouseup", function(event)
 {
   //event.preventDefault();
   mouseHandler(event, "mouseup");
 });
 
-
+/*
 document.body.addEventListener("mouseover", function(event)
 {
   //event.preventDefault();
  mouseHandler(event, "mouseover");
  
 });
+
+*/
+
+drawsocket.input([
+{
+    key : "css",
+	val : {
+		selector : ".symbolist_mouseover",
+		props : {
+			fill : "blue"
+		}
+	}
+},
+{
+    key : "mouse",
+	val : {
+        id: 'symbolist_mouseover',
+        callback: {
+            event: 'mouseover',
+            function: `mouseHandler(event, "mouseover");`
+        }
+	}
+}]);
+
+

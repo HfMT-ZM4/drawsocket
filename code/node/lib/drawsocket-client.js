@@ -63,6 +63,7 @@ var drawsocket = (function(){
     mousemove: new Map(),
     mousedown: new Map(),
     mouseup: new Map(),
+    mouseover: new Map(),
     wheel: new Map()
   }
 
@@ -1973,7 +1974,15 @@ var drawsocket = (function(){
     for( const obj of _objarr)
     {
 
-      if( obj.hasOwnProperty("id") && obj.hasOwnProperty("callback") && obj.callback.hasOwnProperty("event") && obj.callback.hasOwnProperty("function") )
+      if( obj.hasOwnProperty('enable') )
+      {
+        if( obj.enable == 0 )
+          removeMouseListeners()
+        else
+          addMouseListeners();
+
+      }
+      else if( obj.hasOwnProperty("id") && obj.hasOwnProperty("callback") && obj.callback.hasOwnProperty("event") && obj.callback.hasOwnProperty("function") )
       {
         if( !obj.callback.hasOwnProperty('args') ){
           obj.callback.args = "event";
@@ -2123,7 +2132,6 @@ var drawsocket = (function(){
   {
    
     mouseCallbacks[caller].forEach( cb => cb(event) );
-    
 
     let obj = {};
     obj['event'] = {
@@ -2152,7 +2160,7 @@ var drawsocket = (function(){
 
   }
 
-  document.body.addEventListener("mousemove", function(event)
+  function mousemove_callback(event)
   {
     if( event.clientX != prevMousePos[0] && event.clientY != prevMousePos[1] )
     {
@@ -2161,31 +2169,56 @@ var drawsocket = (function(){
     }
 
     prevMousePos = [ event.clientX, event.clientY ];
+  }
 
-  });
-
-  document.body.addEventListener("mousedown", function(event)
+  function mousedown_callback(event)
   {
     //event.preventDefault();
     procMouseEvent(event, "mousedown");
     prevMousePos = [ event.clientX, event.clientY ];
     
-  });
+  }
 
-  document.body.addEventListener("mouseup", function(event)
+  function mouseup_callback(event)
   {
     //event.preventDefault();
     procMouseEvent(event, "mouseup");
     prevMousePos = [ event.clientX, event.clientY ];
+    
+  }
 
-  });
+  function mouseover_callback(event)
+  {
+    //event.preventDefault();
+    procMouseEvent(event, "mouseover");
+    prevMousePos = [ event.clientX, event.clientY ];
+    
+  }
 
-  document.body.addEventListener("wheel", function(event)
+  function wheel_callback(event)
   {
     event.preventDefault();
-    procMouseEvent(event, "wheel");
-  });
+    procMouseEvent(event, "wheel");  
+  }
 
+  function addMouseListeners()
+  {
+    document.body.addEventListener("mousemove", mousemove_callback);
+    document.body.addEventListener("mousedown", mousedown_callback);
+    document.body.addEventListener("mouseup", mouseup_callback);
+    document.body.addEventListener("mouseover", mouseover_callback);
+    document.body.addEventListener("wheel", wheel_callback);
+  }
+  
+  function removeMouseListeners()
+  {
+    document.body.removeEventListener("mousemove", mousemove_callback);
+    document.body.removeEventListener("mousedown", mousedown_callback);
+    document.body.removeEventListener("mouseup", mouseup_callback);
+    document.body.removeEventListener("mouseover", mouseover_callback);
+    document.body.removeEventListener("wheel", wheel_callback);
+  }
+  
 
   function pingResponse()
   {
@@ -2476,6 +2509,8 @@ var drawsocket = (function(){
     } else {
       document.addEventListener(visibilityChange, handleVisibilityChange, false);
     }
+
+    addMouseListeners();
 
     initMultitouch("main-svg");
     initMultitouch("main-div");
