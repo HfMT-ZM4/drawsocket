@@ -58,11 +58,12 @@ var drawsocket = (function(){
 
   let prevMousePos = [0,0];
 
+  
   let mouseCallbacks = {
-    mousemove: [],
-    mousedown: [],
-    mouseup: [],
-    wheel: []
+    mousemove: new Map(),
+    mousedown: new Map(),
+    mouseup: new Map(),
+    wheel: new Map()
   }
 
   // audio files
@@ -1971,33 +1972,29 @@ var drawsocket = (function(){
   {
     for( const obj of _objarr)
     {
-      
-      if( obj.hasOwnProperty("callback") && obj.callback.hasOwnProperty("event") && obj.callback.hasOwnProperty("function") )
+
+      if( obj.hasOwnProperty("id") && obj.hasOwnProperty("callback") && obj.callback.hasOwnProperty("event") && obj.callback.hasOwnProperty("function") )
       {
         if( !obj.callback.hasOwnProperty('args') ){
           obj.callback.args = "event";
         }
 
-        const newFn = functionize(obj.callback);
-
-        let found = false;
-        for( const f of mouseCallbacks[obj.callback.event] ) // check if it's already there or not
-        {
-          // maybe better to set a prototype name and use that? ok for now I guess
-          if( f.toString() == newFn.toString() ){
-            found = true;
-            break;
-          }
-        }
-
-        if( !found )
-          mouseCallbacks[obj.callback.event].push( newFn );
+        mouseCallbacks[obj.callback.event].set( obj.id, functionize(obj.callback) );
 
       }
-      else if( obj.hasOwnProperty('removeCallback') )
+      else if( obj.hasOwnProperty('remove') && obj.hasOwnProperty("event") )
       {
-        ;// hard to remove if there's no name...
+        /**
+         * key: mouse,
+         * val: {
+         *    remove: id,
+         *    event: 
+         * }
+         */
+
+        mouseCallbacks[obj.event].delete( obj.remove );
       }
+
     }
   }
 
@@ -2125,10 +2122,8 @@ var drawsocket = (function(){
   function procMouseEvent(event, caller)
   {
    
-    for( const cb of mouseCallbacks[caller] )
-    {
-      cb(event);
-    }
+    mouseCallbacks[caller].forEach( cb => cb(event) );
+    
 
     let obj = {};
     obj['event'] = {
