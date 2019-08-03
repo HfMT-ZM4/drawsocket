@@ -69,11 +69,14 @@ function applyTransform(obj)
 
 function translate(obj, delta_pos)
 {
+    if( !obj )
+        return;
+        
     let svg = document.getElementById("svg");
     if( obj === svg )
         return;
-    
-    let transformlist = obj.transform.baseVal;
+        
+    let transformlist = obj.transform.baseVal; 
 
     let matrix = obj.getCTM();
     matrix.e = delta_pos.x;
