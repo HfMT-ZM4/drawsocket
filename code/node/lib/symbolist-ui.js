@@ -1,10 +1,26 @@
 
 /* global drawsocket:readonly  */
 
+drawsocket.input({
+    key : "css",
+	val : {
+		selector : ".symbolist_mouseover",
+		props : {
+			fill : "blue"
+		}
+	}
+});
+
+
 let clickedObj = null;
+let prevEventTarget = null;
 
 let mousedown_pos = {x: 0, y: 0};
 
+function deltaPt(ptA, ptB)
+{
+    return { x: ptA.x - ptB.x, y: ptA.y - ptB.y };
+}
 
 function calcTransform(matrix, _x, _y)
 {  
@@ -48,14 +64,15 @@ function translate(obj, delta_pos)
     let svg = document.getElementById("svg");
     if( obj === svg )
         return;
-
+    
     let transformlist = obj.transform.baseVal;
 
     let matrix = obj.getCTM();
-    matrix.e += delta_pos.x;
-    matrix.f += delta_pos.y;
+    matrix.e = delta_pos.x;
+    matrix.f = delta_pos.y;
 
-    transformlist.initialize( svg.createSVGTransformFromMatrix(matrix) );
+    const transformMatrix = svg.createSVGTransformFromMatrix(matrix);
+    transformlist.initialize( transformMatrix );
 
 }
 
@@ -107,6 +124,9 @@ function mouseHandler(event, caller)
 {
     // let t = fairlyUniqueNumber();
     // console.log( t, t.length );
+    if( prevEventTarget === null )
+        prevEventTarget = event.target;
+
     switch( caller )
     {
         case "mousedown":
@@ -123,10 +143,34 @@ function mouseHandler(event, caller)
         case "mousemove":
             if(  event.buttons == 1 )
             {
-                translate(clickedObj, { x: event.movementX, y: event.movementY } );
-            }            
+                //translate(clickedObj, { x: event.movementX, y: event.movementY } );
+                translate( clickedObj, deltaPt({ x: event.clientX, y: event.clientY }, mousedown_pos));
+            }
         break;
+        case "mouseover":
+
+            if( event.target != prevEventTarget )
+            {
+                if( prevEventTarget.classList.contains("symbolist_mouseover") )
+                {
+                    prevEventTarget.classList.remove("symbolist_mouseover");
+                }
+
+                if( event.target != document.getElementById("svg") )
+                {
+                    event.target.classList.add("symbolist_mouseover");
+                }
+                
+            }
+
+        break;
+        
         case "mouseup":
+            
+                if( event.target.classList.contains("symbolist_mouseover") )
+                {
+                    event.target.classList.remove("symbolist_mouseover");
+                }
             {/*
                 if( clickedObj )
                 {
@@ -149,6 +193,7 @@ function mouseHandler(event, caller)
         break;
     }
 
+    prevEventTarget = event.target;
 }
 
 
@@ -168,4 +213,12 @@ document.body.addEventListener("mouseup", function(event)
 {
   //event.preventDefault();
   mouseHandler(event, "mouseup");
+});
+
+
+document.body.addEventListener("mouseover", function(event)
+{
+  //event.preventDefault();
+ mouseHandler(event, "mouseover");
+ 
 });

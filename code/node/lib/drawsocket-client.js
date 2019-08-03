@@ -58,6 +58,13 @@ var drawsocket = (function(){
 
   let prevMousePos = [0,0];
 
+  let mouseCallbacks = {
+    mousemove: [],
+    mousedown: [],
+    mouseup: [],
+    wheel: []
+  }
+
   // audio files
   let audioObj = {};
 
@@ -1788,6 +1795,13 @@ var drawsocket = (function(){
 
             ongoingTouches = [];
 
+            mouseCallbacks = {
+              mousemove: [],
+              mousedown: [],
+              mouseup: [],
+              wheel: []
+            };
+            
             clearCSS();
             clearAnim();
             clearPDF();
@@ -1914,6 +1928,10 @@ var drawsocket = (function(){
             else
               disableMultitouch();
         break;
+        case "mouse":
+            processJSON_mouse(_objarr);
+        break;
+
         case "do_sync":
           do_sync();
         break;
@@ -1947,6 +1965,42 @@ var drawsocket = (function(){
   /**
   *   mouse handling
   */
+
+  
+  function processJSON_mouse(_objarr)
+  {
+    for( const obj of _objarr)
+    {
+      
+      if( obj.hasOwnProperty("callback") && obj.callback.hasOwnProperty("event") && obj.callback.hasOwnProperty("function") )
+      {
+        if( !obj.callback.hasOwnProperty('args') ){
+          obj.callback.args = "event";
+        }
+
+        const newFn = functionize(obj.callback);
+
+        let found = false;
+        for( const f of mouseCallbacks[obj.callback.event] ) // check if it's already there or not
+        {
+          // maybe better to set a prototype name and use that? ok for now I guess
+          if( f.toString() == newFn.toString() ){
+            found = true;
+            break;
+          }
+        }
+
+        if( !found )
+          mouseCallbacks[obj.callback.event].push( newFn );
+
+      }
+      else if( obj.hasOwnProperty('removeCallback') )
+      {
+        ;// hard to remove if there's no name...
+      }
+    }
+  }
+
 
   function emptybundle(){
     return {
@@ -2068,9 +2122,14 @@ var drawsocket = (function(){
     return obj;
   }
 
-  function sendMouseObj(event, caller)
+  function procMouseEvent(event, caller)
   {
-    
+   
+    for( const cb of mouseCallbacks[caller] )
+    {
+      cb(event);
+    }
+
     let obj = {};
     obj['event'] = {
       url: oscprefix,
@@ -2103,7 +2162,7 @@ var drawsocket = (function(){
     if( event.clientX != prevMousePos[0] && event.clientY != prevMousePos[1] )
     {
     //event.preventDefault();
-      sendMouseObj(event, "mousemove");
+      procMouseEvent(event, "mousemove");
     }
 
     prevMousePos = [ event.clientX, event.clientY ];
@@ -2113,7 +2172,7 @@ var drawsocket = (function(){
   document.body.addEventListener("mousedown", function(event)
   {
     //event.preventDefault();
-    sendMouseObj(event, "mousedown");
+    procMouseEvent(event, "mousedown");
     prevMousePos = [ event.clientX, event.clientY ];
     
   });
@@ -2121,7 +2180,7 @@ var drawsocket = (function(){
   document.body.addEventListener("mouseup", function(event)
   {
     //event.preventDefault();
-    sendMouseObj(event, "mouseup");
+    procMouseEvent(event, "mouseup");
     prevMousePos = [ event.clientX, event.clientY ];
 
   });
@@ -2129,7 +2188,7 @@ var drawsocket = (function(){
   document.body.addEventListener("wheel", function(event)
   {
     event.preventDefault();
-    sendMouseObj(event, "wheel");
+    procMouseEvent(event, "wheel");
   });
 
 
