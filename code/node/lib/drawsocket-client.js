@@ -1798,10 +1798,11 @@ var drawsocket = (function(){
             ongoingTouches = [];
 
             mouseCallbacks = {
-              mousemove: [],
-              mousedown: [],
-              mouseup: [],
-              wheel: []
+              mousemove: new Map(),
+              mousedown: new Map(),
+              mouseup: new Map(),
+              mouseover: new Map(),
+              wheel: new Map()
             };
             
             clearCSS();
@@ -2131,7 +2132,9 @@ var drawsocket = (function(){
   function procMouseEvent(event, caller)
   {
    
-    mouseCallbacks[caller].forEach( cb => cb(event) );
+    // considering removing this user callback system, since it seems better performing to addEventListeners separately in a separate file    
+    if( mouseCallbacks[caller].size > 0 )
+      mouseCallbacks[caller].forEach( cb => cb(event) );
 
     let obj = {};
     obj['event'] = {

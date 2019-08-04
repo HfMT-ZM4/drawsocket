@@ -5,7 +5,7 @@ drawsocket.input([
     {
         key : "css",
         val : {
-            selector : ".symbolist_mouseover",
+            selector : ".symbolist_selected",
             props : {
                 fill : "blue"
             }
@@ -19,11 +19,74 @@ drawsocket.input([
     }]
 );
     
+const svgObj = document.getElementById("svg");
+const mainSVG = document.getElementById("main-svg");
 
 let clickedObj = null;
 let prevEventTarget = null;
+let selected = [];
 
 let mousedown_pos = {x: 0, y: 0};
+
+function hitTest(regionRect, obj)
+{
+    const objBBox = obj.getBoundingClientRect();
+
+    return  !(objBBox.left  > regionRect.right ||
+             objBBox.top    > regionRect.bottom ||
+             objBBox.right  < regionRect.left || 
+             objBBox.bottom < regionRect.top );
+
+}
+
+function recursiveHitTest(region, element)
+{
+    if( hitTest(region, element) )
+        return true;
+
+    for (let i = 0; i < element.children.length; i++) 
+    {
+        if( recursiveHitTest(region, element.children[i]) )
+            return true;
+        //console.log(mainSVG.children[i].tagName);
+    }
+
+    return false;
+}
+
+function selectAllInRegion(region, element)
+{
+    for (let i = 0; i < element.children.length; i++) 
+    {
+        if( recursiveHitTest(region, element.children[i]) )
+            selected.push(element.children[i]);
+
+    }
+
+    for( let i = 0; i < selected.length; i++)
+    {
+        if( !selected[i].classList.contains("symbolist_selected") )
+        {
+            selected[i].classList.add("symbolist_selected");
+        }
+    }
+    
+        
+}
+
+function deselectAll()
+{
+    for( let i = 0; i < selected.length; i++)
+    {
+        if( selected[i].classList.contains("symbolist_selected") )
+        {
+            selected[i].classList.remove("symbolist_selected");
+        }
+    }
+
+    selected = [];
+}
+
 
 function deltaPt(ptA, ptB)
 {
@@ -71,9 +134,9 @@ function translate(obj, delta_pos)
 {
     if( !obj )
         return;
-        
-    let svg = document.getElementById("svg");
-    if( obj === svg )
+
+//    let svg = document.getElementById("svg");
+    if( obj === svgObj )
         return;
         
     let transformlist = obj.transform.baseVal; 
@@ -82,7 +145,7 @@ function translate(obj, delta_pos)
     matrix.e = delta_pos.x;
     matrix.f = delta_pos.y;
 
-    const transformMatrix = svg.createSVGTransformFromMatrix(matrix);
+    const transformMatrix = svgObj.createSVGTransformFromMatrix(matrix);
     transformlist.initialize( transformMatrix );
 
 }
@@ -146,30 +209,47 @@ function mouseHandler(event, caller)
             {
                 clickedObj = copyObjectAndAddToParent(event.target);           
             }
-            else
+            else if( event.target != svgObj )
                 clickedObj = event.target;
+            else
+                clickedObj = null;
 
             mousedown_pos = { x: event.clientX, y: event.clientY };
         break;
         case "mousemove":
-            if(  event.buttons == 1 )
+            if( event.buttons == 1 )
             {
-                //translate(clickedObj, { x: event.movementX, y: event.movementY } );
-                translate( clickedObj, deltaPt({ x: event.clientX, y: event.clientY }, mousedown_pos));
+                if( clickedObj )
+                {
+                    translate( clickedObj, deltaPt({ x: event.clientX, y: event.clientY }, mousedown_pos));
+                }
+                else 
+                {
+                    if( !event.shiftKey )
+                        deselectAll();
+
+                    selectAllInRegion({
+                        left: mousedown_pos.x,
+                        top: mousedown_pos.y,
+                        right: event.clientX,
+                        bottom: event.clientY
+                    }, mainSVG);
+                }
             }
+            
         break;
         case "mouseover":
 
-            if( event.target != prevEventTarget )
+            if( !event.shiftKey && event.target != prevEventTarget )
             {
-                if( prevEventTarget.classList.contains("symbolist_mouseover") )
+                if( prevEventTarget.classList.contains("symbolist_selected") )
                 {
-                    prevEventTarget.classList.remove("symbolist_mouseover");
+                    prevEventTarget.classList.remove("symbolist_selected");
                 }
 
-                if( event.target != document.getElementById("svg") )
+                if( event.target != svgObj )
                 {
-                    event.target.classList.add("symbolist_mouseover");
+                    event.target.classList.add("symbolist_selected");
                 }
                 
             }
@@ -177,11 +257,16 @@ function mouseHandler(event, caller)
         break;
         
         case "mouseup":
-            
-                if( event.target.classList.contains("symbolist_mouseover") )
+            if( !event.shiftKey ){
+                if( event.target.classList.contains("symbolist_selected") )
                 {
-                    event.target.classList.remove("symbolist_mouseover");
+                    event.target.classList.remove("symbolist_selected");
                 }
+                deselectAll();
+            }
+            
+
+
             {/*
                 if( clickedObj )
                 {
