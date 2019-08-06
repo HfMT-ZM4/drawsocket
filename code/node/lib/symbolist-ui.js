@@ -193,7 +193,150 @@ function elementToJSON(elm)
   return obj;
 }
 
+function getDragRegion(event)
+{
+    let left, right, top, bottom;
+    if( mousedown_pos.x < event.clientX )
+    {
+        right = event.clientX;
+        left = mousedown_pos.x;
+    }
+    else
+    {
+        left = event.clientX;
+        right = mousedown_pos.x;
+    }
 
+    if( mousedown_pos.y < event.clientY )
+    {
+        bottom = event.clientY;
+        top = mousedown_pos.y;
+    }
+    else
+    {
+        top = event.clientY;
+        bottom = mousedown_pos.y;
+    }
+
+    return {
+        left: left,
+        top: top,
+        right: right,
+        bottom: bottom
+    };
+}
+
+function symbolist_mousedown(event)
+{          
+    if( prevEventTarget === null )
+        prevEventTarget = event.target;
+
+    if( event.altKey )
+    {
+        clickedObj = copyObjectAndAddToParent(event.target);           
+    }
+    else if( event.target != svgObj )
+        clickedObj = event.target;
+    else
+        clickedObj = null;
+
+    mousedown_pos = { x: event.clientX, y: event.clientY };
+
+    prevEventTarget = event.target;
+}
+
+function symbolist_mousemove(event)
+{         
+    if( prevEventTarget === null )
+        prevEventTarget = event.target;
+
+    if( event.buttons == 1 )
+    {
+        if( clickedObj )
+        {
+            translate( clickedObj, deltaPt({ x: event.clientX, y: event.clientY }, mousedown_pos));
+        }
+        else 
+        {
+            if( !event.shiftKey )
+                deselectAll();
+
+            selectAllInRegion( getDragRegion(event), mainSVG );
+        }
+    }
+
+    prevEventTarget = event.target;
+}
+
+function symbolist_mouseup(event)
+{          
+    if( prevEventTarget === null )
+        prevEventTarget = event.target;
+
+    if( !event.shiftKey )
+    {
+        if( event.target.classList.contains("symbolist_selected") )
+        {
+            event.target.classList.remove("symbolist_selected");
+        }
+        deselectAll();
+    }
+    
+    clickedObj = null;
+    prevEventTarget = event.target;
+}
+
+
+function symbolist_mouseover(event)
+{           
+    if( prevEventTarget === null )
+        prevEventTarget = event.target;
+
+    if( !event.shiftKey && event.target != prevEventTarget )
+    {
+        if( prevEventTarget.classList.contains("symbolist_selected") )
+        {
+            prevEventTarget.classList.remove("symbolist_selected");
+        }
+
+        if( event.target != svgObj )
+        {
+            event.target.classList.add("symbolist_selected");
+        }
+        
+    }
+
+    prevEventTarget = event.target;
+}
+
+function addSymbolistMouseHandlers(element)
+{
+    element.addEventListener("mousedown", symbolist_mousedown);
+    element.addEventListener("mousemove", symbolist_mousemove);
+    element.addEventListener("mouseup", symbolist_mouseup);
+    element.addEventListener("mouseover", symbolist_mouseover);
+}
+
+function removeSymbolistMouseHandlers(element)
+{
+    element.removeEventListener("mousedown", symbolist_mousedown);
+    element.removeEventListener("mousemove", symbolist_mousemove);
+    element.removeEventListener("mouseup", symbolist_mouseup);
+    element.removeEventListener("mouseover", symbolist_mouseover);
+}
+
+addSymbolistMouseHandlers(document.body);
+
+drawsocket.input({
+    key : "mouse",
+    val : {
+        enable: 1
+    }
+});
+
+
+
+/*
 function mouseHandler(event, caller)
 {
     // let t = fairlyUniqueNumber();
@@ -228,12 +371,7 @@ function mouseHandler(event, caller)
                     if( !event.shiftKey )
                         deselectAll();
 
-                    selectAllInRegion({
-                        left: mousedown_pos.x,
-                        top: mousedown_pos.y,
-                        right: event.clientX,
-                        bottom: event.clientY
-                    }, mainSVG);
+                    selectAllInRegion( getDragRegion(event), mainSVG );
                 }
             }
             
@@ -267,20 +405,6 @@ function mouseHandler(event, caller)
             
 
 
-            {/*
-                if( clickedObj )
-                {
-                    applyTransform(clickedObj);
-                    let obj = {};
-                    obj[`/symbolist${drawsocket.oscprefix}/event`] = {
-                        action: "mouseup",
-                        target: elementToJSON(clickedObj),
-                        xy: [ event.clientX, event.clientY ]
-                    };
-                    drawsocket.send(obj);
-                }
-                */
-            }
             
             clickedObj = null;
         break;
@@ -316,9 +440,4 @@ document.body.addEventListener("mouseover", function(event)
 });
 
 
-drawsocket.input({
-    key : "mouse",
-    val : {
-        enable: 1
-    }
-});
+*/
