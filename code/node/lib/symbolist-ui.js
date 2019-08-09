@@ -1,5 +1,20 @@
 
 /* global drawsocket:readonly  */
+ 
+    
+/**
+ * globals
+ */
+const svgObj = document.getElementById("svg");
+const mainSVG = document.getElementById("main-svg");
+
+let clickedObj = null;
+let prevEventTarget = null;
+let selected = [];
+
+let mousedown_pos = {x: 0, y: 0};
+
+let selectedClass = "default";
 
 drawsocket.input([
     {
@@ -18,15 +33,20 @@ drawsocket.input([
         }
     }]
 );
-    
-const svgObj = document.getElementById("svg");
-const mainSVG = document.getElementById("main-svg");
 
-let clickedObj = null;
-let prevEventTarget = null;
-let selected = [];
+/** 
+ * API
+ */
 
-let mousedown_pos = {x: 0, y: 0};
+function setClass(_class)
+{
+    selectedClass = _class;
+}
+
+
+ /**
+  * internal methods
+  */
 
 function hitTest(regionRect, obj)
 {
@@ -193,6 +213,37 @@ function elementToJSON(elm)
   return obj;
 }
 
+function sendMouseEvent(event, caller)
+{
+
+  let obj = {};
+  obj['event'] = {
+    url: drawsocket.oscprefix,
+    key: 'mouse',
+    val: {
+        selectedClass: selectedClass,
+        action: caller,
+        xy: [ event.clientX, event.clientY ],
+        button: event.buttons,
+        mods : {
+            alt: event.altKey,
+            shift: event.shiftKey,
+            ctrl: event.ctrlKey,
+            meta: event.metaKey
+        },
+        target: elementToJSON(event.target)
+    }
+  };
+
+  if( caller == 'wheel' )
+  {
+    obj.event.val.delta = [ event.deltaX, event.deltaY ];
+  }
+
+  drawsocket.send(obj);
+
+}
+
 function getDragRegion(event)
 {
     let left, right, top, bottom;
@@ -236,13 +287,22 @@ function symbolist_mousedown(event)
         clickedObj = copyObjectAndAddToParent(event.target);           
     }
     else if( event.target != svgObj )
+    {
         clickedObj = event.target;
+        selectedClass =  event.target.class;
+    }
     else
+    {
         clickedObj = null;
+        selectedClass = "none";
+    }
+    
 
     mousedown_pos = { x: event.clientX, y: event.clientY };
 
     prevEventTarget = event.target;
+    
+    sendMouseEvent(event, "mousedown");
 }
 
 function symbolist_mousemove(event)
@@ -266,6 +326,9 @@ function symbolist_mousemove(event)
     }
 
     prevEventTarget = event.target;
+
+    sendMouseEvent(event, "mousemove");
+
 }
 
 function symbolist_mouseup(event)
@@ -284,6 +347,8 @@ function symbolist_mouseup(event)
     
     clickedObj = null;
     prevEventTarget = event.target;
+
+    sendMouseEvent(event, "mouseup");
 }
 
 
@@ -307,33 +372,37 @@ function symbolist_mouseover(event)
     }
 
     prevEventTarget = event.target;
+
+    //sendMouseEvent(event, "mouseover");
+
 }
 
 function addSymbolistMouseHandlers(element)
 {
-    element.addEventListener("mousedown", symbolist_mousedown);
-    element.addEventListener("mousemove", symbolist_mousemove);
-    element.addEventListener("mouseup", symbolist_mouseup);
-    element.addEventListener("mouseover", symbolist_mouseover);
+    element.addEventListener("mousedown", symbolist_mousedown, true);
+    element.addEventListener("mousemove", symbolist_mousemove, true);
+    element.addEventListener("mouseup", symbolist_mouseup, true);
+    element.addEventListener("mouseover", symbolist_mouseover, true);
 }
 
 function removeSymbolistMouseHandlers(element)
 {
-    element.removeEventListener("mousedown", symbolist_mousedown);
-    element.removeEventListener("mousemove", symbolist_mousemove);
-    element.removeEventListener("mouseup", symbolist_mouseup);
-    element.removeEventListener("mouseover", symbolist_mouseover);
+    element.removeEventListener("mousedown", symbolist_mousedown, true);
+    element.removeEventListener("mousemove", symbolist_mousemove, true);
+    element.removeEventListener("mouseup", symbolist_mouseup, true);
+    element.removeEventListener("mouseover", symbolist_mouseover, true);
 }
 
 addSymbolistMouseHandlers(document.body);
 
+/*
 drawsocket.input({
     key : "mouse",
     val : {
         enable: 1
     }
 });
-
+*/
 
 
 /*

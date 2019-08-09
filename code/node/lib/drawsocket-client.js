@@ -1968,7 +1968,7 @@ var drawsocket = (function(){
   /**
   *   mouse handling
   */
-
+  let mouseIsEnabled = true;
   
   function processJSON_mouse(_objarr)
   {
@@ -1981,6 +1981,8 @@ var drawsocket = (function(){
           removeMouseListeners()
         else
           addMouseListeners();
+
+        mouseIsEnabled = obj.enable;
 
       }
       else if( obj.hasOwnProperty("id") && obj.hasOwnProperty("callback") && obj.callback.hasOwnProperty("event") && obj.callback.hasOwnProperty("function") )
@@ -2206,20 +2208,20 @@ var drawsocket = (function(){
 
   function addMouseListeners()
   {
-    document.body.addEventListener("mousemove", mousemove_callback);
-    document.body.addEventListener("mousedown", mousedown_callback);
-    document.body.addEventListener("mouseup", mouseup_callback);
-    document.body.addEventListener("mouseover", mouseover_callback);
-    document.body.addEventListener("wheel", wheel_callback);
+    document.body.addEventListener("mousemove", mousemove_callback, true);
+    document.body.addEventListener("mousedown", mousedown_callback, true);
+    document.body.addEventListener("mouseup", mouseup_callback, true);
+    document.body.addEventListener("mouseover", mouseover_callback, true);
+    document.body.addEventListener("wheel", wheel_callback, true);
   }
   
   function removeMouseListeners()
-  {
-    document.body.removeEventListener("mousemove", mousemove_callback);
-    document.body.removeEventListener("mousedown", mousedown_callback);
-    document.body.removeEventListener("mouseup", mouseup_callback);
-    document.body.removeEventListener("mouseover", mouseover_callback);
-    document.body.removeEventListener("wheel", wheel_callback);
+  {    
+    document.body.removeEventListener("mousemove", mousemove_callback, true);
+    document.body.removeEventListener("mousedown", mousedown_callback, true);
+    document.body.removeEventListener("mouseup", mouseup_callback, true);
+    document.body.removeEventListener("mouseover", mouseover_callback, true);
+    document.body.removeEventListener("wheel", wheel_callback, true);
   }
   
 
@@ -2513,7 +2515,8 @@ var drawsocket = (function(){
       document.addEventListener(visibilityChange, handleVisibilityChange, false);
     }
 
-    addMouseListeners();
+    if( mouseIsEnabled )
+      addMouseListeners();
 
     initMultitouch("main-svg");
     initMultitouch("main-div");
