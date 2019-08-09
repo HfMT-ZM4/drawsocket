@@ -14,7 +14,8 @@ let selected = [];
 
 let mousedown_pos = {x: 0, y: 0};
 
-let selectedClass = "default";
+let currentPaletteClass = "/note";
+let selectedClass = currentPaletteClass;
 
 drawsocket.input([
     {
@@ -214,13 +215,16 @@ function elementToJSON(elm)
 }
 
 function sendMouseEvent(event, caller)
-{
+{    
+  const _id = ( event.target.id != "svg" ) ? event.target.id : 
+    (selectedClass.startsWith('/') ? selectedClass.slice(1)+'_u_'+fairlyUniqueNumber() : selectedClass+'_u_'+fairlyUniqueNumber());
 
   let obj = {};
   obj['event'] = {
     url: drawsocket.oscprefix,
     key: 'mouse',
     val: {
+        id: _id,
         selectedClass: selectedClass,
         action: caller,
         xy: [ event.clientX, event.clientY ],
@@ -239,6 +243,7 @@ function sendMouseEvent(event, caller)
   {
     obj.event.val.delta = [ event.deltaX, event.deltaY ];
   }
+
 
   drawsocket.send(obj);
 
@@ -289,12 +294,12 @@ function symbolist_mousedown(event)
     else if( event.target != svgObj )
     {
         clickedObj = event.target;
-        selectedClass =  event.target.class;
+        selectedClass =  event.target.classList[0];
     }
     else
     {
         clickedObj = null;
-        selectedClass = "none";
+        selectedClass = currentPaletteClass; // later, get from palette selection
     }
     
 
@@ -346,6 +351,7 @@ function symbolist_mouseup(event)
     }
     
     clickedObj = null;
+    selectedClass = currentPaletteClass;
     prevEventTarget = event.target;
 
     sendMouseEvent(event, "mouseup");
