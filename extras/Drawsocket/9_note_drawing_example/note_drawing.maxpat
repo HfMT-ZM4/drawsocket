@@ -655,21 +655,21 @@
 		"dependency_cache" : [ 			{
 				"name" : "hfmt.drawsocket.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/patchers",
-				"patcherrelativepath" : "../patchers",
+				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "drawsocket-server.js",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code/node",
-				"patcherrelativepath" : "../code/node",
+				"patcherrelativepath" : "../../../code/node",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "startscript.js",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
-				"patcherrelativepath" : "../code",
+				"patcherrelativepath" : "../../../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}

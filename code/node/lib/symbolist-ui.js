@@ -294,7 +294,7 @@ function symbolist_mousedown(event)
     else if( event.target != svgObj )
     {
         clickedObj = event.target;
-        selectedClass =  event.target.classList[0];
+        selectedClass =  event.target.classList[0]; // hopefully this will always be correct! not for sure though
     }
     else
     {
