@@ -426,7 +426,7 @@ var drawsocket = (function(){
           //console.log("style", el.node().style);
 
         }
-        else if( prop === "child" || prop === "text" || prop === "html")
+        else if( prop === "child" || prop === "children" || prop === "text" || prop === "html"  )
         {
           // case of child node
           // if it's an array, parse for nodes, otherwise, add as text
@@ -660,7 +660,7 @@ var drawsocket = (function(){
               el.style(cssprop, cssnode[cssprop]);
             }
           }
-          else if( prop === "child" || prop === "text" || prop === "html")
+          else if( prop === "child" || prop === "children" || prop === "text" || prop === "html")
           {
             // case of child node
             // if it's an array, parse for nodes, otherwise, add as text

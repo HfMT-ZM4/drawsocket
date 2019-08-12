@@ -14,7 +14,7 @@ let selected = [];
 
 let mousedown_pos = {x: 0, y: 0};
 
-let currentPaletteClass = "/note";
+let currentPaletteClass = "/noteline";
 let selectedClass = currentPaletteClass;
 
 drawsocket.input([
@@ -199,25 +199,55 @@ function copyObjectAndAddToParent(obj)
 
 }
 
+function getTopLevel(elm)
+{    
+    
+    while( elm != svgObj && elm.parentNode && elm.parentNode.id != 'main-svg' )
+    {
+        elm = elm.parentNode;
+    }
+
+    return elm;
+}
+
+function isNumeric(value) {
+    return !isNaN(value - parseFloat(value));
+}
 
 function elementToJSON(elm)
 {
-  let obj = {};
-  obj.tag = elm.tagName;
-  Array.prototype.forEach.call(elm.attributes, (attr) => {
-    if( attr.specified )
+    let obj = {};
+    obj.tag = elm.tagName;
+    for( let i = 0, l = elm.attributes.length; i < l; ++i)
     {
-      obj[attr.name] = attr.value;
+        const attr = elm.attributes[i];
+        if( attr.specified )
+        {
+            obj[attr.name] = (isNumeric(attr.value) ? Number(attr.value) : attr.value);
+        }
     }
-  });
 
-  return obj;
+    if( elm != svgObj )
+    {
+        let children = [];
+        if( elm.hasChildNodes() ){
+            const nodes = elm.childNodes;
+            for(let i = 0, l = nodes.length; i < l; ++i){
+                children.push(  elementToJSON(nodes[i]) ); 
+            }
+            obj.children = children;
+        }
+    }
+    
+    
+
+    return obj;
 }
 
 function sendMouseEvent(event, caller)
 {    
   const _id = ( event.target.id != "svg" ) ? event.target.id : 
-    (selectedClass.startsWith('/') ? selectedClass.slice(1)+'_u_'+fairlyUniqueNumber() : selectedClass+'_u_'+fairlyUniqueNumber());
+    (selectedClass && selectedClass.startsWith('/') ? selectedClass.slice(1)+'_u_'+fairlyUniqueNumber() : selectedClass+'_u_'+fairlyUniqueNumber());
 
   let obj = {};
   obj['event'] = {
@@ -235,7 +265,7 @@ function sendMouseEvent(event, caller)
             ctrl: event.ctrlKey,
             meta: event.metaKey
         },
-        target: elementToJSON(event.target)
+        target: elementToJSON( getTopLevel(event.target) )
     }
   };
 
@@ -293,8 +323,8 @@ function symbolist_mousedown(event)
     }
     else if( event.target != svgObj )
     {
-        clickedObj = event.target;
-        selectedClass =  event.target.classList[0]; // hopefully this will always be correct! not for sure though
+        clickedObj = getTopLevel(event.target);
+        selectedClass =  clickedObj.classList[0]; // hopefully this will always be correct! not for sure though
     }
     else
     {
@@ -349,12 +379,13 @@ function symbolist_mouseup(event)
         }
         deselectAll();
     }
-    
+
+    sendMouseEvent(event, "mouseup");
+
     clickedObj = null;
     selectedClass = currentPaletteClass;
     prevEventTarget = event.target;
 
-    sendMouseEvent(event, "mouseup");
 }
 
 
