@@ -314,17 +314,22 @@ function getDragRegion(event)
 
 function symbolist_mousedown(event)
 {          
-    if( prevEventTarget === null )
-        prevEventTarget = event.target;
+    const _eventTarget = getTopLevel( event.target );
 
-    if( event.altKey )
+    if( prevEventTarget === null )
+        prevEventTarget = _eventTarget;
+
+    if( _eventTarget != svgObj )
     {
-        clickedObj = copyObjectAndAddToParent(event.target);           
-    }
-    else if( event.target != svgObj )
-    {
-        clickedObj = getTopLevel(event.target);
-        selectedClass =  clickedObj.classList[0]; // hopefully this will always be correct! not for sure though
+        if( event.altKey )
+        {
+            clickedObj = copyObjectAndAddToParent(_eventTarget);           
+        }
+        else
+        {
+            clickedObj = getTopLevel(_eventTarget);
+            selectedClass =  clickedObj.classList[0]; // hopefully this will always be correct! not for sure though
+        }
     }
     else
     {
@@ -335,15 +340,17 @@ function symbolist_mousedown(event)
 
     mousedown_pos = { x: event.clientX, y: event.clientY };
 
-    prevEventTarget = event.target;
+    prevEventTarget = _eventTarget;
     
     sendMouseEvent(event, "mousedown");
 }
 
 function symbolist_mousemove(event)
 {         
+    const _eventTarget = getTopLevel( event.target );
+
     if( prevEventTarget === null )
-        prevEventTarget = event.target;
+        prevEventTarget = _eventTarget;
 
     if( event.buttons == 1 )
     {
@@ -360,7 +367,7 @@ function symbolist_mousemove(event)
         }
     }
 
-    prevEventTarget = event.target;
+    prevEventTarget = _eventTarget;
 
     sendMouseEvent(event, "mousemove");
 
@@ -368,14 +375,16 @@ function symbolist_mousemove(event)
 
 function symbolist_mouseup(event)
 {          
+    const _eventTarget = getTopLevel( event.target );
+
     if( prevEventTarget === null )
-        prevEventTarget = event.target;
+        prevEventTarget = _eventTarget;
 
     if( !event.shiftKey )
     {
-        if( event.target.classList.contains("symbolist_selected") )
+        if( _eventTarget.classList.contains("symbolist_selected") )
         {
-            event.target.classList.remove("symbolist_selected");
+            _eventTarget.classList.remove("symbolist_selected");
         }
         deselectAll();
     }
@@ -384,31 +393,33 @@ function symbolist_mouseup(event)
 
     clickedObj = null;
     selectedClass = currentPaletteClass;
-    prevEventTarget = event.target;
+    prevEventTarget = _eventTarget;
 
 }
 
 
 function symbolist_mouseover(event)
 {           
-    if( prevEventTarget === null )
-        prevEventTarget = event.target;
+    const _eventTarget = getTopLevel( event.target );
 
-    if( !event.shiftKey && event.target != prevEventTarget )
+    if( prevEventTarget === null )
+        prevEventTarget = _eventTarget;
+
+    if( !event.shiftKey && _eventTarget != prevEventTarget )
     {
         if( prevEventTarget.classList.contains("symbolist_selected") )
         {
             prevEventTarget.classList.remove("symbolist_selected");
         }
 
-        if( event.target != svgObj )
+        if( _eventTarget != svgObj )
         {
-            event.target.classList.add("symbolist_selected");
+            _eventTarget.classList.add("symbolist_selected");
         }
         
     }
 
-    prevEventTarget = event.target;
+    prevEventTarget = _eventTarget;
 
     //sendMouseEvent(event, "mouseover");
 
