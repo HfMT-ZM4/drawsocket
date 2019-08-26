@@ -1,0 +1,64 @@
+<head>
+  <!--   <script src="node_modules/verovio-dev/index.js"></script>-->   
+        <script src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>
+
+</head>
+<body>
+<div id="foo"></div>
+
+<script>
+        let vrvToolkit = new verovio.toolkit(512);
+        
+        vrvToolkit.setOptions({
+                scale: 100,
+                evenNoteSpacing : true
+        });
+
+        vrvToolkit.loadData(`<mei xmlns="http://www.music-encoding.org/ns/mei">
+    <meiHead>
+        <fileDesc>
+            <titleStmt>
+                <title/>
+            </titleStmt>
+            <pubStmt/>
+        </fileDesc>
+    </meiHead>
+    <music>
+        <body>
+            <mdiv>
+                <score>
+                    <scoreDef>
+                        <staffGrp>
+                            <staffDef clef.shape="G" clef.line="2" n="1" lines="5"/>
+                        </staffGrp>
+                    </scoreDef>
+                    <section>
+                        <measure>
+                            <staff n="1">
+                                <layer>
+                                    <note pname="c" oct="4" dur="4"/>
+                                    <note pname="c" oct="4" dur="8"/>
+                                    <note pname="c" oct="4" dur="16"/>
+                                    <note pname="c" oct="4" dur="4"/>
+
+                                </layer>
+                            </staff>
+                        </measure>
+                    </section>
+                </score>
+            </mdiv>
+        </body>
+    </music>
+</mei>`);
+
+
+       
+
+        let svg = vrvToolkit.renderToSVG(1, {});
+
+        let foo = document.getElementById("foo");
+        foo.innerHTML = svg;
+
+</script>
+
+</body>
