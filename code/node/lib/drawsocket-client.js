@@ -2120,7 +2120,7 @@ var drawsocket = (function(){
   function elementToJSON(elm)
   {
     let obj = {};
-    obj.tag = elm.tagName;
+    obj.type = elm.tagName;
     Array.prototype.forEach.call(elm.attributes, (attr) => {
       if( attr.specified )
       {
