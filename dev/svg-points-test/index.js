@@ -43,16 +43,24 @@ so, we need:
         and https://www.npmjs.com/package/chaikin-smooth
         and https://github.com/SatoshiKawabata/SVGCatmullRomSpline#readme
         https://www.npmjs.com/package/curve-interpolator
-        
+
     convert shapes to path
-    add points
-    remove points
     rotate
     scale
+        https://github.com/fontello/svgpath -- looks good, manipulates point array
+    
+    convert to-from svg string to point array
+        https://github.com/colinmeinke/svg-points
+    
+
     * note that paths need to be parsed into a sequence of typed points in an array to be simplified/transformed
         where should the path data live?
         
+    add points
+    remove points
         
+    which things should be in symbolist which in drawsocket?
+
 
 
 
