@@ -7,6 +7,7 @@
     "@tonejs/midi": "^2.0.7",
     "midi-file": "^1.1.1",
     "verovio-dev": "^2.2.0-4",
+    "xml-js": "^1.6.11",
     "xslt-processor": "^0.11.5"
   },
   "devDependencies": {},

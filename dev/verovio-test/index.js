@@ -6,7 +6,11 @@ const { Midi } = require('@tonejs/midi');
 
 const midiFile = require('midi-file');
 
- 
+const convert = require('xml-js');
+
+
+
+
 // xmlString: string of xml file contents
 // xsltString: string of xslt file contents
 // outXmlString: output xml string.
@@ -20,8 +24,14 @@ vrvToolkit.setOptions({
 });
 
 
-let src = fs.readFileSync("Beethoven_Sonata_no.29_op.106.mei");
+let src = fs.readFileSync("Bach_Nun_komm_der_Heiden_Heiland_BWV.659-2.mei");
 //let src = fs.readFileSync("MozartTrio.musicxml");
+
+let jsObj = convert.xml2js(src, { ignoreComment: true, compact: false });
+fs.writeFileSync('parsedMEI.json', JSON.stringify(jsObj)  );  
+fs.writeFileSync('parsedMEIxml.xml', convert.js2xml(jsObj, { ignoreComment: true, compact: false })  );  
+
+
 
 vrvToolkit.loadData(src.toString());
 /*
@@ -78,6 +88,10 @@ let mei = `<mei xmlns="http://www.music-encoding.org/ns/mei">
 </mei>`;
 
 */
+
+const meiJson = {
+
+};
 
 let svg = vrvToolkit.renderToSVG(1, {});
 fs.writeFileSync("hello.svg", svg);

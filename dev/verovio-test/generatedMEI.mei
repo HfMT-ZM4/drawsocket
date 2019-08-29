@@ -34,8 +34,8 @@
     </meiHead>
     <music>
         <body>
-            <mdiv xml:id="mdiv-0000000819521632">
-                <pages type="raw" xml:id="score-0000002067320683">
+            <mdiv xml:id="mdiv-0000000387626360">
+                <pages type="raw" xml:id="score-0000001127344443">
                     <!--Coordinates in MEI axis direction-->
                     <scoreDef xml:id="scoredef-000000083381832" midi.bpm="138">
                         <staffGrp xml:id="m-000000047097018" symbol="brace" bar.thru="true">
@@ -43,8 +43,8 @@
                             <staffDef xml:id="staffdef-000000020182723" clef.shape="F" clef.line="4" key.sig="2f" meter.count="2" meter.unit="2" n="2" lines="5" />
                         </staffGrp>
                     </scoreDef>
-                    <page xml:id="page-0000001774235937">
-                        <system xml:id="system-0000001853643367" system.leftmar="0" system.rightmar="0">
+                    <page xml:id="page-0000001536197154">
+                        <system xml:id="system-0000000724584867" system.leftmar="0" system.rightmar="0">
                             <section xml:id="section-000000205758969" />
                             <measure xml:id="measure-000000146715217" n="43">
                                 <staff xml:id="staff-000000028610364" n="1">
@@ -101,7 +101,7 @@
                                     </layer>
                                 </staff>
                             </measure>
-                            <scoreDef xml:id="scoredef-0000001871822921" key.sig="1s" keysig.showchange="true" />
+                            <scoreDef xml:id="scoredef-0000000414262135" key.sig="1s" keysig.showchange="true" />
                             <measure xml:id="measure-000000086570846" n="45">
                                 <staff xml:id="staff-000000080399874" n="1">
                                     <layer xml:id="layer-000000084162511" n="1">
@@ -161,7 +161,7 @@
                                 </staff>
                                 <slur xml:id="slur-000000183437610" staff="1" startid="#chord-L389F2" endid="#chord-L391F2" />
                                 <slur xml:id="slur-000000075484764" staff="1" startid="#chord-L392F2" endid="#chord-L395F2" />
-                                <dir xml:id="dir-0000000021615036" staff="1" startid="#chord-L386F2">dim</dir>
+                                <dir xml:id="dir-0000000209947674" staff="1" startid="#chord-L386F2">dim</dir>
                             </measure>
                             <measure xml:id="measure-000000053799528" n="46">
                                 <staff xml:id="staff-000000048836739" n="1">
@@ -231,13 +231,13 @@
                                                 </beam>
                                             </orig>
                                             <reg xml:id="c1r1" label="Version regularized for older keyboard">
-                                                <beam xml:id="beam-0000000826830084">
+                                                <beam xml:id="beam-0000001929367873">
                                                     <note xml:id="note-L403F2-2" dur="8" oct.ges="7" oct="6" pname="c" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L404F2-2" dur="8" oct.ges="6" oct="5" pname="b" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L406F2-2" dur="8" oct.ges="6" oct="5" pname="a" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L407F2-2" dur="8" oct.ges="6" oct="5" pname="b" stem.dir="down" accid.ges="n" />
                                                 </beam>
-                                                <beam xml:id="beam-0000001381024671">
+                                                <beam xml:id="beam-0000001063794283">
                                                     <note xml:id="note-L408F2-2" dur="8" oct.ges="7" oct="6" pname="c" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L409F2-2" dur="8" oct.ges="6" oct="5" pname="b" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L410F2-2" dur="8" oct.ges="6" oct="5" pname="a" stem.dir="down" accid.ges="n" />
@@ -259,12 +259,12 @@
                                     </layer>
                                 </staff>
                                 <dynam xml:id="dynam-000000067772590" staff="1" tstamp="1.000000">p</dynam>
-                                <dir xml:id="dir-0000001077160593" staff="1" tstamp="1.250000">cresc.</dir>
+                                <dir xml:id="dir-0000001705405068" staff="1" tstamp="1.250000">cresc.</dir>
                                 <slur xml:id="slur-000000163784326" staff="2" startid="#note-L407F1" endid="#note-L408F1" />
                                 <slur xml:id="slur-000000016141762" staff="2" startid="#note-L411F1" endid="#note-L413F1" />
                             </measure>
                         </system>
-                        <system xml:id="system-0000000891293273" system.leftmar="0" system.rightmar="0">
+                        <system xml:id="system-0000001140833072" system.leftmar="0" system.rightmar="0">
                             <measure xml:id="measure-000000141732914" n="48">
                                 <staff xml:id="staff-000000117968940" n="1">
                                     <layer xml:id="layer-000000168020446" n="1">
@@ -299,13 +299,13 @@
                                 <slur xml:id="slur-000000004837994" staff="2" startid="#note-L420F1" endid="#note-L421F1" />
                                 <choice xml:id="c3">
                                     <unclear xml:id="c3u1" label="Unclear original version">
-                                        <hairpin xml:id="hairpin-0000000368781737" staff="1" tstamp="2.200000" tstamp2="0m+2.7500" form="dim" />
+                                        <hairpin xml:id="hairpin-0000000241916142" staff="1" tstamp="2.200000" tstamp2="0m+2.7500" form="dim" />
                                     </unclear>
                                     <reg xml:id="c3r1" label="Proposal by editor 1">
-                                        <hairpin xml:id="hairpin-0000001666291753" staff="1" startid="#note-L418F2" endid="#note-L421F2" form="dim" />
+                                        <hairpin xml:id="hairpin-0000001790782561" staff="1" startid="#note-L418F2" endid="#note-L421F2" form="dim" />
                                     </reg>
                                     <reg xml:id="c3r2" label="Proposal by editor 2">
-                                        <hairpin xml:id="hairpin-0000001136737174" staff="1" startid="#note-L419F2" endid="#note-L421F2" form="dim" />
+                                        <hairpin xml:id="hairpin-0000001672949788" staff="1" startid="#note-L419F2" endid="#note-L421F2" form="dim" />
                                     </reg>
                                 </choice>
                             </measure>
@@ -398,7 +398,7 @@
                                                 </beam>
                                             </orig>
                                             <reg xml:id="c2r1" label="Version regularized for older keyboard">
-                                                <beam xml:id="beam-0000000940613200">
+                                                <beam xml:id="beam-0000000100380867">
                                                     <note xml:id="note-L448F2-2" dur="8" oct.ges="6" oct="5" pname="b" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L449F2-2" dur="8" oct.ges="6" oct="5" pname="a" stem.dir="down" accid.ges="n" />
                                                     <note xml:id="note-L450F2-2" dur="8" oct.ges="6" oct="5" pname="g" stem.dir="down" accid.ges="n" />
@@ -425,7 +425,7 @@
                                 </staff>
                                 <slur xml:id="slur-000000069986749" staff="1" startid="#note-L443F2" endid="#note-L461F2" />
                                 <octave xml:id="octave-000000142583612" staff="1" startid="#note-L443F2" endid="#note-L471F2" dis="8" dis.place="above" />
-                                <hairpin xml:id="hairpin-0000000020316212" staff="1" tstamp="1.000000" tstamp2="1m+1.7500" form="cres" />
+                                <hairpin xml:id="hairpin-0000000958306129" staff="1" tstamp="1.000000" tstamp2="1m+1.7500" form="cres" />
                             </measure>
                             <measure xml:id="measure-000000031337563" n="52">
                                 <staff xml:id="staff-000000086844580" n="1">
@@ -456,7 +456,7 @@
                                     </layer>
                                 </staff>
                                 <slur xml:id="slur-000000121857802" staff="2" startid="#note-L457F1" endid="#note-L458F1" />
-                                <hairpin xml:id="hairpin-0000000067966218" staff="1" tstamp="2.000000" tstamp2="0m+2.7500" form="dim" />
+                                <hairpin xml:id="hairpin-0000000052119623" staff="1" tstamp="2.000000" tstamp2="0m+2.7500" form="dim" />
                             </measure>
                             <measure xml:id="measure-000000008539129" n="53">
                                 <staff xml:id="staff-000000205793149" n="1">
@@ -495,7 +495,7 @@
                                 <slur xml:id="slur-000000122092714" staff="1" startid="#note-L464F2" endid="#note-L480F2" />
                             </measure>
                         </system>
-                        <system xml:id="system-0000002045081399" system.leftmar="0" system.rightmar="0">
+                        <system xml:id="system-0000001391526691" system.leftmar="0" system.rightmar="0">
                             <measure xml:id="measure-000000015958526" n="54">
                                 <staff xml:id="staff-000000148386449" n="1">
                                     <layer xml:id="layer-000000029076343" n="1">
@@ -567,7 +567,7 @@
                                     </layer>
                                 </staff>
                                 <slur xml:id="slur-000000053640896" staff="1" startid="#note-L484F2" endid="#note-L498F2" />
-                                <dir xml:id="dir-0000001554819200" staff="1" tstamp="1.500000">cresc.</dir>
+                                <dir xml:id="dir-0000000974286665" staff="1" tstamp="1.500000">cresc.</dir>
                             </measure>
                             <measure xml:id="measure-000000211465696" n="56">
                                 <staff xml:id="staff-000000189615600" n="1">
@@ -604,7 +604,7 @@
                                     </layer>
                                 </staff>
                             </measure>
-                            <boundaryEnd xml:id="bdend-0000001019141543" startid="section-000000205758969" type="section" />
+                            <boundaryEnd xml:id="bdend-0000000237855234" startid="section-000000205758969" type="section" />
                         </system>
                     </page>
                 </pages>

@@ -1,22 +1,4 @@
-<head>
-  <!--   <script src="node_modules/verovio-dev/index.js"></script>-->   
-        <script src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>
-
-</head>
-<body>
-<div id="foo"></div>
-
-<script>
-        let vrvToolkit = new verovio.toolkit(512);
-        
-        vrvToolkit.setOptions({
-                scale: 100,
-                evenNoteSpacing : true
-        });
-
-
-        vrvToolkit.loadData(`
-    <?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://music-encoding.org/schema/4.0.0/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://music-encoding.org/schema/4.0.0/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="4.0.0">
@@ -58,7 +40,7 @@
                                 <layer xml:id="layer-0000001752540705" n="2">
                                     <rest xml:id="rest-0000001184424157" dur.ppq="16" dur="2" ploc="e" oloc="4" />
                                     <rest xml:id="rest-0000000075849559" dur.ppq="8" dur="4" ploc="c" oloc="4" />
-                                    <note xml:id="note-0000001534920678" dur.ppq="8" dur="0" oct="4" pname="d" stem.dir="down" />
+                                    <note xml:id="note-0000001534920678" dur.ppq="8" dur="4" oct="4" pname="d" stem.dir="down" />
                                 </layer>
                             </staff>
                             <staff xml:id="staff-0000002114903374" n="2">
@@ -2523,17 +2505,3 @@
         </body>
     </music>
 </mei>
-
-`);
-
-
-       
-
-        let svg = vrvToolkit.renderToSVG(1, {});
-
-        let foo = document.getElementById("foo");
-        foo.innerHTML = svg;
-
-</script>
-
-</body>
