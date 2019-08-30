@@ -647,7 +647,7 @@ var drawsocket = (function(){
       // remove "new" from node?
       for( let prop in node)
       {
-        if( prop !== 'new' && prop != 'href' && prop != 'timetag' && prop != 'parent')
+        if( prop !== 'new' && prop != 'href' && prop != 'timetag' && prop != 'parent' )
         {
           if(prop === "style" )
           {
@@ -659,6 +659,10 @@ var drawsocket = (function(){
 
               el.style(cssprop, cssnode[cssprop]);
             }
+          }
+          else if( prop === "points" )
+          {
+            el.attr('d', SVGPoints.toPath(node.points) );
           }
           else if( prop === "child" || prop === "children" || prop === "text" || prop === "html")
           {

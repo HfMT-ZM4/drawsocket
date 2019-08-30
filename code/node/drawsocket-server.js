@@ -56,6 +56,8 @@ if (cluster.isMaster)
     const WebSocket = require('ws');
     //const url = require('url');
     const app = express();
+    const path = require('path');
+
     const Max = require('max-api');
 
     Max.post("started up ");
@@ -111,8 +113,9 @@ if (cluster.isMaster)
 
     if (userpath.length > 0 && userpath[0] != "default" ) {
         app.use(express.static(userpath[0]));
-        usr_root_path = userpath[0];
-        Max.post("adding user html root path " + userpath[0]);
+        
+        usr_root_path = userpath[0] + (userpath[0][userpath[0].length-1] != '/' ? '/' : '' );
+        Max.post("adding user html root path " + usr_root_path);
     }
 
    // Max.post("usr_path ", usr_root_path, userpath[0]);
@@ -134,9 +137,13 @@ if (cluster.isMaster)
         else
         {
             if (req.baseUrl == "")
-                res.sendFile(usr_root_path + infopage);
-            else
-                res.sendFile(usr_root_path + htmltemplate);
+            {
+                res.sendFile( path.resolve( usr_root_path + infopage) );
+            }
+            else 
+            {
+                res.sendFile( path.resolve( usr_root_path + htmltemplate) );
+            }
         }
         
     });
