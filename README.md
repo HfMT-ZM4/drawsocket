@@ -21,6 +21,7 @@ See the `hfmt.drawsocket.maxhelp` file for examples.
 3. Open a browser and type in the IP address and port specified in the Max patch, followed by a URL of your choosing. This address will be how you address the client browser from the Max server patch. 
     * For example, if the IP:Port is `192.168.1.1:3002`, and you wanted to use the address `/foo` for your OSC style messaging to the browser, you could type the following address into your browser: `192.168.1.1:3002/foo`. Note that if you are testing on the same computer, you can also use `localhost` instead of the IP address.
 
+For usage with [MaxScore](http://www.computermusicnotation.com/?page_id=22), please see `Drawsocket` folder in the Max Extras menu, example number 8, `render2browser.maxscore`.
 
 ## About Assets
 
