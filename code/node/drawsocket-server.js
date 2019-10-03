@@ -286,16 +286,16 @@ if (cluster.isMaster)
         cache_proc.send({
             key: 'write',
             url: prefix,
-            val: filename //usr_root_path+
+            val: usr_root_path+filename
         });
     });
 
     Max.addHandler("importcache", (filename, prefix) => {
-//        Max.post("attempting to import", userpath[0]+filename, prefix);
+  //      Max.post("attempting to import", userpath[0]+filename, prefix);
         cache_proc.send({
             key: 'read',
             url: prefix,
-            val: filename //usr_root_path+
+            val: usr_root_path+filename 
         });
     });
 

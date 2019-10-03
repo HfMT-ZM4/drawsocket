@@ -659,11 +659,11 @@ var drawsocket = (function(){
 
               el.style(cssprop, cssnode[cssprop]);
             }
-          }
+          }/*
           else if( prop === "points" )
           {
             el.attr('d', SVGPoints.toPath(node.points) );
-          }
+          }*/
           else if( prop === "child" || prop === "children" || prop === "text" || prop === "html")
           {
             // case of child node
@@ -2128,6 +2128,12 @@ var drawsocket = (function(){
     Array.prototype.forEach.call(elm.attributes, (attr) => {
       if( attr.specified )
       {
+      /*
+        if( obj.type === 'path' && attr.name === 'd' ){                
+          obj.points = SVGPoints.toPoints({ type: "path", d: attr.value });
+        }
+      */
+
         obj[attr.name] = attr.value;
       }
     });

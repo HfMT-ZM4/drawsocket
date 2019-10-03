@@ -405,7 +405,6 @@ class ClientState
   }
 
 
-  // might be a good idea to do this via node rather than loading via max, but maybe it doesn't matter... not sure
   loadCache(filename, prefix, _proc)
   {
     fs.readFile(filename, (err, data) =>{
