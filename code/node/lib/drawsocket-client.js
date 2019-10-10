@@ -1497,12 +1497,13 @@ var drawsocket = (function(){
         }
         else
         {
+        //  console.log(_obj);
           ret = _obj[call.method]();
         }
 
-        if (typeof ret.then === 'function' && ret !== null) {
-          ret.catch((e) => { 
-            // console.log(`caught error ${e}`);
+        if (ret && typeof ret.then === 'function' && ret !== null) {
+          ret.catch( (e) => { 
+             console.log(`caught error ${e}`);
           })
         }
         else if( ret !== undefined )
