@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 7,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -44,7 +44,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 250.0, 656.0, 340.0, 20.0 ],
-					"presentation_linecount" : 3,
 					"text" : "when the file is written, you should see the path to the file here"
 				}
 
@@ -100,13 +99,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-2",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 51.0, 680.0, 810.0, 48.0 ],
-					"text" : "/outfile : \"/Users/r/Documents/Max 8/Packages/drawsocket/extras/Drawsocket/7_writeSVG/downloaded-URLtoWrite.svg\""
+					"patching_rect" : [ 51.0, 680.0, 810.0, 34.0 ]
 				}
 
 			}
@@ -133,8 +130,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -699,7 +696,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 500.0, 285.0, 678.0, 271.0 ],
-					"rendermode" : 0,
+					"rendermode" : 1,
 					"url" : "http://localhost:3002/URLtoWrite"
 				}
 
@@ -709,13 +706,11 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-11",
-					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 128.0, 515.0, 313.0, 48.0 ],
-					"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://10.0.0.147:3002\""
+					"patching_rect" : [ 128.0, 515.0, 313.0, 34.0 ]
 				}
 
 			}

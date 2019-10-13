@@ -1497,12 +1497,13 @@ var drawsocket = (function(){
         }
         else
         {
+        //  console.log(_obj);
           ret = _obj[call.method]();
         }
 
-        if (typeof ret.then === 'function' && ret !== null) {
-          ret.catch((e) => { 
-            // console.log(`caught error ${e}`);
+        if (ret && typeof ret.then === 'function' && ret !== null) {
+          ret.catch( (e) => { 
+             console.log(`caught error ${e}`);
           })
         }
         else if( ret !== undefined )
@@ -1725,12 +1726,18 @@ var drawsocket = (function(){
         {
           let fill_ = o.hasOwnProperty('args') ? [fill_, o.body] : [o.body];
           functionStack[o.id] = new Function( ...fill_)
-          console.log(typeof functionStack[o.id], functionStack[o.id]);
+      //    console.log(typeof functionStack[o.id], functionStack[o.id]);
         }
         
         if( o.hasOwnProperty('call') && typeof functionStack[o.id] === 'function')
         {
-          processMethodCalls(functionStack[o.id], o.call );
+          if( o.call.length != 0 )
+          {
+            functionStack[o.id]( o.call );
+          }
+          else
+            functionStack[o.id]();
+          //processMethodCalls(functionStack[o.id], o.call );
         }
         
       }   
