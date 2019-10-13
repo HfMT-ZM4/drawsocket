@@ -1586,6 +1586,7 @@ createSVG.local = 1;
 function writeSVG()
 {
 	f = new File(pathToScript + mediaFolder + svgFile, "write", "TEXT");
+	post("path", pathToScript + mediaFolder + svgFile, "\n");
 	f.open();
 	f.eof = 0;
 	f.writeline("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -1603,7 +1604,6 @@ function writeSVG()
 	if (!isNaN(id)){
 	var svgElement = oscAddress[3];
 	var svgAttribute = svgGroups[s][keys[i]];
-	//post("svg", svgElement, svgAttribute, "\n");
 	if (id == oldID) {
 	if (oscAddress[2] != "draw") {
 		svg.replace(j + "::" + svgElement, svgAttribute);
@@ -2181,6 +2181,7 @@ function scroll()
 		outlet(0, "dictionary", cursors.name);	
 		break;
 	default:
+		post("msg", msg, "\n");
 		duration = msg[2]/1000;
 		eol = msg[1]
 		if (target == "socket") var trgt = "#main";

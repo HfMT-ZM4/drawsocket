@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="600px" height="200px" viewBox="0 0 600 200" style="background: ivory" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<g id="1">
+<rect x="20" y="51" width="0.6" height="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="20" y="33" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,0,0)" >  &lt;&lt;</text>
+<text x="302.5155334472656" y="33" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,0,0)" >&gt;&gt;</text>
+<text x="20" y="21" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Bravura" font-size="12" transform="matrix(1,0,0,1,0,0)" ></text>
+<text x="25" y="21" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Bravura" font-size="8" transform="matrix(1,0,0,1,0,0)" ></text>
+<text x="30" y="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,0,0)" >60</text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="24" transform="matrix(1,0,0,1,22,69.95999908447266)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,-78.6953125,65)" >MaxScoreIns-0</text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="24" transform="matrix(1,0,0,1,43,57)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="24" transform="matrix(1,0,0,1,43,69)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,83.62068939208984,66)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,142.62069702148438,57)" ></text>
+<rect x="90.22068939208984" y="45" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,201.62069702148438,60)" ></text>
+<rect x="142.62069702148438" y="57" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,260.6206970214844,57)" ></text>
+<rect x="201.62069702148438" y="60" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<rect x="260.6206970214844" y="57" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<rect x="580.1967163085938" y="51" width="0.6" height="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<rect x="322" y="51" width="0.6" height="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,347,60)" ></text>
+<rect x="347" y="60" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<path d="M20,51 L580.1967163085938,51,M20,57 L580.1967163085938,57,M20,63 L580.1967163085938,63,M20,69 L580.1967163085938,69,M20,75 L580.1967163085938,75," fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+</g>
+<g id="2">
+<rect x="20" y="51" width="0.6" height="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="20" y="33" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,0,0)" >  &lt;&lt;</text>
+<text x="302.5155334472656" y="33" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,0,0)" >&gt;&gt;</text>
+<text x="20" y="21" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Bravura" font-size="12" transform="matrix(1,0,0,1,0,0)" ></text>
+<text x="25" y="21" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Bravura" font-size="8" transform="matrix(1,0,0,1,0,0)" ></text>
+<text x="30" y="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,0,0)" >60</text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="24" transform="matrix(1,0,0,1,22,69.96000671386719)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Arial" font-size="10" transform="matrix(1,0,0,1,-78.6953125,65)" >MaxScoreIns-1</text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="24" transform="matrix(1,0,0,1,43,57)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="24" transform="matrix(1,0,0,1,43,69)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,83.62068939208984,72)" ></text>
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,142.62069702148438,66)" ></text>
+<rect x="90.22068939208984" y="51" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,201.62069702148438,63)" ></text>
+<rect x="149.22069702148437" y="45" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,0)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,260.6206970214844,60)" ></text>
+<rect x="201.62069702148438" y="63" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<rect x="580.1967163085938" y="51" width="0.6" height="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<rect x="322" y="51" width="0.6" height="24" fill="black" fill-opacity="1" stroke="none" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<rect x="260.6206970214844" y="60" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<text x="0" y="0" fill="rgb(0,0,255)" fill-opacity="1" stroke-width="1" stroke-opacity="1" font-family="Bravura" font-size="22" transform="matrix(1,0,0,1,347,60)" ></text>
+<rect x="347" y="60" width="0.75" height="20" fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+<path d="M20,51 L580.1967163085938,51,M20,57 L580.1967163085938,57,M20,63 L580.1967163085938,63,M20,69 L580.1967163085938,69,M20,75 L580.1967163085938,75," fill="black" fill-opacity="1" stroke="black" stroke-width="0.4" stroke-opacity="1" transform="matrix(1,0,0,1,0,0)" />
+</g>
+</svg>
