@@ -57,9 +57,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 577.6666259765625, 16.0, 448.0, 24.0 ],
+					"patching_rect" : [ 568.6666259765625, 18.5, 463.0, 24.0 ],
 					"presentation_linecount" : 3,
-					"text" : "Requires the latest version of MaxScore please get from here:",
+					"text" : "Requires the latest version of MaxScore, please get from here:",
 					"textcolor" : [ 0.929411764705882, 0.341176470588235, 0.270588235294118, 1.0 ]
 				}
 
