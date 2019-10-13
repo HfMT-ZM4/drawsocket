@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 7,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -48,8 +48,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -193,7 +193,6 @@
 					}
 ,
 					"patching_rect" : [ 1245.0, 381.5, 77.0, 22.0 ],
-					"presentation_linecount" : 2,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -224,8 +223,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 537.5, 541.5, 385.0, 22.0 ],
-					"text" : "http://localhost:3002/webview.html?fetch=scrolling-score.json&prefix=/*"
+					"patching_rect" : [ 820.0, 548.5, 444.0, 22.0 ],
+					"text" : "http://localhost:3002/webview.html?fetch=webserver/scrolling-score.json&prefix=/*"
 				}
 
 			}
@@ -240,7 +239,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1000.0, 236.0, 337.0, 106.0 ],
-					"presentation_linecount" : 9,
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -100, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 102, 105, 108, 101, 0, 0, 0, 0, 0, 0, 0, 100, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 84, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 47, 102, 101, 116, 99, 104, 0, 0, 44, 115, 0, 0, 119, 101, 98, 115, 101, 114, 118, 101, 114, 47, 115, 99, 114, 111, 108, 108, 105, 110, 103, 45, 115, 99, 111, 114, 101, 46, 106, 115, 111, 110, 0, 0, 0, 0, 0, 16, 47, 112, 114, 101, 102, 105, 120, 0, 44, 115, 0, 0, 47, 42, 0, 0 ],
 					"saved_bundle_length" : 176,
 					"text" : "/* : {\n\t/key : \"file\",\n\t/val : {\n\t\t/fetch : \"webserver/scrolling-score.json\",\n\t\t/prefix : \"/*\"\n\t}\n}"
@@ -323,7 +321,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 820.0, 474.16668701171875, 306.0, 61.0 ],
-					"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://:3002\""
+					"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://192.168.178.36:3002\""
 				}
 
 			}
@@ -433,7 +431,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 421.0, 504.0, 320.0, 240.0 ],
-					"rendermode" : 0,
+					"rendermode" : 1,
 					"url" : "http://localhost:3002/2"
 				}
 
@@ -471,7 +469,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 40.0, 504.0, 320.0, 240.0 ],
-					"rendermode" : 0,
+					"rendermode" : 1,
 					"url" : "http://localhost:3002/1"
 				}
 
@@ -526,6 +524,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
 					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"midpoints" : [ 829.5, 580.5, 767.0, 580.5, 767.0, 461.5, 430.5, 461.5 ],
+					"source" : [ "obj-18", 0 ]
 				}
 
 			}
