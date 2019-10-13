@@ -4,7 +4,7 @@ A Max/node.js based server/client system for drawing to web-browsers.
 
 ## Installation
 
-Requires Max 8, and is designed for use with [CNMAT's Odot library](https://github.com/CNMAT/CNMAT-odot/releases) and [MaxScore](http://www.computermusicnotation.com/?page_id=22).
+Requires Max version >= 8.1.0, and is designed for use with [CNMAT's Odot library](https://github.com/CNMAT/CNMAT-odot/releases) and [MaxScore](http://www.computermusicnotation.com/?page_id=22).
 
 The `hfmt.drawsocket` abstraction is a wrapper around the Node For Max's `node.script` object, and relies on a set of scripts found in the package's `code` folder. Once the package is installed in the Packages folder, the main server and client scripts will be automatically handled by the abstraction.
 
