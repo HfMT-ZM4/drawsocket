@@ -1022,7 +1022,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 128.0, 155.0, 119.0, 22.0 ],
-					"text" : "newScore 4 600 800"
+					"text" : "newScore 2 600 200"
 				}
 
 			}
