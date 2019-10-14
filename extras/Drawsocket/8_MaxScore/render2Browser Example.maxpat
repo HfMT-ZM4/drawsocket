@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 140.0, 79.0, 1178.0, 668.0 ],
+		"rect" : [ 38.0, 79.0, 1178.0, 668.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,8 +44,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1089.6666259765625, 523.0, 69.75, 47.0 ],
-					"presentation_linecount" : 6,
+					"patching_rect" : [ 1089.6666259765625, 523.0, 76.0, 47.0 ],
 					"text" : "required for rendering to browser"
 				}
 
@@ -58,7 +57,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 568.6666259765625, 18.5, 463.0, 24.0 ],
-					"presentation_linecount" : 3,
 					"text" : "Requires the latest version of MaxScore, please get from here:",
 					"textcolor" : [ 0.929411764705882, 0.341176470588235, 0.270588235294118, 1.0 ]
 				}
@@ -73,7 +71,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 577.6666259765625, 45.0, 435.0, 35.0 ],
-					"presentation_linecount" : 4,
 					"text" : ";\rmax launchbrowser http://www.computermusicnotation.com/downloadmaxscore/"
 				}
 
@@ -343,7 +340,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 210.25, 610.0, 321.0, 48.0 ],
-					"text" : "/port/ip : \"http://192.168.178.177:13002\",\n/port/localhost : \"http://localhost:13002\""
+					"text" : "/port/ip : \"http://193.175.148.136:9999\",\n/port/localhost : \"http://localhost:9999\""
 				}
 
 			}
@@ -378,8 +375,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "" ],
-					"patching_rect" : [ 26.25, 575.0, 203.0, 22.0 ],
-					"text" : "hfmt.drawsocket public @port 13002"
+					"patching_rect" : [ 26.25, 575.0, 197.0, 22.0 ],
+					"text" : "hfmt.drawsocket public @port 9999"
 				}
 
 			}
@@ -449,7 +446,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 10.0, 58.0, 490.1666259765625, 47.0 ],
+					"patching_rect" : [ 10.0, 58.0, 492.0, 47.0 ],
 					"text" : "This patch shows how to create drawsocket messages for display of notation in browsers.\nLaunch Google Chrome and create two browser tabs with the URLs http://localhost:3002/1 and http://localhost:3002/2 to see the result of the staff group definitions."
 				}
 
@@ -817,8 +814,8 @@
 , 							{
 								"name" : "caption text",
 								"default" : 								{
-									"fontsize" : [ 11.0 ],
-									"fontface" : [ 2 ]
+									"fontface" : [ 2 ],
+									"fontsize" : [ 11.0 ]
 								}
 ,
 								"parentstyle" : "",
@@ -827,9 +824,9 @@
 , 							{
 								"name" : "section dividers",
 								"default" : 								{
+									"fontface" : [ 3 ],
 									"fontsize" : [ 15.0 ],
-									"fontname" : [ "Arial" ],
-									"fontface" : [ 3 ]
+									"fontname" : [ "Arial" ]
 								}
 ,
 								"parentstyle" : "",
@@ -848,9 +845,9 @@
 , 							{
 								"name" : "titles",
 								"default" : 								{
+									"fontface" : [ 1 ],
 									"fontsize" : [ 20.0 ],
-									"fontname" : [ "Arial" ],
-									"fontface" : [ 1 ]
+									"fontname" : [ "Arial" ]
 								}
 ,
 								"parentstyle" : "",
@@ -1025,7 +1022,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 128.0, 155.0, 119.0, 22.0 ],
-					"text" : "newScore 2 600 400"
+					"text" : "newScore 4 600 800"
 				}
 
 			}
@@ -1059,7 +1056,7 @@
 					"numoutlets" : 4,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 128.0, 331.0, 597.5, 207.5 ],
+					"patching_rect" : [ 128.0, 331.0, 596.5, 208.5 ],
 					"prototypename" : "bcanvas",
 					"varname" : "bcanvas",
 					"viewvisibility" : 1
@@ -1181,7 +1178,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-35", 1 ],
-					"midpoints" : [ 582.5, 312.5, 716.0, 312.5 ],
+					"midpoints" : [ 582.5, 312.5, 715.0, 312.5 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -1228,7 +1225,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-35", 1 ],
-					"midpoints" : [ 365.5, 312.5, 716.0, 312.5 ],
+					"midpoints" : [ 365.5, 312.5, 715.0, 312.5 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -1243,7 +1240,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-35", 1 ],
-					"midpoints" : [ 187.5, 312.5, 716.0, 312.5 ],
+					"midpoints" : [ 187.5, 312.5, 715.0, 312.5 ],
 					"source" : [ "obj-34", 1 ]
 				}
 
@@ -1258,7 +1255,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 330.333333333333371, 564.25, 35.75, 564.25 ],
+					"midpoints" : [ 330.0, 564.25, 35.75, 564.25 ],
 					"source" : [ "obj-35", 1 ]
 				}
 
@@ -1550,8 +1547,8 @@
 , 			{
 				"name" : "caption text",
 				"default" : 				{
-					"fontsize" : [ 11.0 ],
-					"fontface" : [ 2 ]
+					"fontface" : [ 2 ],
+					"fontsize" : [ 11.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -1560,9 +1557,9 @@
 , 			{
 				"name" : "section dividers",
 				"default" : 				{
+					"fontface" : [ 3 ],
 					"fontsize" : [ 15.0 ],
-					"fontname" : [ "Arial" ],
-					"fontface" : [ 3 ]
+					"fontname" : [ "Arial" ]
 				}
 ,
 				"parentstyle" : "",
@@ -1581,9 +1578,9 @@
 , 			{
 				"name" : "titles",
 				"default" : 				{
+					"fontface" : [ 1 ],
 					"fontsize" : [ 20.0 ],
-					"fontname" : [ "Arial" ],
-					"fontface" : [ 1 ]
+					"fontname" : [ "Arial" ]
 				}
 ,
 				"parentstyle" : "",
