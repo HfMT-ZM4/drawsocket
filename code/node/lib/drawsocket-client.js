@@ -1,4 +1,4 @@
-/* global TweenMax:readonly, TimelineMax:readonly, Tone:readonly, StartAudioContext:readonly, d3:readonly, timesync:readonly  */
+/* global TweenMax:readonly, TimelineMax:readonly, Tone:readonly, StartAudioContext:readonly, d3:readonly, timesync:readonly, SVGPoints:readonly  */
 
 /*
 
@@ -659,11 +659,11 @@ var drawsocket = (function(){
 
               el.style(cssprop, cssnode[cssprop]);
             }
-          }/*
-          else if( prop === "points" )
+          }
+          else if( prop === "points" && Array.isArray(node.points) ) // must be an array (i.e. more than one point)
           {
-            el.attr('d', SVGPoints.toPath(node.points) );
-          }*/
+            el.attr('d',  SVGPoints.toPath(node.points));
+          }
           else if( prop === "child" || prop === "children" || prop === "text" || prop === "html")
           {
             // case of child node
@@ -1724,19 +1724,75 @@ var drawsocket = (function(){
       {
         if( o.hasOwnProperty('body') )
         {
-          let fill_ = o.hasOwnProperty('args') ? [fill_, o.body] : [o.body];
-          functionStack[o.id] = new Function( ...fill_)
-      //    console.log(typeof functionStack[o.id], functionStack[o.id]);
+          let fill_;
+          
+          if( o.hasOwnProperty('args') )
+          {
+            if( typeof o.args === "string" )
+              fill_ = [o.args, o.body];
+            else
+              fill_ = [...o.args, o.body];
+
+          } 
+          else
+          {
+            fill_ = o.body;
+          }
+
+          functionStack[o.id] = new Function( ...fill_);
+
+        //  console.log(typeof functionStack[o.id], fill_);
         }
         
         if( o.hasOwnProperty('call') && typeof functionStack[o.id] === 'function')
         {
-          if( o.call.length != 0 )
-          {
-            functionStack[o.id]( o.call );
+          let ret = null;
+          
+          try {
+            
+            if( o.call === "" )
+            {
+              ret = functionStack[o.id]();
+            }
+            else
+            {
+              if( Array.isArray(o.call) )
+              {
+              //  console.log("calling with args", ...o.call );    
+                ret = functionStack[o.id]( ...o.call );
+              }
+              else
+                ret = functionStack[o.id](o.call);
+
+            }
+              
+            if( ret )
+            {
+              sendMsg({ 
+                event : {
+                  key : "function",
+                  val : {
+                    id : o.id,
+                    return : ret
+                  }
+                }
+              });
+            }
+
+          } catch (err) {
+            sendMsg({
+              event : {
+                key : "function",
+                val : {
+                  id : o.id,
+                  error : err
+                }
+              }
+            });
           }
-          else
-            functionStack[o.id]();
+          
+          
+
           //processMethodCalls(functionStack[o.id], o.call );
         }
         
@@ -1968,6 +2024,15 @@ var drawsocket = (function(){
           }
         break;
         default:
+            sendMsg({
+              url: oscprefix,
+              event: {
+                key: "input",
+                val: {
+                  error: `unrouted command key: ${key}`
+                }
+              }
+            });
             console.log("unrouted command key:", key, objValue );
         break;
       }
@@ -2135,11 +2200,10 @@ var drawsocket = (function(){
     Array.prototype.forEach.call(elm.attributes, (attr) => {
       if( attr.specified )
       {
-      /*
-        if( obj.type === 'path' && attr.name === 'd' ){                
+        if( obj.type === 'path' && attr.name === 'd' )
+        {                
           obj.points = SVGPoints.toPoints({ type: "path", d: attr.value });
         }
-      */
 
         obj[attr.name] = attr.value;
       }
