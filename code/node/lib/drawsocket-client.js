@@ -2126,7 +2126,7 @@ var drawsocket = (function(){
 
   function procTouchEvent(event, caller)
   {
-   
+    
     let obj = {};
     obj.event = {
       url: oscprefix,
@@ -2141,7 +2141,7 @@ var drawsocket = (function(){
           meta: event.metaKey
         },
         target: elementToJSON(event.target),
-        fingers: event.fingers
+        fingers: ongoingTouches
       }
     };
 
@@ -2154,23 +2154,12 @@ var drawsocket = (function(){
     event.preventDefault();
 
     let touches = event.changedTouches;
-    let touchinfo = {
-      x: [],
-      y: [],
-      idx: []
-    };
-
+   
     for (let i = 0; i < touches.length; i++) {
       ongoingTouches.push(copyTouch(touches[i]));
-      let idx = ongoingTouchIndexById(touches[i].identifier);
+      //let idx = ongoingTouchIndexById(touches[i].identifier);
 
-      touchinfo.x.push(touches[i].clientX);
-      touchinfo.y.push(touches[i].clientY);
-      touchinfo.idx.push(idx);
-      //bndl[oscprefix+"/"+event.target.id+"/finger/"+idx+"/start/xy"] = [touches[i].clientX, touches[i].clientY];
     }
-   // sendMsg(bndl);
-    event.fingers = touchinfo;
     
     procTouchEvent(event, "touchstart");
 
@@ -2179,24 +2168,12 @@ var drawsocket = (function(){
   function handleMove(event) {
     event.preventDefault();
     let touches = event.changedTouches;
-    let touchinfo = {
-      x: [],
-      y: [],
-      idx: []
-    };
     
     for (let i = 0; i < touches.length; i++) {
       let idx = ongoingTouchIndexById(touches[i].identifier);
       ongoingTouches.splice(idx, 1, copyTouch(touches[i])); // swap in the new touch record
-      
-      touchinfo.x.push(touches[i].clientX);
-      touchinfo.y.push(touches[i].clientY);
-      touchinfo.idx.push(idx);
-      //bndl[oscprefix+"/"+evt.target.id+"/finger/"+idx+"/move/xy"] = [touches[i].clientX, touches[i].clientY];
-    }
-//    sendMsg(bndl);
 
-    event.fingers = touchinfo;
+    }
     procTouchEvent(event, "touchmove");
 
 
@@ -2205,42 +2182,33 @@ var drawsocket = (function(){
   function handleEnd(event) {
     event.preventDefault();
     let touches = event.changedTouches;
-    let touchinfo = {
-      x: [],
-      y: [],
-      idx: []
-    };
 
     for (let i = 0; i < touches.length; i++) {
       let idx = ongoingTouchIndexById(touches[i].identifier);
-      ongoingTouches.splice(i, 1); // remove it; we're done
+      ongoingTouches.splice(idx, 1); // remove it; we're done
 
-      touchinfo.x.push(touches[i].clientX);
-      touchinfo.y.push(touches[i].clientY);
-      touchinfo.idx.push(idx);
-      //bndl[oscprefix+"/"+evt.target.id+"/finger/"+idx+"/end/xy"] = [touches[i].clientX, touches[i].clientY];
     }
-//    sendMsg(bndl);
 
-    event.fingers = touchinfo;
     procTouchEvent(event, "touchend");
 
   }
 
-  function handleCancel(evt) {
-    evt.preventDefault();
-    let touches = evt.changedTouches;
-    let bndl = emptybundle();
+  function handleCancel(event) {
+    event.preventDefault();
+    let touches = event.changedTouches;
+
     for (let i = 0; i < touches.length; i++) {
       let idx = ongoingTouchIndexById(touches[i].identifier);
-      ongoingTouches.splice(i, 1); // remove it; we're done
-      bndl[oscprefix+"/"+evt.target.id+"/finger/"+idx+"/cancel/xy"] = [touches[i].clientX, touches[i].clientY];
+      ongoingTouches.splice(idx, 1); // remove it; we're done
+
     }
-    sendMsg(bndl);
+
+    procTouchEvent(event, "touchcancel");
+
   }
 
   function copyTouch(touch) {
-    return { identifier: touch.identifier, clientX: touch.clientX, clientY: touch.clientY };
+    return { identifier: touch.identifier, x: touch.clientX, y: touch.clientY };
   }
 
   function ongoingTouchIndexById(idToFind) {
