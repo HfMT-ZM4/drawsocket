@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1640px" height="200px" viewBox="0 0 1640 200" style="background:rgb(253.98,253.98,239.7)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<svg width="600px" height="200px" viewBox="0 0 600 200" style="background:rgb(253.98,253.98,239.7)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <g id="1" transform="matrix(1,0,0,1,0,0)">
+<text x="20" y="39" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" >1</text>
+<text x="20" y="33" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(64,64,64)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" >  &lt;&lt;</text>
+<text x="302.5155334472656" y="33" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(64,64,64)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" >&gt;&gt;</text>
+<text x="20" y="21" font-family="Bravura" font-style="normal" font-weight="normal" font-size="12" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" ></text>
+<text x="25" y="21" font-family="Bravura" font-style="normal" font-weight="normal" font-size="8" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" ></text>
+<text x="30" y="24" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" >60.0</text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,22,69.95999908447266)" ></text>
 <text x="0" y="0" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,-78.6953125,65)" >MaxScoreIns-0</text>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,38.620689392089844,51)" ></text>
-<path d="M5,3 L153,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,40.620689392089844,48)"/>
-<path d="M153,1 L153,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,40.620689392089844,48)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,225.62069702148438,60)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,227.62069702148438,57)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,227.62069702148438,57)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,225.62069702148438,51)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,227.62069702148438,48)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,227.62069702148438,48)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,321.6206970214844,69)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,323.6206970214844,66)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,323.6206970214844,66)"/>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,43,57)" ></text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,43,69)" ></text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,83.62068939208984,66)" ></text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,142.62069702148438,54)" ></text>
+<rect x="90.22068939208984" y="45" width="0.75" height="20" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,201.62069702148438,72)" ></text>
+<rect x="142.62069702148438" y="54" width="0.75" height="20" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,22,165.9600067138672)" ></text>
 <text x="0" y="0" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,-78.6953125,161)" >MaxScoreIns-1</text>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,420,63)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,422,60)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,422,60)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,520,63)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,522,60)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,522,60)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,620,57)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,622,54)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,622,54)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,720,66)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,722,63)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,722,63)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,820,69)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,822,66)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,822,66)"/>
-<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,920,66)" ></text>
-<path d="M5,3 L73,3" stroke="rgb(0,0,255)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,922,63)"/>
-<path d="M73,1 L73,5" stroke="rgb(0,0,255)" stroke-width="1" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,922,63)"/>
-<path d="M20 51 L420 51 M20 57 L420 57 M20 63 L420 63 M20 69 L420 69 M20 75 L420 75 M20 147 L420 147 M20 153 L420 153 M20 159 L420 159 M20 165 L420 165 M20 171 L420 171 M420 51 L820 51 M420 57 L820 57 M420 63 L820 63 M420 69 L820 69 M420 75 L820 75 M420 147 L820 147 M420 153 L820 153 M420 159 L820 159 M420 165 L820 165 M420 171 L820 171 M820 51 L1220 51 M820 57 L1220 57 M820 63 L1220 63 M820 69 L1220 69 M820 75 L1220 75 M820 147 L1220 147 M820 153 L1220 153 M820 159 L1220 159 M820 165 L1220 165 M820 171 L1220 171 M1220 51 L1620 51 M1220 57 L1620 57 M1220 63 L1620 63 M1220 69 L1620 69 M1220 75 L1620 75 M1220 147 L1620 147 M1220 153 L1620 153 M1220 159 L1620 159 M1220 165 L1620 165 M1220 171 L1620 171 " stroke="rgb(0,0,0)" stroke-width="0.4" fill="rgb(0,0,0)" transform="matrix(1,0,0,1,0,0)"/>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,43,153)" ></text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,43,165)" ></text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,83.62068939208984,162)" ></text>
+<rect x="208.22069702148437" y="51" width="0.75" height="20" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,142.62069702148438,156)" ></text>
+<rect x="90.22068939208984" y="141" width="0.75" height="20" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="22" fill="rgb(0,0,255)" fill-opacity="1" transform="matrix(1,0,0,1,201.62069702148438,156)" ></text>
+<path d="M93,71 L137,91" stroke="rgb(0,0,0)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,41.99999237060547,37)"/>
+<rect x="142" y="28" width="34" height="13" stroke="rgb(0,0,0)" stroke-width="2" stroke-opacity="1" fill="none" fill-opacity="1" transform="matrix(1,0,0,1,68.99999237060547,83)"/>
+<rect x="142.62069702148438" y="156" width="0.75" height="20" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<rect x="201.62069702148438" y="156" width="0.75" height="20" fill="rgb(0,0,255)" stroke="rgb(0,0,255)" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<path d="M20 51 L322.5155334472656 51 M20 57 L322.5155334472656 57 M20 63 L322.5155334472656 63 M20 69 L322.5155334472656 69 M20 75 L322.5155334472656 75 M20 147 L322.5155334472656 147 M20 153 L322.5155334472656 153 M20 159 L322.5155334472656 159 M20 165 L322.5155334472656 165 M20 171 L322.5155334472656 171 M322 51 L580.1967163085938 51 M322 57 L580.1967163085938 57 M322 63 L580.1967163085938 63 M322 69 L580.1967163085938 69 M322 75 L580.1967163085938 75 M322 147 L580.1967163085938 147 M322 153 L580.1967163085938 153 M322 159 L580.1967163085938 159 M322 165 L580.1967163085938 165 M322 171 L580.1967163085938 171 " stroke="rgb(0,0,0)" stroke-width="0.4" fill="rgb(0,0,0)" transform="matrix(1,0,0,1,0,0)"/>
+<rect x="20" y="51" width="0.6" height="120" fill="rgb(0,0,0)" stroke="none" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<rect x="580.1967163085938" y="51" width="0.6" height="120" fill="rgb(0,0,0)" stroke="none" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+<rect x="322" y="51" width="0.6" height="120" fill="rgb(0,0,0)" stroke="none" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
 </g>
 </svg>
