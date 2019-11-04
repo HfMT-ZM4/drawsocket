@@ -1,5 +1,11 @@
 var pathToScript = "default";
 var port = 3002;
+var template = 'default';
+
+function settemplate(templateFile)
+{
+	template = templateFile;
+}
 
 function setpath(relPath)
 {
@@ -41,6 +47,6 @@ function bang()
 	}
 	// outlet(0, "script", "start");
 	//else
-		outlet(0, "script", "start", pathToScript, port );
+		outlet(0, "script", "start", pathToScript, port, template );
 
 }

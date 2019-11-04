@@ -32,11 +32,12 @@ SOFTWARE.
 // settings
 // args from Max "script start path port"
 const userpath = process.argv.slice(2);
-const http_port = Number(process.argv.slice(3));
+const http_port = Number(process.argv[3]);
+const in_template = process.argv[4];
 
-let htmltemplate = '/lib/drawsocket-page.html';
+let usr_template = in_template !== "default";
+let htmltemplate = usr_template ? in_template : '/lib/drawsocket-page.html' ;
 let infopage = "/lib/drawsocket-info.html";
-let usr_template = false;
 
 // load libaries
 const cluster = require('cluster');
