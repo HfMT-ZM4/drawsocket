@@ -2,6 +2,10 @@
 
 A Max/node.js based server/client system for drawing to web-browsers.
 
+## Use in production
+
+Note: Drawsocket has been used in large scale production, but as with all technology, **the system must be tested before use in prodution**. Users are advised to thoroughly test your production network and display devices before any live performance.
+
 ## Installation
 
 Requires Max version >= 8.1.0, and is designed for use with [CNMAT's Odot library](https://github.com/CNMAT/CNMAT-odot/releases) and [MaxScore](http://www.computermusicnotation.com/?page_id=22).
