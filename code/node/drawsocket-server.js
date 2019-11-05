@@ -177,6 +177,16 @@ if (cluster.isMaster)
 
     wss.setMaxListeners(200);
 
+    let disconnectionMsg = {};
+    disconnectionMsg.event = {
+        url: "/foo",
+        key: 'status',
+        val: {
+            connected: 0
+        }
+    };
+
+
     // create OSC websockets from vanilla websockts, and add to clients list
     wss.on("connection", function (socket, req) {
 
@@ -253,9 +263,9 @@ if (cluster.isMaster)
             clients.removeClient(req.url, uniqueid);
             socket.terminate();
 
-            let _msg = {};
-            _msg[req.url + '/connected'] = 0;
-            Max.outlet(_msg);
+            disconnectionMsg.event.url = req.url;
+
+            Max.outlet(disconnectionMsg);
 
 //            Max.post("closed socket : " + uniqueid + " @ " + req.url);
 
