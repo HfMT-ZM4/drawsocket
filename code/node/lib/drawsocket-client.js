@@ -89,7 +89,7 @@ var drawsocket = (function(){
   let mainSVG = d3.select("#svg"); // actual svg
   let maindef = d3.select("#defs");
   let forms = d3.select("#forms");
-
+  let statusDiv = document.getElementById("loading");
   let log_enabled = false;
 
   function removeNode(node) {
@@ -2371,6 +2371,11 @@ var drawsocket = (function(){
 
   function do_sync()
   {
+    console.log('starting sync');
+
+    statusDiv.innerHTML = "<p>synchronizing...</p>";
+    statusDiv.style.visibility = "visible";
+
     setTimeout(function () {
       ts.sync().catch(err => console.log('timesync err', err));
     }, 100);
@@ -2417,6 +2422,9 @@ var drawsocket = (function(){
     this.port.onopen = function() {
   //    display_log("opened port");
       console.log("connected");
+      statusDiv.style.visibility = "hidden";
+
+      do_sync();
 
       pingResponse();
 
@@ -2425,6 +2433,8 @@ var drawsocket = (function(){
     this.port.onclose = function() 
     {
       setTimeout( ()=>{
+        statusDiv.innerHTML = "<p>reconnecting...</p>";
+        statusDiv.style.visibility = "visible";
         console.log("tring to reconnect");
         try {
           port = new _SocketPort_();
@@ -2495,8 +2505,6 @@ var drawsocket = (function(){
     {
       port = new _SocketPort_();
       hasstate = false;
-      document.getElementById("loading").style.visibility = "visible";
-      do_sync();
     }
     else
     {
@@ -2559,16 +2567,16 @@ var drawsocket = (function(){
     ts.on('sync', function (state) {
 
       console.log('syncing', state);
+      statusDiv.innerHTML = "<p>synchronizing...</p>";
+      statusDiv.style.visibility = "visible";
+
       if( state === 'end' )
       {
         display_log('sync offset: ' + ts.offset + ' ms');
+        statusDiv.style.visibility = "hidden";
 
         if( !hasstate )
         {
-  //        let loading = document.getElementById("loading");
-  //        document.body.removeChild(loading);
-          document.getElementById("loading").style.visibility = "hidden";
-
           // ask server for current state
           port.sendObj({ statereq: 1 });
 
@@ -2652,7 +2660,6 @@ var drawsocket = (function(){
     initMultitouch("touchdiv");
    
     
-    do_sync();
   }
 
 
