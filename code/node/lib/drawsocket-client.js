@@ -1332,8 +1332,7 @@ var drawsocket = (function(){
 
   Tone.Buffer.on('load', function(){
     let msg = {};
-    msg['event'] = {
-      url: oscprefix,
+    msg.event = {
       key: 'status',
       val: {
         bufferloaded: 1
@@ -2018,7 +2017,6 @@ var drawsocket = (function(){
             generateStyleDefs(mainSVG.node());
 
             sendMsg({
-                url: oscprefix,
                 key: 'svgElement',
                 val :  mainSVG.node().outerHTML
               });
@@ -2026,7 +2024,6 @@ var drawsocket = (function(){
         break;
         default:
             sendMsg({
-              url: oscprefix,
               event: {
                 key: "input",
                 val: {
@@ -2129,7 +2126,6 @@ var drawsocket = (function(){
     
     let obj = {};
     obj.event = {
-      url: oscprefix,
       key: 'touch',
       val: {
         action: caller,
@@ -2265,24 +2261,24 @@ var drawsocket = (function(){
     if( mouseCallbacks[caller].size > 0 )
       mouseCallbacks[caller].forEach( cb => cb(event) );
 
-    let obj = {};
-    obj['event'] = {
-      url: oscprefix,
-      key: 'mouse',
-      val: {
-        action: caller,
-        xy: [ event.clientX, event.clientY ],
-        button: event.buttons,
-        mods : {
-          alt: event.altKey,
-          shift: event.shiftKey,
-          ctrl: event.ctrlKey,
-          meta: event.metaKey
-        },
-        target: elementToJSON(event.target)
+    let obj = {
+      event: {
+        key: 'mouse',
+        val: {
+          action: caller,
+          xy: [ event.clientX, event.clientY ],
+          button: event.buttons,
+          mods : {
+            alt: event.altKey,
+            shift: event.shiftKey,
+            ctrl: event.ctrlKey,
+            meta: event.metaKey
+          },
+          target: elementToJSON(event.target)
+        }
       }
     };
-
+  
     if( caller == 'wheel' )
     {
       obj.event.val.delta = [ event.deltaX, event.deltaY ];
@@ -2357,7 +2353,6 @@ var drawsocket = (function(){
 
     let msg = {};
     msg['event'] = {
-      url: oscprefix,
       key: 'status',
       val: {
         connected: 1,
@@ -2604,7 +2599,6 @@ var drawsocket = (function(){
    //   console.log(`dx=${prev_offset} new=${ts.offset}`);
       let msg = {};
       msg['event'] = {
-        url: oscprefix,
         key: 'sync',
         val: {
           syncOffset: ts.offset
@@ -2682,7 +2676,6 @@ var drawsocket = (function(){
   window.onresize = function(){
     let msg = {};
     msg['event'] = {
-      url: oscprefix,
       key: 'status',
       val: {
         screensize: [window.innerWidth, window.innerHeight]

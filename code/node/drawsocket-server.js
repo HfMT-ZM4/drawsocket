@@ -177,21 +177,33 @@ if (cluster.isMaster)
 
     wss.setMaxListeners(200);
 
-    let disconnectionMsg = {};
-    disconnectionMsg.event = {
-        url: "/tmp",
-        key: 'status',
-        val: {
-            connected: 0
-        }
-    };
+    
 
 
     // create OSC websockets from vanilla websockts, and add to clients list
     wss.on("connection", function (socket, req) {
 
-        let uniqueid = req.headers['sec-websocket-key'];
+        const uniqueid = req.headers['sec-websocket-key'];
+        const _url = req.url;
+        const _ip = req.connection.remoteAddress;
+
+        const clientInfo = {
+            url: _url,
+            ip: _ip,
+            uniqueid: uniqueid
+        }
+
+        const disconnectionMsg = {
+            event: {
+                from: clientInfo,
+                key: 'status',
+                val: {
+                    connected: 0
+                }
+            }
+        };
         
+
 //        Max.post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
 
         // setup relay back to Max
@@ -215,7 +227,7 @@ if (cluster.isMaster)
                 {
                     cache_proc.send({
                         key: 'get',
-                        url: req.url
+                        url: _url
                     });
                     
                 }
@@ -250,10 +262,7 @@ if (cluster.isMaster)
                 }
                 else
                 {
-                    // note a client could potentially have more than one tab open,
-                    // so maybe we should also use the uniqueid here...
-                    
-                    obj.fromIP = req.connection.remoteAddress;
+                    obj.from = clientInfo;
                     Max.outlet(obj);
                 }
                     
@@ -267,11 +276,8 @@ if (cluster.isMaster)
 
         socket.on("close", function () { // event
   
-            clients.removeClient(req.url, uniqueid);
+            clients.removeClient(_url, uniqueid);
             socket.terminate();
-
-            disconnectionMsg.event.url = req.url;
-            disconnectionMsg.fromIP = req.connection.remoteAddress;
             
             Max.outlet(disconnectionMsg);
 
@@ -280,16 +286,13 @@ if (cluster.isMaster)
         });
 
         socket.on("error", function (event) {
-            clients.removeClient(req.url, uniqueid);
+            clients.removeClient(_url, uniqueid);
             
-            disconnectionMsg.event.url = req.url;
-            Max.outlet(disconnectionMsg);
-
-            Max.post("error on socket : " + uniqueid + " @ " + req.url);
+            Max.post("error on socket : " + uniqueid + " @ " + _url);
             Max.post(event);
         });
 
-        clients.saveClient(socket, uniqueid, req.url);
+        clients.saveClient(socket, uniqueid, _url);
 
     });
 
