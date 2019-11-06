@@ -179,7 +179,7 @@ if (cluster.isMaster)
 
     let disconnectionMsg = {};
     disconnectionMsg.event = {
-        url: "/foo",
+        url: "/tmp",
         key: 'status',
         val: {
             connected: 0
@@ -191,7 +191,7 @@ if (cluster.isMaster)
     wss.on("connection", function (socket, req) {
 
         let uniqueid = req.headers['sec-websocket-key'];
-
+        
 //        Max.post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
 
         // setup relay back to Max
@@ -249,7 +249,14 @@ if (cluster.isMaster)
                     
                 }
                 else
+                {
+                    // note a client could potentially have more than one tab open,
+                    // so maybe we should also use the uniqueid here...
+                    
+                    obj.fromIP = req.connection.remoteAddress;
                     Max.outlet(obj);
+                }
+                    
 
             } catch (e) {
 
@@ -264,7 +271,8 @@ if (cluster.isMaster)
             socket.terminate();
 
             disconnectionMsg.event.url = req.url;
-
+            disconnectionMsg.fromIP = req.connection.remoteAddress;
+            
             Max.outlet(disconnectionMsg);
 
 //            Max.post("closed socket : " + uniqueid + " @ " + req.url);
@@ -274,6 +282,9 @@ if (cluster.isMaster)
         socket.on("error", function (event) {
             clients.removeClient(req.url, uniqueid);
             
+            disconnectionMsg.event.url = req.url;
+            Max.outlet(disconnectionMsg);
+
             Max.post("error on socket : " + uniqueid + " @ " + req.url);
             Max.post(event);
         });
