@@ -89,7 +89,7 @@ var drawsocket = (function(){
   let mainSVG = d3.select("#svg"); // actual svg
   let maindef = d3.select("#defs");
   let forms = d3.select("#forms");
-
+  let statusDiv = document.getElementById("loading");
   let log_enabled = false;
 
   function removeNode(node) {
@@ -1332,8 +1332,7 @@ var drawsocket = (function(){
 
   Tone.Buffer.on('load', function(){
     let msg = {};
-    msg['event'] = {
-      url: oscprefix,
+    msg.event = {
       key: 'status',
       val: {
         bufferloaded: 1
@@ -2018,7 +2017,6 @@ var drawsocket = (function(){
             generateStyleDefs(mainSVG.node());
 
             sendMsg({
-                url: oscprefix,
                 key: 'svgElement',
                 val :  mainSVG.node().outerHTML
               });
@@ -2026,7 +2024,6 @@ var drawsocket = (function(){
         break;
         default:
             sendMsg({
-              url: oscprefix,
               event: {
                 key: "input",
                 val: {
@@ -2129,7 +2126,6 @@ var drawsocket = (function(){
     
     let obj = {};
     obj.event = {
-      url: oscprefix,
       key: 'touch',
       val: {
         action: caller,
@@ -2265,24 +2261,24 @@ var drawsocket = (function(){
     if( mouseCallbacks[caller].size > 0 )
       mouseCallbacks[caller].forEach( cb => cb(event) );
 
-    let obj = {};
-    obj['event'] = {
-      url: oscprefix,
-      key: 'mouse',
-      val: {
-        action: caller,
-        xy: [ event.clientX, event.clientY ],
-        button: event.buttons,
-        mods : {
-          alt: event.altKey,
-          shift: event.shiftKey,
-          ctrl: event.ctrlKey,
-          meta: event.metaKey
-        },
-        target: elementToJSON(event.target)
+    let obj = {
+      event: {
+        key: 'mouse',
+        val: {
+          action: caller,
+          xy: [ event.clientX, event.clientY ],
+          button: event.buttons,
+          mods : {
+            alt: event.altKey,
+            shift: event.shiftKey,
+            ctrl: event.ctrlKey,
+            meta: event.metaKey
+          },
+          target: elementToJSON(event.target)
+        }
       }
     };
-
+  
     if( caller == 'wheel' )
     {
       obj.event.val.delta = [ event.deltaX, event.deltaY ];
@@ -2357,7 +2353,6 @@ var drawsocket = (function(){
 
     let msg = {};
     msg['event'] = {
-      url: oscprefix,
       key: 'status',
       val: {
         connected: 1,
@@ -2371,6 +2366,11 @@ var drawsocket = (function(){
 
   function do_sync()
   {
+    console.log('starting sync');
+
+    statusDiv.innerHTML = "<p>synchronizing...</p>";
+    statusDiv.style.visibility = "visible";
+
     setTimeout(function () {
       ts.sync().catch(err => console.log('timesync err', err));
     }, 100);
@@ -2417,6 +2417,9 @@ var drawsocket = (function(){
     this.port.onopen = function() {
   //    display_log("opened port");
       console.log("connected");
+      statusDiv.style.visibility = "hidden";
+
+      do_sync();
 
       pingResponse();
 
@@ -2425,6 +2428,8 @@ var drawsocket = (function(){
     this.port.onclose = function() 
     {
       setTimeout( ()=>{
+        statusDiv.innerHTML = "<p>reconnecting...</p>";
+        statusDiv.style.visibility = "visible";
         console.log("tring to reconnect");
         try {
           port = new _SocketPort_();
@@ -2495,8 +2500,6 @@ var drawsocket = (function(){
     {
       port = new _SocketPort_();
       hasstate = false;
-      document.getElementById("loading").style.visibility = "visible";
-      do_sync();
     }
     else
     {
@@ -2559,16 +2562,16 @@ var drawsocket = (function(){
     ts.on('sync', function (state) {
 
       console.log('syncing', state);
+      statusDiv.innerHTML = "<p>synchronizing...</p>";
+      statusDiv.style.visibility = "visible";
+
       if( state === 'end' )
       {
         display_log('sync offset: ' + ts.offset + ' ms');
+        statusDiv.style.visibility = "hidden";
 
         if( !hasstate )
         {
-  //        let loading = document.getElementById("loading");
-  //        document.body.removeChild(loading);
-          document.getElementById("loading").style.visibility = "hidden";
-
           // ask server for current state
           port.sendObj({ statereq: 1 });
 
@@ -2596,7 +2599,6 @@ var drawsocket = (function(){
    //   console.log(`dx=${prev_offset} new=${ts.offset}`);
       let msg = {};
       msg['event'] = {
-        url: oscprefix,
         key: 'sync',
         val: {
           syncOffset: ts.offset
@@ -2652,7 +2654,6 @@ var drawsocket = (function(){
     initMultitouch("touchdiv");
    
     
-    do_sync();
   }
 
 
@@ -2675,7 +2676,6 @@ var drawsocket = (function(){
   window.onresize = function(){
     let msg = {};
     msg['event'] = {
-      url: oscprefix,
       key: 'status',
       val: {
         screensize: [window.innerWidth, window.innerHeight]

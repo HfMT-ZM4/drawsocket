@@ -177,10 +177,32 @@ if (cluster.isMaster)
 
     wss.setMaxListeners(200);
 
+    
+
+
     // create OSC websockets from vanilla websockts, and add to clients list
     wss.on("connection", function (socket, req) {
 
-        let uniqueid = req.headers['sec-websocket-key'];
+        const uniqueid = req.headers['sec-websocket-key'];
+        const _url = req.url;
+        const _ip = req.connection.remoteAddress;
+
+        const clientInfo = {
+            url: _url,
+            ip: _ip,
+            uniqueid: uniqueid
+        }
+
+        const disconnectionMsg = {
+            event: {
+                from: clientInfo,
+                key: 'status',
+                val: {
+                    connected: 0
+                }
+            }
+        };
+        
 
 //        Max.post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
 
@@ -205,7 +227,7 @@ if (cluster.isMaster)
                 {
                     cache_proc.send({
                         key: 'get',
-                        url: req.url
+                        url: _url
                     });
                     
                 }
@@ -239,7 +261,11 @@ if (cluster.isMaster)
                     
                 }
                 else
+                {
+                    obj.from = clientInfo;
                     Max.outlet(obj);
+                }
+                    
 
             } catch (e) {
 
@@ -250,25 +276,23 @@ if (cluster.isMaster)
 
         socket.on("close", function () { // event
   
-            clients.removeClient(req.url, uniqueid);
+            clients.removeClient(_url, uniqueid);
             socket.terminate();
-
-            let _msg = {};
-            _msg[req.url + '/connected'] = 0;
-            Max.outlet(_msg);
+            
+            Max.outlet(disconnectionMsg);
 
 //            Max.post("closed socket : " + uniqueid + " @ " + req.url);
 
         });
 
         socket.on("error", function (event) {
-            clients.removeClient(req.url, uniqueid);
+            clients.removeClient(_url, uniqueid);
             
-            Max.post("error on socket : " + uniqueid + " @ " + req.url);
+            Max.post("error on socket : " + uniqueid + " @ " + _url);
             Max.post(event);
         });
 
-        clients.saveClient(socket, uniqueid, req.url);
+        clients.saveClient(socket, uniqueid, _url);
 
     });
 

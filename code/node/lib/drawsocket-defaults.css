@@ -115,7 +115,7 @@ g {
           animation: fadeout 3s infinite;
 
   animation-fill-mode: forwards;
-
+  z-index: 200;
 }
 
 #loading p {
