@@ -2347,6 +2347,37 @@ var drawsocket = (function(){
     document.body.removeEventListener("wheel", wheel_callback, true);
   }
   
+  function procKeyEvent(event, caller)
+  {
+
+    sendMsg({
+      event: {
+        key: 'key',
+        val: {
+          action: caller,
+          keyVal: event.key,
+          mods : {
+            alt: event.altKey,
+            shift: event.shiftKey,
+            ctrl: event.ctrlKey,
+            meta: event.metaKey
+          }
+        }
+      }
+    });
+
+  }
+
+  function addKeyListeners()
+  {
+    document.addEventListener("keydown", event => {
+      procKeyEvent(event, "keydown");
+    });
+    document.addEventListener("keyup", event => {
+      procKeyEvent(event, "keyup");
+    });
+  }
+
 
   function pingResponse()
   {
@@ -2653,6 +2684,7 @@ var drawsocket = (function(){
     initMultitouch("main-div");
     initMultitouch("touchdiv");
    
+    addKeyListeners();
     
   }
 
