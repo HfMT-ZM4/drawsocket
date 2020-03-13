@@ -2014,6 +2014,18 @@ var drawsocket = (function(){
             processJSON_mouse(_objarr);
         break;
 
+        case "key":
+          
+          if( _objarr[0].hasOwnProperty('enable') )
+          {
+            if( _objarr[0].enable == 0 )
+              removeKeyListeners()
+            else
+              addKeyListeners();
+          }
+
+        break;
+
         case "do_sync":
           do_sync();
         break;
@@ -2362,6 +2374,8 @@ var drawsocket = (function(){
   function procKeyEvent(event, caller)
   {
 
+    console.log("drawsocket handler");
+    
     sendMsg({
       event: {
         key: 'key',
@@ -2379,16 +2393,33 @@ var drawsocket = (function(){
     });
 
   }
+  
+  function keydownhandler(event)
+  {
+    procKeyEvent(event, "keydown");
+  }
+
+  function keyuphandler(event)
+  {
+    procKeyEvent(event, "keyup");
+  }
 
   function addKeyListeners()
   {
-    document.addEventListener("keydown", event => {
-      procKeyEvent(event, "keydown");
-    });
-    document.addEventListener("keyup", event => {
-      procKeyEvent(event, "keyup");
-    });
+    console.log("add");
+
+    document.body.addEventListener("keydown", keydownhandler, true);
+    document.body.addEventListener("keyup", keyuphandler, true);
   }
+
+  function removeKeyListeners()
+  {
+    console.log("removeKeyListeners");
+    
+    document.body.removeEventListener("keydown", keydownhandler, true);
+    document.body.removeEventListener("keyup", keyuphandler, true);
+  }
+
 
 
   function pingResponse()
