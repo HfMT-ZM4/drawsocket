@@ -441,10 +441,21 @@ var drawsocket = (function(){
   //              console.log("subnode", subnode);
               if( typeof childobj[subnode] == "object" )
               {
+
                 // recusive child node creation
-                let _childnode = processJSON_HTML_node( childobj[subnode] );
+                let _childnode = ( el.node().tagName === 'svg' ) ? d3_processJSON_SVG_node(childobj[subnode]) : processJSON_HTML_node( childobj[subnode] );
                 if( _childnode.node !== null )
                 {
+                  
+                  let _childID = _childnode.node.id;
+                  if( _childID )
+                  {
+                    let existing = d3.select(`#${_childID}`);
+                    if( existing )
+                      existing.remove();
+                    
+                  }
+
                   el.append( ()=>{
                     return _childnode.node;
                   });
