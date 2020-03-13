@@ -409,6 +409,7 @@ var drawsocket = (function(){
     // remove "new" from node?
     for( let prop in node)
     {
+      
       if( prop !== 'new' && prop != 'href' && prop != 'timetag' && prop != 'parent' )
       {
         if(prop === "style" )
@@ -420,7 +421,7 @@ var drawsocket = (function(){
           {
 
             el.node().style[cssprop] = cssnode[cssprop];
-            //console.log("settingh", cssprop, cssnode[cssprop]);
+        //    console.log("setting", cssprop, cssnode[cssprop]);
 
           }
           //console.log("style", el.node().style);
