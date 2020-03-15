@@ -1812,8 +1812,17 @@ var drawsocket = (function(){
     }
   }
 
-  /*
-  */
+
+  /**
+   * can be overwritten by user to listen to drawsocket input
+   */
+
+  let input_listener = function(key, obj_arr) {};
+
+  /**
+   *  the main input to drawsocket
+   */
+  
   function drawsocket_input(obj)
   {
   //  const keys = Object.keys(obj);
@@ -2058,6 +2067,8 @@ var drawsocket = (function(){
             console.log("unrouted command key:", key, objValue );
         break;
       }
+
+      input_listener(key, _objarr);
 
     }
   }
@@ -3022,7 +3033,13 @@ var drawsocket = (function(){
     send: sendMsg,
     oscprefix: oscprefix, // legacy name from previous API
     url: oscprefix,
-    startAudio: startAudio
+    startAudio: startAudio,
+
+    setInputListener: function(cb_fn) {
+      console.log("setting listener");
+      input_listener = cb_fn;
+    }
+    
   }
 
 })();
