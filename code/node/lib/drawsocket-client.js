@@ -1817,7 +1817,7 @@ var drawsocket = (function(){
    * can be overwritten by user to listen to drawsocket input
    */
 
-  let input_listener = function(key, obj_arr) {};
+  let input_listener = null;// = function(key, obj_arr) {};
 
   /**
    *  the main input to drawsocket
@@ -2068,7 +2068,8 @@ var drawsocket = (function(){
         break;
       }
 
-      input_listener(key, _objarr);
+      if( input_listener != null )
+        input_listener(key, _objarr);
 
     }
   }
@@ -3039,7 +3040,7 @@ var drawsocket = (function(){
       console.log("setting listener");
       input_listener = cb_fn;
     }
-    
+
   }
 
 })();
