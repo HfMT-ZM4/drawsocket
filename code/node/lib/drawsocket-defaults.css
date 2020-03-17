@@ -191,6 +191,12 @@ polygon {
   fill: none;
 }
 
+rect {
+  stroke-width: 1;
+  stroke: rgb(0,0,0);
+  fill: none;
+}
+
 path {
   stroke-width: 1;
   stroke: rgb(0,0,0);
