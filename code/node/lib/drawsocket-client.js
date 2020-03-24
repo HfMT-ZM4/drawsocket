@@ -1841,6 +1841,8 @@ var drawsocket = (function(){
 
 //  console.log(iter_obj_arr);
 
+    let wasHandled = true;
+
     for( let i = 0; i < iter_obj_arr.length; i++ )  
     {
       const key = iter_obj_arr[i].key;
@@ -2065,11 +2067,12 @@ var drawsocket = (function(){
               }
             });
             console.log("unrouted command key:", key, objValue );
+            wasHandled = false;
         break;
       }
 
       if( input_listener != null )
-        input_listener(key, _objarr);
+        input_listener(key, _objarr, wasHandled);
 
     }
   }
@@ -3037,7 +3040,7 @@ var drawsocket = (function(){
     startAudio: startAudio,
 
     setInputListener: function(cb_fn) {
-      console.log("setting listener");
+      console.log("setting listener, function signature: (key, objarray, wasHandled");
       input_listener = cb_fn;
     }
 
