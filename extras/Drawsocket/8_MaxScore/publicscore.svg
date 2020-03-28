@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="600px" height="200px" viewBox="0 0 600 200" style="background:rgb(253.98,253.98,239.7)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<g id="1" transform="matrix(1,0,0,1,0,0)">
+<text x="0" y="33" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(64,64,64)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" >  &lt;&lt;</text>
+<text x="280" y="33" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(64,64,64)" fill-opacity="1" transform="matrix(1,0,0,1,0,0)" >&gt;&gt;</text>
+<text x="0" y="0" font-family="Arial" font-style="normal" font-weight="normal" font-size="10" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,-98.6953125,65)" >MaxScoreIns-0</text>
+<text x="0" y="0" font-family="Bravura" font-style="normal" font-weight="normal" font-size="24" fill="rgb(0,0,0)" fill-opacity="1" transform="matrix(1,0,0,1,24,63)" ></text>
+<path d="M0 75 L300 75 M0 69 L300 69 M0 63 L300 63 M0 57 L300 57 M0 51 L300 51 M300 75 L600 75 M300 69 L600 69 M300 63 L600 63 M300 57 L600 57 M300 51 L600 51 " stroke="rgb(0,0,0)" stroke-width="0.4" fill="rgb(0,0,0)" transform="matrix(1,0,0,1,0,0)"/>
+<rect x="600" y="51" width="0.6" height="24" fill="rgb(0,0,0)" stroke="none" stroke-width="0.4" fill-opacity="1.0" stroke-opacity="1.0" transform="matrix(1,0,0,1,0,0)"/>
+</g>
+</svg>
