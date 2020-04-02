@@ -2389,7 +2389,7 @@ var drawsocket = (function(){
   function procKeyEvent(event, caller)
   {
 
-    console.log("drawsocket handler");
+   // console.log("drawsocket handler");
     
     sendMsg({
       event: {
