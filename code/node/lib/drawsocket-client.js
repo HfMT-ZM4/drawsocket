@@ -2374,7 +2374,7 @@ var drawsocket = (function(){
     document.body.addEventListener("mousedown", mousedown_callback, true);
     document.body.addEventListener("mouseup", mouseup_callback, true);
     document.body.addEventListener("mouseover", mouseover_callback, true);
-    document.body.addEventListener("wheel", wheel_callback, true);
+    document.body.addEventListener("wheel", wheel_callback, {passive:false} );
   }
   
   function removeMouseListeners()
@@ -2383,7 +2383,7 @@ var drawsocket = (function(){
     document.body.removeEventListener("mousedown", mousedown_callback, true);
     document.body.removeEventListener("mouseup", mouseup_callback, true);
     document.body.removeEventListener("mouseover", mouseover_callback, true);
-    document.body.removeEventListener("wheel", wheel_callback, true);
+    document.body.removeEventListener("wheel", wheel_callback, {passive:false});
   }
   
   function procKeyEvent(event, caller)
