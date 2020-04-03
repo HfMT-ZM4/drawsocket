@@ -404,12 +404,16 @@ if (cluster.isMaster)
                 stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
                     .then( result => clients.sendToALL(result) );
                 
-                cache_proc.send({
-                    key: 'set',
-                    url: addr,
-                    val: obj_,
-                    timetag: timetag_
-                });
+                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
+                {
+                    cache_proc.send({
+                        key: 'set',
+                        url: addr,
+                        val: obj_,
+                        timetag: timetag_
+                    });
+                }
+                
 
             }
             else 
@@ -420,12 +424,15 @@ if (cluster.isMaster)
                 stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
                     .then( result => clients.sendToClientsURL( addr, result ) );
                 
-                cache_proc.send({
-                    key: 'set',
-                    url: addr,
-                    val: obj_,
-                    timetag: timetag_
-                });
+                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
+                {
+                    cache_proc.send({
+                        key: 'set',
+                        url: addr,
+                        val: obj_,
+                        timetag: timetag_
+                    });
+                }
             }
 
         }

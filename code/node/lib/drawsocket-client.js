@@ -1834,7 +1834,7 @@ var drawsocket = (function(){
   function drawsocket_input(obj)
   {
   //  const keys = Object.keys(obj);
-    // console.log("keys", keys);
+    //console.log("keys", keys);
     let iter_obj_arr;
 
     let toplevel_timetag;
@@ -2518,10 +2518,6 @@ var drawsocket = (function(){
 
       pingResponse();
       
-      if( event_connected_callback )
-      {
-        event_connected_callback();
-      }
 
     }
 
@@ -2679,6 +2675,12 @@ var drawsocket = (function(){
           hasstate = true;
         }
 
+
+        if( event_connected_callback )
+        {
+          event_connected_callback();
+        }
+      
       }
       else
       {
