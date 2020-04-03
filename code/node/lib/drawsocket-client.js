@@ -33,12 +33,20 @@ SOFTWARE.
 // we return a external access function drawsocket
 var drawsocket = (function(){
 
+  let event_connected_callback = null;
+
+
   TweenMax.ticker.fps(60);
   TweenMax.ticker.useRAF(true);
   console.log(TweenMax.ticker.fps() );
 
   let oscprefix = window.location.pathname; // document.getElementById("OSC").getAttribute("OSCprefix");
-  console.log(window.location.pathname);
+  if( oscprefix.includes('.html') )
+  {
+    oscprefix = oscprefix.slice(0, oscprefix.indexOf('.html') );
+  }
+
+  console.log(oscprefix);
 
   let url_args = new URLSearchParams( window.location.search.substr(1)  );
 
@@ -2439,17 +2447,15 @@ var drawsocket = (function(){
 
   function pingResponse()
   {
-
-    let msg = {};
-    msg['event'] = {
-      key: 'status',
-      val: {
-        connected: 1,
-        screensize: [window.innerWidth, window.innerHeight]
+    sendMsg({
+      event: {
+        key: 'status',
+        val: {
+          connected: 1,
+          screensize: [window.innerWidth, window.innerHeight]
+        }
       }
-    };
-
-    sendMsg(msg);
+    });
 
   }
 
@@ -2511,6 +2517,11 @@ var drawsocket = (function(){
       do_sync();
 
       pingResponse();
+      
+      if( event_connected_callback )
+      {
+        event_connected_callback();
+      }
 
     }
 
@@ -2608,7 +2619,8 @@ var drawsocket = (function(){
 
   let hasstate = false;
 
-  window.onload = function() {
+
+   window.addEventListener("load", function() {
   //  display_log("loaded");
 
   // if we have no URL arguments, then we can go forward with websockets,
@@ -2744,7 +2756,9 @@ var drawsocket = (function(){
    
     addKeyListeners();
     
-  }
+    console.log("drawsocket finished loading");
+
+  });
 
 
   
@@ -3031,6 +3045,8 @@ var drawsocket = (function(){
     }
   }
 
+  
+
   return {
     input: drawsocket_input,
 //    submitOnEnterKey: submitOnEnterKey,
@@ -3042,6 +3058,11 @@ var drawsocket = (function(){
     setInputListener: function(cb_fn) {
       console.log("setting listener, function signature: (key, objarray, wasHandled");
       input_listener = cb_fn;
+    },
+
+    setConnectionCallback: function(cb) {
+      console.log("setting on connection callback");
+      event_connected_callback = cb;
     }
 
   }
