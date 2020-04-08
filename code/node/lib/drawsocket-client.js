@@ -2473,6 +2473,8 @@ var drawsocket = (function(){
     }, 100);
   }
 
+  let softlock = 0;
+
   function _SocketPort_()
   {
 
@@ -2520,23 +2522,29 @@ var drawsocket = (function(){
 
       pingResponse();
       
-
+      softlock = 1;
     }
 
     this.port.onclose = function() 
     {
+     // port.readyState = port.CLOSED;
+      softlock = 0;
       setTimeout( ()=>{
-        statusDiv.innerHTML = "<p>reconnecting...</p>";
-        statusDiv.style.visibility = "visible";
-        console.log("tring to reconnect");
-        try {
-          port = new _SocketPort_();
-        } catch(err){
-          console.log("failed to connect", err);
-          
+        if( (typeof port.readyState === "undefined" || port.readyState !== 1 ) && softlock == 0)
+        {
+          statusDiv.innerHTML = "<p>reconnecting...</p>";
+          statusDiv.style.visibility = "visible";
+          console.log("tring to reconnect, softlock", softlock );
+          try {
+            port = new _SocketPort_();
+          } catch(err) {
+            console.log("failed to connect", err);
+          }
+          softlock = 1;
         }
-        
       }, 1000 );
+
+
     }
 
     this.sendObj = function( obj )
@@ -2585,22 +2593,31 @@ var drawsocket = (function(){
 
   function handleVisibilityChange() 
   {
-    if( !port )
+    if( !port ){
+      console.log('handleVisibilityChange, no port');
       return;
+    }
+      
 
     display_log (document[hidden] + " " + (typeof port.readyState) );
     if( document[hidden] )
     {
   //    port.sendObj({ "/bye" : "skinny" });
+      console.log('handleVisibilityChange, document[hidden]');
+
       port.close();
     }
     else if( typeof port.readyState === "undefined" || port.readyState !== port.OPEN )
     {
+      console.log('handleVisibilityChange, typeof port.readyState === "undefined" || port.readyState !== port.OPEN');
+
+      port.close();
       port = new _SocketPort_();
       hasstate = false;
     }
     else
     {
+      console.log('handleVisibilityChange, unhandled case');
       // returning with open port ... shouldn't happen anymore
       //port.sendObj({ "/helloAgain" : "skinny" });
     }
@@ -2649,7 +2666,8 @@ var drawsocket = (function(){
       return;
     }
 
-    port = new _SocketPort_();
+    if( typeof port === "undefined" )
+        port = new _SocketPort_();
 
     ts = timesync.create({
         server:   port,

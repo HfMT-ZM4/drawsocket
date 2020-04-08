@@ -31,9 +31,6 @@ const WebSocket = require('ws');
 // client storage
 class ClientManager {
     constructor() {
-
-        //this.addPrefix = this.addPrefix.bind(this);
-
         this.ids = {}; // object of arrays storing subscribed unique ids, labeled in the object by client URL 
         this.sockets = new Map(); // object lookup for sockets stored by unique id
 
@@ -42,6 +39,7 @@ class ClientManager {
         this.saveClient = this.saveClient.bind(this);
         this.removeClient = this.removeClient.bind(this);
         this.getURLs = this.getURLs.bind(this);
+        this.getPeers = this.getPeers.bind(this);
 
     }
 
@@ -50,20 +48,30 @@ class ClientManager {
       return Object.keys(this.ids);
     }
 
-  // dont' need to add prefixes if we just go ahead and cache all prefixes we receive
-  /*
-    addPrefix(prefix) {
-      if( !this.prefixList.includes(prefix) )
-      {
-        this.prefixList.push(prefix);
-      }
+    getPeers(_requesterURL)
+    {
+      let keys = Object.keys(this.ids);
+      let filtered = [];
+      keys.forEach( k => {
+        if( k != _requesterURL )
+        {          
+          filtered.push({
+            url: k,
+            ids: Array.from(this.ids[k])
+          });
+        }
+      })
+
+      return filtered;
     }
-*/
+
     // new version: store by prefix
     // add unique id to a subscription list
     saveClient(client, uniqueid, prefix) 
     {
 
+//      console.log('saving client', uniqueid, prefix );
+      
       if( !this.ids.hasOwnProperty(prefix) )
       {
         this.ids[prefix] = new Set();
@@ -72,10 +80,6 @@ class ClientManager {
       this.ids[prefix].add(uniqueid);
       this.sockets.set(uniqueid, client);
 
-/*
-      for( const s of this.sockets.keys() )
-        Max.post("set client ", s );
-*/
 
     }
 
@@ -92,7 +96,7 @@ class ClientManager {
       this.ids[prefix].delete(uniqueid);
       this.sockets.delete(uniqueid);
 
-    //  Max.post("removed websocket", uniqueid, "but keeping prefix", this.prefixList );
+  //    console.log("removed websocket", uniqueid, "but keeping prefix", Array.from(this.ids[prefix]) );
     }
 
     sendToClientsURL( _prefix, _jsonstring )
