@@ -280,6 +280,24 @@ if (cluster.isMaster)
                         socket.send(jsonStr);
                     })
                 }
+                else if( key == "signalPeer")
+                {
+                    /*
+                        {
+                            key: 'peerSignal',
+                            peerURL: send to URL,
+                            val: content
+                        }
+                    */
+                   //console.log( "signalPeer", obj );
+
+
+                    if( obj.hasOwnProperty('url') )
+                    {
+
+                        clients.sendToClientsURL(obj.url, msg);
+                    }
+                }
                 else
                 {
                     obj.from = clientInfo;
