@@ -260,6 +260,16 @@ if (cluster.isMaster)
 
                     
                 }
+                else if( key == 'getPeers')
+                {
+                    stringifyOBJAsync({
+                        key: 'peers',
+                        val: clients.getURLs(),
+                        timetag: Date.now()
+                    }).then( jsonStr => {
+                        socket.send(jsonStr);
+                    })
+                }
                 else
                 {
                     obj.from = clientInfo;

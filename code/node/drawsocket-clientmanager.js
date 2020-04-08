@@ -41,9 +41,14 @@ class ClientManager {
         this.sendToALL = this.sendToALL.bind(this);
         this.saveClient = this.saveClient.bind(this);
         this.removeClient = this.removeClient.bind(this);
+        this.getURLs = this.getURLs.bind(this);
 
     }
 
+    getURLs()
+    {
+      return Object.keys(this.ids);
+    }
 
   // dont' need to add prefixes if we just go ahead and cache all prefixes we receive
   /*

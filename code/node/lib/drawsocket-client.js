@@ -53,7 +53,9 @@ var drawsocket = (function(){
 
   console.log( Array.from(url_args.keys()).length );
 
-  const ws_url = `ws://${location.host}${oscprefix}`;
+  const ws_prefix = (window.location.protocol === "https:") ? "wss" : "ws";
+  const ws_url = `${ws_prefix}://${location.host}${oscprefix}`;
+
   const svg_ns = 'http://www.w3.org/2000/svg';
   // const html_ns = 'http://www.w3.org/1999/xhtml';
 
