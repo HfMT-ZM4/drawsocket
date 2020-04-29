@@ -33,19 +33,29 @@ SOFTWARE.
 // we return a external access function drawsocket
 var drawsocket = (function(){
 
+  let event_connected_callback = null;
+
+
   TweenMax.ticker.fps(60);
   TweenMax.ticker.useRAF(true);
   console.log(TweenMax.ticker.fps() );
 
   let oscprefix = window.location.pathname; // document.getElementById("OSC").getAttribute("OSCprefix");
-  console.log(window.location.pathname);
+  if( oscprefix.includes('.html') )
+  {
+    oscprefix = oscprefix.slice(0, oscprefix.indexOf('.html') );
+  }
+
+  console.log(oscprefix);
 
   let url_args = new URLSearchParams( window.location.search.substr(1)  );
 
 
   console.log( Array.from(url_args.keys()).length );
 
-  const ws_url = `ws://${location.host}${oscprefix}`;
+  const ws_prefix = (window.location.protocol === "https:") ? "wss" : "ws";
+  const ws_url = `${ws_prefix}://${location.host}${oscprefix}`;
+
   const svg_ns = 'http://www.w3.org/2000/svg';
   // const html_ns = 'http://www.w3.org/1999/xhtml';
 
@@ -1826,7 +1836,7 @@ var drawsocket = (function(){
   function drawsocket_input(obj)
   {
   //  const keys = Object.keys(obj);
-    // console.log("keys", keys);
+    //console.log("keys", keys);
     let iter_obj_arr;
 
     let toplevel_timetag;
@@ -2374,7 +2384,7 @@ var drawsocket = (function(){
     document.body.addEventListener("mousedown", mousedown_callback, true);
     document.body.addEventListener("mouseup", mouseup_callback, true);
     document.body.addEventListener("mouseover", mouseover_callback, true);
-    document.body.addEventListener("wheel", wheel_callback, true);
+    document.body.addEventListener("wheel", wheel_callback, {passive:false} );
   }
   
   function removeMouseListeners()
@@ -2383,13 +2393,13 @@ var drawsocket = (function(){
     document.body.removeEventListener("mousedown", mousedown_callback, true);
     document.body.removeEventListener("mouseup", mouseup_callback, true);
     document.body.removeEventListener("mouseover", mouseover_callback, true);
-    document.body.removeEventListener("wheel", wheel_callback, true);
+    document.body.removeEventListener("wheel", wheel_callback, {passive:false});
   }
   
   function procKeyEvent(event, caller)
   {
 
-    console.log("drawsocket handler");
+   // console.log("drawsocket handler");
     
     sendMsg({
       event: {
@@ -2439,17 +2449,15 @@ var drawsocket = (function(){
 
   function pingResponse()
   {
-
-    let msg = {};
-    msg['event'] = {
-      key: 'status',
-      val: {
-        connected: 1,
-        screensize: [window.innerWidth, window.innerHeight]
+    sendMsg({
+      event: {
+        key: 'status',
+        val: {
+          connected: 1,
+          screensize: [window.innerWidth, window.innerHeight]
+        }
       }
-    };
-
-    sendMsg(msg);
+    });
 
   }
 
@@ -2464,6 +2472,8 @@ var drawsocket = (function(){
       ts.sync().catch(err => console.log('timesync err', err));
     }, 100);
   }
+
+  let softlock = 0;
 
   function _SocketPort_()
   {
@@ -2511,23 +2521,30 @@ var drawsocket = (function(){
       do_sync();
 
       pingResponse();
-
+      
+      softlock = 1;
     }
 
     this.port.onclose = function() 
     {
+     // port.readyState = port.CLOSED;
+      softlock = 0;
       setTimeout( ()=>{
-        statusDiv.innerHTML = "<p>reconnecting...</p>";
-        statusDiv.style.visibility = "visible";
-        console.log("tring to reconnect");
-        try {
-          port = new _SocketPort_();
-        } catch(err){
-          console.log("failed to connect", err);
-          
+        if( (typeof port.readyState === "undefined" || port.readyState !== 1 ) && softlock == 0)
+        {
+          statusDiv.innerHTML = "<p>reconnecting...</p>";
+          statusDiv.style.visibility = "visible";
+          console.log("tring to reconnect, softlock", softlock );
+          try {
+            port = new _SocketPort_();
+          } catch(err) {
+            console.log("failed to connect", err);
+          }
+          softlock = 1;
         }
-        
       }, 1000 );
+
+
     }
 
     this.sendObj = function( obj )
@@ -2576,22 +2593,31 @@ var drawsocket = (function(){
 
   function handleVisibilityChange() 
   {
-    if( !port )
+    if( !port ){
+      console.log('handleVisibilityChange, no port');
       return;
+    }
+      
 
     display_log (document[hidden] + " " + (typeof port.readyState) );
     if( document[hidden] )
     {
   //    port.sendObj({ "/bye" : "skinny" });
+      console.log('handleVisibilityChange, document[hidden]');
+
       port.close();
     }
     else if( typeof port.readyState === "undefined" || port.readyState !== port.OPEN )
     {
+      console.log('handleVisibilityChange, typeof port.readyState === "undefined" || port.readyState !== port.OPEN');
+
+      port.close();
       port = new _SocketPort_();
       hasstate = false;
     }
     else
     {
+      console.log('handleVisibilityChange, unhandled case');
       // returning with open port ... shouldn't happen anymore
       //port.sendObj({ "/helloAgain" : "skinny" });
     }
@@ -2608,7 +2634,8 @@ var drawsocket = (function(){
 
   let hasstate = false;
 
-  window.onload = function() {
+
+   window.addEventListener("load", function() {
   //  display_log("loaded");
 
   // if we have no URL arguments, then we can go forward with websockets,
@@ -2639,7 +2666,8 @@ var drawsocket = (function(){
       return;
     }
 
-    port = new _SocketPort_();
+    if( typeof port === "undefined" )
+        port = new _SocketPort_();
 
     ts = timesync.create({
         server:   port,
@@ -2667,6 +2695,12 @@ var drawsocket = (function(){
           hasstate = true;
         }
 
+
+        if( event_connected_callback )
+        {
+          event_connected_callback();
+        }
+      
       }
       else
       {
@@ -2744,7 +2778,9 @@ var drawsocket = (function(){
    
     addKeyListeners();
     
-  }
+    console.log("drawsocket finished loading");
+
+  });
 
 
   
@@ -3031,6 +3067,8 @@ var drawsocket = (function(){
     }
   }
 
+  
+
   return {
     input: drawsocket_input,
 //    submitOnEnterKey: submitOnEnterKey,
@@ -3042,6 +3080,11 @@ var drawsocket = (function(){
     setInputListener: function(cb_fn) {
       console.log("setting listener, function signature: (key, objarray, wasHandled");
       input_listener = cb_fn;
+    },
+
+    setConnectionCallback: function(cb) {
+      console.log("setting on connection callback");
+      event_connected_callback = cb;
     }
 
   }

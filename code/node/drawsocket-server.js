@@ -177,7 +177,17 @@ if (cluster.isMaster)
 
     wss.setMaxListeners(200);
 
-    
+    // pretty sure this is never called
+    wss.on("close", function (socket, req) {
+        const uniqueid = req.headers['sec-websocket-key'];
+        const _url = req.url;
+
+        console.log('received wss socket close', _url, uniqueid);
+            
+        clients.removeClient(_url, uniqueid);
+        socket.terminate();
+        
+    });
 
 
     // create OSC websockets from vanilla websockts, and add to clients list
@@ -260,6 +270,34 @@ if (cluster.isMaster)
 
                     
                 }
+                else if( key == 'getPeers')
+                {
+                    stringifyOBJAsync({
+                        key: 'peers',
+                        val: clients.getPeers(_url),
+                        timetag: Date.now()
+                    }).then( jsonStr => {
+                        socket.send(jsonStr);
+                    })
+                }
+                else if( key == "signalPeer")
+                {
+                    /*
+                        {
+                            key: 'peerSignal',
+                            peerURL: send to URL,
+                            val: content
+                        }
+                    */
+                   //console.log( "signalPeer", obj );
+
+
+                    if( obj.hasOwnProperty('url') )
+                    {
+
+                        clients.sendToClientsURL(obj.url, msg);
+                    }
+                }
                 else
                 {
                     obj.from = clientInfo;
@@ -276,6 +314,8 @@ if (cluster.isMaster)
 
         socket.on("close", function () { // event
   
+            console.log('received socket close', _url, uniqueid);
+            
             clients.removeClient(_url, uniqueid);
             socket.terminate();
             
@@ -404,12 +444,16 @@ if (cluster.isMaster)
                 stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
                     .then( result => clients.sendToALL(result) );
                 
-                cache_proc.send({
-                    key: 'set',
-                    url: addr,
-                    val: obj_,
-                    timetag: timetag_
-                });
+                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
+                {
+                    cache_proc.send({
+                        key: 'set',
+                        url: addr,
+                        val: obj_,
+                        timetag: timetag_
+                    });
+                }
+                
 
             }
             else 
@@ -420,12 +464,15 @@ if (cluster.isMaster)
                 stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
                     .then( result => clients.sendToClientsURL( addr, result ) );
                 
-                cache_proc.send({
-                    key: 'set',
-                    url: addr,
-                    val: obj_,
-                    timetag: timetag_
-                });
+                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
+                {
+                    cache_proc.send({
+                        key: 'set',
+                        url: addr,
+                        val: obj_,
+                        timetag: timetag_
+                    });
+                }
             }
 
         }

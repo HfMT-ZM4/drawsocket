@@ -2,7 +2,7 @@
   "name": "drawsocket",
   "version": "1.0.0",
   "description": "syncronized score display",
-  "main": "drawsocket-server-cluster.js",
+  "main": "drawsocket-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ."
