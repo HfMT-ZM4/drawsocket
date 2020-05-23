@@ -11,8 +11,7 @@ const convert = require('xml-js');
 /**
  * runinng the script
  * 
- * load the svg file, convert js get the SVG element (ignoring the header data), and then process for drawsocket format
- * note for right now, there is no address where to assign the svg to, this should probalby be added
+ * load the svg file, convert js get the SVG element (ignoring the header data), and then process for drawsocket format, stringify, and save to disk
  */
 
 const svgFile = fs.readFileSync(infile, 'utf8');
