@@ -1,21 +1,32 @@
+// user parameters
+const infile = __dirname +  `/testfile.svg`;
+const outfile = __dirname +  `/testfile.json`;
+const drawsocketPrefix = "/foo"; 
+
+
+// libraries
 const fs = require('fs');
 const convert = require('xml-js');
 
-
 /**
+ * runinng the script
+ * 
  * load the svg file, convert js get the SVG element (ignoring the header data), and then process for drawsocket format
  * note for right now, there is no address where to assign the svg to, this should probalby be added
  */
 
-let svgFile = fs.readFileSync(__dirname +  `/testfile.svg`, 'utf8');
-let svgJS = convert.xml2js(svgFile, { ignoreComment: true, compact: false });
+const svgFile = fs.readFileSync(infile, 'utf8');
+const svgJS = convert.xml2js(svgFile, { ignoreComment: true, compact: false });
 
-let svgJSON = {
+let svgObj = {
     key: 'svg',
     val: procElements( getSVGElements(svgJS) )
 }
 
-fs.writeFileSync(__dirname + '/testfile.json', JSON.stringify(svgJSON), function(err) {
+let outObj = {};
+outObj[drawsocketPrefix] = svgObj;
+
+fs.writeFileSync(outfile, JSON.stringify(outObj), (err) => {
     if(err) {
         return console.log(err);
     }
