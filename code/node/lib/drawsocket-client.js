@@ -516,7 +516,7 @@ var drawsocket = (function(){
 
     const el_type = el.node().nodeName;
 
-    if( el_type === 'use' )
+    if( el_type === 'use' || el_type == 'textPath')
     {
       if( typeof node.href == 'object' && node.href.length === 2 )
       {
