@@ -39,6 +39,28 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 517.0, 231.0, 155.0, 20.0 ],
+					"text" : "file is relative to the patcher"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-20",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 145.808510661125183, 219.031914353370667, 173.0, 20.0 ],
+					"text" : "<< start script with path"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-17",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -56,7 +78,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 608.0, 164.0, 65.0, 22.0 ],
+					"patching_rect" : [ 413.0, 235.787233471870422, 65.0, 22.0 ],
 					"text" : "testfile.svg"
 				}
 
@@ -68,31 +90,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 364.0, 157.0, 111.0, 22.0 ],
+					"patching_rect" : [ 413.0, 274.787233471870422, 111.0, 22.0 ],
 					"text" : "svg2drawsocket $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-10",
-					"maxclass" : "dropfile",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 364.0, 98.0, 138.0, 37.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 137.0, 242.0, 529.0, 22.0 ],
-					"text" : "script start \"/Users/r/Documents/Max 8/Packages/drawsocket/code/svg2drawsocket/\" 3002 default"
 				}
 
 			}
@@ -104,7 +103,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 115.0, 150.0, 24.0, 24.0 ]
+					"patching_rect" : [ 115.0, 219.031914353370667, 24.0, 24.0 ]
 				}
 
 			}
@@ -115,7 +114,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 115.0, 195.0, 85.0, 22.0 ],
+					"patching_rect" : [ 115.0, 274.787233471870422, 85.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "startscript.js",
 						"parameter_enable" : 0
@@ -156,13 +155,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
-					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-13", 0 ]
 				}
@@ -178,15 +170,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"order" : 1,
-					"source" : [ "obj-4", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 1 ],
-					"order" : 0,
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -195,13 +178,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-7", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-9", 0 ]
 				}
 
 			}

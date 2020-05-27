@@ -18,10 +18,16 @@ if (userpath.length > 0) {
 
 }
 
-Max.addHandler("svg2drawsocket", (infile, outfile="", prefix="/foo", appendtofile=false) => {
+let hrefPathPrefix;
+
+Max.addHandler("svg2drawsocket", (infile, outfile="", prefix="/foo", appendtofile=false, hrefPath="") => {
     try {
         const svgFile = fs.readFileSync(userpath+infile, 'utf8');
         const svgJS = convert.xml2js(svgFile, { ignoreComment: true, compact: false });
+
+        hrefPathPrefix = hrefPath;
+        if( hrefPathPrefix != "" && !hrefPathPrefix.endsWith("/") )
+            hrefPathPrefix += "/";
 
         let svgObj = {
             key: 'svg',
@@ -121,11 +127,11 @@ function procElements(el_array, artboard_index = "", _ret_reflist = [])
                     case 'xlink:href':
                         if( typeof _ret_reflist !== 'undefined' && n.attributes[k].startsWith('#') )
                         {                       
-                            obj_[k] =`${n.attributes[k]}_${artboard_index}`;    
+                            obj_[k] =`${hrefPathPrefix}${n.attributes[k]}_${artboard_index}`;    
                             _ret_reflist.push( obj_[k].slice(1) ); 
                         }
                         else
-                            obj_[k] = n.attributes[k];
+                            obj_[k] = `${hrefPathPrefix}${n.attributes[k]}`;
 
 
                     break;
