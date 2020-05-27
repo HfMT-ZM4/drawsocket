@@ -125,6 +125,7 @@ function procElements(el_array, artboard_index = "", _ret_reflist = [])
                         obj_.style = styleStr2obj(n.attributes[k]);
                     break;
                     case 'xlink:href':
+                    case 'href':
                         if( typeof _ret_reflist !== 'undefined' && n.attributes[k].startsWith('#') )
                         {                       
                             obj_[k] =`${hrefPathPrefix}${n.attributes[k]}_${artboard_index}`;    
