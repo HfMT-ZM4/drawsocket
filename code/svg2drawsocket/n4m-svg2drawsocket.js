@@ -20,7 +20,7 @@ if (userpath.length > 0) {
 
 let hrefPathPrefix;
 
-Max.addHandler("svg2drawsocket", (infile, outfile="", prefix="/foo", appendtofile=false, hrefPath="") => {
+Max.addHandler("svg2drawsocket", (infile, outfile="", prefix="/*", appendtofile=false, hrefPath="") => {
     try {
         const svgFile = fs.readFileSync(userpath+infile, 'utf8');
         const svgJS = convert.xml2js(svgFile, { ignoreComment: true, compact: false });
