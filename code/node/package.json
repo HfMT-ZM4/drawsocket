@@ -12,18 +12,18 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
-    "d3-selection": "^1.4.0",
+    "d3-selection": "^1.4.2",
     "express": "^4.17.1",
     "gsap": "^2.1.3",
     "http": "0.0.0",
     "mixin-deep": "^2.0.1",
-    "pdfjs-dist": "^2.1.266",
+    "pdfjs-dist": "^2.5.207",
     "startaudiocontext": "^1.2.1",
     "svg-points": "^6.0.1",
-    "timesync": "^1.0.3",
+    "timesync": "^1.0.8",
     "timsort": "^0.3.0",
-    "tone": "^13.4.9",
-    "ws": "^7.1.0"
+    "tone": "^14.7.68",
+    "ws": "^7.4.0"
   },
   "devDependencies": {}
 }

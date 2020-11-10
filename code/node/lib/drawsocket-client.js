@@ -26,14 +26,14 @@ SOFTWARE.
 
 */
 
-
-
 'use strict';
+
 
 // we return a external access function drawsocket
 var drawsocket = (function(){
 
   let event_connected_callback = null;
+
 
 
   TweenMax.ticker.fps(60);
@@ -1351,7 +1351,18 @@ var drawsocket = (function(){
     }
   }
 
-
+  Tone.loaded().then(() => {
+    // all your samples are loaded
+    let msg = {};
+    msg.event = {
+      key: 'status',
+      val: {
+        bufferloaded: 1
+      }
+    };
+    sendMsg(msg);
+  })
+/*
   Tone.Buffer.on('load', function(){
     let msg = {};
     msg.event = {
@@ -1362,6 +1373,7 @@ var drawsocket = (function(){
     };
     sendMsg(msg);
   })
+*/
 
   function toneObjectFactory(type, vars, callback_id)
   {
