@@ -489,7 +489,7 @@ var drawsocket = (function(){
           
         }
         else // regular attribute
-          el.attr(prop, node[prop]);
+          el.node()[prop] = node[prop];
 
       }
 
