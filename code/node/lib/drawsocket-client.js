@@ -1413,7 +1413,6 @@ var drawsocket = (function(){
 
   */
 
-
  function setMemberValue(_obj, _set)
  {
    //console.log('setMemberValue', _obj, _set);
