@@ -484,10 +484,10 @@ var drawsocket = (function(){
         }
         else if(prop === 'call' && typeof node[prop] === 'object' )
         {
-        
-          processMethodCalls( el.node(), node[prop] );            
-          
+          processMethodCalls( el.node(), node[prop] );             
         }
+        if( prop === 'set' && typeof node.set === 'object' )
+              setMemberValue( el.node(), node.set )
         else if( typeof node[prop] == 'function' )
           el.node()[prop] = node[prop];
         else // regular attribute
@@ -1416,7 +1416,7 @@ var drawsocket = (function(){
 
  function setMemberValue(_obj, _set)
  {
-   //console.log(_obj, _set);
+   //console.log('setMemberValue', _obj, _set);
 
    const setstack_ = !Array.isArray(_set) ? [_set] : _set;
    for( let s of setstack_ )
@@ -1426,6 +1426,7 @@ var drawsocket = (function(){
       {
         const levels = s.member.split('.');
         const nlevels = levels.length;
+        //console.log(nlevels, levels, levels[0] );
 
         let target = _obj[ levels[0] ];
         //console.log(`getting target ${target}`);
@@ -1443,8 +1444,7 @@ var drawsocket = (function(){
         }
         else
         {
-          target = s.value;
-          //console.log(`setting target ${s.value}`);
+          _obj[ levels[0] ] = s.value;
         }
         
         //console.log(`check target ${target}`);
@@ -1525,7 +1525,7 @@ var drawsocket = (function(){
               }
             });
 
-            // console.log(ref_args);
+            console.log('call.method', call.method, typeof _obj[call.method], ref_args);
             
             ret = _obj[call.method]( ...ref_args );
             
