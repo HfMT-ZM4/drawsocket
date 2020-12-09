@@ -488,8 +488,10 @@ var drawsocket = (function(){
           processMethodCalls( el.node(), node[prop] );            
           
         }
-        else // regular attribute
+        else if( typeof node[prop] == 'function' )
           el.node()[prop] = node[prop];
+        else // regular attribute
+          el.attr(prop, node[prop]);
 
       }
 
@@ -735,6 +737,8 @@ var drawsocket = (function(){
             }
 
           }
+          else if( typeof node[prop] == 'function' )
+            el.node()[prop] = node[prop];
           else // regular attribute
             el.attr(prop, node[prop]);
 

@@ -1,11 +1,13 @@
 <head>
-      <script src="node_modules/verovio-dev/index.js"></script> 
-     <!--  <script src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>-->
+     
+
 </head>
 <body>
 <div id="foo"></div>
 
 <script>
+        const verovio = require('./node_modules/verovio/index.js');
+
         let vrvToolkit = new verovio.toolkit();
         
         vrvToolkit.setOptions({
@@ -37,8 +39,10 @@
                                             <staff n="1">
                                                 <layer>
                                                     <note pname="c" oct="4" dur="4">
-                                                        <accid glyph.name="U+E2E2" />
-                                                        </note>
+                                                        <verse n="1">
+                                                            <syl wordpos="t">o</syl>
+                                                        </verse>                     
+                                                    </note>
 
                                                     <note pname="c" oct="4" dur="8"/>
                                                     <note pname="c" oct="4" dur="16"/>
@@ -58,6 +62,8 @@
        
         vrvToolkit.loadData(mei);
         let svg = vrvToolkit.renderToSVG(1, {});
+
+        console.log(svg);
 
         let foo = document.getElementById("foo");
         foo.innerHTML = svg;
