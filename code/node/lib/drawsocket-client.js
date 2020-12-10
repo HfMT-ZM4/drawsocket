@@ -2901,9 +2901,8 @@ var drawsocket = (function(){
      */
     setPDFref ( filename ) 
     {
-      pdfjsLib.getDocument(filename)
-        .then( (pdfDoc_)=>{
-          this.loadCallback(pdfDoc_);
+      pdfjsLib.getDocument(filename).promise.then( result => {
+          this.loadCallback(result);
         });
     }
 
@@ -2930,7 +2929,7 @@ var drawsocket = (function(){
     renderCallback(_page) {
 
       // size of pdf
-      let viewport = _page.getViewport(this.scale);
+      let viewport = _page.getViewport({ scale: this.scale });
       
       //let mainDiv_bbox = main.node().getBoundingClientRect();
 
