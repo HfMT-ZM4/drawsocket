@@ -351,7 +351,7 @@ if (cluster.isMaster)
         cache_proc.send({
             key: 'write',
             url: prefix,
-            val: usr_root_path+filename
+            val: ( filename[0] == '/' ? filename : usr_root_path+filename )
         });
     });
 

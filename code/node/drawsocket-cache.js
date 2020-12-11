@@ -391,7 +391,11 @@ class ClientState
 
       fs.writeFile(filename, cache_str, (err)=>{
         if( err ){
-          return err;
+          console.log('write error', err);
+        }
+        else
+        {
+          console.log('write sucessful', filename);
         }
       });
 
