@@ -1300,12 +1300,11 @@ var drawsocket = (function(){
 
   function clearSound()
   {
-    /*
     let keys = Object.keys(audioObj);
 
     for( let k of keys )    
-      audioObj[k].kill();
-    */
+      audioObj[k].dispose();
+
 
     audioObj = {};
 
@@ -1607,16 +1606,29 @@ var drawsocket = (function(){
 
   }
 
-  function startAudio()
+  async function startAudio()
   {
+    /*
+    // old version
     let AudioContext = window.AudioContext || window.webkitAudioContext;
     audioCtx = new AudioContext();
 
     StartAudioContext(Tone.context).then( function() {
       display_log("Started Audio");
     });
-
    // console.log( Tone.context );
+*/
+
+
+   if( Tone.getContext().state == "suspended" )
+   {
+     await Tone.start();
+     console.log('audio is ready', Tone.getContext().state)
+ 
+     clearSound();
+     port.sendObj({ statereq: 1 });
+   }
+  
 
   }
 
@@ -2211,6 +2223,9 @@ var drawsocket = (function(){
 
 
   function handleStart(event) {
+
+    startAudio();
+    
     event.preventDefault();
 
     let touches = event.changedTouches;
@@ -2800,8 +2815,11 @@ var drawsocket = (function(){
 
   
 
-  window.addEventListener('click', ()=>{
+  window.addEventListener('click', async () => {
     startAudio();
+    
+   
+
   });
 
 
