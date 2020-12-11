@@ -92,7 +92,8 @@ var drawsocket = (function(){
   let eventStack = {};
 
   // webaudio context
-  let audioCtx;
+  let audioStatus = false;
+  
 
   let main = d3.select("#main-html");
   let drawing = d3.select("#main-svg"); // svg group drawing layer
@@ -1302,9 +1303,10 @@ var drawsocket = (function(){
   {
     let keys = Object.keys(audioObj);
 
-    for( let k of keys )    
+    for( let k of keys ){ 
       audioObj[k].dispose();
-
+      delete audioObj[k];
+    }
 
     audioObj = {};
 
@@ -1625,6 +1627,8 @@ var drawsocket = (function(){
      await Tone.start();
      console.log('audio is ready', Tone.getContext().state)
  
+     audioStatus = true;
+
      clearSound();
      port.sendObj({ statereq: 1 });
    }
@@ -1635,6 +1639,12 @@ var drawsocket = (function(){
 
   function processJSON_Sound(_obj, timetag)
   {
+    if( !audioStatus ){
+      console.log('audio is not yet enabled, ignoring Tone.js messages');
+
+      return;
+    }
+
     for(let node of _obj)
     {
       if( node.hasOwnProperty('id') )
