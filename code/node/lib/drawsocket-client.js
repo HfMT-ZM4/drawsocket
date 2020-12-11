@@ -1570,8 +1570,6 @@ var drawsocket = (function(){
     const _timetag = node.hasOwnProperty('timetag') ? node.timetag : timetag;
     const cmds = ( typeof node.cmd != 'object' ) ? [node.cmd] : node.cmd;
 
-    console.log(cmds);
-
     for( let _cmd of cmds )
     {
         switch(_cmd)
@@ -1579,6 +1577,9 @@ var drawsocket = (function(){
           case "start":
             if( audio_obj instanceof Tone.Player ) //typeof audio_obj.buffer === 'object'
             {
+
+              console.log(audio_obj);
+
               let end = _timetag + audio_obj.buffer.length;
 //              console.log('start',ts.now(), audio_obj.buffer.length, end );
               if( ts.now() < end )
@@ -1586,9 +1587,9 @@ var drawsocket = (function(){
                 let latestart = (ts.now() - _timetag) * 0.001; // to seconds
 //                console.log('start offset', latestart);
                 if( latestart >= 0 ){
-                  audio_obj.restart(Tone.now(), latestart );                        
+                  audio_obj.start(Tone.now(), latestart );                        
                 } else {
-                  audio_obj.restart(Tone.now()-latestart, 0 );
+                  audio_obj.start(Tone.now()-latestart, 0 );
                 }
     
               }
