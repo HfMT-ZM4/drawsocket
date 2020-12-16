@@ -420,9 +420,9 @@ var drawsocket = (function(){
     // remove "new" from node?
     for( let prop in node)
     {
-      
       if( prop !== 'new' && prop != 'href' && prop != 'timetag' && prop != 'parent' )
       {
+
         if(prop === "style" )
         {
 
@@ -432,10 +432,11 @@ var drawsocket = (function(){
           {
 
             el.node().style[cssprop] = cssnode[cssprop];
-        //    console.log("setting", cssprop, cssnode[cssprop]);
+    //        console.log("setting", cssprop, cssnode[cssprop], el.node().style[cssprop]);
+    //        el.style(cssprop, cssnode[cssprop]);
 
           }
-          //console.log("style", el.node().style);
+         //console.log("style", cssnode);
 
         }
         else if( prop === "child" || prop === "children" || prop === "text" || prop === "html"  )
@@ -487,12 +488,14 @@ var drawsocket = (function(){
         {
           processMethodCalls( el.node(), node[prop] );             
         }
-        if( prop === 'set' && typeof node.set === 'object' )
-              setMemberValue( el.node(), node.set )
+        else if( prop === 'set' && typeof node.set === 'object' )
+          setMemberValue( el.node(), node.set )
         else if( typeof node[prop] == 'function' )
           el.node()[prop] = node[prop];
-        else // regular attribute
+        else 
+        { // regular attribute
           el.attr(prop, node[prop]);
+        }
 
       }
 
