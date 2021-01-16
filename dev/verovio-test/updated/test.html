@@ -1,30 +1,208 @@
 <head>
      
+    <script src="./verovio-toolkit.js" type="text/javascript" ></script>
 
 </head>
 <body>
-<div id="foo"></div>
+<svg height="100%" width="100%" id="svg"></svg>
 
 <script>
-        const verovio = require('./node_modules/verovio/index.js');
+     //   const verovio = require('./node_modules/verovio/index.js');
 
         let vrvToolkit = new verovio.toolkit();
         
         vrvToolkit.setOptions({
-                scale: 100,
                 evenNoteSpacing : true,
-                font: "Bravura" 
+                font: "Bravura",
+                footer: 'none',
+                header: 'none',
+                adjustPageHeight: true,
+                adjustPageWidth: true
+
         });
 
-        let mei = `<mei xmlns="http://www.music-encoding.org/ns/mei">
-                    <meiHead>
-                        <fileDesc>
-                            <titleStmt>
-                                <title/>
-                            </titleStmt>
-                            <pubStmt/>
-                        </fileDesc>
-                    </meiHead>
+        /**
+         <scoreDef xml:id="scoredef-000000083381832" midi.bpm="138">
+                        <staffGrp xml:id="m-000000047097018" symbol="brace" barthru="true">
+                            <staffDef xml:id="staffdef-000000020483995" clef.shape="G" clef.line="2" key.sig="2f" meter.count="2" meter.unit="2" n="1" lines="5" />
+                            <staffDef xml:id="staffdef-000000020182723" clef.shape="F" clef.line="4" key.sig="2f" meter.count="2" meter.unit="2" n="2" lines="5" />
+                        </staffGrp>
+                    </scoreDef>
+                        */
+
+        let jsonRep = {
+            key: 'mei',
+            val: {
+                new: 'score',
+                id: 'newScore',
+                children: [{
+                        new: 'scoreDef',
+                        children: [{
+                            new: "staffGrp",
+                            symbol: "brace",
+                            barthru: true,
+                            children: [{
+                                new: "staffDef",
+                                n: 1,
+                                'clef-shape': "G",
+                                'clef-line': 2,
+                                lines: 5
+                            },{
+                                new: "staffDef",
+                                n: 2,
+                                'clef-shape': "F",
+                                'clef-line': 4,
+                                lines: 5
+                            }]  
+                        }], 
+                    },
+                    {
+                        new: "section",
+                        children: [{
+                            new: "measure",
+                            children: [{
+                                new: "staff",
+                                n: 1,
+                                children: {
+                                    new: "layer",
+                                    children: [{
+                                        new: "note",
+                                        id: "hello!",
+                                        pname: "c",
+                                        oct: "4",
+                                        dur: "4"
+                                    },
+                                    {
+                                        new: "note",
+                                        id: "hello!2",
+                                        pname: "d",
+                                        oct: "4",
+                                        dur: "8"
+                                    },
+                                    {
+                                        new: "note",
+                                        id: "hello!3",
+                                        pname: "e",
+                                        oct: "4",
+                                        dur: "16"
+                                    }]
+                                }
+                            }, {
+                                new: 'staff',
+                                n: 2,
+                                children: {
+                                    new: "layer",
+                                    children: [{
+                                        new: "note",
+                                        id: "hello!4",
+                                        pname: "e",
+                                        oct: "3",
+                                        dur: "4"
+                                    },
+                                    {
+                                        new: "note",
+                                        id: "hello!5",
+                                        pname: "f",
+                                        oct: "3",
+                                        dur: "8"
+                                    },
+                                    {
+                                        new: "note",
+                                        id: "hello!6",
+                                        pname: "g",
+                                        oct: "3",
+                                        dur: "16"
+                                    }]
+                                }
+                            }]
+                        }]
+                    }
+                ]
+
+            }
+        }
+
+        console.log(JSON.stringify(jsonRep, null, 2))
+        /*
+<score xml:id="newScore">
+    <scoreDef>
+        <staffDef n="1" clef-shape="G" clef-line="2" lines="5"/>
+        <staffDef n="1" clef-shape="F" clef-line="4" lines="5"/>
+    </scoreDef>
+</score>
+
+        */
+
+        function iterateMeiToDoc(_doc, _parent, _objArr)
+        {
+            if( !Array.isArray(_objArr) )
+            {
+                _objArr = [_objArr]
+            }
+
+            _objArr.forEach( _obj =>{
+                let _el = null;
+                if( _obj.hasOwnProperty('new') )
+                {
+                    _el = _doc.createElement( _obj.new );
+                }
+                else {
+                    console.error('mei parse error, requires "new" key', _obj)
+                    return;
+                }
+                
+                let keys = Object.keys(_obj);
+                delete keys.new;
+
+                keys.forEach(k => {
+
+                    if( k == 'id' )
+                    {
+                        _el.setAttribute('xml:id', _obj[k] )
+                    }
+                    else if( k == "children" && typeof _obj[k] == "object")
+                    {
+                        iterateMeiToDoc(_doc, _el, _obj[k])
+                    }
+                    else if( k != 'new')
+                    {
+                        let dotted = k.replace(/-/i, '.');
+                        _el.setAttribute(dotted, _obj[k]);
+
+                    }
+                });
+
+                _parent.appendChild(_el);
+            })
+            
+        }
+
+        function jsonMEI_to_XML(obj)
+        {
+            let new_doc = new Document();
+            let mei = new_doc.createElement('mei');
+            let music = new_doc.createElement('music');
+            let body = new_doc.createElement('body');
+            let mdiv = new_doc.createElement('mdiv');
+
+            iterateMeiToDoc(new_doc, mdiv, obj);
+
+            body.appendChild(mdiv);
+            music.appendChild(body);
+            mei.appendChild(music);
+            new_doc.appendChild(mei);
+
+            const serializer = new XMLSerializer();
+            const xmlStr = serializer.serializeToString(new_doc);
+            console.log(xmlStr)
+
+            return xmlStr;
+        }
+
+
+        let parsedMEI = jsonMEI_to_XML(jsonRep.val);
+
+        let mei2 = `<mei>
                     <music>
                         <body>
                             <mdiv>
@@ -38,16 +216,13 @@
                                         <measure>
                                             <staff n="1">
                                                 <layer>
-                                                    <note pname="c" oct="4" dur="4">
-                                                        <verse n="1">
-                                                            <syl wordpos="t">o</syl>
-                                                        </verse>                     
-                                                    </note>
-
+                                                    <note xml:id="hello!" pname="c" oct="4" dur="4" />
                                                     <note pname="c" oct="4" dur="8"/>
-                                                    <note pname="c" oct="4" dur="16"/>
+                                                    <note pname="c#" oct="4" dur="16"/>
                                                     <note pname="c" oct="4" dur="4"/>
-
+                                                    <note pname="c" oct="4" dur="8"/>
+                                                    <note pname="c" oct="4" dur="32"/>
+                                                    <note pname="c" oct="4" dur="32"/>
                                                 </layer>
                                             </staff>
                                         </measure>
@@ -58,15 +233,128 @@
                     </music>
                     </mei>`;
 
+        const mei = `
+        <music>
+            <body>
+                <mdiv>
+                    <score>
+                        <scoreDef>
+                            <staffGrp>
+                                <staffDef clef.shape="G" clef.line="2" n="1" lines="5"/>
+                            </staffGrp>
+                        </scoreDef>
+                        <section>
+                            <measure>
+                                <staff n="1">
+                                    <layer>
+                                        <beam>
+                                            <note dur="8" oct="5" pname="d" stem.dir="down" />
+                                            <note dur="8" oct="5" pname="e" stem.dir="up" grace="unacc" stem.mod="1slash" />
+                                            <note dur="8" oct="5" pname="d" stem.dir="down" />
+                                            <note accid="s" dur="8" oct="5" pname="c" stem.dir="up" grace="unacc" stem.mod="1slash" />
+                                            <note dur="8" oct="5" pname="d" stem.dir="down" />
+                                            <note dur="8" oct="4" pname="b" stem.dir="down" />
+                                        </beam>
+                                    </layer>
+                                </staff>
+                            </measure>
+                        </section>
+                    </score>
+                </mdiv>
+            </body>
+        </music>`;
 
+        const mei3 = `
+        <music>
+        <body>
+            <mdiv>
+                <score>
+                    <scoreDef xml:id="scoredef-000000083381832" midi.bpm="138">
+                        <staffGrp xml:id="m-000000047097018" symbol="brace" barthru="true">
+                            <staffDef xml:id="staffdef-000000020483995" clef.shape="G" clef.line="2" key.sig="2f" meter.count="2" meter.unit="2" n="1" lines="5" />
+                            <staffDef xml:id="staffdef-000000020182723" clef.shape="F" clef.line="4" key.sig="2f" meter.count="2" meter.unit="2" n="2" lines="5" />
+                        </staffGrp>
+                    </scoreDef>
+                    <section xml:id="section-000000205758969">
+                        <measure xml:id="measure-000000146715217" n="43">
+                            <staff xml:id="staff-000000028610364" n="1">
+                                <layer xml:id="layer-000000171399170" n="1">
+                                    <rest xml:id="rest-L370F2" dur="4" />
+                                    <chord xml:id="chord-L372F2" dur="4" stem.dir="down">
+                                        <note xml:id="note-L372F2S1" accid="s" oct.ges="5" oct="4" pname="f" />
+                                        <note xml:id="note-L372F2S2" oct.ges="5" oct="4" pname="a" accid.ges="n" />
+                                        <note xml:id="note-L372F2S3" oct.ges="6" oct="5" pname="c" accid.ges="n" />
+                                        <note xml:id="note-L372F2S4" accid="s" oct.ges="6" oct="5" pname="f" />
+                                    </chord>
+                                    <rest xml:id="rest-L374F2" dur="4" />
+                                    <chord xml:id="chord-L375F2" dur="4" stem.dir="down">
+                                        <note xml:id="note-L375F2S1" oct.ges="5" oct="4" pname="a" accid.ges="n" />
+                                        <note xml:id="note-L375F2S2" oct.ges="6" oct="5" pname="c" accid.ges="n" />
+                                        <note xml:id="note-L375F2S3" oct.ges="6" oct="5" pname="a" accid.ges="n" />
+                                    </chord>
+                                </layer>
+                            </staff>
+                            <staff xml:id="staff-000000127886591" n="2">
+                                <layer xml:id="layer-000000070317212" n="1">
+                                    <note xml:id="note-L370F1" dots="1" dur="4" oct="2" pname="a" accid.ges="n" stem.dir="up" />
+                                    <note xml:id="note-L373F1" dur="8" oct="3" pname="d" accid.ges="n" stem.dir="up" />
+                                    <note xml:id="note-L374F1" dots="1" dur="4" oct="2" pname="g" accid.ges="n" stem.dir="up" />
+                                    <note xml:id="note-L376F1" dur="8" oct="3" pname="d" accid.ges="n" stem.dir="up" />
+                                </layer>
+                            </staff>
+                            <octave xml:id="octave-000000051716152" staff="1" startid="#note-L372F2S1" endid="#note-L386F2S4" dis="8" dis.place="above" />
+                        </measure>
+                        <measure xml:id="measure-000000129995775" n="44" right="dbl">
+                            <staff xml:id="staff-000000051890327" n="1">
+                                <layer xml:id="layer-000000045369537" n="1">
+                                    <rest xml:id="rest-L378F2" dur="4" />
+                                    <chord xml:id="chord-L379F2" dur="4" stem.dir="down">
+                                        <note xml:id="note-L379F2S1" oct.ges="6" oct="5" pname="c" accid.ges="n" />
+                                        <note xml:id="note-L379F2S2" oct.ges="6" oct="5" pname="a" accid.ges="n" />
+                                        <note xml:id="note-L379F2S3" oct.ges="7" oct="6" pname="c" accid.ges="n" />
+                                    </chord>
+                                    <rest xml:id="rest-L381F2" dur="4" />
+                                    <chord xml:id="chord-L382F2" dur="4" stem.dir="down">
+                                        <note xml:id="note-L382F2S1" oct.ges="6" oct="5" pname="c" accid.ges="n" />
+                                        <note xml:id="note-L382F2S2" accid="s" oct.ges="6" oct="5" pname="f" />
+                                        <note xml:id="note-L382F2S3" oct.ges="6" oct="5" pname="a" accid.ges="n" />
+                                        <note xml:id="note-L382F2S4" oct.ges="7" oct="6" pname="c" accid.ges="n" />
+                                    </chord>
+                                </layer>
+                            </staff>
+                            <staff xml:id="staff-000000049075641" n="2">
+                                <layer xml:id="layer-000000196724784" n="1">
+                                    <note xml:id="note-L378F1" dots="1" dur="4" accid="s" oct="2" pname="f" stem.dir="up" />
+                                    <note xml:id="note-L380F1" dur="8" oct="3" pname="d" accid.ges="n" stem.dir="up" />
+                                    <note xml:id="note-L381F1" dots="1" dur="4" oct="2" pname="e" accid.ges="f" stem.dir="up" />
+                                    <note xml:id="note-L383F1" dur="8" oct="3" pname="d" accid.ges="n" stem.dir="up" />
+                                </layer>
+                            </staff>
+                        </measure>
+                    </section>
+                    </score>
+                </mdiv>
+            </body>
+        </music>`;
        
-        vrvToolkit.loadData(mei);
+        vrvToolkit.loadData(parsedMEI);
         let svg = vrvToolkit.renderToSVG(1, {});
 
-        console.log(svg);
+        const domparser = new DOMParser();
+        const doc = domparser.parseFromString(svg, 'image/svg+xml')
 
-        let foo = document.getElementById("foo");
-        foo.innerHTML = svg;
+        let mainsvg = doc.querySelector('.definition-scale');
+
+
+       // mainsvg.setAttribute('viewBox', '0 0 100 100')
+        //mainsvg.setAttribute('height', "100%");
+        //mainsvg.setAttribute('width', '100%')
+        // console.log(doc.querySelectorAll('.autogenerated'));
+
+        let foo = document.getElementById("svg");
+       
+        //foo.appendChild(doc.documentElement);
+        foo.innerHTML = doc.documentElement.innerHTML;
 
 </script>
 

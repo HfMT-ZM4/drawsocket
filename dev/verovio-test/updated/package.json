@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "verovio": "^2.7.2"
+    "verovio": "^2.7.2",
+    "xml-js": "^1.6.11"
   }
 }
