@@ -4,6 +4,7 @@
 
 </head>
 <body>
+
 <svg height="100%" width="100%" id="svg"></svg>
 
 <script>
@@ -54,7 +55,7 @@
                                 'clef-line': 4,
                                 lines: 5
                             }]  
-                        }], 
+                        }]
                     },
                     {
                         new: "section",
@@ -337,7 +338,45 @@
             </body>
         </music>`;
        
-        vrvToolkit.loadData(parsedMEI);
+        let humdrum = 
+`!!!COM: Mozart, Wolfgang Amadeus
+!!!OTL: Piano Sonata No. 2 in F major
+!!!OMV: 1
+!!!SCT1: K1 280
+!!!SCT2: K6 189e
+!!!OMD: Allegro assai
+**kern,**kern,**dynam
+*staff2,*staff1,*
+*clefF4,*clefG2,*
+*k[b-],*k[b-],*k
+*F:,*F:,*
+*M3/4,*M3/4,*
+*MM152,*MM152,*
+=1-,=1-,=1-
+4FF 4F,4c: 4f: 4a: 4cc:,f
+4C,4a/ 4cc/,.
+4AA,4a/ 4cc/,.
+=2,=2,=2
+4FF,4.a/ 4.cc/,.
+4FFF,.,.
+.,(16ddLL,.
+.,16ccJJ,.
+4r,16b-LL,.
+.,16a,.
+.,16g,.
+.,16fJJ,.
+=3,=3,=3
+8F 8AL,4ff,.
+8F 8A,.,.
+8F 8G 8B-,4ee,.
+8F 8G 8B-,.,.
+8F 8A 8c,4ee-),.
+8F 8A 8cJ,.,.
+=4,=4,=4
+*-,*-,*-
+`;
+
+        vrvToolkit.loadData(humdrum);
         let svg = vrvToolkit.renderToSVG(1, {});
 
         const domparser = new DOMParser();

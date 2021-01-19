@@ -112,8 +112,11 @@ var drawsocket = (function(){
           footer: 'none',
           header: 'none',
           adjustPageHeight: true,
-          adjustPageWidth: true
-
+          adjustPageWidth: true,
+          pageMarginTop  : 0,
+          pageMarginBottom  : 0,
+          pageMarginLeft  : 0,
+          pageMarginRight  : 0
   });
 
 
@@ -758,6 +761,32 @@ var drawsocket = (function(){
           }
           else if( typeof node[prop] == 'function' )
             el.node()[prop] = node[prop];
+          else if( typeof node[prop] == "object")
+          {
+            let node_prop = node[prop];
+            if( node_prop.hasOwnProperty("selector") && node_prop.hasOwnProperty("coord"))
+            {
+            
+              let bbox = document.querySelector(node_prop.selector).getBoundingClientRect();
+
+              let coord;
+              if( node_prop.coord == "cx" )
+              {
+                coord = bbox.x + (bbox.width * 0.5);
+              }
+              else if( node_prop.coord == "cy" )
+              {
+                coord = bbox.y + (bbox.height * 0.5);
+              }
+              else
+              {
+                coord = bbox[node_prop.coord];
+              }
+
+              el.attr(prop, coord );
+
+            }
+          }
           else // regular attribute
             el.attr(prop, node[prop]);
 
@@ -798,6 +827,46 @@ var drawsocket = (function(){
 
       if( _newnode !== null )
       {
+
+        /**
+         * relativeTo : {
+         *  selector : "#foo",
+         *  point : "center" (top, bottom, left, right, center)
+         * }
+         */
+        if( node.hasOwnProperty('relativeTo')  )
+        {
+          let selector = null;
+          let rel_pt = { x: "cx", y: "cy" };
+
+          if( typeof node.relativeTo == "object" )
+          {
+            let rel_set = node.relativeTo;
+            selector = rel_set.selector;
+            if( rel_set.hasOwnProperty('anchor_x') )
+            {
+              rel_pt.x = rel_set.anchor_x;
+            }
+            if( rel_set.hasOwnProperty('anchor_y') )
+            {
+              rel_pt.y = rel_set.anchor_y;
+            }
+
+          }
+          else
+          {
+            selector = node.relativeTo;
+          }
+          
+          let relObj = document.querySelector(selector);
+          console.log(node.relativeTo, relObj);
+          let rel_BB = relObj.getBoundingClientRect();
+
+          let offsetX = rel_pt.x == "cx" ? rel_BB.x + (rel_BB.width * 0.5) : rel_BB[rel_pt.x];
+          let offsetY = rel_pt.y == "cy" ? rel_BB.y + (rel_BB.height * 0.5) : rel_BB[rel_pt.y];
+
+          TweenMax.set(_newnode, { x: `+= ${offsetX}`, y: `+= ${offsetY}` })
+        }
   /*
         if( typeof _newnode.id == 'undefined' )
         {
@@ -1952,19 +2021,43 @@ var drawsocket = (function(){
 
   function mei_handler(objarr)
   {
-    var xmlns = "http://www.w3.org/2000/svg";
-    var boxWidth = 300;
-    var boxHeight = 300;
 
-    var scoreHolder = document.createElementNS(xmlns, "svg");
-    scoreHolder.setAttributeNS(null, "viewBox", "0 0 " + boxWidth + " " + boxHeight);
-    scoreHolder.setAttributeNS(null, "width", boxWidth);
-    scoreHolder.setAttributeNS(null, "height", boxHeight);
+    // currently setup for only one score at at time, should also allow arrays
+    //objarr.forEach( obj => {})
+
+    let scoreHolder = null;
 
     if( typeof objarr[0].id != "undefined" )
     {
-      scoreHolder.setAttributeNS(null, 'id', objarr[0].id);
+      scoreHolder = document.getElementById(objarr[0].id);
     }
+
+    if( !scoreHolder )
+    {
+      var xmlns = "http://www.w3.org/2000/svg";
+      var boxWidth = 300;
+      var boxHeight = 300;
+  
+      scoreHolder = document.createElementNS(xmlns, "svg");
+      scoreHolder.setAttributeNS(null, "viewBox", "0 0 " + boxWidth + " " + boxHeight);
+      scoreHolder.setAttributeNS(null, "width", boxWidth);
+      scoreHolder.setAttributeNS(null, "height", boxHeight);
+  
+      /*
+      if( typeof objarr[0].id != "undefined" )
+      {
+        scoreHolder.setAttributeNS(null, 'id', objarr[0].id);
+      }  
+      */
+    }
+
+    let keys = Object.keys(objarr[0])
+
+    keys.forEach( k => {
+      if( k != "children" )
+        scoreHolder.setAttributeNS(null, k, objarr[0][k]);
+    })
+
 
     let new_doc = new Document();
     let mei = new_doc.createElement('mei');
@@ -1988,7 +2081,8 @@ var drawsocket = (function(){
     const domparser = new DOMParser();
     const svgDOM = domparser.parseFromString(svgStr, 'image/svg+xml')
 
-   // let mainsvg = doc.querySelector('.definition-scale');
+    let docSVG = svgDOM.querySelector('.definition-scale');
+    console.log(docSVG.getBoundingClientRect());
 
 
    // mainsvg.setAttribute('viewBox', '0 0 100 100')
@@ -2001,6 +2095,7 @@ var drawsocket = (function(){
     scoreHolder.innerHTML = svgDOM.documentElement.innerHTML;
 
     drawing.node().appendChild(scoreHolder)
+
   }
 
 
@@ -2688,6 +2783,8 @@ var drawsocket = (function(){
           case 'statereq':
             port.sendObj({ statereq: 1 });
           break;
+          case 'osc':
+            break;
           default:
             drawsocket_input(obj);
           break;
