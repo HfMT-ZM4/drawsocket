@@ -107,17 +107,24 @@ var drawsocket = (function(){
   let vrvToolkit = new verovio.toolkit();
         
   vrvToolkit.setOptions({
-          evenNoteSpacing : true,
+          spacingDurDetection : true,
+          evenNoteSpacing : 0.0,
+          spacingLinear : 1.0,
           font: "Bravura",
           footer: 'none',
           header: 'none',
-          adjustPageHeight: true,
-          adjustPageWidth: true,
+          noJustification : 1,
+          //adjustPageHeight: false,
+          //adjustPageWidth: false,
+          shrinkToFit : true,
           pageMarginTop  : 0,
           pageMarginBottom  : 0,
           pageMarginLeft  : 0,
-          pageMarginRight  : 0
-  });
+          pageMarginRight  : 0,
+          
+          svgViewBox : false,
+          scale : 1
+});
 
 
 
@@ -764,26 +771,34 @@ var drawsocket = (function(){
           else if( typeof node[prop] == "object")
           {
             let node_prop = node[prop];
-            if( node_prop.hasOwnProperty("selector") && node_prop.hasOwnProperty("coord"))
+            if( node_prop.hasOwnProperty("selector") )
             {
-            
-              let bbox = document.querySelector(node_prop.selector).getBoundingClientRect();
+              let rel_el = document.querySelector(node_prop.selector)
+              if( node_prop.hasOwnProperty("coord") )
+              {
+                let bbox = rel_el.getBoundingClientRect();
 
-              let coord;
-              if( node_prop.coord == "cx" )
-              {
-                coord = bbox.x + (bbox.width * 0.5);
+                let coord;
+                if( node_prop.coord == "cx" )
+                {
+                  coord = bbox.x + (bbox.width * 0.5);
+                }
+                else if( node_prop.coord == "cy" )
+                {
+                  coord = bbox.y + (bbox.height * 0.5);
+                }
+                else
+                {
+                  coord = bbox[node_prop.coord];
+                }
+  
+                el.attr(prop, coord );
               }
-              else if( node_prop.coord == "cy" )
+              else if( node_prop.hasOwnProperty("attr") )
               {
-                coord = bbox.y + (bbox.height * 0.5);
+                el.attr(prop, rel_el.getAttribute(node_prop.attr) )
               }
-              else
-              {
-                coord = bbox[node_prop.coord];
-              }
-
-              el.attr(prop, coord );
+              
 
             }
           }
@@ -2035,13 +2050,13 @@ var drawsocket = (function(){
     if( !scoreHolder )
     {
       var xmlns = "http://www.w3.org/2000/svg";
-      var boxWidth = 300;
-      var boxHeight = 300;
+      //var boxWidth = 400;
+     // var boxHeight = 300;
   
       scoreHolder = document.createElementNS(xmlns, "svg");
-      scoreHolder.setAttributeNS(null, "viewBox", "0 0 " + boxWidth + " " + boxHeight);
-      scoreHolder.setAttributeNS(null, "width", boxWidth);
-      scoreHolder.setAttributeNS(null, "height", boxHeight);
+      //scoreHolder.setAttributeNS(null, "viewBox", "0 0 " + boxWidth + " " + boxHeight);
+      //scoreHolder.setAttributeNS(null, "width", boxWidth);
+      //scoreHolder.setAttributeNS(null, "height", boxHeight);
   
       /*
       if( typeof objarr[0].id != "undefined" )
