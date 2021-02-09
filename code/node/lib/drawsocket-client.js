@@ -104,29 +104,6 @@ var drawsocket = (function(){
   let log_enabled = false;
 
 
-  let vrvToolkit = new verovio.toolkit();
-        
-  vrvToolkit.setOptions({
-          spacingDurDetection : true,
-          evenNoteSpacing : 0.0,
-          spacingLinear : 1.0,
-          font: "Bravura",
-          footer: 'none',
-          header: 'none',
-          noJustification : 1,
-          //adjustPageHeight: false,
-          //adjustPageWidth: false,
-          shrinkToFit : true,
-          pageMarginTop  : 0,
-          pageMarginBottom  : 0,
-          pageMarginLeft  : 0,
-          pageMarginRight  : 0,
-          
-          svgViewBox : false,
-          scale : 1
-});
-
-
 
   function removeNode(node) {
     let parent = node.parentNode;
@@ -766,8 +743,9 @@ var drawsocket = (function(){
             }
 
           }
-          else if( typeof node[prop] == 'function' )
+          else if( typeof node[prop] == 'function' ){
             el.node()[prop] = node[prop];
+          } 
           else if( typeof node[prop] == "object")
           {
             let node_prop = node[prop];
@@ -896,7 +874,10 @@ var drawsocket = (function(){
           {
             _context = d3.select(`#${node.parent}`);
             //console.log("found parent context ", node.parent);
-            
+          }
+          else if( node.hasOwnProperty('container') )
+          {
+            _context = d3.select(`#${node.container}`);          
           }
           
           if( !_context )
@@ -1568,10 +1549,12 @@ var drawsocket = (function(){
       case "Tone":
         return Tone[member];
       case "Tone.Object":
+      case 'sound':
         return audioObj[member];
       case 'tween':
         return animStack[member];
-
+      case 'function':
+        return functionStack[member];
       default:
         return null;
 
@@ -1877,6 +1860,25 @@ var drawsocket = (function(){
   }
 }
 
+/**
+ * 
+ * @param {*} obj_arr 
+ * 
+ * 
+ * {
+ *    id: xxx,
+ *    /body : "",
+ *    /args ; [ "arg1", "arg2", ... ]
+ * 
+ * }
+ * 
+ * 
+ * {
+ *    id: xxx,
+ *    call: [arg1_value, arg1_value, ... ]
+ * }
+ * 
+ */
 
   function processJSON_Fn(obj_arr)
   {
@@ -2012,104 +2014,138 @@ var drawsocket = (function(){
       
   }
 
-  function jsonMEI_to_XML(obj)
+  let vrvToolkit = new verovio.toolkit();
+        
+  vrvToolkit.setOptions({
+          spacingDurDetection : true,
+          evenNoteSpacing : 0.0,
+          spacingLinear : 1.0,
+          font: "Bravura",
+          footer: 'none',
+          header: 'none',
+          noJustification : 1,
+          adjustPageHeight: true,
+          adjustPageWidth: true,
+          //shrinkToFit : true,
+          pageMarginTop  : 0,
+          pageMarginBottom  : 0,
+          pageMarginLeft  : 0,
+          pageMarginRight  : 0,
+          //pageWidth : 100,
+          //svgViewBox : false,
+          scale : 1
+  });
+
+  function mei_to_svg(objarr)
   {
-      let new_doc = new Document();
-      let mei = new_doc.createElement('mei');
-      let music = new_doc.createElement('music');
-      let body = new_doc.createElement('body');
-      let mdiv = new_doc.createElement('mdiv');
+    let mei_dom = new Document();
+    let mei = mei_dom.createElement('mei');
+    let music = mei_dom.createElement('music');
+    let body = mei_dom.createElement('body');
+    let mdiv = mei_dom.createElement('mdiv');
 
-      iterateMeiToDoc(new_doc, mdiv, obj);
-
-      body.appendChild(mdiv);
-      music.appendChild(body);
-      mei.appendChild(music);
-      new_doc.appendChild(mei);
-
-      const serializer = new XMLSerializer();
-      const xmlStr = serializer.serializeToString(new_doc);
-      console.log(xmlStr)
-
-      return xmlStr;
-  }
-
-  function mei_handler(objarr)
-  {
-
-    // currently setup for only one score at at time, should also allow arrays
-    //objarr.forEach( obj => {})
-
-    let scoreHolder = null;
-
-    if( typeof objarr[0].id != "undefined" )
-    {
-      scoreHolder = document.getElementById(objarr[0].id);
-    }
-
-    if( !scoreHolder )
-    {
-      var xmlns = "http://www.w3.org/2000/svg";
-      //var boxWidth = 400;
-     // var boxHeight = 300;
-  
-      scoreHolder = document.createElementNS(xmlns, "svg");
-      //scoreHolder.setAttributeNS(null, "viewBox", "0 0 " + boxWidth + " " + boxHeight);
-      //scoreHolder.setAttributeNS(null, "width", boxWidth);
-      //scoreHolder.setAttributeNS(null, "height", boxHeight);
-  
-      /*
-      if( typeof objarr[0].id != "undefined" )
-      {
-        scoreHolder.setAttributeNS(null, 'id', objarr[0].id);
-      }  
-      */
-    }
-
-    let keys = Object.keys(objarr[0])
-
-    keys.forEach( k => {
-      if( k != "children" )
-        scoreHolder.setAttributeNS(null, k, objarr[0][k]);
-    })
-
-
-    let new_doc = new Document();
-    let mei = new_doc.createElement('mei');
-    let music = new_doc.createElement('music');
-    let body = new_doc.createElement('body');
-    let mdiv = new_doc.createElement('mdiv');
-
-    iterateMeiToDoc(new_doc, mdiv, objarr);
+    iterateMeiToDoc(mei_dom, mdiv, objarr);
 
     body.appendChild(mdiv);
     music.appendChild(body);
     mei.appendChild(music);
-    new_doc.appendChild(mei);
+    mei_dom.appendChild(mei);
 
     const serializer = new XMLSerializer();
-    const meiXML = serializer.serializeToString(new_doc);
+    const meiXML = serializer.serializeToString(mei_dom);
 
     vrvToolkit.loadData(meiXML);
     let svgStr = vrvToolkit.renderToSVG(1, {});
 
     const domparser = new DOMParser();
-    const svgDOM = domparser.parseFromString(svgStr, 'image/svg+xml')
+    return domparser.parseFromString(svgStr, 'image/svg+xml')    
+  }
 
-    let docSVG = svgDOM.querySelector('.definition-scale');
-    console.log(docSVG.getBoundingClientRect());
+  function mei_handler(objarr)
+  {
+    // currently setup for only one score at at time, should also allow arrays
+    //objarr.forEach( obj => {})
+
+    let score = objarr[0];
+    let is_new_score = false;
+    let container;
+
+    if( score.hasOwnProperty('id'))
+        container = document.getElementById(score.id);
+
+    if( score.hasOwnProperty('new') )
+    {
+      let score_svg = mei_to_svg( objarr ).firstChild;
+  
+      if( container )
+      {
+        container.removeAttributeNS(null, "transform");
+      }
+      else
+      {
+        container = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        container.setAttributeNS(null, "id", score.id);
+        is_new_score = true;
+      }
+
+      container.innerHTML = score_svg.innerHTML;
+      
+      // remove inner svg in favor of raw drawing to scale
+      let innerSVG = container.querySelector('.definition-scale');
+      while (innerSVG.childNodes.length > 0) {
+        container.appendChild(innerSVG.childNodes[0]);
+      }
+      innerSVG.remove();
+  
+      if( is_new_score ){
+        drawing.node().appendChild(container)
+      }
+
+    }
+
+    
+
+    let attrs = {};
+    let keys = Object.keys(score);
+    keys.forEach( k => {
+      if( k != "children" && k != "new" && k != "timetag" ){
+        attrs[k] = score[k];
+      }
+    })
+
+  //  requestAnimationFrame( ()=> {
+
+      let bbox = container.getBoundingClientRect();
+      //console.log('pre', attrs, bbox, container);
+
+      let scaleX = 1, scaleY = 1;
+      if( attrs.hasOwnProperty('width') )
+      {
+        scaleX = Math.abs(attrs.width / bbox.width);
+  
+        if( !attrs.hasOwnProperty('height') )
+          scaleY = scaleX;
+      }
+  
+      if( attrs.hasOwnProperty('height') )
+      {
+        scaleY = Math.abs(attrs.height / bbox.height);
+  
+        if( !attrs.hasOwnProperty('width') )
+          scaleX = scaleY;
+      }
+
+      let x = attrs.hasOwnProperty('x') ? attrs.x - bbox.x * scaleX : 0;
+      let y = attrs.hasOwnProperty('y') ? attrs.y - bbox.y * scaleY : 0;
+  
+      //console.log(bbox, container);
+  
+      container.setAttributeNS(null, "transform", `matrix(${scaleX}, 0, 0, ${scaleY}, ${x}, ${y})`)
+  
+   // })
 
 
-   // mainsvg.setAttribute('viewBox', '0 0 100 100')
-    //mainsvg.setAttribute('height', "100%");
-    //mainsvg.setAttribute('width', '100%')
-    // console.log(doc.querySelectorAll('.autogenerated'));
-
-   
-    //foo.appendChild(doc.documentElement);
-    scoreHolder.innerHTML = svgDOM.documentElement.innerHTML;
-
-    drawing.node().appendChild(scoreHolder)
+    //TweenMax.set(container, {...attrs, scaleX, scaleY, transformOrigin : `${bbox.x}px ${bbox.y}px` });
 
   }
 
@@ -2164,7 +2200,7 @@ var drawsocket = (function(){
          */
         
         case "svg":
-            iterate_HTML_array(_objarr, 'svg');
+          iterate_HTML_array(_objarr, 'svg');
         break;
 
         case "html":

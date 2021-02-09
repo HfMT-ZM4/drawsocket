@@ -132,7 +132,7 @@ Object attributes may be set as members of the `val` object, as demonstrated abo
 
 In addition there are several keywords used by `drawsocket` to handle special cases.
 * `new`: tells the SVG creation routine to create a new object of a given SVG type. See the [SVG documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes) for information on object types and their associated attribute options.
-* `parent`: SVG nodes may be inserted as child objects of another element, (most often an SVG group `g` element).
+* `parent`: SVG nodes may be inserted as child objects of another element, (most often an SVG group `g` element) -- alias `container`
 * `child`: SVG nodes may also be created as dependents of a newly created group node. Mainly this is useful for cases where you *don't want* to have an `id` for a child node, for example when setting objects in the special SVG `defs` group (described below).
 * `text`: sets the inner text of a `text` node.
 * `href`: sets the address for linked assets, used by the `image` and `use` SVG elements.
@@ -345,7 +345,7 @@ For example, here we create two rules, one for `line` objects, and one specifica
 The `html` key uses the same keywords as the `svg` key type:
 
 * `new`: tells the HTML creation routine to create a new object of a given HTML type. See the [HTML documentation](https://developer.mozilla.org/en-US/docs/Web/HTML) for information on object types and their associated attribute options.
-* `parent`: HTML nodes may be inserted as child objects of another element (most often an HTML `div` element).
+* `parent`: HTML nodes may be inserted as child objects of another element (most often an HTML `div` element). -- alias `container`
 * `child`: HTML nodes may also be created as dependents of a newly created group node.
 * `text`: sets the inner text of an HTML node (e.g. `div` or `p`).
 * `href`: sets the address for linked assets.
@@ -738,3 +738,91 @@ The `hfmt.drawsocket` object accepts the `html_root` Max message to add a public
 
 * `function`: create and call user defined funcitons from JSON format.
   * `body`, `args`
+```
+{
+  /key : "funciton",
+  /val : {
+    /args : ["a", "b"],
+    /body : " console.log( a + b ); "
+  }
+}
+```
+
+* in some object type parsers, the parameters passed an object including the address `/funciton` can be used to create an anonymous function:
+  ```
+  /id : "foo",
+  /onload : {
+    /function : "drawsocket.send({
+      loaded : "foo"
+    })
+  }
+  ```
+
+* `get` - ... needs some testing
+  
+* `selector` object with one of the following:
+  *  `attr` : attribute to get
+  *  `coord`: coord to get from bbox, valid options are bbox parameters from `getBoundingClientRect`, plus added `cx`, and `cy` values for the center of the bbox.
+  ```
+  {
+  		/new : "line",
+  		/id : "connector",
+  		/x1 : {
+  			/selector : "#hello > .notehead",
+  			/coord : "cx"
+  		},
+  		/y1 : {
+  			/selector : "#hello > .notehead",
+  			/coord : "cy"
+  		},
+  		/x2 : {
+  			/selector : "#hello ~ .note > .notehead",
+  			/coord : "cx"
+  		},
+  		/y2 : {
+  			/selector : "#hello ~ .note > .notehead",
+  			/coord : "cy"
+  		},
+  		/stroke : "green"
+  	}
+  ```
+
+* `relativeTo` make an element relative to another, note: the reference element must exist already
+  * takes an argument of a string CSS style selector
+  ```
+  /* : {
+  	/key : "svg",
+  	/val : [{
+  		/new : "circle",
+  		/id : "foo",
+  		/cx : 100,
+  		/cy : 100,
+  		/r : 5,
+  		/fill : "blue"
+  	}, {
+  		/new : "circle",
+  		/relativeTo : "#foo",
+  		/id : "bar",
+  		/cx : 100,
+  		/cy : 100,
+  		/r : 3,
+  		/fill : "red"
+  	}]
+  }
+  ```
+  * optionally `relativeTo` can ben an object with a `selector` and bbox anchor points, plus cx and cy for center values.
+  ```
+  {
+  		/new : "circle",
+  		/relativeTo : {
+  			/selector : "#hello2 > .notehead",
+  			/anchor_x : "right",
+  			/anchor_y : "cy"
+  		},
+  		/id : "bar",
+  		/cx : 0,
+  		/cy : 0,
+  		/r : 1,
+  		/fill : "red"
+  }
+  ```

@@ -13,12 +13,23 @@
         let vrvToolkit = new verovio.toolkit();
         
         vrvToolkit.setOptions({
-                evenNoteSpacing : true,
-                font: "Bravura",
-                footer: 'none',
-                header: 'none',
-                adjustPageHeight: true,
-                adjustPageWidth: true
+            spacingDurDetection : true,
+          evenNoteSpacing : 0.0,
+          spacingLinear : 1.0,
+          font: "Bravura",
+          footer: 'none',
+          header: 'none',
+          noJustification : 1,
+          adjustPageHeight: true,
+          adjustPageWidth: true,
+          //shrinkToFit : true,
+          pageMarginTop  : 0,
+          pageMarginBottom  : 0,
+          pageMarginLeft  : 0,
+          pageMarginRight  : 0,
+          //pageWidth : 100,
+          //svgViewBox : false,
+          scale : 1
 
         });
 
@@ -325,6 +336,24 @@
                             </staff>
                             <staff xml:id="staff-000000049075641" n="2">
                                 <layer xml:id="layer-000000196724784" n="1">
+                                    <beam xml:id="beam-0000000000001388">
+                                        <tuplet xml:id="tuplet-0000000000017103" num="5" numbase="8" bracket.visible="true">
+                                            <note xml:id="note-0000000000015492" dur.ppq="2" dur="8" oct="3" pname="g" stem.dir="up" />
+                                            <note xml:id="note-0000000000010103" dur.ppq="2" dur="8" oct="2" pname="g" stem.dir="up" />
+                                            <note xml:id="note-0000000000010103" dur.ppq="2" dur="8" oct="3" pname="g" stem.dir="up" />
+                                            <beam xml:id="beam-0000000000001388">
+
+                                        <tuplet xml:id="tuplet-0000000000017103" num="5" numbase="32" bracket.visible="true">
+                                            <note xml:id="note-0000000000015492" dur.ppq="2" dur="32" oct="3" pname="g" stem.dir="up" />
+                                            <note xml:id="note-0000000000010103" dur.ppq="2" dur="32" oct="2" pname="g" stem.dir="up" />
+                                            <note xml:id="note-0000000000010103" dur.ppq="2" dur="32" oct="3" pname="g" stem.dir="up" />
+                                            <note xml:id="note-0000000000010103" dur.ppq="2" dur="32" oct="2" pname="g" stem.dir="up" />
+                                            <note xml:id="note-0000000000010103" dur.ppq="2" dur="32" oct="3" pname="g" stem.dir="up" />
+                                        </tuplet>
+                                        </beam>
+                                        <note xml:id="note-0000000000010103" dur.ppq="2" dur="8" oct="4" pname="g" stem.dir="up" />
+                                        </tuplet>
+                                    </beam>
                                     <note xml:id="note-L378F1" dots="1" dur="4" accid="s" oct="2" pname="f" stem.dir="up" />
                                     <note xml:id="note-L380F1" dur="8" oct="3" pname="d" accid.ges="n" stem.dir="up" />
                                     <note xml:id="note-L381F1" dots="1" dur="4" oct="2" pname="e" accid.ges="f" stem.dir="up" />
@@ -376,7 +405,7 @@
 *-,*-,*-
 `;
 
-        vrvToolkit.loadData(humdrum);
+        vrvToolkit.loadData(mei3);
         let svg = vrvToolkit.renderToSVG(1, {});
 
         const domparser = new DOMParser();
