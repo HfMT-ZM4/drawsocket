@@ -830,7 +830,7 @@ var drawsocket = (function(){
         if( node.hasOwnProperty('relativeTo')  )
         {
           let selector = null;
-          let rel_pt = { x: "cx", y: "cy" };
+          let rel_pt = { x: "x", y: "y" };
 
           if( typeof node.relativeTo == "object" )
           {
@@ -852,7 +852,7 @@ var drawsocket = (function(){
           }
           
           let relObj = document.querySelector(selector);
-          console.log(node.relativeTo, relObj);
+        //  console.log(node.relativeTo, relObj);
           let rel_BB = relObj.getBoundingClientRect();
 
           let offsetX = rel_pt.x == "cx" ? rel_BB.x + (rel_BB.width * 0.5) : rel_BB[rel_pt.x];
