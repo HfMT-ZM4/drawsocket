@@ -644,14 +644,20 @@ var drawsocket = (function(){
     }
 
   // new tag means "make a new svg node"
-    if( node.hasOwnProperty('new') )
+    if( node.hasOwnProperty('new') && typeof node.new != 'undefined' )
     {
       if( el !== null){
   //      console.log("should delete", el);
         el.remove();
       }
-        
-      el = d3.create(`svg:${node.new}`);
+      
+      if( node.new.indexOf("html:") == 0 )
+      {
+        el = d3.create( node.new.slice(4) );
+      }
+      else
+        el = d3.create(`svg:${node.new}`);
+
       isNew = true; // << can be new even if there's no id
 
     }
