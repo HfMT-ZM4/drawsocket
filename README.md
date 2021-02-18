@@ -137,6 +137,25 @@ In addition there are several keywords used by `drawsocket` to handle special ca
 * `text`: sets the inner text of a `text` node.
 * `href`: sets the address for linked assets, used by the `image` and `use` SVG elements.
   
+#### __A note on `foreignObject` elements in SVG__
+
+HTML objects may be used inside SVG using a [foreignObject](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) element to wrap the HTML content. To create a HTML elements within a SVG parent element, the `drawsocket` `new` keyword recognizes the identifier prefix `html:` as a flag to create a HTML node instead of an SVG element. For example:
+``` 
+/* : {
+  /key : "svg",
+  /val : {
+    /new : "foreignObject",
+    /x : 100,
+    /y : 100,
+    /width : "100%",
+    /height : "100%",
+    /children : {
+        /new : "html:div",
+        /text : "foo"
+    }
+  }
+}
+```
 
 ### `style`
 A sub-bundle labeled `style` may optionally be included which will set inline CSS style properties for the created node, which will be applied by the browser, depending on the SVG specification, and the browser's implementation.
