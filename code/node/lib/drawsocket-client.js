@@ -1700,6 +1700,8 @@ var drawsocket = (function(){
 
   }
 
+  
+
   async function startAudio()
   {
     /*
@@ -1714,7 +1716,7 @@ var drawsocket = (function(){
 */
 
 
-   if( Tone.getContext().state == "suspended" )
+   if( !audioStatus )
    {
      await Tone.start();
      console.log('audio is ready', Tone.getContext().state)
