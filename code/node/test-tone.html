@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="node_modules/tone/build/Tone.js"></script>
+    </head>
+    <body>
+
+        <script>
+
+            async function startAudio() 
+            {    
+                await Tone.start();
+                console.log('audio is ready', Tone.getContext().state)
+            }
+
+            window.addEventListener("click", async ()=> {
+                startAudio();
+            })
+
+
+
+        </script>
+    </body>
+</html>
