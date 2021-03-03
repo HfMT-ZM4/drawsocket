@@ -22,7 +22,7 @@
     "svg-points": "^6.0.1",
     "timesync": "^1.0.8",
     "timsort": "^0.3.0",
-    "tone": "^14.7.68",
+    "tone": "^14.7.77",
     "ws": "^7.4.0"
   },
   "devDependencies": {}
