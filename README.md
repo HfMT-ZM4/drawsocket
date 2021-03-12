@@ -139,7 +139,7 @@ In addition there are several keywords used by `drawsocket` to handle special ca
   
 #### __A note on `foreignObject` elements in SVG__
 
-HTML objects may be used inside SVG using a [foreignObject](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) element to wrap the HTML content. To create a HTML elements within a SVG parent element, the `drawsocket` `new` keyword recognizes the identifier prefix `html:` as a flag to create a HTML node instead of an SVG element. For example:
+HTML objects may be used inside SVG using a [foreignObject](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject) element to wrap the HTML content. To create HTML elements within a SVG parent element, the `drawsocket` `new` keyword recognizes the identifier prefix `html:` as a flag to create a HTML node instead of an SVG element. For example:
 ``` 
 /* : {
   /key : "svg",
