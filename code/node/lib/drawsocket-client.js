@@ -140,13 +140,41 @@ var drawsocket = (function(){
     for( let node of _objarr)
     {
       // do timetag adjustment here to sync events to server clock
-      if( node.hasOwnProperty('id') && node.hasOwnProperty('del') && node.hasOwnProperty('obj') )
+      if( node.hasOwnProperty('id') && node.hasOwnProperty('obj') )
       {
-        eventStack[node.id] = setTimeout( () => {
-          node.timetag = Date.now();
-          drawsocket_input(node.obj);
-          delete eventStack[node.id];
-        }, node.del );
+
+        if( node.hasOwnProperty('del') )
+        {
+          eventStack[node.id] = setTimeout( () => {
+            node.timetag = Date.now();
+            drawsocket_input(node.obj);
+            delete eventStack[node.id];
+          }, node.del );
+
+        } 
+        else if( node.hasOwnProperty('schedule') )
+        {
+
+          const delayStart = ((ts.now() - timeTag) * 0.001) + node.schedule;
+
+          if( delayStart > 0 ){    
+
+            eventStack[node.id] = setTimeout( () => {
+              node.timetag = Date.now();
+              drawsocket_input(node.obj);
+              delete eventStack[node.id];
+            }, delayStart );
+            
+          } else {
+            // we're late do it now
+              node.timetag = Date.now();
+              drawsocket_input(node.obj);
+          }
+
+          
+
+        }
+        
       }
     }
   }
