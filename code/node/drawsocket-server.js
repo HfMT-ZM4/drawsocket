@@ -285,18 +285,38 @@ if (cluster.isMaster)
                     /*
                         {
                             key: 'peerSignal',
-                            peerURL: send to URL,
+                            url: send to URL,
                             val: content
                         }
                     */
-                   //console.log( "signalPeer", obj );
-
+              //     console.log( "signalPeer", obj );
 
                     if( obj.hasOwnProperty('url') )
                     {
 
-                        clients.sendToClientsURL(obj.url, msg);
+                        stringifyOBJAsync({
+                            from: clientInfo,
+                            timetag: Date.now(),
+                            ...obj.val
+                        }).then( jsonStr => {
+
+                            if( Array.isArray(obj.url) )
+                            {
+                                obj.url.forEach( addr => clients.sendToClientsURL(addr, jsonStr) )
+                            }
+                            else if( obj.url == "*" )
+                            {
+                                clients.sendToALL( jsonStr );
+                            }
+                            else
+                            {
+                                clients.sendToClientsURL(obj.url, jsonStr );
+                            }
+
+                        })
+
                     }
+
                 }
                 else
                 {
