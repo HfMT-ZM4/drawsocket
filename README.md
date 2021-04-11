@@ -758,6 +758,52 @@ The `hfmt.drawsocket` object accepts the `port` Max message to set the server po
 # html_root
 The `hfmt.drawsocket` object accepts the `html_root` Max message to add a public asset folder to the server search path. Takes effect on start up.
 
+
+
+# __signalPeer__
+
+Clients can send messages to other URLs on the server by using the `signalPeer` key sent to the server.
+
+* `url` : URL OSC address to send the message to, `*` will send to everyone (including the sender)
+* `val` : message to send to the peer client(s)
+
+For example, here is button that sends a message to another client on being clicked:
+
+```
+/foo : {
+  /key : "html",
+  /val : {
+    /parent : "forms",
+    /id : "button-foo",
+    /new : "button",
+    /text : "click me!",
+    /style : {
+      /position : "absolute",
+      /top : "100px",
+      /left : "100px",
+      /width : "70px"
+    },
+    /onclick : "
+
+     drawsocket.send({
+       key: 'signalPeer',
+       url: '/bar',
+       val: {
+           key: 'svg',
+           val: {
+             new: 'text',
+             text: 'hello bar!',
+             x: 200,
+             y: 200
+           }
+       }
+     })
+
+  "
+  }
+}
+```
+
 # undocumented, in dev keys:
 
 * `function`: create and call user defined funcitons from JSON format.
