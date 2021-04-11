@@ -603,7 +603,8 @@ For example, the Tone.js PolySynth needs a member of the Tone libarary to set as
 The drawsocket object itself maybe referred to in JS scripts, for example in an object event watcher. The `drawsocket` object, exposes the following methods for general usage:
 * `drawsocket.input`: the main entry point to the client script
 * `drawsocket.send`: the WebSocket interface to send a JS object back to the server.
-* `drawsocket.oscprefix`: the URL/OSC-prefix of the client, useful for self identifying when sending messages back to the server.
+* `drawsocket.url` (alias `drawsocket.oscprefix`): the URL/OSC-prefix of the client, useful for self identifying when sending messages back to the server.
+* `drawsocket.syncOffset()` : function which returns timesync offset.
 
 For example, the following message creates a new HTML input field, where users can type. When the user hits the Enter key, the script will send the value of the HTML form to the server prefixed by the client's OSC-prefix, and the `id` of this object:
 
@@ -627,6 +628,9 @@ For example, the following message creates a new HTML input field, where users c
 
 ```
 
+### callback function setters for use in custom HTML contexts
+* `drawsocket.setInputListener(cb_fn)`  : sets additional callback handlers for `key` values.
+* `drawsocket.setConnectionCallback(cb_fn)` : sets callback function for notificaiton of socket connection.
 
 ## __file__
 Clients can load JSON of stored messages, formatted in the `drawsocket` API detailed here.
@@ -653,6 +657,7 @@ The `event` keyword provides a mechanism for scheduling future object sent to th
 
 * `id`: the id of the event
 * `del`: the delay time in milliseconds
+* `schedule` : the delay in milliseconds, which will be offset by the clock sync offset.
 * `obj`: an object to be sent to `drawsocket.input`, containing `key` and `val` values.
 
 For example, the following example, an event is created and set with a delay (`del`) of 1000ms (1s). After this delay, the object stored at the the `obj` address, is sent to `drawsocket.input` and is executed, resulting in a short diagonal line, with the `id`  "foo1".

@@ -3451,6 +3451,8 @@ var drawsocket = (function(){
     url: oscprefix,
     startAudio: startAudio,
 
+    syncOffset: function(){ return ts.now(); },
+
     setInputListener: function(cb_fn) {
       console.log("setting listener, function signature: (key, objarray, wasHandled");
       input_listener = cb_fn;
