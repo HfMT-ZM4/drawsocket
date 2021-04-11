@@ -767,7 +767,7 @@ Clients can send messages to other URLs on the server by using the `signalPeer` 
 * `url` : URL OSC address to send the message to, `*` will send to everyone (including the sender)
 * `val` : message to send to the peer client(s)
 
-For example, here is button that sends a message to another client on being clicked:
+For example, here is a button that sends a message to another client on being clicked:
 
 ```
 /foo : {

@@ -2434,6 +2434,9 @@ var drawsocket = (function(){
               });
           }
         break;
+        case "maxOutput":
+          maxOutput( _objarr );
+        break;
         default:
             sendMsg({
               event: {
@@ -3008,6 +3011,9 @@ var drawsocket = (function(){
 
 
    window.addEventListener("load", function() {
+
+    setupMax();
+
   //  display_log("loaded");
 
   // if we have no URL arguments, then we can go forward with websockets,
@@ -3441,6 +3447,81 @@ var drawsocket = (function(){
     }
   }
 
+
+
+  function setupMax()
+  {
+    console.log('setupMax');
+
+      if( typeof window.max !== "undefined" )
+      {
+        console.log('setupMax yes');
+
+          window.max.bindInlet('drawsocket', function (a) {
+              try {
+                  const obj = JSON.parse(a);
+                  drawsocket_input(obj);
+                  window.max.outlet("received", a);
+              }
+              catch(err)
+              {
+                  window.max.outlet("error", JSON.stringify(err));
+              }
+          });
+
+          window.max.bindInlet('broadcast', function (a) {
+              try {
+                  const obj = JSON.parse(a);
+                  obj.timetag = Date.now();
+                  sendMsg({
+                    key: 'signalPeer',
+                    url: '*',
+                    val: obj
+                  });
+
+              }
+              catch(err)
+              {
+                  window.max.outlet("error", JSON.stringify(err));
+              }
+          });
+
+          window.max.bindInlet('signalPeer', function (_url, a) {
+            console.log(_url, a);
+              try {
+                  const obj = JSON.parse(a);
+                  obj.timetag = Date.now();
+                  
+                  sendMsg({
+                    key: 'signalPeer',
+                    url: _url,
+                    val: obj
+                  });
+
+              }
+              catch(err)
+              {
+                  window.max.outlet("error", JSON.stringify(err));
+              }
+          });
+      }
+
+  }
+
+
+  function maxOutput(_obj)
+  {
+    if( typeof window.max != "undefined" )
+    {
+      if( Array.isArray(_obj) )
+      {
+        _obj.forEach( ob => window.max.outlet("message", JSON.stringify(ob) ) )
+      }
+      else
+        window.max.outlet("message", JSON.stringify(_obj));
+    }
+  }
+
   
 
   return {
@@ -3461,7 +3542,9 @@ var drawsocket = (function(){
     setConnectionCallback: function(cb) {
       console.log("setting on connection callback");
       event_connected_callback = cb;
-    }
+    },
+
+    maxOutput
 
   }
 
