@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 158.0, 79.0, 1100.0, 937.0 ],
+		"rect" : [ 158.0, 79.0, 1155.0, 937.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -58,7 +58,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1443,7 +1443,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1586,7 +1586,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1649,7 +1649,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1847,7 +1847,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2494,7 +2494,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -3280,7 +3280,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -4148,7 +4148,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -5869,7 +5869,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -6903,7 +6903,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -7468,7 +7468,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -8133,7 +8133,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1100.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -8995,7 +8995,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 158.0, 105.0, 1100.0, 911.0 ],
+						"rect" : [ 158.0, 105.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -9035,7 +9035,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 658.561895271582443, 732.83331298828125, 422.104725081835113, 93.853985147992688 ],
+									"patching_rect" : [ 668.8642578125, 111.5, 463.104725081835113, 102.970237969663103 ],
 									"pic" : "Macintosh HD:/Users/r/Documents/_____submissions/zurich/materials/Screen Shot 2021-03-17 at 22.21.18.png"
 								}
 
@@ -9159,7 +9159,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 947.3447265625, 180.0, 19.0, 22.0 ],
+									"patching_rect" : [ 955.3447265625, 305.0, 19.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -9182,7 +9182,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 653.8447265625, 165.5, 309.8125, 21.40625 ],
+									"patching_rect" : [ 661.8447265625, 290.5, 309.8125, 21.40625 ],
 									"text" : "The CNMAT Odot libaray can be downloaded here...",
 									"texton" : "The CNMAT Odot libaray can be downloaded here...",
 									"textoncolor" : [ 0.011765, 0.396078, 0.752941, 1.0 ],
@@ -9200,7 +9200,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 660.8642578125, 132.5, 419.0, 36.0 ],
+									"patching_rect" : [ 668.8642578125, 250.5, 419.0, 36.0 ],
 									"text" : "hfmt.drawsocket is an abstraction that uses the CNMAT odot library and a set of JS scripts, loaded by the node.script object."
 								}
 
@@ -9213,7 +9213,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 491.0, 221.0, 22.0 ],
+									"patching_rect" : [ 674.8642578125, 616.0, 221.0, 22.0 ],
 									"text" : "Optional arguments / attributes:"
 								}
 
@@ -9226,7 +9226,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 573.33331298828125, 61.0, 22.0 ],
+									"patching_rect" : [ 674.8642578125, 698.33331298828125, 61.0, 22.0 ],
 									"text" : "Inlet:"
 								}
 
@@ -9239,7 +9239,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 638.33331298828125, 61.0, 22.0 ],
+									"patching_rect" : [ 674.8642578125, 763.33331298828125, 61.0, 22.0 ],
 									"text" : "Outlets:"
 								}
 
@@ -9276,7 +9276,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 345.0, 386.0, 85.0 ],
+									"patching_rect" : [ 674.8642578125, 470.0, 386.0, 85.0 ],
 									"text" : "install: the first time only, run \"script npm install\"\n1. start the script\n2. open a webpage URL as a suffix to the indicated URL:Port\n    e.g. http://localhost:3002/foo\n3. send messages to the URL that you are logged into"
 								}
 
@@ -9289,7 +9289,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 328.0, 60.0, 22.0 ],
+									"patching_rect" : [ 674.8642578125, 453.0, 60.0, 22.0 ],
 									"text" : "To run: "
 								}
 
@@ -9380,7 +9380,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "FullPacket" ],
-									"patching_rect" : [ 148.0, 706.33331298828125, 77.0, 22.0 ],
+									"patching_rect" : [ 148.0, 750.0, 77.0, 22.0 ],
 									"text" : "o.select /port"
 								}
 
@@ -9806,7 +9806,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 57.0, 699.83331298828125, 83.0, 35.0 ],
+									"patching_rect" : [ 56.0, 750.0, 83.0, 35.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -9953,7 +9953,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 594.33331298828125, 350.0, 33.0 ],
+									"patching_rect" : [ 674.8642578125, 719.33331298828125, 350.0, 33.0 ],
 									"text" : "- OSC FullPacket or dictionary is sent to client URLs.\n- Max messages for other actions, see online docs for more info."
 								}
 
@@ -9966,7 +9966,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 655.83331298828125, 264.0, 50.0 ],
+									"patching_rect" : [ 674.8642578125, 780.83331298828125, 264.0, 50.0 ],
 									"text" : "left: update messages from client and server\nmiddle: errors\nright: server status"
 								}
 
@@ -9977,7 +9977,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 162.5, 684.33331298828125, 41.0, 20.0 ],
+									"patching_rect" : [ 162.5, 728.0, 41.0, 20.0 ],
 									"text" : "status"
 								}
 
@@ -10153,7 +10153,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 206.0, 737.83331298828125, 140.0, 22.0 ],
+									"patching_rect" : [ 206.0, 781.5, 140.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -10168,6 +10168,7 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-15",
+									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
@@ -10247,7 +10248,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 102.5, 664.33331298828125, 43.0, 22.0 ],
+									"patching_rect" : [ 86.0, 687.5, 34.0, 35.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -10265,7 +10266,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 112.0, 642.33331298828125, 40.0, 20.0 ],
+									"patching_rect" : [ 80.0, 722.5, 40.0, 20.0 ],
 									"text" : "errors"
 								}
 
@@ -10278,7 +10279,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 666.8642578125, 517.0, 388.0, 36.0 ],
+									"patching_rect" : [ 674.8642578125, 642.0, 388.0, 36.0 ],
 									"text" : "arg 1 or @html_root : relative path to HTML root folder for assets\narg 2 or @port : port number to use (default 3002)"
 								}
 
@@ -10290,7 +10291,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 734.3642578125, 89.5, 212.0, 20.0 ],
-									"text" : "rama gottfried, 2019 -- HfMT Hamburg"
+									"text" : "rama gottfried, 2018 -- HfMT Hamburg"
 								}
 
 							}
@@ -10308,7 +10309,7 @@
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 3,
+									"fontface" : 1,
 									"fontname" : "Arial",
 									"fontsize" : 30.0,
 									"id" : "obj-19",
@@ -10327,7 +10328,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 83.0, 480.83331298828125, 64.0, 22.0 ],
+									"patching_rect" : [ 80.0, 482.83331298828125, 64.0, 22.0 ],
 									"text" : "script start"
 								}
 
@@ -10341,7 +10342,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 148.0, 765.0, 407.0, 34.0 ]
+									"patching_rect" : [ 148.0, 808.66668701171875, 407.0, 34.0 ]
 								}
 
 							}
@@ -10353,8 +10354,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 3,
-									"outlettype" : [ "FullPacket", "", "FullPacket" ],
-									"patching_rect" : [ 57.0, 603.33331298828125, 110.0, 24.0 ],
+									"outlettype" : [ "FullPacket", "", "" ],
+									"patching_rect" : [ 56.0, 648.0, 79.0, 24.0 ],
 									"text" : "drawsocket"
 								}
 
@@ -10379,7 +10380,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 75.0, 435.33331298828125, 98.0, 22.0 ],
+									"patching_rect" : [ 70.5, 446.5, 98.0, 22.0 ],
 									"text" : "script npm install"
 								}
 
@@ -10391,7 +10392,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 83.0, 508.83331298828125, 63.0, 22.0 ],
+									"patching_rect" : [ 80.0, 510.83331298828125, 63.0, 22.0 ],
 									"text" : "script stop"
 								}
 
@@ -10407,7 +10408,7 @@
 									"mode" : 0,
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 660.8642578125, 320.5, 398.0, 121.0 ],
+									"patching_rect" : [ 668.8642578125, 445.5, 398.0, 121.0 ],
 									"proportion" : 0.5
 								}
 
@@ -10421,7 +10422,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 660.8642578125, 204.0, 424.0, 79.0 ],
+									"patching_rect" : [ 668.8642578125, 344.0, 424.0, 79.0 ],
 									"text" : "This help patch shows only some of the features of Drawsocket, please see the Max Extras menu for more examples.\n\nSee also the reference page and Drawsocket API guide for complete documentation. "
 								}
 
@@ -10437,7 +10438,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-38", 0 ],
-									"midpoints" : [ 300.5, 415.416656494140625, 66.5, 415.416656494140625 ],
+									"midpoints" : [ 300.5, 415.416656494140625, 65.5, 415.416656494140625 ],
 									"source" : [ "obj-11", 0 ]
 								}
 
@@ -10445,7 +10446,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-38", 0 ],
-									"midpoints" : [ 244.5, 247.666656494140625, 66.5, 247.666656494140625 ],
+									"midpoints" : [ 244.5, 247.666656494140625, 65.5, 247.666656494140625 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -10496,7 +10497,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-38", 0 ],
-									"midpoints" : [ 65.5, 419.666656494140625, 66.5, 419.666656494140625 ],
+									"midpoints" : [ 65.5, 419.666656494140625, 65.5, 419.666656494140625 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -10540,7 +10541,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-38", 0 ],
-									"midpoints" : [ 112.0, 416.666656494140625, 66.5, 416.666656494140625 ],
+									"midpoints" : [ 112.0, 416.666656494140625, 65.5, 416.666656494140625 ],
 									"source" : [ "obj-61", 0 ]
 								}
 
@@ -15551,17 +15552,17 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "o.accum.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/odot/patchers/namespace",
-				"patcherrelativepath" : "../../odot/patchers/namespace",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "Screen Shot 2021-03-17 at 22.21.18.png",
 				"bootpath" : "~/Documents/_____submissions/zurich/materials",
 				"patcherrelativepath" : "../../../../_____submissions/zurich/materials",
 				"type" : "PNG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "o.accum.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/odot/patchers/namespace",
+				"patcherrelativepath" : "../../odot/patchers/namespace",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
@@ -15593,11 +15594,11 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.display.mxo",
+				"name" : "o.select.mxo",
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "o.select.mxo",
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
 , 			{
