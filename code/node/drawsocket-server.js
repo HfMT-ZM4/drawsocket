@@ -177,6 +177,66 @@ if (cluster.isMaster)
 
     wss.setMaxListeners(200);
 
+    /**
+     * 
+     * @param {Object} in_obj main input process, routes to clients and adds to cache
+     * 
+     */
+    const processInputObj = function(in_obj) {
+
+        const timetag_ = Date.now();
+
+        for (const _prefix in in_obj) 
+        {
+            const addr = _prefix[0] != "/" ? "/" + _prefix : _prefix; //annoying that o.dict strips leading / !
+
+            if (addr === "/*") {
+                let obj_ = in_obj[_prefix];
+
+                if( typeof obj_ !== 'object' )
+                {
+                    Max.post(`syntax error, value must be an object. Received  message ${obj_}`);
+                    continue;    
+                }
+
+                stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
+                    .then( result => clients.sendToALL(result) );
+                
+                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
+                {
+                    cache_proc.send({
+                        key: 'set',
+                        url: addr,
+                        val: obj_,
+                        timetag: timetag_
+                    });
+                }
+                
+
+            }
+            else 
+            {
+
+                let obj_ = in_obj[_prefix];
+
+                stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
+                    .then( result => clients.sendToClientsURL( addr, result ) );
+                
+                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
+                {
+                    cache_proc.send({
+                        key: 'set',
+                        url: addr,
+                        val: obj_,
+                        timetag: timetag_
+                    });
+                }
+            }
+
+        }
+    }
+
+
     // pretty sure this is never called
     wss.on("close", function (socket, req) {
         const uniqueid = req.headers['sec-websocket-key'];
@@ -188,7 +248,6 @@ if (cluster.isMaster)
         socket.terminate();
         
     });
-
 
     // create OSC websockets from vanilla websockts, and add to clients list
     wss.on("connection", function (socket, req) {
@@ -294,9 +353,11 @@ if (cluster.isMaster)
                     if( obj.hasOwnProperty('url') )
                     {
 
+                        const timetag = Date.now();
+
                         stringifyOBJAsync({
                             from: clientInfo,
-                            timetag: Date.now(),
+                            timetag,
                             ...obj.val
                         }).then( jsonStr => {
 
@@ -304,13 +365,24 @@ if (cluster.isMaster)
                             {
                                 obj.url.forEach( addr => clients.sendToClientsURL(addr, jsonStr) )
                             }
-                            else if( obj.url == "*" )
+                            else if( obj.url == "/*" )
                             {
                                 clients.sendToALL( jsonStr );
                             }
                             else
                             {
                                 clients.sendToClientsURL(obj.url, jsonStr );
+                            }
+
+                            if( !obj.hasOwnProperty('cache') || obj.cache == 1 )
+                            {
+                                Max.post("setting cache", obj.val)
+                                cache_proc.send({
+                                    key: 'set',
+                                    url: obj.url,
+                                    val: obj.val,
+                                    timetag
+                                });
                             }
 
                         })
@@ -444,59 +516,10 @@ if (cluster.isMaster)
     * 
     */
 
+
+
     Max.addHandler(Max.MESSAGE_TYPES.DICT, (dict) => {
-
-        const timetag_ = Date.now();
-
-        for (const _prefix in dict) 
-        {
-            const addr = _prefix[0] != "/" ? "/" + _prefix : _prefix; //annoying that o.dict strips leading / !
-
-            if (addr === "/*") {
-                let obj_ = dict[_prefix];
-
-                if( typeof obj_ !== 'object' )
-                {
-                    Max.post(`syntax error, value must be an object. Received  message ${obj_}`);
-                    continue;    
-                }
-
-                stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
-                    .then( result => clients.sendToALL(result) );
-                
-                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
-                {
-                    cache_proc.send({
-                        key: 'set',
-                        url: addr,
-                        val: obj_,
-                        timetag: timetag_
-                    });
-                }
-                
-
-            }
-            else 
-            {
-
-                let obj_ = dict[_prefix];
-
-                stringifyOBJAsync( wrapTimetag(obj_, timetag_) )
-                    .then( result => clients.sendToClientsURL( addr, result ) );
-                
-                if( !obj_.hasOwnProperty('cache') || obj_.cache == 1 )
-                {
-                    cache_proc.send({
-                        key: 'set',
-                        url: addr,
-                        val: obj_,
-                        timetag: timetag_
-                    });
-                }
-            }
-
-        }
-
+        processInputObj(dict);
     });
 
     // helper func

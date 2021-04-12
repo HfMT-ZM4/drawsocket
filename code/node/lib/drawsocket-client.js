@@ -2434,6 +2434,9 @@ var drawsocket = (function(){
               });
           }
         break;
+        case "importSVG":
+       //   importSVG( _objarr );
+        break;
         case "maxOutput":
           maxOutput( _objarr );
         break;
@@ -2456,6 +2459,11 @@ var drawsocket = (function(){
 
     }
   }
+
+  // not implemented yet
+  // idea would be to load an svg file into the page while having access to all elements etc.
+  // for now you can use the svg2drawsocket script to convert the svg file into drawsocket
+//  function importSVG( _objarr )
 
 
   /**
@@ -3475,7 +3483,7 @@ var drawsocket = (function(){
                   obj.timetag = Date.now();
                   sendMsg({
                     key: 'signalPeer',
-                    url: '*',
+                    url: '/*',
                     val: obj
                   });
 
