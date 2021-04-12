@@ -81,15 +81,15 @@ var drawsocket = (function(){
   let audioObj = {};
 
   // animations
-  let animStack = {};
+  let animReg = {};
 
-  let functionStack = {}
+  let functionReg = {}
 
   // pdf
-  let pdfstack = {};
+  let pdfReg = {};
 
   // events
-  let eventStack = {};
+  let eventReg = {};
 
   // webaudio context
   let audioStatus = false;
@@ -145,10 +145,10 @@ var drawsocket = (function(){
 
         if( node.hasOwnProperty('del') )
         {
-          eventStack[node.id] = setTimeout( () => {
+          eventReg[node.id] = setTimeout( () => {
             node.timetag = Date.now();
             drawsocket_input(node.obj);
-            delete eventStack[node.id];
+            delete eventReg[node.id];
           }, node.del );
 
         } 
@@ -159,10 +159,10 @@ var drawsocket = (function(){
 
           if( delayStart > 0 ){    
 
-            eventStack[node.id] = setTimeout( () => {
+            eventReg[node.id] = setTimeout( () => {
               node.timetag = Date.now();
               drawsocket_input(node.obj);
-              delete eventStack[node.id];
+              delete eventReg[node.id];
             }, delayStart );
             
           } else {
@@ -1039,15 +1039,15 @@ var drawsocket = (function(){
 
       const id = node.id;
 
-      if( animStack.hasOwnProperty(id) )
+      if( animReg.hasOwnProperty(id) )
       {
-        animStack[id].kill();
-        delete animStack[id];
+        animReg[id].kill();
+        delete animReg[id];
       }
       
       //let boolversion = booleanize(node.vars);
       const dur = node.hasOwnProperty('dur') ? node.dur : 0;
-      animStack[id] = TweenMax.to( node.target, dur, booleanize(node.vars) );
+      animReg[id] = TweenMax.to( node.target, dur, booleanize(node.vars) );
 
     }
     
@@ -1062,13 +1062,13 @@ var drawsocket = (function(){
   {
     const id = node.id;
 
-    if( !animStack.hasOwnProperty(id) )
+    if( !animReg.hasOwnProperty(id) )
     {
       console.log(`undefined id ${id}`);
       return;
     }
     /* this doesn't work with timelines... 
-    else if( !animStack[id].hasOwnProperty('target') || !animStack[id].hasOwnProperty('vars') )
+    else if( !animReg[id].hasOwnProperty('target') || !animReg[id].hasOwnProperty('vars') )
     {
       console.log('missing target or vars');
       return;
@@ -1085,58 +1085,58 @@ var drawsocket = (function(){
 
         case "start":
         {
-          let end = _timetag + ( animStack[id].totalDuration() * 1000. );
+          let end = _timetag + ( animReg[id].totalDuration() * 1000. );
 
           if( ts.now() < end )
           {
             let latestart = (ts.now() - _timetag) * 0.001;
 
             if( latestart > 0 ){              
-              animStack[id].play(latestart);
+              animReg[id].play(latestart);
             } else {
               TweenMax.delayedCall(Math.abs(latestart), ()=>{
-                animStack[id].restart();
+                animReg[id].restart();
               }, this );
             }
 
           }
           else
           {
-            animStack[id].pause(animStack[id].totalDuration());
-            //TweenMax.set( animStack[id].target, animStack[id].vars );
+            animReg[id].pause(animReg[id].totalDuration());
+            //TweenMax.set( animReg[id].target, animReg[id].vars );
           }
         }
         break;
         case "play":
         {
           
-          let currentposition = node.hasOwnProperty("time") ? node.time : animStack[id].totalTime();
+          let currentposition = node.hasOwnProperty("time") ? node.time : animReg[id].totalTime();
 
           if( !ts ) {
-            animStack[id].play( currentposition );
+            animReg[id].play( currentposition );
             continue;
           }
 
-          let end = _timetag + (( animStack[id].totalDuration() - currentposition) * 1000. );
+          let end = _timetag + (( animReg[id].totalDuration() - currentposition) * 1000. );
 
           if( ts.now() < end )
           {
             let latestart = (ts.now() - _timetag) * 0.001;
 
             if( latestart > 0 ){
-              animStack[id].play(currentposition + latestart);
+              animReg[id].play(currentposition + latestart);
             } else {
               TweenMax.delayedCall(latestart, ()=>{
-                animStack[id].play();
+                animReg[id].play();
               }, this );
             }
 
           }
       /*
-          if ( !animStack[id].reversed() )
-            animStack[id].play();
+          if ( !animReg[id].reversed() )
+            animReg[id].play();
           else
-            animStack[id].reverse();
+            animReg[id].reverse();
       */
         }
         break;
@@ -1145,33 +1145,33 @@ var drawsocket = (function(){
         case "pause":
           
           if( node.hasOwnProperty("time") ){
-            animStack[id].pause( node.time );
+            animReg[id].pause( node.time );
           }
           else
-            animStack[id].pause();
+            animReg[id].pause();
 
         break;
 
         case "kill":
-          animStack[id].kill();
+          animReg[id].kill();
         break;
 
         case "reset":
-          animStack[id].pause(0);
+          animReg[id].pause(0);
         break;
 
         case "reverse":
-          animStack[id].reversed( !animStack[id].reversed() );
+          animReg[id].reversed( !animReg[id].reversed() );
         break;
 
         case "restart":
-          animStack[id].restart();
+          animReg[id].restart();
         break;
 
         case "playfrom":
           if( node.hasOwnProperty("time") )
           {
-            animStack[id].play( node.time );
+            animReg[id].play( node.time );
           }
         break;
 
@@ -1193,19 +1193,19 @@ var drawsocket = (function(){
       let newTimeline;
       let timelineparams = ( typeof node.init != "undefined" ) ? booleanize( node.init ) : { paused: true };
 
-      if( animStack.hasOwnProperty(id) )
+      if( animReg.hasOwnProperty(id) )
       {
-        animStack[id].kill();
+        animReg[id].kill();
 
-        if( animStack[id].timeline === null )
+        if( animReg[id].timeline === null )
         {
-          delete animStack[id];
+          delete animReg[id];
           newTimeline = new TimelineMax( timelineparams );
         }
         else
         {
-          animStack[id].clear();
-          newTimeline = animStack[id];
+          animReg[id].clear();
+          newTimeline = animReg[id];
         }
 
 
@@ -1243,14 +1243,14 @@ var drawsocket = (function(){
         }
       }
 
-      animStack[id] = newTimeline;
+      animReg[id] = newTimeline;
 
     }
     
-    if( animStack.hasOwnProperty(node.id) )
+    if( animReg.hasOwnProperty(node.id) )
     {
       if( node.hasOwnProperty('call') && typeof node.call === 'object' )
-        processMethodCalls( animStack[node.id], node.call );
+        processMethodCalls( animReg[node.id], node.call );
     }
 
     if( node.hasOwnProperty('cmd') )
@@ -1275,7 +1275,7 @@ var drawsocket = (function(){
         else
         {
           let id = node.id;
-          if( animStack.hasOwnProperty(id) && animStack[id].hasOwnProperty('tweens') ) // check if it's updating an existing timeline
+          if( animReg.hasOwnProperty(id) && animReg[id].hasOwnProperty('tweens') ) // check if it's updating an existing timeline
           {
             processJSON_Timeline(node, timetag);
           }
@@ -1351,7 +1351,7 @@ var drawsocket = (function(){
       {
 
         const id = node.id;
-        let el = pdfstack.hasOwnProperty(id) ? pdfstack[id] : null;
+        let el = pdfReg.hasOwnProperty(id) ? pdfReg[id] : null;
 
         if( node.hasOwnProperty('href') )
         {
@@ -1376,7 +1376,7 @@ var drawsocket = (function(){
 
           el.pdf.setPDFref( node.href );
 
-          pdfstack[id] = el;
+          pdfReg[id] = el;
     //      console.log("shoudl have set");
           
 
@@ -1394,12 +1394,12 @@ var drawsocket = (function(){
   function clearPDF()
   {
 
-    let keys = Object.keys(pdfstack);
+    let keys = Object.keys(pdfReg);
 
     for( let k of keys )    
-      pdfstack[k].remove();
+      pdfReg[k].remove();
 
-    pdfstack = {};
+    pdfReg = {};
 
   }
 
@@ -1407,12 +1407,12 @@ var drawsocket = (function(){
   function clearAnim()
   {
 
-    let keys = Object.keys(animStack);
+    let keys = Object.keys(animReg);
 
     for( let k of keys )    
-      animStack[k].kill();
+      animReg[k].kill();
 
-    animStack = {};
+    animReg = {};
 
   }
 
@@ -1586,19 +1586,19 @@ var drawsocket = (function(){
       case 'sound':
         return audioObj[member];
       case 'tween':
-        return animStack[member];
+        return animReg[member];
       case 'function':
-        return functionStack[member];
+        return functionReg[member];
       default:
         return null;
 
     }   
   }
 
-  function processMethodCalls(_obj, _callStack)
+  function processMethodCalls(_obj, _callReg)
   {
 
-    const stack_ = !Array.isArray(_callStack) ? [_callStack] : _callStack;
+    const stack_ = !Array.isArray(_callReg) ? [_callReg] : _callReg;
     for( let call of stack_ )
     {
       /*
@@ -1939,12 +1939,12 @@ var drawsocket = (function(){
             fill_ = o.body;
           }
 
-          functionStack[o.id] = new Function( ...fill_);
+          functionReg[o.id] = new Function( ...fill_);
 
-        //  console.log(typeof functionStack[o.id], fill_);
+        //  console.log(typeof functionReg[o.id], fill_);
         }
         
-        if( o.hasOwnProperty('call') && typeof functionStack[o.id] === 'function')
+        if( o.hasOwnProperty('call') && typeof functionReg[o.id] === 'function')
         {
           let ret = null;
           
@@ -1952,17 +1952,17 @@ var drawsocket = (function(){
             
             if( o.call === "" )
             {
-              ret = functionStack[o.id]();
+              ret = functionReg[o.id]();
             }
             else
             {
               if( Array.isArray(o.call) )
               {
               //  console.log("calling with args", ...o.call );    
-                ret = functionStack[o.id]( ...o.call );
+                ret = functionReg[o.id]( ...o.call );
               }
               else
-                ret = functionStack[o.id](o.call);
+                ret = functionReg[o.id](o.call);
 
             }
               
@@ -1993,7 +1993,7 @@ var drawsocket = (function(){
           
           
 
-          //processMethodCalls(functionStack[o.id], o.call );
+          //processMethodCalls(functionReg[o.id], o.call );
         }
         
       }   
