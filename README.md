@@ -10,15 +10,15 @@ Note: Drawsocket has been used in large scale production, but as with all techno
 
 Requires Max version >= 8.1.0, and is designed for use with [CNMAT's Odot library](https://github.com/CNMAT/CNMAT-odot/releases) and [MaxScore](http://www.computermusicnotation.com/?page_id=22).
 
-The `hfmt.drawsocket` abstraction is a wrapper around the Node For Max's `node.script` object, and relies on a set of scripts found in the package's `code` folder. Once the package is installed in the Packages folder, the main server and client scripts will be automatically handled by the abstraction.
+The `drawsocket` abstraction is a wrapper around the Node For Max's `node.script` object, and relies on a set of scripts found in the package's `code` folder. Once the package is installed in the Packages folder, the main server and client scripts will be automatically handled by the abstraction.
 
 To install:
-1. Place the `hfmt-drawsocket` repository in the `/Documents/Max 8/Packages` folder.
-2. When running the `hfmt.drawsocket` server for the first time: click on the `script npm install` message to download the required packages and libraries (note that you will need to be connected to the internet for the download to work).
+1. Place the `drawsocket` repository in the `/Documents/Max 8/Packages` folder.
+2. When running the `drawsocket` server for the first time: click on the `script npm install` message to download the required packages and libraries (note that you will need to be connected to the internet for the download to work).
 
 ## Basic Usage
 
-See the `hfmt.drawsocket.maxhelp` file for examples.
+See the `drawsocket.maxhelp` file for examples.
 
 1. Start the server by sending the `script start` message.
 2. On successful startup, an IP address and port number will be printed to the Max console, and the same information will be sent out of the right-most outlet of the abstraction.
@@ -29,7 +29,7 @@ For usage with [MaxScore](http://www.computermusicnotation.com/?page_id=22), ple
 
 ## About Assets
 
-If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the `hfmt.drawsocket` abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).
+If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the `drawsocket` abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).
 
 By default, the public folder is set to be the same folder that contains the Max patch. 
 ```
@@ -40,7 +40,7 @@ By default, the public folder is set to be the same folder that contains the Max
 
 ```
 
-Alternatively, to keep the folders a little neater, the `hfmt.drawsocket` abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize `hfmt.drawsocket` with the relative path `public`, it will expect the folder `public` to be at the same folder level:
+Alternatively, to keep the folders a little neater, the `drawsocket` abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize `drawsocket` with the relative path `public`, it will expect the folder `public` to be at the same folder level:
 ```
     someFolder
     |-- yourPatch.maxpatch
@@ -54,7 +54,7 @@ Alternatively, to keep the folders a little neater, the `hfmt.drawsocket` abstra
 
 By default the `drawsocket` server responds to all URL requests with the template HTML page, `drawsocket-page.html` which loads the required Javascript files, sets up the basic HTML objects, layers, and imports the `drawsocket-default.css` which sets up some default display properties.
 
-If desired, a different template HTML page may be used by sending the `hfmt.drawsocket` object the `html_template` message followed by a relative path to the template HTML file to use.
+If desired, a different template HTML page may be used by sending the `drawsocket` object the `html_template` message followed by a relative path to the template HTML file to use.
 
 # Message Format
 
@@ -636,7 +636,7 @@ For example, the following message creates a new HTML input field, where users c
 Clients can load JSON of stored messages, formatted in the `drawsocket` API detailed here.
 
 Keywords:
-* `fetch`: (required) URL of file to fetch relative to the `hfmt.drawsocket` root html folder (by default this is the same as the folder that the patch containg the `hfmt.drawsocket` is saved in.,
+* `fetch`: (required) URL of file to fetch relative to the `drawsocket` root html folder (by default this is the same as the folder that the patch containg the `drawsocket` is saved in.,
 * `prefix`: (optional) the URL prefix to load into the page. If no prefix is specified `fetch` will load only the prefix matching the client URL.
   
 For example, here we tell clients logged into the URL `/foo` to load the messages for URL `/bar` from the file "savedState.json".
@@ -694,7 +694,7 @@ The `do_sync` keyword triggers the client clock time sychronization routine.
 ```
 
 # __writeSVG__
-The `writeSVG` keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the `hfmt.drawsocket` object.
+The `writeSVG` keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the `drawsocket` object.
 
 For example:
 ```
@@ -707,9 +707,9 @@ will output the file: `path/to/patch/downloaded-URLtoWrite.svg`.
 
 
 # Storing the Sever State
-The `hfmt.drawsocket` object in Max accepts the `writecache` message,to write the current cached messages to a file on disk.
+The `drawsocket` object in Max accepts the `writecache` message,to write the current cached messages to a file on disk.
 
-The folder path is relative to the folder path of the patch in which the `hfmt.drawsocket` object is in.
+The folder path is relative to the folder path of the patch in which the `drawsocket` object is in.
 
 Message syntax:
 
@@ -721,9 +721,9 @@ or, to write only one URL prefix:
 
 
 # Importing Server Cache from File
-The `hfmt.drawsocket` object in Max accepts the `importcache` message, to read a file from disk and import one or all `prefix` objects in the file.
+The `drawsocket` object in Max accepts the `importcache` message, to read a file from disk and import one or all `prefix` objects in the file.
 
-The folder path is relative to the folder path of the patch in which the `hfmt.drawsocket` object is in.
+The folder path is relative to the folder path of the patch in which the `drawsocket` object is in.
 
 Message syntax:
 
@@ -744,19 +744,19 @@ For example, on a website called `www.foo.com` and a stored JSON file named `sto
 (Of course you could also save the HTML file under a differnt name of your choosing for your server)
 
 # ping
-The `hfmt.drawsocket` object accepts the `ping` Max message to query the connection status of one or more clients.
+The `drawsocket` object accepts the `ping` Max message to query the connection status of one or more clients.
 For example, the message `ping /*` pings all clients.
 
 # statereq
-The `hfmt.drawsocket` object accepts the `statereq` Max message to trigger a client update request for one or more clients.
+The `drawsocket` object accepts the `statereq` Max message to trigger a client update request for one or more clients.
 
 For example, the message `statereq /*` triggers a state request for all clients.
 
 # port
-The `hfmt.drawsocket` object accepts the `port` Max message to set the server port number. Takes effect on start up.
+The `drawsocket` object accepts the `port` Max message to set the server port number. Takes effect on start up.
 
 # html_root
-The `hfmt.drawsocket` object accepts the `html_root` Max message to add a public asset folder to the server search path. Takes effect on start up.
+The `drawsocket` object accepts the `html_root` Max message to add a public asset folder to the server search path. Takes effect on start up.
 
 
 
