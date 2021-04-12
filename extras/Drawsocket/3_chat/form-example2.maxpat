@@ -293,7 +293,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 574.0, 394.0, 451.0, 36.0 ],
-					"text" : "When you type something into the input field and then hit the Enter button, the value will be sent out of the left hfmt.drawsocket outlet."
+					"text" : "When you type something into the input field and then hit the Enter button, the value will be sent out of the left drawsocket outlet."
 				}
 
 			}

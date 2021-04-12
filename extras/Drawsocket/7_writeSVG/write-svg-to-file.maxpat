@@ -79,7 +79,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 51.0, 60.0, 455.0, 74.0 ],
-					"text" : "The \"writeSVG\" keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the hfmt.drawsocket object.\n\nNote that the client browser must be open for it to respond with the SVG element."
+					"text" : "The \"writeSVG\" keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the drawsocket object.\n\nNote that the client browser must be open for it to respond with the SVG element."
 				}
 
 			}
@@ -735,7 +735,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "FullPacket" ],
 					"patching_rect" : [ 51.0, 466.0, 96.0, 22.0 ],
-					"text" : "hfmt.drawsocket"
+					"text" : "drawsocket"
 				}
 
 			}
@@ -827,7 +827,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "hfmt.drawsocket.maxpat",
+				"name" : "drawsocket.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/patchers",
 				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",

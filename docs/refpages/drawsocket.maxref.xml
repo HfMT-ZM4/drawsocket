@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
 
-<c74object name="hfmt.drawsocket" module="drawsocket">
+<c74object name="drawsocket" module="drawsocket">
 
 	<digest>
 		A Max/node.js based server/client system for drawing to web-browsers.
 	</digest>
 
 	<description>
-		<o>hfmt.drawsocket</o> is an abstraction that uses the CNMAT Odot library and a set of JS scripts, loaded by the <o>node.script</o> object (see inside the abstraction for more info).
+		<o>drawsocket</o> is an abstraction that uses the CNMAT Odot library and a set of JS scripts, loaded by the <o>node.script</o> object (see inside the abstraction for more info).
 	</description>
 
 	<!--METADATA-->
@@ -131,7 +131,7 @@
 			<description>
 				<p>Writes the current cached messages to a JSON file on disk.</p>
 
-				<p>The folder path is relative to the folder path of the patch in which the <m>hfmt.drawsocket</m> object is in.</p>
+				<p>The folder path is relative to the folder path of the patch in which the <m>drawsocket</m> object is in.</p>
 
 				<p>Message syntax:<br/>
 				<tab></tab><m>writecache relative-folder-path/filename.json</m><br/>
@@ -153,7 +153,7 @@
 			<description>
 				<p>Reads a JSON file from disk and import one or all <m>prefix</m> objects in the file.</p>
 
-				<p>The folder path is relative to the folder path of the patch in which the <m>hfmt.drawsocket</m> object is in.</p>
+				<p>The folder path is relative to the folder path of the patch in which the <m>drawsocket</m> object is in.</p>
 
 				<p>Message syntax:<br/>
 				<tab></tab><m>importcache relative-folder-path/filename.json</m><br/>

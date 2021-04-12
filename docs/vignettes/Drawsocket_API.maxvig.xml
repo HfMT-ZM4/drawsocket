@@ -20,12 +20,12 @@
 					</li>
 				</ul>
 			</li>
-			<li>Once connected, you can then send OSC or Dictionary messages into the <o>hfmt.drawsocket</o> inlet, which will be routed using the URL address the client.</li>
+			<li>Once connected, you can then send OSC or Dictionary messages into the <o>drawsocket</o> inlet, which will be routed using the URL address the client.</li>
 		</ol>
 
 
 	<h2>About Assets</h2>
-		<p>If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the <o>hfmt.drawsocket</o> abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).</p>
+		<p>If you wish to serve file assets to your client browsers (e.g. images, pdfs, sound files, html files, etc.), the files must be in a known folder to the server, commonly referred to as a root "public" folder. The public folder path is set relative to the location of the Max patch containing the <o>drawsocket</o> abstraction, and therefore you need to save your patch before any assets can be found (so that the patch has a folder location).</p>
 
 		<p>By default, the public folder is set to be the same folder that contains the Max patch.</p>
 			<codeexample>
@@ -36,7 +36,7 @@
 			</codeexample>
 		<br/>
 		
-		<p>Alternatively, to keep the folders a little neater, the <m>hfmt.drawsocket</m> abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize <m>hfmt.drawsocket</m> with the relative path <m>public</m>, it will expect the folder <m>public</m> to be at the same folder level:</p>
+		<p>Alternatively, to keep the folders a little neater, the <m>drawsocket</m> abstraction can be initialized with an argument of the folder path relative to the Max patch location. For example, if you initialize <m>drawsocket</m> with the relative path <m>public</m>, it will expect the folder <m>public</m> to be at the same folder level:</p>
 
 			<codeexample>
 			someFolder<br/>
@@ -50,7 +50,7 @@
 	<h2>Default HTML and CSS files</h2>
 		<p>By default the <m>drawsocket</m> server responds to all URL requests with the template HTML page, <m>drawsocket-page.html</m> which loads the required Javascript files, sets up the basic HTML objects, layers, and imports the <m>drawsocket-default.css</m> which sets up some default display properties.</p>
 
-		<p>If desired, a different template HTML page may be used by sending the <m>hfmt.drawsocket</m> object the <m>html_template</m> message followed by a relative path to the template HTML file to use.</p>
+		<p>If desired, a different template HTML page may be used by sending the <m>drawsocket</m> object the <m>html_template</m> message followed by a relative path to the template HTML file to use.</p>
 	
 	<h2>Message Format</h2>
 		<p>All messages in the <m>drawsocket</m> API are formatted as an object, enclosed by curly braces <m>{ }</m>. Messages can be encoded as Odot nested sub-bundles, or nested JSON objects. In the examples below we will be using OSC (odot) formatting, however you may also use a Max Dictionary, which will be exactly the same, except that address names will not have the leading <m>/</m> character.</p>
@@ -639,7 +639,7 @@
 
 		<p>Keywords:</p>
 		<ul>
-		<li><m>fetch</m>: (required) URL of file to fetch relative to the <m>hfmt.drawsocket</m> root html folder (by default this is the same as the folder that the patch containg the <m>hfmt.drawsocket</m> is saved in.,</li>
+		<li><m>fetch</m>: (required) URL of file to fetch relative to the <m>drawsocket</m> root html folder (by default this is the same as the folder that the patch containg the <m>drawsocket</m> is saved in.,</li>
 		<li><m>prefix</m>: (optional) the URL prefix to load into the page. If no prefix is specified <m>fetch</m> will load only the prefix matching the client URL.</li>
 		</ul>
 
@@ -714,7 +714,7 @@
 
 
 	<h2><b>writeSVG</b></h2>
-		<p>The <m>writeSVG</m> keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the <m>hfmt.drawsocket</m> object.</p>
+		<p>The <m>writeSVG</m> keyword requests the SVG element from a client browser. The result is saved to disk in the local folder of the patch containing the <m>drawsocket</m> object.</p>
 
 		For example:
 

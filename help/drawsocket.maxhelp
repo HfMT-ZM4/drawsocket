@@ -9201,7 +9201,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 668.8642578125, 250.5, 419.0, 36.0 ],
-									"text" : "hfmt.drawsocket is an abstraction that uses the CNMAT odot library and a set of JS scripts, loaded by the node.script object."
+									"text" : "drawsocket is an abstraction that uses the CNMAT odot library and a set of JS scripts, loaded by the node.script object."
 								}
 
 							}
@@ -15288,7 +15288,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 706.064453125, 14.0, 199.0, 33.0 ],
-					"text" : "hfmt.drawsocket"
+					"text" : "drawsocket"
 				}
 
 			}

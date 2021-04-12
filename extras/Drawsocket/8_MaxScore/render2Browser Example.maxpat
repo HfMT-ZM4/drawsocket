@@ -1381,7 +1381,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "" ],
 					"patching_rect" : [ 33.25, 575.0, 197.0, 22.0 ],
-					"text" : "hfmt.drawsocket public @port 3002"
+					"text" : "drawsocket public @port 3002"
 				}
 
 			}
@@ -2619,7 +2619,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "hfmt.drawsocket.maxpat",
+				"name" : "drawsocket.maxpat",
 				"bootpath" : "/Users/Shared/Max 8/Packages/drawsocket/patchers",
 				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",

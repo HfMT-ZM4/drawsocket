@@ -347,7 +347,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "" ],
 					"patching_rect" : [ 52.5, 733.0, 96.0, 22.0 ],
-					"text" : "hfmt.drawsocket"
+					"text" : "drawsocket"
 				}
 
 			}
@@ -506,7 +506,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "hfmt.drawsocket.maxpat",
+				"name" : "drawsocket.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/patchers",
 				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",

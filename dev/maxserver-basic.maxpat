@@ -730,7 +730,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 709.064453125, 65.0, 199.0, 33.0 ],
-					"text" : "hfmt.drawsocket"
+					"text" : "drawsocket"
 				}
 
 			}
@@ -913,7 +913,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
 					"patching_rect" : [ 81.0, 403.0, 291.0, 22.0 ],
-					"text" : "hfmt.drawsocket ../examples/basic-drawsocket/public"
+					"text" : "drawsocket ../examples/basic-drawsocket/public"
 				}
 
 			}
@@ -1217,7 +1217,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "hfmt.drawsocket.maxpat",
+				"name" : "drawsocket.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/hfmt-drawsocket/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",

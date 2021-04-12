@@ -918,7 +918,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "FullPacket", "FullPacket" ],
 									"patching_rect" : [ 50.0, 119.0, 1011.0, 168.0 ],
-									"text" : "if( bound(/terminated/error),\n  if( bound(/terminated/error./details) && strcmp(/terminated/error./details, \"Cannot find module\", 18 ) == 0,\n    /print = /terminated/error./details + \". You may need to run npm install, see the hfmt.drawsocket help patch for more information\",\n    if( bound(/terminated/error./message) && strcmp(/terminated/error./message, \"listen EADDRINUSE\", 17 ) == 0,\n      progn(\n        /print = /terminated/error./message + \". You may have another server running on this port already.\",\n        /port/ip = \"could not open, port in use\"\n      )\n    )\n  )\n)"
+									"text" : "if( bound(/terminated/error),\n  if( bound(/terminated/error./details) && strcmp(/terminated/error./details, \"Cannot find module\", 18 ) == 0,\n    /print = /terminated/error./details + \". You may need to run npm install, see the drawsocket help patch for more information\",\n    if( bound(/terminated/error./message) && strcmp(/terminated/error./message, \"listen EADDRINUSE\", 17 ) == 0,\n      progn(\n        /print = /terminated/error./message + \". You may have another server running on this port already.\",\n        /port/ip = \"could not open, port in use\"\n      )\n    )\n  )\n)"
 								}
 
 							}

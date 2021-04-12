@@ -6698,7 +6698,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 706.064453125, 14.0, 199.0, 33.0 ],
-					"text" : "hfmt.drawsocket"
+					"text" : "drawsocket"
 				}
 
 			}
@@ -6880,7 +6880,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "FullPacket" ],
 					"patching_rect" : [ 84.0, 535.0, 291.0, 22.0 ],
-					"text" : "hfmt.drawsocket ../examples/basic-drawsocket/public"
+					"text" : "drawsocket ../examples/basic-drawsocket/public"
 				}
 
 			}
@@ -7155,7 +7155,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "hfmt.drawsocket.maxpat",
+				"name" : "drawsocket.maxpat",
 				"bootpath" : "/Users/Shared/Max 8/Library/MaxScore/node.js/hfmt-drawsocket/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",

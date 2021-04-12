@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 2,
-			"revision" : 0,
+			"minor" : 1,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -61,8 +61,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 0,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -178,7 +178,7 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-5",
-									"linecount" : 10,
+									"linecount" : 11,
 									"maxclass" : "o.compose",
 									"numinlets" : 2,
 									"numoutlets" : 1,
@@ -259,7 +259,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 63.0, 61.0, 586.0, 137.0 ],
-					"text" : "By default the root HTML folder is the folder containing the patch that contains the hfmt.drawsocket abstraction, which in this case the default folder would be \"/examples/sub-root-folder\". The root folder is the search path for any assets the server might need (e.g. sound files, images, or any other files).\n\nIn cases where you have a lot of assets, it is often useful to make a sub folder to keep all of your assets separately from the main patch folder. In this case you set a custom root HTML path -- given to the hfmt.drawsocket object as an argument. In this example, we use a folder named \"public\" as the root HTML path."
+					"text" : "By default the root HTML folder is the folder containing the patch that contains the drawsocket abstraction, which in this case the default folder would be \"/examples/sub-root-folder\". The root folder is the search path for any assets the server might need (e.g. sound files, images, or any other files).\n\nIn cases where you have a lot of assets, it is often useful to make a sub folder to keep all of your assets separately from the main patch folder. In this case you set a custom root HTML path -- given to the drawsocket object as an argument. In this example, we use a folder named \"public\" as the root HTML path."
 				}
 
 			}
@@ -273,8 +273,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 2,
-							"revision" : 0,
+							"minor" : 1,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -616,10 +616,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 107.0, 258.0, 273.0, 146.0 ],
+					"patching_rect" : [ 107.0, 258.0, 288.0, 150.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -52, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -104, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 105, 109, 97, 103, 101, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 97, 115, 115, 101, 116, 45, 116, 101, 115, 116, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 36, 47, 104, 114, 101, 102, 0, 0, 0, 44, 115, 0, 0, 47, 109, 101, 100, 105, 97, 47, 101, 113, 117, 97, 116, 105, 111, 110, 45, 100, 102, 116, 46, 112, 110, 103, 0 ],
 					"saved_bundle_length" : 224,
-					"text" : "/* : {\n\t/key : \"svg\",\n\t/val : {\n\t\t/new : \"image\",\n\t\t/id : \"asset-test\",\n\t\t/x : 20,\n\t\t/y : 100,\n\t\t/href : \"/media/equation-dft.png\"\n\t}\n}"
+					"text" : "/* : {\n  /key : \"svg\",\n  /val : {\n    /new : \"image\",\n    /id : \"asset-test\",\n    /x : 20,\n    /y : 100,\n    /href : \"/media/equation-dft.png\"\n  }\n}"
 				}
 
 			}
@@ -634,7 +634,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 934.0, 5.0, 326.0, 79.0 ],
-					"text" : "if no URL is given, drawsocket serves the default index.html. In this example, we are using a custom HTML root folder (\"public\") set via an argument to the hfmt.drawsocket object."
+					"text" : "if no URL is given, drawsocket serves the default index.html. In this example, we are using a custom HTML root folder (\"public\") set via an argument to the drawsocket object."
 				}
 
 			}
@@ -680,11 +680,13 @@
 					"fontface" : 0,
 					"fontsize" : 12.0,
 					"id" : "obj-45",
+					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 219.0, 703.0, 313.0, 34.0 ]
+					"patching_rect" : [ 219.0, 703.0, 313.0, 48.0 ],
+					"text" : "/port/ip : \"http://192.168.178.52:3002\",\n/port/localhost : \"http://localhost:3002\""
 				}
 
 			}
@@ -706,9 +708,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "FullPacket", "", "FullPacket" ],
+					"outlettype" : [ "FullPacket", "", "" ],
 					"patching_rect" : [ 107.0, 625.0, 131.0, 22.0 ],
-					"text" : "hfmt.drawsocket public"
+					"text" : "drawsocket public"
 				}
 
 			}
@@ -855,7 +857,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "hfmt.drawsocket.maxpat",
+				"name" : "drawsocket.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/patchers",
 				"patcherrelativepath" : "../../../patchers",
 				"type" : "JSON",
@@ -870,9 +872,16 @@
 			}
 , 			{
 				"name" : "startscript.js",
-				"bootpath" : "~/Documents/___hfmt/drawsocket-min/code",
-				"patcherrelativepath" : "../../../../../../___hfmt/drawsocket-min/code",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
+				"patcherrelativepath" : "../../../code",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "Screen Shot 2021-03-17 at 22.21.18.png",
+				"bootpath" : "~/Documents/_____submissions/zurich/materials",
+				"patcherrelativepath" : "../../../../../../_____submissions/zurich/materials",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
@@ -881,10 +890,6 @@
 			}
 , 			{
 				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -907,14 +912,18 @@
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
+, 			{
+				"name" : "o.display.mxo",
+				"type" : "iLaX"
+			}
  ],
 		"autosave" : 0,
 		"styles" : [ 			{
 				"name" : "black on white",
 				"number" : 				{
 					"fontsize" : [ 12.0 ],
-					"fontname" : [ "Arial" ],
-					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ]
+					"textcolor_inverse" : [ 0.239216, 0.254902, 0.278431, 1.0 ],
+					"fontname" : [ "Arial" ]
 				}
 ,
 				"umenu" : 				{
