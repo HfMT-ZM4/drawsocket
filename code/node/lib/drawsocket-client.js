@@ -1,4 +1,4 @@
-/* global TweenMax:readonly, TimelineMax:readonly, Tone:readonly, verovio:readonly, d3:readonly, timesync:readonly, SVGPoints:readonly  */
+/* global gsap:readonly TweenMax:readonly, TimelineMax:readonly, Tone:readonly, verovio:readonly, d3:readonly, timesync:readonly, SVGPoints:readonly  */
 
 /*
 
@@ -35,10 +35,10 @@ var drawsocket = (function(){
   let event_connected_callback = null;
 
 
-
-  TweenMax.ticker.fps(60);
-  TweenMax.ticker.useRAF(true);
-  console.log(TweenMax.ticker.fps() );
+  gsap.ticker.fps(60);
+  //gsap.ticker.useRAF(true); // << this is automatic now in the newer versions
+ 
+  console.log(gsap.ticker.fps() );
 
   let oscprefix = window.location.pathname; // document.getElementById("OSC").getAttribute("OSCprefix");
   if( oscprefix.includes('.html') )
