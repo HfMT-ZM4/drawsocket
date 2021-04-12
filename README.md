@@ -1,6 +1,7 @@
 # Drawsocket
 
-A Max/node.js based server/client system for drawing to web-browsers. Created at the Univeristy for Music and Theater Hamburg, 2019.
+A Max/node.js based server/client system for drawing to web-browsers.
+Created at the Hamburg University of Music and Drama within the Stage_2.0 project.
 
 ## Use in production
 
