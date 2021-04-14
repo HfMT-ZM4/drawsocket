@@ -376,7 +376,7 @@ if (cluster.isMaster)
 
                             if( !obj.hasOwnProperty('cache') || obj.cache == 1 )
                             {
-                                Max.post("setting cache", obj.val)
+                              //  Max.post("setting cache", obj.val)
                                 cache_proc.send({
                                     key: 'set',
                                     url: obj.url,
