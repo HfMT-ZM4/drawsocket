@@ -17,7 +17,7 @@
     "gsap": "^3.6.1",
     "http": "0.0.0",
     "mixin-deep": "^2.0.1",
-    "pdfjs-dist": "^2.5.207",
+    "pdfjs-dist": "^2.7.570",
     "startaudiocontext": "^1.2.1",
     "svg-points": "^6.0.1",
     "timesync": "^1.0.8",

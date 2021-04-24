@@ -34,14 +34,28 @@
     </objarglist>
 
 	<attributelist>
-		<attribute name="html_root" type="symbol" size="1">
-		<digest>Sets a root assets folder</digest>
-		<description>Sets a root assets folder. Only takes effect on start up.</description>
+
+		<attribute name="autostart" get='0' set='1' type="int" size="1">
+			<digest>1/0 starts drawsocket on load</digest>
+			<description>1/0 starts drawsocket on load.</description>
 		</attribute>
-		<attribute name="port" type="int" size="1">
-		<digest>server port number</digest>
-		<description>Sets the server port number. Only takes effect on start up.</description>
+
+		
+		<attribute name='html_root' get='0' set='1' type='symbol' size='1' >
+            <digest>sets a root assets folder</digest>
+			<description>sets a root assets folder. Only takes effect on start up.</description>
+        </attribute>
+
+		<attribute name="html_template" get='0' set='1' type="int" size="1">
+			<digest>sets default html page</digest>
+			<description>sets default html page used for drawsocket layout, can be a custom user file.</description>
 		</attribute>
+
+		<attribute name="port" get='0' set='1' type="int" size="1">
+			<digest>server port number</digest>
+			<description>sets the server port number. Only takes effect on start up.</description>
+		</attribute>
+
 	</attributelist>
 
 
