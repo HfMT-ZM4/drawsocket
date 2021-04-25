@@ -31,9 +31,12 @@ SOFTWARE.
 
 // settings
 // args from Max "script start path port"
-const userpath = process.argv.slice(2);
-const http_port = Number(process.argv[3]);
-const in_template = process.argv[4];
+
+const argc = process.argv.length;
+
+const userpath = argc > 2 ? process.argv.slice(2) : __dirname;
+const http_port = argc > 3 ? Number(process.argv[3]) : 3002;
+const in_template = argc > 4 ? process.argv[4] : "default";
 
 let usr_template = in_template !== "default";
 let htmltemplate = usr_template ? in_template : '/lib/drawsocket-page.html' ;
@@ -59,23 +62,29 @@ if (cluster.isMaster)
     const app = express();
     const path = require('path');
 
-    let Max;
+    const udp_server = require('./drawsocket-udp');
+
+    let Max, post, outlet;
+
     try {
         Max = require('max-api');
-        Max.post("started up ");
-        Max.post(`pid: ${process.pid}`);
-        Max.post(`running in ${process.env.NODE_ENV} mode`);
-    
+        post = Max.post;
+        outlet = Max.outlet;
+
+        post("started up ");
+        post(`pid: ${process.pid}`);
+        post(`running in ${process.env.NODE_ENV} mode`);
     }
-    catch(err) {
-        Max = {
-            post: console.log,
-            outlet: console.log
-        }
+    catch(err) 
+    {
+
+        udp_server.init();
+
+        post = console.log;
+        outlet = udp_server.send;
+
     }
 
-
-   
     const stringifyOBJAsync = (obj_) => {
         return Promise.resolve().then( ()=> JSON.stringify(obj_) );
     }
@@ -108,10 +117,10 @@ if (cluster.isMaster)
         }
         else if( msg.output )
         {
-            Max.outlet(  msg.output );
+            outlet(  msg.output );
         }
         else
-            Max.post( msg );
+            post( msg );
 
     });
 
@@ -126,10 +135,10 @@ if (cluster.isMaster)
         app.use(express.static(userpath[0]));
         
         usr_root_path = userpath[0] + (userpath[0][userpath[0].length-1] != '/' ? '/' : '' );
-        Max.post("adding user html root path " + usr_root_path);
+        post("adding user html root path " + usr_root_path);
     }
 
-   // Max.post("usr_path ", usr_root_path, userpath[0]);
+   // post("usr_path ", usr_root_path, userpath[0]);
     // these files are in the package not the user root_path
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
     app.use('/lib', express.static(__dirname + '/lib/')); // client js and css files
@@ -161,12 +170,12 @@ if (cluster.isMaster)
 
 
     app.get('/', (req, res) => {
-        Max.post('express connection ' + req + ' ' + res);
+        post('express connection ' + req + ' ' + res);
     });
 
 
     app.post('/form-post', (request, response) => {
-        Max.outlet(request.body);
+        outlet(request.body);
         return response.send(request.body);
     });
 
@@ -187,6 +196,28 @@ if (cluster.isMaster)
 
     wss.setMaxListeners(200);
 
+     /**
+     * main entry point for messages from Max to Client
+     * new address format:
+     *  
+     *    
+     * {
+        /prefix : [{
+            key : unique key type,
+            val: [ {} {}, array of values with optional timetag, unioned by id ]
+        } , {
+            key : unique key type,
+            val: [ {} {}, array of values with timetag, unioned by id ]
+        }]
+    }
+    * 
+    * note that all wildcards are handled first and then specific names.
+    * 
+    * adding timetag for incoming dict since these are in sync
+    * then the cache will add the timetags into the interal objercts since these could have different start times
+    * 
+    */
+   
     /**
      * 
      * @param {Object} in_obj main input process, routes to clients and adds to cache
@@ -205,7 +236,7 @@ if (cluster.isMaster)
 
                 if( typeof obj_ !== 'object' )
                 {
-                    Max.post(`syntax error, value must be an object. Received  message ${obj_}`);
+                    post(`syntax error, value must be an object. Received  message ${obj_}`);
                     continue;    
                 }
 
@@ -246,6 +277,8 @@ if (cluster.isMaster)
         }
     }
 
+    udp_server.receive_callback( processInputObj );
+
 
     // pretty sure this is never called
     wss.on("close", function (socket, req) {
@@ -283,7 +316,7 @@ if (cluster.isMaster)
         };
         
 
-//        Max.post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
+//        post("A Web Socket connection has been established! " + req.url + " (" + uniqueid + ") " + req.connection.remoteAddress);
 
         // setup relay back to Max
         socket.on("message", function (msg) {
@@ -317,7 +350,7 @@ if (cluster.isMaster)
                     const filename = usr_root_path + 'downloaded-'+_prefix+'.svg';
                     stringifyOBJAsync(obj.val)
                         .then( (jsonStr) => {
-                            Max.post('writing file: '+ filename);
+                            post('writing file: '+ filename);
 
                             fs.writeFile( filename, 
                                 jsonStr.slice(1,-1)
@@ -327,12 +360,12 @@ if (cluster.isMaster)
                                     .replace(/NS\d+:href/gi, 'xlink:href'), 
                                 (err) => {
                                     if(err) {
-                                        return Max.post(err);
+                                        return post(err);
                                     }
                                 }
                             );
 
-                            Max.outlet({
+                            outlet({
                                 'outfile': filename 
                             });
                         });
@@ -386,7 +419,7 @@ if (cluster.isMaster)
 
                             if( !obj.hasOwnProperty('cache') || obj.cache == 1 )
                             {
-                              //  Max.post("setting cache", obj.val)
+                              //  post("setting cache", obj.val)
                                 cache_proc.send({
                                     key: 'set',
                                     url: obj.url,
@@ -403,13 +436,13 @@ if (cluster.isMaster)
                 else
                 {
                     obj.from = clientInfo;
-                    Max.outlet(obj);
+                    outlet(obj);
                 }
                     
 
             } catch (e) {
 
-                Max.post("json failed to parse " + e);
+                post("json failed to parse " + e);
             }
 
         });
@@ -421,17 +454,17 @@ if (cluster.isMaster)
             clients.removeClient(_url, uniqueid);
             socket.terminate();
             
-            Max.outlet(disconnectionMsg);
+            outlet(disconnectionMsg);
 
-//            Max.post("closed socket : " + uniqueid + " @ " + req.url);
+//            post("closed socket : " + uniqueid + " @ " + req.url);
 
         });
 
         socket.on("error", function (event) {
             clients.removeClient(_url, uniqueid);
             
-            Max.post("error on socket : " + uniqueid + " @ " + _url);
-            Max.post(event);
+            post("error on socket : " + uniqueid + " @ " + _url);
+            post(event);
         });
 
         clients.saveClient(socket, uniqueid, _url);
@@ -446,12 +479,12 @@ if (cluster.isMaster)
     const setTemplate = (args) => {
         htmltemplate = args;
         usr_template = true;
-        Max.post("set html template page to " + usr_root_path + args);
+        post("set html template page to " + usr_root_path + args);
     }
 
     const writeCache = (filename, prefix) => {
 
-        Max.post("attempting to save", filename, ( prefix ? prefix : "" )); 
+        post("attempting to save", filename, ( prefix ? prefix : "" )); 
         
         cache_proc.send({
             key: 'write',
@@ -463,7 +496,7 @@ if (cluster.isMaster)
     const importCache = (filename, prefix) => {
 
         const fullpath = path.normalize( path.isAbsolute(filename) ? filename : path.resolve(usr_root_path, filename) );
-        Max.post("attempting to import", fullpath, ( prefix ? prefix : "" ) );
+        post("attempting to import", fullpath, ( prefix ? prefix : "" ) );
         cache_proc.send({
             key: 'read',
             url: prefix,
@@ -491,7 +524,7 @@ if (cluster.isMaster)
     }
 
     const stateReq = (prefix) => {
-        //Max.post(prefix, prefix.length, Array.isArray(prefix) );
+        //post(prefix, prefix.length, Array.isArray(prefix) );
         for( const _prefix of prefix )
         {
             if( _prefix === "/*" )
@@ -513,44 +546,28 @@ if (cluster.isMaster)
      *  Max message handlers
      */
 
-    Max.addHandler("html_template", (args) => setTemplate(args) );
+    if( Max )
+    {
+        Max.addHandler("html_template", (args) => setTemplate(args) );
 
-    Max.addHandler("writecache", (filename, prefix) => writeCache(filename, prefix) );
+        Max.addHandler("writecache", (filename, prefix) => writeCache(filename, prefix) );
+        
+        Max.addHandler("importcache", (filename, prefix) => importCache(filename, prefix) );
     
-    Max.addHandler("importcache", (filename, prefix) => importCache(filename, prefix) );
-
-    Max.addHandler("ping", (...prefix) => ping(prefix) );
-
-    Max.addHandler("statereq", (...prefix) => stateReq(prefix) );
+        Max.addHandler("ping", (...prefix) => ping(prefix) );
     
-
-    /**
-     * main entry point for messages from Max to Client
-     * new address format:
-     *  
-     *    
-     * {
-        /prefix : [{
-            key : unique key type,
-            val: [ {} {}, array of values with optional timetag, unioned by id ]
-        } , {
-            key : unique key type,
-            val: [ {} {}, array of values with timetag, unioned by id ]
-        }]
+        Max.addHandler("statereq", (...prefix) => stateReq(prefix) );
+        
+    
+        Max.addHandler(Max.MESSAGE_TYPES.DICT, (dict) => {
+            processInputObj(dict);
+        });
+    
     }
-    * 
-    * note that all wildcards are handled first and then specific names.
-    * 
-    * adding timetag for incoming dict since these are in sync
-    * then the cache will add the timetags into the interal objercts since these could have different start times
-    * 
-    */
+   
+   
 
 
-
-    Max.addHandler(Max.MESSAGE_TYPES.DICT, (dict) => {
-        processInputObj(dict);
-    });
 
     // helper func
     let getIPAddresses = function () {
@@ -574,18 +591,18 @@ if (cluster.isMaster)
     };
 
     server.on('uncaughtException', function (err) {
-        Max.post("xx" + err);
+        post("xx" + err);
 
         if (err.errno === 'EADDRINUSE')
-            Max.post('EADDRINUSE');
+            post('EADDRINUSE');
         else
-            Max.post("uncaught exception! we should not receive this! => " + err);
+            post("uncaught exception! we should not receive this! => " + err);
     });
 
     server.on('error', (e) => {
-        Max.post("*** got error");
+        post("*** got error");
         if (e.code === 'EADDRINUSE') {
-            Max.post('Address in use, retrying...');
+            post('Address in use, retrying...');
             /*
             setTimeout(() => {
             server.close();
@@ -595,7 +612,7 @@ if (cluster.isMaster)
         }
         else
         {
-            Max.post("server error", e);
+            post("server error", e);
         }
     });
 
@@ -604,7 +621,7 @@ if (cluster.isMaster)
         // note, using the typical middleware pattern, we'd call next() here, but
         // since this handler is a "provider", i.e. it terminates the request, we
         // do not.
-        Max.post("yo "+err);
+        post("yo "+err);
     };
 
     app.configure(function(){
@@ -613,7 +630,7 @@ if (cluster.isMaster)
     */
 
     process.on('unhandledRejection', (reason, p) => {
-        Max.post('Unhandled Rejection at:', p, 'reason:', reason);
+        post('Unhandled Rejection at:', p, 'reason:', reason);
         // Application specific logging, throwing an error, or other logic here
     });
 
@@ -622,9 +639,9 @@ if (cluster.isMaster)
     // start server
     server.listen(http_port, () => {
         let port = server.address().port;
-        Max.post('load webpage at', 'http://localhost:' + port);
-        Max.post('or', 'http://' + getIPAddresses() + ':' + port);
-        Max.outlet({
+        post('load webpage at', 'http://localhost:' + port);
+        post('or', 'http://' + getIPAddresses() + ':' + port);
+        outlet({
             "/port/localhost": 'http://localhost:' + port,
             "/port/ip": 'http://' + getIPAddresses() + ':' + port
         });
