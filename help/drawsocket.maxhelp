@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 79.0, 1155.0, 937.0 ],
+		"rect" : [ 131.0, 79.0, 1155.0, 937.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -2494,7 +2494,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 105.0, 1155.0, 911.0 ],
+						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -8995,7 +8995,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1155.0, 911.0 ],
+						"rect" : [ 131.0, 105.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -9415,7 +9415,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 489.0, 79.0, 886.0, 898.0 ],
+										"rect" : [ 148.0, 79.0, 886.0, 898.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -9564,13 +9564,13 @@
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-2",
-													"linecount" : 7,
+													"linecount" : 11,
 													"maxclass" : "o.display",
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 26.0, 160.0, 356.0, 116.0 ],
-													"text" : "/event : {\n\t/key : \"sync\",\n\t/val : {\n\t\t/syncOffset : 0.3\n\t},\n\t/url : \"/1\"\n}"
+													"patching_rect" : [ 26.0, 160.0, 356.0, 174.0 ],
+													"text" : "/from : {\n  /uniqueid : \"9QlrjolHCthI7goBlh+ykg==\",\n  /ip : \"::1\",\n  /url : \"/1\"\n},\n/event : {\n  /val : {\n    /syncOffset : 0.2\n  },\n  /key : \"sync\"\n}"
 												}
 
 											}
@@ -9579,13 +9579,13 @@
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-23",
-													"linecount" : 5,
+													"linecount" : 4,
 													"maxclass" : "o.display",
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 632.0, 170.0, 234.0, 88.0 ],
-													"text" : "/key : \"sync\",\n/val : {\n\t/syncOffset : 0.3\n},\n/url : \"/1\""
+													"patching_rect" : [ 632.0, 170.0, 234.0, 76.0 ],
+													"text" : "/val : {\n  /syncOffset : 0.2\n},\n/key : \"sync\""
 												}
 
 											}
@@ -9594,13 +9594,13 @@
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-22",
-													"linecount" : 6,
+													"linecount" : 5,
 													"maxclass" : "o.display",
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 538.5, 264.0, 284.0, 102.0 ],
-													"text" : "/key : \"status\",\n/val : {\n\t/screensize : [320, 240],\n\t/connected : 1\n},\n/url : \"/1\""
+													"patching_rect" : [ 538.5, 264.0, 284.0, 90.0 ],
+													"text" : "/val : {\n  /screensize : [320, 240],\n  /connected : 1\n},\n/key : \"status\""
 												}
 
 											}
@@ -9633,13 +9633,13 @@
 													"fontface" : 0,
 													"fontsize" : 12.0,
 													"id" : "obj-5",
-													"linecount" : 22,
+													"linecount" : 21,
 													"maxclass" : "o.display",
 													"numinlets" : 1,
 													"numoutlets" : 1,
 													"outlettype" : [ "" ],
-													"patching_rect" : [ 444.0, 368.0, 356.0, 306.0 ],
-													"text" : "/key : \"mouse\",\n/val : {\n\t/target : {\n\t\t/xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n\t\t/baseProfile : \"full\",\n\t\t/version : \"1.1\",\n\t\t/id : \"svg\",\n\t\t/type : \"svg\",\n\t\t/xmlns : \"http://www.w3.org/2000/svg\"\n\t},\n\t/action : \"mousemove\",\n\t/button : 0,\n\t/xy : [222, 2],\n\t/mods : {\n\t\t/shift : 0,\n\t\t/meta : 0,\n\t\t/alt : 0,\n\t\t/ctrl : 0\n\t}\n},\n/url : \"/1\""
+													"patching_rect" : [ 444.0, 368.0, 356.0, 314.0 ],
+													"text" : "/val : {\n  /xy : [885, 643],\n  /target : {\n    /xmlns:xlink : \"http://www.w3.org/1999/xlink\",\n    /id : \"svg\",\n    /type : \"svg\",\n    /baseProfile : \"full\",\n    /xmlns : \"http://www.w3.org/2000/svg\",\n    /version : \"1.1\"\n  },\n  /mods : {\n    /alt : 0,\n    /shift : 0,\n    /ctrl : 0,\n    /meta : 1\n  },\n  /action : \"mouseover\",\n  /button : 0\n},\n/key : \"mouse\""
 												}
 
 											}
@@ -10338,13 +10338,12 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-45",
-									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 148.0, 808.66668701171875, 407.0, 48.0 ],
-									"text" : "/port/ip : \"http://192.168.178.36:3002\",\n/port/localhost : \"http://localhost:3002\""
+									"patching_rect" : [ 148.0, 808.66668701171875, 407.0, 34.0 ],
+									"text" : "/port/ip : \"server stopped\""
 								}
 
 							}

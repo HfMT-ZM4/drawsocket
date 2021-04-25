@@ -438,8 +438,9 @@ if (cluster.isMaster)
 
     });
 
+
     /**
-     *  Max message handlers
+     * API functions
      */
 
     const setTemplate = (args) => {
@@ -448,27 +449,29 @@ if (cluster.isMaster)
         Max.post("set html template page to " + usr_root_path + args);
     }
 
-    Max.addHandler("html_template", (...args) => setTemplate(args) );
+    const writeCache = (filename, prefix) => {
 
-    Max.addHandler("writecache", (filename, prefix) => {
-        Max.post("attempting to save", filename, prefix); //usr_root_path+
+        Max.post("attempting to save", filename, ( prefix ? prefix : "" )); 
+        
         cache_proc.send({
             key: 'write',
             url: prefix,
-            val: ( filename[0] == '/' ? filename : usr_root_path+filename )
+            val: ( path.isAbsolute(filename) ? filename : usr_root_path+filename )
         });
-    });
+    }
 
-    Max.addHandler("importcache", (filename, prefix) => {
-  //      Max.post("attempting to import", userpath[0]+filename, prefix);
+    const importCache = (filename, prefix) => {
+
+        const fullpath = path.normalize( path.isAbsolute(filename) ? filename : path.resolve(usr_root_path, filename) );
+        Max.post("attempting to import", fullpath, ( prefix ? prefix : "" ) );
         cache_proc.send({
             key: 'read',
             url: prefix,
-            val: usr_root_path+filename 
+            val: fullpath 
         });
-    });
+    }
 
-    Max.addHandler("ping", (...prefix) => {
+    const ping = (prefix) => {
         //console.log(prefix, prefix.length, Array.isArray(prefix) );
         for( const _prefix of prefix )
         {
@@ -485,10 +488,10 @@ if (cluster.isMaster)
                 }).then( result => clients.sendToClientsURL(_prefix, result) );
             }
         }
-    });
+    }
 
-    Max.addHandler("statereq", (...prefix) => {
-        //console.log(prefix, prefix.length, Array.isArray(prefix) );
+    const stateReq = (prefix) => {
+        //Max.post(prefix, prefix.length, Array.isArray(prefix) );
         for( const _prefix of prefix )
         {
             if( _prefix === "/*" )
@@ -504,7 +507,22 @@ if (cluster.isMaster)
                 }).then( result => clients.sendToClientsURL(_prefix, result) );
             }
         }
-    });
+    }
+
+     /**
+     *  Max message handlers
+     */
+
+    Max.addHandler("html_template", (args) => setTemplate(args) );
+
+    Max.addHandler("writecache", (filename, prefix) => writeCache(filename, prefix) );
+    
+    Max.addHandler("importcache", (filename, prefix) => importCache(filename, prefix) );
+
+    Max.addHandler("ping", (...prefix) => ping(prefix) );
+
+    Max.addHandler("statereq", (...prefix) => stateReq(prefix) );
+    
 
     /**
      * main entry point for messages from Max to Client

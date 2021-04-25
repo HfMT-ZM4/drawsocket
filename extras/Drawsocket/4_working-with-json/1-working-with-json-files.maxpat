@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 0,
+			"revision" : 10,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 301.0, 79.0, 1202.0, 880.0 ],
+		"rect" : [ 188.0, 79.0, 1167.0, 880.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,15 +37,117 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-2",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
+					"bubble" : 1,
+					"id" : "obj-42",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 692.0, 459.16668701171875, 274.0, 78.0 ],
+					"text" : "Note that clients will not automatically refresh their pages, only the state in the server is set. To update client views, you can use the \"statereq\" message followed by a URL.  statereq /*  will trigger updates for all clients."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-39",
+					"maxclass" : "message",
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 342.0, 539.16668701171875, 74.0, 22.0 ],
-					"text" : "r to_json_ex"
+					"patching_rect" : [ 839.0, 614.6666259765625, 149.0, 22.0 ],
+					"text" : "url http://localhost:3002/4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-40",
+					"maxclass" : "jweb",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 839.0, 646.5, 264.0, 198.0 ],
+					"rendermode" : 1,
+					"url" : "http://localhost:3002/4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-36",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 565.0, 614.6666259765625, 143.0, 22.0 ],
+					"text" : "url http://localhost:3002/3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-37",
+					"maxclass" : "jweb",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 565.0, 646.5, 264.0, 198.0 ],
+					"rendermode" : 1,
+					"url" : "http://localhost:3002/3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-33",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 293.0, 614.6666259765625, 143.0, 22.0 ],
+					"text" : "url http://localhost:3002/2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-35",
+					"maxclass" : "jweb",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 293.0, 646.5, 264.0, 198.0 ],
+					"rendermode" : 1,
+					"url" : "http://localhost:3002/2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-27",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 597.8857421875, 529.16668701171875, 79.0, 22.0 ],
+					"text" : "statereq /1 /3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 597.8857421875, 487.16668701171875, 79.0, 22.0 ],
+					"presentation_linecount" : 2,
+					"text" : "statereq /1"
 				}
 
 			}
@@ -61,7 +163,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 0,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -94,6 +196,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -251,7 +354,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 120.0, 476.3333740234375, 143.0, 22.0 ],
+					"patching_rect" : [ 121.0, 397.3333740234375, 143.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -271,7 +374,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 120.0, 442.16668701171875, 24.0, 24.0 ]
+					"patching_rect" : [ 121.0, 363.16668701171875, 24.0, 24.0 ]
 				}
 
 			}
@@ -282,44 +385,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 596.8857421875, 528.16668701171875, 63.0, 22.0 ],
+					"patching_rect" : [ 597.8857421875, 449.16668701171875, 63.0, 22.0 ],
 					"text" : "statereq /*"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 790.5, 250.8333740234375, 126.0, 22.0 ],
-					"text" : "http://localhost:3002/4"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 783.5, 214.5, 126.0, 22.0 ],
-					"text" : "http://localhost:3002/3"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 764.3857421875, 182.8333740234375, 126.0, 22.0 ],
-					"text" : "http://localhost:3002/2"
 				}
 
 			}
@@ -330,32 +397,19 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 749.0, 151.5, 126.0, 22.0 ],
-					"text" : "http://localhost:3002/1"
+					"patching_rect" : [ 18.0, 614.6666259765625, 143.0, 22.0 ],
+					"text" : "url http://localhost:3002/1"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-11",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 749.0, 302.8333740234375, 69.0, 22.0 ],
-					"text" : "prepend url"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"color" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-10",
 					"maxclass" : "jweb",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 749.0, 342.3333740234375, 320.0, 240.0 ],
+					"patching_rect" : [ 18.0, 646.5, 264.0, 198.0 ],
 					"rendermode" : 1,
 					"url" : "http://localhost:3002/1"
 				}
@@ -369,7 +423,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 405.0, 378.00006103515625, 24.0, 24.0 ]
+					"patching_rect" : [ 406.0, 299.00006103515625, 24.0, 24.0 ]
 				}
 
 			}
@@ -385,7 +439,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 0,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -418,6 +472,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontface" : 0,
@@ -575,7 +630,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 120.0, 404.8333740234375, 124.0, 22.0 ],
+					"patching_rect" : [ 121.0, 325.8333740234375, 124.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -594,7 +649,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 37.0, 32.0, 162.0, 22.0 ],
+					"patching_rect" : [ 34.0, 13.0, 162.0, 22.0 ],
 					"text" : "Working with JSON files."
 				}
 
@@ -603,12 +658,12 @@
 				"box" : 				{
 					"fontsize" : 14.0,
 					"id" : "obj-34",
-					"linecount" : 17,
+					"linecount" : 13,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 37.0, 59.5, 529.0, 272.0 ],
-					"text" : "As described in the main help patch, Drawsocket stores the state of each URL, based on the values it receives. You can also save the state of the URLs to a JSON file on disk, and then use this file in (at least) two different ways.\n\nIn this example, we generate four different color circles and send them to URLs, /1, /2, /3, and /4 respectively.\n\nYou can save this state using the \"writecache\" message, followed by a path to a .json file. If you open the JSON file in a text editor you should see the same format Drawsocket messages as we sent in.\n\nThis file can be loaded into the Drawsocket cache via the \"importcache\" message, followed by a path to a .json file.\n\nNote that clients will not automatically refresh their pages, only the state in the server is set. To update client views, you can use the \"statereq\" message followed by a URL.  statereq /*  will trigger updates for all clients."
+					"patching_rect" : [ 34.0, 40.5, 529.0, 225.0 ],
+					"text" : "As described in the main help patch, Drawsocket stores the state of each URL, based on the values it receives. You can also save the state of the URLs to a JSON file on disk, and then use this file in (at least) two different ways.\n\nIn this example, we generate four different color circles and send them to URLs, /1, /2, /3, and /4 respectively.\n\nYou can save this state using the \"writecache\" message, followed by a path to a .json file. If you open the JSON file in a text editor you should see the same format Drawsocket messages as we sent in.\n\nThis file can be loaded into the Drawsocket cache via the \"importcache\" message, followed by a path to a .json file.\n"
 				}
 
 			}
@@ -619,7 +674,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 594.8857421875, 481.16668701171875, 91.0, 22.0 ],
+					"patching_rect" : [ 595.8857421875, 402.16668701171875, 91.0, 22.0 ],
 					"text" : "importcache $1"
 				}
 
@@ -631,7 +686,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "int" ],
-					"patching_rect" : [ 594.8857421875, 443.5, 137.0, 22.0 ],
+					"patching_rect" : [ 595.8857421875, 364.5, 137.0, 22.0 ],
 					"text" : "conformpath native boot"
 				}
 
@@ -644,7 +699,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 594.8857421875, 378.3333740234375, 24.0, 24.0 ]
+					"patching_rect" : [ 595.8857421875, 299.3333740234375, 24.0, 24.0 ]
 				}
 
 			}
@@ -655,7 +710,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"patching_rect" : [ 594.8857421875, 413.3333740234375, 67.0, 22.0 ],
+					"patching_rect" : [ 595.8857421875, 334.3333740234375, 67.0, 22.0 ],
 					"text" : "opendialog"
 				}
 
@@ -667,7 +722,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 303.0, 472.8333740234375, 83.0, 22.0 ],
+					"patching_rect" : [ 304.0, 393.8333740234375, 83.0, 22.0 ],
 					"text" : "writecache $1"
 				}
 
@@ -684,7 +739,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 1,
-							"revision" : 0,
+							"revision" : 10,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -717,6 +772,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-1",
@@ -947,7 +1003,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 303.0, 443.16668701171875, 44.0, 22.0 ],
+					"patching_rect" : [ 304.0, 364.16668701171875, 44.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -967,7 +1023,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 303.0, 378.00006103515625, 24.0, 24.0 ]
+					"patching_rect" : [ 304.0, 299.00006103515625, 24.0, 24.0 ]
 				}
 
 			}
@@ -978,7 +1034,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "bang" ],
-					"patching_rect" : [ 303.0, 413.00006103515625, 66.0, 22.0 ],
+					"patching_rect" : [ 304.0, 334.00006103515625, 66.0, 22.0 ],
 					"text" : "savedialog"
 				}
 
@@ -993,10 +1049,10 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 405.0, 429.8333740234375, 165.0, 65.0 ],
+					"patching_rect" : [ 406.0, 350.8333740234375, 165.0, 66.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 99, 108, 101, 97, 114, 0, 0, 0, 0, 0, 0, 16, 47, 118, 97, 108, 0, 0, 0, 0, 44, 115, 0, 0, 42, 0, 0, 0 ],
 					"saved_bundle_length" : 92,
-					"text" : "/* : {\n\t/key : \"clear\",\n\t/val : \"*\"\n}"
+					"text" : "/* : {\n  /key : \"clear\",\n  /val : \"*\"\n}"
 				}
 
 			}
@@ -1008,7 +1064,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 120.0, 370.66668701171875, 24.0, 24.0 ]
+					"patching_rect" : [ 121.0, 291.66668701171875, 24.0, 24.0 ]
 				}
 
 			}
@@ -1019,7 +1075,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 132.0, 581.16668701171875, 77.0, 22.0 ],
+					"patching_rect" : [ 133.5, 494.16668701171875, 77.0, 22.0 ],
 					"text" : "o.select /port"
 				}
 
@@ -1031,7 +1087,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 371.66668701171875, 64.0, 22.0 ],
+					"patching_rect" : [ 42.0, 292.66668701171875, 64.0, 22.0 ],
 					"text" : "script start"
 				}
 
@@ -1039,15 +1095,15 @@
 , 			{
 				"box" : 				{
 					"fontface" : 0,
-					"fontsize" : 12.0,
+					"fontsize" : 10.0,
 					"id" : "obj-45",
 					"linecount" : 2,
 					"maxclass" : "o.display",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 132.0, 620.8333740234375, 407.0, 48.0 ],
-					"text" : "/port/localhost : \"http://localhost:3002\",\n/port/ip : \"http://192.168.178.36:3002\""
+					"patching_rect" : [ 133.5, 521.16668701171875, 341.0, 44.0 ],
+					"text" : "/port/ip : \"http://192.168.178.36:3002\",\n/port/localhost : \"http://localhost:3002\""
 				}
 
 			}
@@ -1060,7 +1116,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "" ],
-					"patching_rect" : [ 41.0, 544.16668701171875, 110.0, 24.0 ],
+					"patching_rect" : [ 42.0, 465.16668701171875, 110.0, 24.0 ],
 					"text" : "drawsocket"
 				}
 
@@ -1072,7 +1128,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 404.8333740234375, 63.0, 22.0 ],
+					"patching_rect" : [ 42.0, 325.8333740234375, 63.0, 22.0 ],
 					"text" : "script stop"
 				}
 
@@ -1080,22 +1136,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
-					"source" : [ "obj-11", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-12", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-13", 0 ]
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-1", 0 ]
 				}
 
 			}
@@ -1108,13 +1150,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
-					"source" : [ "obj-15", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-16", 0 ]
 				}
@@ -1122,7 +1157,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-11", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"source" : [ "obj-17", 0 ]
 				}
 
@@ -1144,13 +1179,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
-					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-20", 0 ]
 				}
 
@@ -1159,6 +1187,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-27", 0 ]
 				}
 
 			}
@@ -1192,8 +1227,29 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-35", 0 ],
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-59", 0 ],
 					"source" : [ "obj-38", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-40", 0 ],
+					"source" : [ "obj-39", 0 ]
 				}
 
 			}
@@ -1270,9 +1326,16 @@
 			}
 , 			{
 				"name" : "startscript.js",
-				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/code",
-				"patcherrelativepath" : "../../../code",
+				"bootpath" : "~/Documents/___hfmt/drawsocket-min/code",
+				"patcherrelativepath" : "../../../../../../___hfmt/drawsocket-min/code",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "Screen Shot 2021-03-17 at 22.21.18.png",
+				"bootpath" : "~/Documents/_____submissions/zurich/materials",
+				"patcherrelativepath" : "../../../../../../_____submissions/zurich/materials",
+				"type" : "PNG",
 				"implicit" : 1
 			}
 , 			{
@@ -1281,10 +1344,6 @@
 			}
 , 			{
 				"name" : "o.timetag.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
 , 			{
@@ -1305,6 +1364,10 @@
 			}
 , 			{
 				"name" : "o.compose.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.display.mxo",
 				"type" : "iLaX"
 			}
  ],
