@@ -59,13 +59,23 @@ if (cluster.isMaster)
     const app = express();
     const path = require('path');
 
-    const Max = require('max-api');
+    let Max;
+    try {
+        Max = require('max-api');
+        Max.post("started up ");
+        Max.post(`pid: ${process.pid}`);
+        Max.post(`running in ${process.env.NODE_ENV} mode`);
+    
+    }
+    catch(err) {
+        Max = {
+            post: console.log,
+            outlet: console.log
+        }
+    }
 
-    Max.post("started up ");
-    Max.post(`pid: ${process.pid}`);
 
-    Max.post(`running in ${process.env.NODE_ENV} mode`);
-
+   
     const stringifyOBJAsync = (obj_) => {
         return Promise.resolve().then( ()=> JSON.stringify(obj_) );
     }
@@ -432,11 +442,13 @@ if (cluster.isMaster)
      *  Max message handlers
      */
 
-    Max.addHandler("html_template", (...args) => {
+    const setTemplate = (args) => {
         htmltemplate = args;
         usr_template = true;
         Max.post("set html template page to " + usr_root_path + args);
-    });
+    }
+
+    Max.addHandler("html_template", (...args) => setTemplate(args) );
 
     Max.addHandler("writecache", (filename, prefix) => {
         Max.post("attempting to save", filename, prefix); //usr_root_path+

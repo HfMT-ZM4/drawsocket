@@ -7,28 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <!-- our stylesheet -->
-    <link rel="stylesheet" href="lib/draw-client2.css">
-
-    <script>
-    function init()
-    {
-        var a = document.getElementById("link");
-        a.href = `http://${location.host}/svgdraw`;
-        a.innerHTML = `http://${location.host}/svgdraw`;
-    }
-    </script>
+    <link rel="stylesheet" href="lib/drawsocket-defaults.css">
 
     <!-- library dependencies -->
+
+    <script src="scripts/d3-selection/dist/d3-selection.min.js"></script>
+    <script src="scripts/pdfjs-dist/build/pdf.js"></script>
+    <script src="scripts/tone/build/Tone.js"></script>
+    <!--
+    <script src="scripts/startaudiocontext/StartAudioContext.js"></script>
+    -->
+    <script src="scripts/timesync/dist/timesync.js"></script>
+    <script src="scripts/gsap/dist/gsap.min.js"></script>
+    <script src="scripts/svg-points/dist/svg-points.min.js"></script>
+    <script src="lib/verovio-toolkit.js" ></script>
+
   </head>
-  <body onload="init()">
-    <div class="basestyle">
+  <body>
+    <!--main html setup -->
+    <div class="log" id="log"></div>
+
+    <div id="touchdiv"></div>
+
+    <!--main main main setup -->
+    <div id="main-div" >
+
+      <div id="main-html" ></div>
+
+      <svg  id="svg" 
+            version="1.1" 
+            baseProfile="full" 
+            xmlns="http://www.w3.org/2000/svg" 
+            xmlns:xlink="http://www.w3.org/1999/xlink" >
+          
+            <defs id="defs"></defs>
+            <g id="main-svg"></g>
+            
+      </svg>
+
+  </div>
+    <div id="forms" ></div>
+
+    <div id="loading">
+      <p>synchronizing...</p>
+    </div>
+    <!-- end default drawsocket page -->
+
+    <!-- custom stuff here (or above is possible too of course!) -->
+
+    <div>
       <p>Welcome to Drawsocket!</p>
       <p>This is an example of a user defined index.html page.</p>
-      
-      For example you could provide a few links here:
-      <a id="link" style="color:blue;"></a></p>
     </div>
-
+    
+    <!-- the main drawsocket client script -->
+    <script src="lib/drawsocket-client.js"></script>
 
   </body>
 </html>

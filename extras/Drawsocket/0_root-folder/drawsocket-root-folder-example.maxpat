@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 1612.0, 937.0 ],
+		"rect" : [ 34.0, 79.0, 1118.0, 937.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,65 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubble" : 1,
+					"id" : "obj-16",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 375.0, 569.5, 222.0, 37.0 ],
+					"presentation_linecount" : 2,
+					"text" : "\"default\" resets the template to the default version"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 228.0, 577.0, 142.0, 22.0 ],
+					"text" : "html_template default"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
+					"id" : "obj-14",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 379.0, 489.0, 222.0, 78.0 ],
+					"presentation_linecount" : 5,
+					"text" : "you can set a custom html page for drawsocket to use, found in the root folder (here \"public\") -- note that the change doesn't take effect until restarting the server."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 228.0, 523.0, 142.0, 22.0 ],
+					"text" : "html_template index.html"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "button",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 219.0, 758.0, 24.0, 24.0 ]
+					"patching_rect" : [ 219.0, 781.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -68,7 +120,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 727.0, 601.0, 842.0, 401.0 ],
+						"rect" : [ 472.0, 514.0, 842.0, 401.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -131,9 +183,9 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 513.0, 254.0, 136.0, 122.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 112, 97, 103, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 5, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 110, 101, 119, 112, 100, 102, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 112, 100, 102, 0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 112, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 56, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 112, 97, 103, 101, 0, 0, 0, 44, 105, 0, 0, 0, 0, 0, 12, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 110, 101, 119, 112, 100, 102, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 112, 100, 102, 0 ],
 									"saved_bundle_length" : 144,
-									"text" : "/* : {\n  /val : {\n    /page : 5,\n    /id : \"newpdf\"\n  },\n  /key : \"pdf\"\n}"
+									"text" : "/* : {\n  /val : {\n    /page : 12,\n    /id : \"newpdf\"\n  },\n  /key : \"pdf\"\n}"
 								}
 
 							}
@@ -238,7 +290,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 131.0, 436.0, 84.0, 22.0 ],
+					"patching_rect" : [ 131.0, 382.0, 84.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -581,7 +633,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 563.0, 709.0, 119.0, 22.0 ],
+					"patching_rect" : [ 563.0, 732.0, 119.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -601,7 +653,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 383.66668701171875, 335.0, 265.0, 64.0 ],
+					"patching_rect" : [ 383.66668701171875, 281.0, 265.0, 64.0 ],
 					"text" : "Here we refer to the media folder, which is a path relative to the HTML root folder. Which in this example is \"public\", so relative to this patcher is /public/media."
 				}
 
@@ -616,7 +668,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 107.0, 258.0, 288.0, 150.0 ],
+					"patching_rect" : [ 107.0, 204.0, 288.0, 150.0 ],
 					"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -52, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, -64, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -104, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -120, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 105, 109, 97, 103, 101, 0, 0, 0, 0, 0, 0, 20, 47, 105, 100, 0, 44, 115, 0, 0, 97, 115, 115, 101, 116, 45, 116, 101, 115, 116, 0, 0, 0, 0, 0, 12, 47, 120, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 12, 47, 121, 0, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 36, 47, 104, 114, 101, 102, 0, 0, 0, 44, 115, 0, 0, 47, 109, 101, 100, 105, 97, 47, 101, 113, 117, 97, 116, 105, 111, 110, 45, 100, 102, 116, 46, 112, 110, 103, 0 ],
 					"saved_bundle_length" : 224,
 					"text" : "/* : {\n  /key : \"svg\",\n  /val : {\n    /new : \"image\",\n    /id : \"asset-test\",\n    /x : 20,\n    /y : 100,\n    /href : \"/media/equation-dft.png\"\n  }\n}"
@@ -685,7 +737,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 219.0, 703.0, 313.0, 48.0 ],
+					"patching_rect" : [ 219.0, 726.0, 313.0, 48.0 ],
 					"text" : "/port/ip : \"http://192.168.178.36:3002\",\n/port/localhost : \"http://localhost:3002\""
 				}
 
@@ -697,7 +749,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "FullPacket" ],
-					"patching_rect" : [ 219.0, 668.0, 77.0, 22.0 ],
+					"patching_rect" : [ 219.0, 691.0, 77.0, 22.0 ],
 					"text" : "o.select /port"
 				}
 
@@ -709,7 +761,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "FullPacket", "", "" ],
-					"patching_rect" : [ 107.0, 625.0, 131.0, 22.0 ],
+					"patching_rect" : [ 107.0, 648.0, 131.0, 22.0 ],
 					"text" : "drawsocket public"
 				}
 
@@ -722,7 +774,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 243.66668701171875, 604.5, 412.0, 51.0 ],
+					"patching_rect" : [ 243.66668701171875, 627.5, 412.0, 51.0 ],
 					"text" : "set the folder path for web server, relative to this patcher's folder. \nIn this example we set the folder \"public\", which is expected to be found at the same folder level as this patcher (drawsocket-basic.maxpat)"
 				}
 
@@ -734,7 +786,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 143.0, 487.166625976562614, 64.0, 22.0 ],
+					"patching_rect" : [ 143.0, 433.166625976562614, 64.0, 22.0 ],
 					"text" : "script start"
 				}
 
@@ -746,7 +798,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 143.0, 519.000000000000114, 63.0, 22.0 ],
+					"patching_rect" : [ 143.0, 465.000000000000114, 63.0, 22.0 ],
 					"text" : "script stop"
 				}
 
@@ -759,7 +811,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 403.0, 444.666625976562614, 216.0, 78.0 ],
+					"patching_rect" : [ 369.0, 371.666625976562614, 216.0, 78.0 ],
 					"text" : "when running the first time you will need to be connected ot the internet and run \"script npm install\" to download the node package dependencies."
 				}
 
@@ -771,7 +823,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 290.0, 472.666625976562614, 98.0, 22.0 ],
+					"patching_rect" : [ 256.0, 399.666625976562614, 98.0, 22.0 ],
 					"text" : "script npm install"
 				}
 
@@ -787,8 +839,22 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 228.5, 792.0, 689.0, 792.0, 689.0, 59.0, 729.5, 59.0 ],
+					"midpoints" : [ 228.5, 834.0, 689.0, 834.0, 689.0, 59.0, 729.5, 59.0 ],
 					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-15", 0 ]
 				}
 
 			}
