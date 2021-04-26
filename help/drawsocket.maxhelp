@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 626.0, 79.0, 1155.0, 937.0 ],
+		"rect" : [ 100.0, 79.0, 1155.0, 937.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -58,7 +58,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 626.0, 105.0, 1155.0, 911.0 ],
+						"rect" : [ 100.0, 105.0, 1155.0, 911.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,6 +88,63 @@
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"fontsize" : 14.0,
+									"id" : "obj-1",
+									"linecount" : 5,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 391.5, 584.0, 299.0, 85.0 ],
+									"text" : "You can also communicate between instances of jweb that are logged into the server\n\nThis can also be used as a server if your computer is setup with an open port."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"bubblepoint" : 0.7,
+									"id" : "obj-38",
+									"linecount" : 8,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 491.435546875, 314.0, 150.0, 131.0 ],
+									"text" : "drawsocket.signalPeer helper abstraction allows you to use the same /sendTo address format that you would use to send messages to the  drawsocket object\n"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 0,
+									"fontsize" : 12.0,
+									"id" : "obj-37",
+									"linecount" : 4,
+									"maxclass" : "o.compose",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 332.064453125, 307.0, 165.0, 66.0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 47, 42, 0, 0, 44, 46, 0, 0, 0, 0, 0, 60, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 99, 108, 101, 97, 114, 0, 0, 0, 0, 0, 0, 16, 47, 118, 97, 108, 0, 0, 0, 0, 44, 115, 0, 0, 42, 0, 0, 0 ],
+									"saved_bundle_length" : 92,
+									"text" : "/* : {\n  /key : \"clear\",\n  /val : \"*\"\n}"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"color" : [ 1.0, 0.862745098039216, 0.0, 1.0 ],
+									"id" : "obj-36",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 332.064453125, 391.0, 129.0, 22.0 ],
+									"text" : "drawsocket.signalPeer"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-34",
 									"linecount" : 2,
@@ -141,7 +198,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 57.5, 333.0, 133.0, 20.0 ],
+									"patching_rect" : [ 57.5, 248.0, 133.0, 20.0 ],
 									"text" : "send to local instance"
 								}
 
@@ -152,7 +209,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 248.0, 337.0, 133.0, 20.0 ],
+									"patching_rect" : [ 235.0, 252.0, 133.0, 20.0 ],
 									"text" : "send to everyone"
 								}
 
@@ -163,7 +220,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 463.0, 337.0, 133.0, 20.0 ],
+									"patching_rect" : [ 429.435546875, 244.0, 133.0, 20.0 ],
 									"text" : "send to one peer URL"
 								}
 
@@ -175,7 +232,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 441.064453125, 305.0, 161.0, 22.0 ],
+									"patching_rect" : [ 407.5, 212.0, 161.0, 22.0 ],
 									"text" : "prepend signalPeer /barbara"
 								}
 
@@ -301,7 +358,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 441.064453125, 267.0, 100.0, 22.0 ],
+									"patching_rect" : [ 407.5, 174.0, 100.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -323,7 +380,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 441.064453125, 109.0, 165.0, 136.0 ],
+									"patching_rect" : [ 407.5, 16.0, 165.0, 136.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 120, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 120, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 98, 108, 117, 101, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 184,
 									"text" : "/key : \"svg\",\n/val : {\n  /new : \"circle\",\n  /id : \"foo\",\n  /cx : 120,\n  /cy : 120,\n  /r : 20,\n  /fill : \"blue\"\n}"
@@ -482,18 +539,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-3",
-									"linecount" : 6,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 407.5, 456.0, 244.0, 87.0 ],
-									"text" : "you can also communicate between instances of jweb that are logged into the server\n\nthis can also be used as a server if your comptuer is setup with an open port."
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-29",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
@@ -613,7 +658,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 45.0, 263.0, 100.0, 22.0 ],
+									"patching_rect" : [ 45.0, 178.0, 100.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -635,7 +680,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 45.0, 101.0, 165.0, 136.0 ],
+									"patching_rect" : [ 45.0, 16.0, 165.0, 136.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -108, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -124, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 16, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 98, 121, 0, 0, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 50, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 111, 114, 97, 110, 103, 101, 0, 0 ],
 									"saved_bundle_length" : 188,
 									"text" : "/key : \"svg\",\n/val : {\n  /new : \"circle\",\n  /id : \"bobby\",\n  /cx : 50,\n  /cy : 50,\n  /r : 20,\n  /fill : \"orange\"\n}"
@@ -763,7 +808,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 242.0, 263.0, 100.0, 22.0 ],
+									"patching_rect" : [ 229.0, 178.0, 100.0, 22.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -918,7 +963,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 242.0, 101.0, 165.0, 136.0 ],
+									"patching_rect" : [ 229.0, 16.0, 165.0, 136.0 ],
 									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -116, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, 124, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 98, 111, 98, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 16, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 114, 101, 100, 0 ],
 									"saved_bundle_length" : 180,
 									"text" : "/key : \"svg\",\n/val : {\n  /new : \"circle\",\n  /id : \"bob\",\n  /cx : 100,\n  /cy : 100,\n  /r : 20,\n  /fill : \"red\"\n}"
@@ -957,7 +1002,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 242.0, 305.0, 117.0, 22.0 ],
+									"patching_rect" : [ 229.0, 220.0, 117.0, 22.0 ],
 									"text" : "prepend broadcast"
 								}
 
@@ -969,7 +1014,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 45.0, 303.0, 117.0, 22.0 ],
+									"patching_rect" : [ 45.0, 218.0, 117.0, 22.0 ],
 									"text" : "prepend drawsocket"
 								}
 
@@ -997,9 +1042,9 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 716.064453125, 82.0, 165.0, 136.0 ],
-									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 120, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 120, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 98, 108, 117, 101, 0, 0, 0, 0 ],
+									"saved_bundle_data" : [ 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 47, 107, 101, 121, 0, 0, 0, 0, 44, 115, 0, 0, 115, 118, 103, 0, 0, 0, 0, -112, 47, 118, 97, 108, 0, 0, 0, 0, 44, 46, 0, 0, 0, 0, 0, -128, 35, 98, 117, 110, 100, 108, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 47, 110, 101, 119, 0, 0, 0, 0, 44, 115, 0, 0, 99, 105, 114, 99, 108, 101, 0, 0, 0, 0, 0, 12, 47, 105, 100, 0, 44, 115, 0, 0, 102, 111, 111, 0, 0, 0, 0, 12, 47, 99, 120, 0, 44, 105, 0, 0, 0, 0, 0, 120, 0, 0, 0, 12, 47, 99, 121, 0, 44, 105, 0, 0, 0, 0, 0, 120, 0, 0, 0, 12, 47, 114, 0, 0, 44, 105, 0, 0, 0, 0, 0, 20, 0, 0, 0, 20, 47, 102, 105, 108, 108, 0, 0, 0, 44, 115, 0, 0, 112, 105, 110, 107, 0, 0, 0, 0 ],
 									"saved_bundle_length" : 184,
-									"text" : "/key : \"svg\",\n/val : {\n  /new : \"circle\",\n  /id : \"foo\",\n  /cx : 120,\n  /cy : 120,\n  /r : 20,\n  /fill : \"blue\"\n}"
+									"text" : "/key : \"svg\",\n/val : {\n  /new : \"circle\",\n  /id : \"foo\",\n  /cx : 120,\n  /cy : 120,\n  /r : 20,\n  /fill : \"pink\"\n}"
 								}
 
 							}
@@ -1131,6 +1176,20 @@
 								"patchline" : 								{
 									"destination" : [ "obj-32", 0 ],
 									"source" : [ "obj-33", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-21", 0 ],
+									"source" : [ "obj-36", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-36", 0 ],
+									"source" : [ "obj-37", 0 ]
 								}
 
 							}
@@ -10338,13 +10397,11 @@
 									"fontface" : 0,
 									"fontsize" : 12.0,
 									"id" : "obj-45",
-									"linecount" : 2,
 									"maxclass" : "o.display",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 148.0, 808.66668701171875, 407.0, 48.0 ],
-									"text" : "/port/ip : \"http://192.168.178.36:3002\",\n/port/localhost : \"http://localhost:3002\""
+									"patching_rect" : [ 148.0, 808.66668701171875, 407.0, 34.0 ]
 								}
 
 							}
@@ -15568,6 +15625,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "drawsocket.signalPeer.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/drawsocket/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "o.compose.mxo",
 				"type" : "iLaX"
 			}
@@ -15605,6 +15669,10 @@
 			}
 , 			{
 				"name" : "o.cond.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "o.messageiterate.mxo",
 				"type" : "iLaX"
 			}
  ],
