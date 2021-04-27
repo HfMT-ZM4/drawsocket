@@ -255,6 +255,55 @@ if (cluster.isMaster)
                 
 
             }
+            else if ( addr === "/drawsocket/server" ) 
+            {
+                /*
+                    /drawsocket/server : ["writecache", "foobar.json"]
+                */
+                let obj_ = in_obj[_prefix];
+
+                if( !Array.isArray(obj_) && typeof obj_ === 'object' )
+                {
+                    post(`syntax error, messages to the drawsocket server must be strings or lists. Received  message ${obj_}`);
+                    continue;    
+                }
+
+                obj_ = Array.isArray(obj_) ? obj_ : [ obj_ ];
+                const k = obj_[0];
+                const args = obj_.slice(1); 
+
+                switch( k )
+                {
+                    case "writecache":
+                        if( args.length == 1 )
+                            writeCache(args);
+                        else if( args.length == 2 )
+                            writeCache(args[0], args[1]);
+                        else
+                            writeCache('saved_cache.json')
+                    break;
+                    case "importcache":
+                        if( args.length == 1 )
+                            importCache(args)
+                        else if( args.length == 2 )
+                            importCache(args[0], args[1])
+                        else
+                            post("error, no file specified for importcache");
+                    break;
+                    case "html_template":
+                        setTemplate(args);
+                    break;
+                    case "statereq":
+                        stateReq(args);
+                    break;
+                    case "ping":
+                        ping(args);
+                    break;
+                    default:
+                    break;
+                }
+                
+            }
             else 
             {
 
@@ -277,7 +326,10 @@ if (cluster.isMaster)
         }
     }
 
-    udp_server.receive_callback( processInputObj );
+    udp_server.receive_callback( (obj) => {
+
+        processInputObj(obj); 
+    });
 
 
     // pretty sure this is never called
@@ -495,6 +547,12 @@ if (cluster.isMaster)
 
     const importCache = (filename, prefix) => {
 
+        if( !filename )
+        {
+            post("importcache error, missing filename");
+            return;
+        }
+        
         const fullpath = path.normalize( path.isAbsolute(filename) ? filename : path.resolve(usr_root_path, filename) );
         post("attempting to import", fullpath, ( prefix ? prefix : "" ) );
         cache_proc.send({
