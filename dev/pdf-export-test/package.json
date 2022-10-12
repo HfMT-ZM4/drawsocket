@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "svg-to-pdfkit": "^0.1.7",
-    "svg2pdf.js": "^1.4.0"
+    "svg2pdf.js": "^2.2.1"
   }
 }
